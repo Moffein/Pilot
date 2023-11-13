@@ -6,14 +6,16 @@ namespace EntityStates.Pilot.Weapon
 {
     public class RapidFire : BaseState
 	{
-		public static float damageCoefficient = 0.75f;
-		public static float force = 75f;
-		public static float baseDuration = 0.15f;
-        public static float spreadBloomValue = 0.2f;
+		public static float damageCoefficient = 0.8f;
+		public static float force = 80f;
+		public static float baseDuration = 0.14f;
+        public static float spreadBloomValue = 1f;
+		public static float recoilAmplitude = 1f;
 		public static string attackSoundString = "Play_commando_M1";
 		public static string muzzleName = "";
 		public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoShotgun.prefab").WaitForCompletion();
 		public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
+		public static GameObject muzzleEffectPrefab;
 
 		private float duration;
 
@@ -22,7 +24,12 @@ namespace EntityStates.Pilot.Weapon
             base.OnEnter();
 
 			Ray aimRay = base.GetAimRay();
-            duration = baseDuration/this.attackSpeedStat;
+			base.StartAimMode(aimRay, 3f, false);
+			duration = baseDuration/this.attackSpeedStat;
+			if (muzzleEffectPrefab)
+            {
+				EffectManager.SimpleMuzzleFlash(RapidFire.muzzleEffectPrefab, base.gameObject, RapidFire.muzzleName, false);
+			}
 			if (base.isAuthority)
 			{
 				new BulletAttack
@@ -42,11 +49,12 @@ namespace EntityStates.Pilot.Weapon
 					isCrit = base.RollCrit(),
 					radius = 0.2f,
 					smartCollision = true,
-					damageType = DamageType.Stun1s,
-					falloffModel = BulletAttack.FalloffModel.None,
-					procCoefficient = 0.5f
+					damageType = DamageType.Generic,
+					falloffModel = BulletAttack.FalloffModel.DefaultBullet,
+					procCoefficient = 1f
 				}.Fire();
 			}
+			base.AddRecoil(-0.4f * RapidFire.recoilAmplitude, -0.8f * RapidFire.recoilAmplitude, -0.3f * RapidFire.recoilAmplitude, 0.3f * RapidFire.recoilAmplitude);
 			Util.PlaySound(RapidFire.attackSoundString, base.gameObject);
 			base.characterBody.AddSpreadBloom(RapidFire.spreadBloomValue);
 		}

@@ -100,7 +100,6 @@ namespace Pilot.Modules.Survivors
             SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
 
             InitPrimaries();
-            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { placeholder });
@@ -109,7 +108,35 @@ namespace Pilot.Modules.Survivors
         private void InitPrimaries()
         {
             //Steal icon from vanilla
-            SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyFireShotgunBlast.asset").WaitForCompletion();
+            SkillDef placeholderCluster = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CaptainShotgun.asset").WaitForCompletion();
+            SkillDef placeholderRapid = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyFireShotgunBlast.asset").WaitForCompletion();
+
+            SteppedSkillDef primaryDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            primaryDef.activationState = new SerializableEntityStateType(typeof(ClusterFire));
+            primaryDef.activationStateMachineName = "Weapon";
+            primaryDef.baseMaxStock = 1;
+            primaryDef.baseRechargeInterval = 0f;
+            primaryDef.beginSkillCooldownOnSkillEnd = false;
+            primaryDef.canceledFromSprinting = false;
+            primaryDef.dontAllowPastMaxStocks = true;
+            primaryDef.forceSprintDuringState = false;
+            primaryDef.fullRestockOnAssign = true;
+            primaryDef.icon = placeholderCluster.icon;
+            primaryDef.interruptPriority = InterruptPriority.Any;
+            primaryDef.isCombatSkill = true;
+            primaryDef.keywordTokens = new string[] { };
+            primaryDef.mustKeyPress = false;
+            primaryDef.cancelSprintingOnActivation = true;
+            primaryDef.rechargeStock = 1;
+            primaryDef.requiredStock = 1;
+            primaryDef.skillName = "PilotPrimary";
+            primaryDef.skillNameToken = "MOFFEIN_PILOT_BODY_PRIMARY_NAME";
+            primaryDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_PRIMARY_DESCRIPTION";
+            primaryDef.stockToConsume = 1;
+            primaryDef.stepCount = 3;
+            Skills.FixSkillName(primaryDef);
+            Pilot.Modules.Content.AddSkillDef(primaryDef);
+            SkillDefs.Primaries.ClusterFire = primaryDef;
 
             SkillDef primaryAltDef = ScriptableObject.CreateInstance<SkillDef>();
             primaryAltDef.activationState = new SerializableEntityStateType(typeof(RapidFire));
@@ -121,7 +148,7 @@ namespace Pilot.Modules.Survivors
             primaryAltDef.dontAllowPastMaxStocks = true;
             primaryAltDef.forceSprintDuringState = false;
             primaryAltDef.fullRestockOnAssign = true;
-            primaryAltDef.icon = placeholder.icon;
+            primaryAltDef.icon = placeholderRapid.icon;
             primaryAltDef.interruptPriority = InterruptPriority.Any;
             primaryAltDef.isCombatSkill = true;
             primaryAltDef.keywordTokens = new string[] { };
@@ -137,7 +164,7 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(primaryAltDef);
             SkillDefs.Primaries.RapidFire = primaryAltDef;
 
-            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryAltDef });
+            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef });
         }
         
         public override void InitializeSkins()
