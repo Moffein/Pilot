@@ -3,6 +3,7 @@ using EntityStates;
 using EntityStates.Pilot.FireSelect;
 using EntityStates.Pilot.Parachute;
 using EntityStates.Pilot.Weapon;
+using Pilot.Content.MonoBehaviours;
 using Pilot.Modules.Characters;
 using RoR2;
 using RoR2.Skills;
@@ -78,6 +79,8 @@ namespace Pilot.Modules.Survivors
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
+
+            bodyPrefab.AddComponent<PilotController>();
 
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
 
@@ -208,7 +211,7 @@ namespace Pilot.Modules.Survivors
             secondaryDef.fullRestockOnAssign = true;
             secondaryDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
             secondaryDef.interruptPriority = InterruptPriority.Any;
-            secondaryDef.isCombatSkill = true;
+            secondaryDef.isCombatSkill = false;
             secondaryDef.keywordTokens = new string[] { };
             secondaryDef.mustKeyPress = false;
             secondaryDef.cancelSprintingOnActivation = true;
@@ -221,6 +224,33 @@ namespace Pilot.Modules.Survivors
             Skills.FixSkillName(secondaryDef);
             Pilot.Modules.Content.AddSkillDef(secondaryDef);
             SkillDefs.Secondaries.TargetAcquired = secondaryDef;
+
+            SkillDef secondaryOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
+            secondaryOverrideDef.activationState = new SerializableEntityStateType(typeof(FireTargetAcquired));
+            secondaryOverrideDef.activationStateMachineName = "Weapon";
+            secondaryOverrideDef.baseMaxStock = 1;
+            secondaryOverrideDef.baseRechargeInterval = 0f;
+            secondaryOverrideDef.beginSkillCooldownOnSkillEnd = false;
+            secondaryOverrideDef.canceledFromSprinting = false;
+            secondaryOverrideDef.dontAllowPastMaxStocks = false;
+            secondaryOverrideDef.forceSprintDuringState = false;
+            secondaryOverrideDef.fullRestockOnAssign = true;
+            secondaryOverrideDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryOverrideDef.interruptPriority = InterruptPriority.Any;
+            secondaryOverrideDef.isCombatSkill = true;
+            secondaryOverrideDef.keywordTokens = new string[] { };
+            secondaryOverrideDef.mustKeyPress = false;
+            secondaryOverrideDef.cancelSprintingOnActivation = true;
+            secondaryOverrideDef.rechargeStock = 0;
+            secondaryOverrideDef.requiredStock = 1;
+            secondaryOverrideDef.skillName = "PilotSecondaryFire";
+            secondaryOverrideDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_NAME";
+            secondaryOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION";
+            secondaryOverrideDef.stockToConsume = 1;
+            Skills.FixSkillName(secondaryOverrideDef);
+            Pilot.Modules.Content.AddSkillDef(secondaryOverrideDef);
+            SkillDefs.Secondaries.FireTargetAcquired = secondaryOverrideDef;
+            TargetAcquired.primaryOverride = secondaryOverrideDef;
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondaryDef });
         }
@@ -335,6 +365,7 @@ namespace Pilot.Modules.Survivors
             public static class Secondaries
             {
                 public static SkillDef TargetAcquired;
+                public static SkillDef FireTargetAcquired;
             }
             public static class Utilities
             {

@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using Pilot.Content.MonoBehaviours;
+using RoR2;
 using UnityEngine;
 
 namespace EntityStates.Pilot.Parachute
@@ -7,6 +8,19 @@ namespace EntityStates.Pilot.Parachute
     {
         public static float maxFallVelocity = -4f;
         public static float exitHopVelocity = 17f;
+
+        private PilotController pilotController;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            pilotController = base.GetComponent<PilotController>();
+            if (pilotController)
+            {
+                pilotController.isParachuting = true;
+            }
+        }
 
         public override void FixedUpdate()
         {
@@ -31,6 +45,15 @@ namespace EntityStates.Pilot.Parachute
                 }
 
             }
+        }
+
+        public override void OnExit()
+        {
+            if (pilotController)
+            {
+                pilotController.isParachuting = false;
+            }
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

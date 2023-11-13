@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2624589540" Language="SFX" Hash="1580097675">
+		<SoundBank Id="2624589540" Language="SFX" Hash="200283861">
 			<ObjectPath>\SoundBanks\Default Work Unit\PilotSoundbank</ObjectPath>
 			<ShortName>PilotSoundbank</ShortName>
 			<Path>PilotSoundbank.bnk</Path>
@@ -42,6 +42,14 @@
 						<File Id="372196105" Language="SFX">
 							<ShortName>wBanditShoot1.wav</ShortName>
 							<Path>SFX\wBanditShoot1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3375162600" Name="Play_Pilot_Secondary_FireBurst" ObjectPath="\Events\Default Work Unit\Play_Pilot_Secondary_FireBurst">
+					<IncludedMemoryFiles>
+						<File Id="49591001" Language="SFX">
+							<ShortName>wBullet3.wav</ShortName>
+							<Path>SFX\wBullet3_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

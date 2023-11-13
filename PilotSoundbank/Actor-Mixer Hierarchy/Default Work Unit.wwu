@@ -157,6 +157,11 @@
 														<Value>700</Value>
 													</ValueList>
 												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -177,6 +182,28 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="wBanditShoot1" ID="{466FEDD2-146B-4C5E-A506-4164E40406BE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Seocndary_Fire" ID="{746A8D72-F7D5-48AF-8C79-DA926961BCA4}" ShortID="11980991">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wBullet3" ID="{B066E9B7-613D-4E17-A2AB-9F89090B6065}">
+													<Language>SFX</Language>
+													<AudioFile>wBullet3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="49591001"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wBullet3" ID="{B066E9B7-613D-4E17-A2AB-9F89090B6065}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

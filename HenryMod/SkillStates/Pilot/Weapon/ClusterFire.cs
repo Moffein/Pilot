@@ -17,6 +17,10 @@ namespace EntityStates.Pilot.Weapon
         public static float comboDamageCoefficient = 3f;
         public static float comboForce = 300f;
 
+        //Railgunner 300 for 5 shots per second
+        public static float selfKnockbackForce = 450f;
+        public static float comboSelfKnockbackForce = 450f;
+
         public static float shotRadius = 0.5f;
         public static float comboShotRadius = 1f;
 
@@ -89,6 +93,7 @@ namespace EntityStates.Pilot.Weapon
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
                 }.Fire();
+                if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
             }
             Util.PlaySound(ClusterFire.attackSoundString, base.gameObject);
             base.AddRecoil(-0.4f * ClusterFire.recoilAmplitude, -0.8f * ClusterFire.recoilAmplitude, -0.3f * ClusterFire.recoilAmplitude, 0.3f * ClusterFire.recoilAmplitude);
@@ -101,29 +106,32 @@ namespace EntityStates.Pilot.Weapon
             {
                 EffectManager.SimpleMuzzleFlash(ClusterFire.comboMuzzleEffectPrefab, base.gameObject, RapidFire.muzzleName, false);
             }
-            new BulletAttack
+            if (base.isAuthority)
             {
-                owner = base.gameObject,
-                weapon = base.gameObject,
-                origin = aimRay.origin,
-                aimVector = aimRay.direction,
-                minSpread = 0f,
-                maxSpread = 0f,
-                bulletCount = 1u,
-                damage = ClusterFire.comboDamageCoefficient * this.damageStat,
-                force = ClusterFire.comboForce,
-                tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
-                muzzleName = ClusterFire.muzzleName,
-                hitEffectPrefab = ClusterFire.comboHitEffectPrefab,
-                isCrit = base.RollCrit(),
-                radius = ClusterFire.comboShotRadius,
-                smartCollision = true,
-                damageType = DamageType.Generic,
-                falloffModel = BulletAttack.FalloffModel.None,
-                procCoefficient = 1f,
-                stopperMask = LayerIndex.world.mask
-            }.Fire();
-
+                new BulletAttack
+                {
+                    owner = base.gameObject,
+                    weapon = base.gameObject,
+                    origin = aimRay.origin,
+                    aimVector = aimRay.direction,
+                    minSpread = 0f,
+                    maxSpread = 0f,
+                    bulletCount = 1u,
+                    damage = ClusterFire.comboDamageCoefficient * this.damageStat,
+                    force = ClusterFire.comboForce,
+                    tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
+                    muzzleName = ClusterFire.muzzleName,
+                    hitEffectPrefab = ClusterFire.comboHitEffectPrefab,
+                    isCrit = base.RollCrit(),
+                    radius = ClusterFire.comboShotRadius,
+                    smartCollision = true,
+                    damageType = DamageType.Generic,
+                    falloffModel = BulletAttack.FalloffModel.None,
+                    procCoefficient = 1f,
+                    stopperMask = LayerIndex.world.mask
+                }.Fire();
+                if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
+            }
 
             //This is intentional, need to play both to make it sound right.
             Util.PlaySound(ClusterFire.attackSoundString, base.gameObject);

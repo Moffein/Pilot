@@ -6,10 +6,13 @@ namespace EntityStates.Pilot.Weapon
 {
     public class RapidFire : BaseState
 	{
+		//Railgunner 300 for 5 shots per second
+		public static float selfKnockbackForce = 214f;
+
 		public static float damageCoefficient = 1f;
 		public static float force = 80f;
 		public static float baseDuration = 0.12f;
-        public static float spreadBloomValue = 1f;
+        public static float spreadBloomValue = 0.5f;
 		public static float recoilAmplitude = 1f;
 		public static string attackSoundString = "Play_Pilot_Primary_Rapid";
 		public static string muzzleName = "";
@@ -53,6 +56,7 @@ namespace EntityStates.Pilot.Weapon
 					falloffModel = BulletAttack.FalloffModel.DefaultBullet,
 					procCoefficient = 1f
 				}.Fire();
+				if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-RapidFire.selfKnockbackForce * aimRay.direction, false, false);
 			}
 			base.AddRecoil(-0.4f * RapidFire.recoilAmplitude, -0.8f * RapidFire.recoilAmplitude, -0.3f * RapidFire.recoilAmplitude, 0.3f * RapidFire.recoilAmplitude);
 			Util.PlaySound(RapidFire.attackSoundString, base.gameObject);

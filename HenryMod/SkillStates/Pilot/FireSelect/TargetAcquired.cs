@@ -36,8 +36,16 @@ namespace EntityStates.Pilot.FireSelect
             base.FixedUpdate();
             if (base.isAuthority)
             {
+                //Enforce stock consistency
+                //Would be more ideal to directly hook when stocks are gained/lost
+                if (base.skillLocator)
+                {
+                    if (base.skillLocator.secondary.stock > this.overriddenSkill.stock || this.overriddenSkill.stock > base.skillLocator.secondary.stock) this.overriddenSkill.stock = base.skillLocator.secondary.stock;
+                }
+
+                bool outOfStock = !(base.skillLocator && base.skillLocator.secondary && base.skillLocator.secondary.stock > 0);
                 bool inputPressed = base.inputBank && base.inputBank.skill2.down;
-                if (!inputPressed)
+                if (!inputPressed || outOfStock)
                 {
                     this.outer.SetNextStateToMain();
                     return;
@@ -47,7 +55,6 @@ namespace EntityStates.Pilot.FireSelect
 
         public override void OnExit()
         {
-
             SkillLocator skillLocator = base.skillLocator;
             GenericSkill genericSkill = (skillLocator != null) ? skillLocator.primary : null;
             if (genericSkill)

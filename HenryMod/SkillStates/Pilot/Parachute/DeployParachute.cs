@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using Pilot.Content.MonoBehaviours;
+using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -15,6 +16,8 @@ namespace EntityStates.Pilot.Parachute
         public static float stunRadius = 12f;
         public static string deploySoundString = "Play_bandit2_shift_exit";
         public static GameObject stunEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bandit2/Bandit2SmokeBomb.prefab").WaitForCompletion();
+
+        private PilotController pilotController;
 
         public override void OnEnter()
         {
@@ -39,6 +42,12 @@ namespace EntityStates.Pilot.Parachute
 
                 base.characterMotor.velocity += directionFlat * boostVelocity * velocityMult;
             }
+
+            pilotController = base.GetComponent<PilotController>();
+            if (pilotController)
+            {
+                pilotController.isParachuting = true;
+            }
         }
 
         public override void FixedUpdate()
@@ -53,6 +62,15 @@ namespace EntityStates.Pilot.Parachute
                     this.outer.SetNextState(new Glide());
                 }
             }
+        }
+
+        public override void OnExit()
+        {
+            if (pilotController)
+            {
+                pilotController.isParachuting = false;
+            }
+            base.OnExit();
         }
 
         private void StunEnemies(Vector3 stunPosition)
