@@ -30,7 +30,7 @@ namespace EntityStates.Pilot.Weapon
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
 
         public static GameObject comboTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/TracerGolem.prefab").WaitForCompletion();
-        public static GameObject comboHitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion();
+        public static GameObject comboHitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
 
         public static GameObject muzzleEffectPrefab, comboMuzzleEffectPrefab;
 

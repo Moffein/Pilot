@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
+using EntityStates.Pilot.FireSelect;
 using EntityStates.Pilot.Parachute;
 using EntityStates.Pilot.Weapon;
 using Pilot.Modules.Characters;
@@ -123,9 +124,16 @@ namespace Pilot.Modules.Survivors
             SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
 
             InitPrimaries();
+            InitSecondaries();
             InitUtilities();
-            Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { placeholder });
+
+            //Default Air Strike
+            //12 cooldown
+            //Start with 2
+            //Marker lasts 15s
+            //Seems to stagger
+            //2s to recharge explosion
         }
 
         private void InitPrimaries()
@@ -184,6 +192,37 @@ namespace Pilot.Modules.Survivors
             SkillDefs.Primaries.RapidFire = primaryAltDef;
 
             Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef });
+        }
+
+        private void InitSecondaries()
+        {
+            SkillDef secondaryDef = ScriptableObject.CreateInstance<SkillDef>();
+            secondaryDef.activationState = new SerializableEntityStateType(typeof(TargetAcquired));
+            secondaryDef.activationStateMachineName = "FireSelect";
+            secondaryDef.baseMaxStock = 2;
+            secondaryDef.baseRechargeInterval = 4f;
+            secondaryDef.beginSkillCooldownOnSkillEnd = false;
+            secondaryDef.canceledFromSprinting = false;
+            secondaryDef.dontAllowPastMaxStocks = true;
+            secondaryDef.forceSprintDuringState = false;
+            secondaryDef.fullRestockOnAssign = true;
+            secondaryDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryDef.interruptPriority = InterruptPriority.Any;
+            secondaryDef.isCombatSkill = true;
+            secondaryDef.keywordTokens = new string[] { };
+            secondaryDef.mustKeyPress = false;
+            secondaryDef.cancelSprintingOnActivation = true;
+            secondaryDef.rechargeStock = 1;
+            secondaryDef.requiredStock = 1;
+            secondaryDef.skillName = "PilotSecondary";
+            secondaryDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_NAME";
+            secondaryDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION";
+            secondaryDef.stockToConsume = 0;    //Toggling doesn't consume stocks
+            Skills.FixSkillName(secondaryDef);
+            Pilot.Modules.Content.AddSkillDef(secondaryDef);
+            SkillDefs.Secondaries.TargetAcquired = secondaryDef;
+
+            Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondaryDef });
         }
 
         private void InitUtilities()
@@ -292,6 +331,10 @@ namespace Pilot.Modules.Survivors
             public static class Primaries
             {
                 public static SkillDef ClusterFire, RapidFire;
+            }
+            public static class Secondaries
+            {
+                public static SkillDef TargetAcquired;
             }
             public static class Utilities
             {
