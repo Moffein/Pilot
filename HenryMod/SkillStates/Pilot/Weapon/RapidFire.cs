@@ -61,8 +61,8 @@ namespace EntityStates.Pilot.Weapon
 					procCoefficient = 1f
 				}.Fire();
 				if (RapidFire.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
-					&& base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
-					base.characterBody.characterMotor.ApplyForce(-RapidFire.selfKnockbackForce * aimRay.direction, false, false);
+					&& base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
+					base.characterMotor.ApplyForce(-RapidFire.selfKnockbackForce * aimRay.direction, false, false);
 			}
 			base.AddRecoil(-0.4f * RapidFire.recoilAmplitude, -0.8f * RapidFire.recoilAmplitude, -0.3f * RapidFire.recoilAmplitude, 0.3f * RapidFire.recoilAmplitude);
 			Util.PlaySound(RapidFire.attackSoundString, base.gameObject);

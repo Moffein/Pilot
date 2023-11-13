@@ -84,6 +84,12 @@ namespace Pilot.Modules.Survivors
 
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
 
+            EntityStateMachine airstrikeMachine = bodyPrefab.AddComponent<EntityStateMachine>();
+            airstrikeMachine.customName = "Airstrike";
+            airstrikeMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
+            airstrikeMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
+            nsm.stateMachines = nsm.stateMachines.Append(airstrikeMachine).ToArray();
+
             EntityStateMachine targetingMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             targetingMachine.customName = "FireSelect";
             targetingMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));

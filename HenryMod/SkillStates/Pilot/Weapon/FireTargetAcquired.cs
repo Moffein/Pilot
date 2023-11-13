@@ -133,8 +133,8 @@ namespace EntityStates.Pilot.Weapon
                     stopperMask = LayerIndex.world.mask
                 }.Fire();
                 if (FireTargetAcquired.selfKnockbackForce != 0f //pilotController && pilotController.isParachuting && 
-                    && base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
-                    base.characterBody.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
+                    && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
+                    base.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             if (base.characterBody) base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.

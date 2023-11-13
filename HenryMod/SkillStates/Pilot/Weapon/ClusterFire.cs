@@ -98,8 +98,8 @@ namespace EntityStates.Pilot.Weapon
                     procCoefficient = 1f
                 }.Fire();
                 if (ClusterFire.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
-                    && base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
-                    base.characterBody.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
+                    && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
+                    base.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
             }
             Util.PlaySound(ClusterFire.attackSoundString, base.gameObject);
             base.AddRecoil(-0.4f * ClusterFire.recoilAmplitude, -0.8f * ClusterFire.recoilAmplitude, -0.3f * ClusterFire.recoilAmplitude, 0.3f * ClusterFire.recoilAmplitude);
@@ -137,8 +137,8 @@ namespace EntityStates.Pilot.Weapon
                     stopperMask = LayerIndex.world.mask
                 }.Fire();
                 if (ClusterFire.comboSelfKnockbackForce != 0f   //pilotController && pilotController.isParachuting && 
-                    && base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
-                    base.characterBody.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
+                    && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
+                    base.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
             }
 
             //This is intentional, need to play both to make it sound right.
