@@ -19,8 +19,8 @@ namespace EntityStates.Pilot.Weapon
         public static float comboForce = 300f;
 
         //Railgunner 300 for 5 shots per second
-        public static float selfKnockbackForce = 450f;
-        public static float comboSelfKnockbackForce = 450f;
+        public static float selfKnockbackForce = 0f;
+        public static float comboSelfKnockbackForce = 0f;
 
         public static float shotRadius = 0.5f;
         public static float comboShotRadius = 1f;
@@ -97,7 +97,7 @@ namespace EntityStates.Pilot.Weapon
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
                 }.Fire();
-                if (pilotController && pilotController.isParachuting
+                if (pilotController && pilotController.isParachuting && ClusterFire.selfKnockbackForce != 0f
                     && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
                     base.characterBody.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
             }
@@ -136,7 +136,9 @@ namespace EntityStates.Pilot.Weapon
                     procCoefficient = 1f,
                     stopperMask = LayerIndex.world.mask
                 }.Fire();
-                if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
+                if (pilotController && pilotController.isParachuting && ClusterFire.comboSelfKnockbackForce != 0f
+                    && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+                    base.characterBody.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
             }
 
             //This is intentional, need to play both to make it sound right.

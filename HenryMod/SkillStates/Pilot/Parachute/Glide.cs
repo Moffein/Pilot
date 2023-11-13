@@ -6,7 +6,7 @@ namespace EntityStates.Pilot.Parachute
 {
     public class Glide : BaseState
     {
-        public static float maxFallVelocity = -4f;
+        public static float maxFallVelocity = -5f;
         public static float exitHopVelocity = 17f;
 
         private PilotController pilotController;

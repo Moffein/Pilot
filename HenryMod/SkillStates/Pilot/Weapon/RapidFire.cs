@@ -8,7 +8,7 @@ namespace EntityStates.Pilot.Weapon
     public class RapidFire : BaseState
 	{
 		//Railgunner 300 for 5 shots per second
-		public static float selfKnockbackForce = 214f;
+		public static float selfKnockbackForce = 0f;
 
 		public static float damageCoefficient = 1f;
 		public static float force = 80f;
@@ -60,7 +60,7 @@ namespace EntityStates.Pilot.Weapon
 					falloffModel = BulletAttack.FalloffModel.DefaultBullet,
 					procCoefficient = 1f
 				}.Fire();
-				if (pilotController && pilotController.isParachuting
+				if (pilotController && pilotController.isParachuting && RapidFire.selfKnockbackForce != 0f
 					&& base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
 					base.characterBody.characterMotor.ApplyForce(-RapidFire.selfKnockbackForce * aimRay.direction, false, false);
 			}

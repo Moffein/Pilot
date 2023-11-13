@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using Pilot.Content.Components;
 using RoR2;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -19,6 +20,8 @@ namespace EntityStates.Pilot.Weapon
         public static string muzzleString = "";
         public static float spreadBloom = 0f;
         public static float recoil = 1f;
+        public static float autoAimDistance = 200f;
+        public static float autoaimAngle = 90f;
 
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/TracerRailgunCryo.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXFMJ.prefab").WaitForCompletion();
@@ -29,6 +32,7 @@ namespace EntityStates.Pilot.Weapon
         private float shotStopwatch;
         private bool crit;
         private PilotController pilotController;
+        private readonly BullseyeSearch search = new BullseyeSearch();
 
         public override void OnEnter()
         {
@@ -100,7 +104,7 @@ namespace EntityStates.Pilot.Weapon
                 Ray aimRay = base.GetAimRay();
                 new BulletAttack
                 {
-                    aimVector = aimRay.direction,
+                    aimVector = AutoTarget(aimRay),
                     origin = aimRay.origin,
                     damage = damageCoefficient * damageStat,
                     damageType = DamageType.Generic,
@@ -121,7 +125,7 @@ namespace EntityStates.Pilot.Weapon
                     hitEffectPrefab = hitEffectPrefab,
                     stopperMask = LayerIndex.world.mask
                 }.Fire();
-                if (pilotController && pilotController.isParachuting
+                if (pilotController && pilotController.isParachuting && FireTargetAcquired.selfKnockbackForce != 0f
                     && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
                     base.characterBody.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
             }
@@ -129,9 +133,29 @@ namespace EntityStates.Pilot.Weapon
             if (base.characterBody) base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.
         }
 
-        private void AutoTarget(Ray aimRay)
+        private Vector3 AutoTarget(Ray aimRay)
         {
+            Vector3 aimDirection = aimRay.direction;
 
+            this.search.teamMaskFilter = TeamMask.GetEnemyTeams(base.teamComponent ? base.teamComponent.teamIndex : TeamIndex.None);
+            this.search.filterByLoS = true;
+            this.search.searchOrigin = aimRay.origin;
+            this.search.searchDirection = aimRay.direction;
+            this.search.sortMode = BullseyeSearch.SortMode.Angle;
+            this.search.maxDistanceFilter = FireTargetAcquired.autoAimDistance;
+            this.search.maxAngleFilter = FireTargetAcquired.autoaimAngle;
+            this.search.RefreshCandidates();
+            this.search.FilterOutGameObject(base.gameObject);
+
+            HurtBox bestTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
+
+            if (bestTarget)
+            {
+                aimDirection = (bestTarget.transform.position - aimRay.origin);
+                aimDirection.Normalize();
+            }
+
+            return aimDirection;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
