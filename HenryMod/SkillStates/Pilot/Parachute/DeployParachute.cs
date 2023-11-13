@@ -11,8 +11,8 @@ namespace EntityStates.Pilot.Parachute
     {
         public static float minDuration = 0.1f;
         public static float baseDuration = 0.5f;
-        public static float boostVelocity = 15f;
-        public static float hopVelocity = 40f;
+        public static float boostVelocity = 18f;
+        public static float hopVelocity = 36f;
         public static float stunRadius = 12f;
         public static string deploySoundString = "Play_bandit2_shift_exit";
         public static GameObject stunEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bandit2/Bandit2SmokeBomb.prefab").WaitForCompletion();

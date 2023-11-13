@@ -1,6 +1,8 @@
-﻿using RoR2;
+﻿using Pilot.Content.Components;
+using RoR2;
 using RoR2.Skills;
 using RoR2.UI;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -11,13 +13,20 @@ namespace EntityStates.Pilot.FireSelect
     {
         public static GameObject crosshairOverridePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/RailgunnerCrosshair.prefab").WaitForCompletion();
         public static SkillDef primaryOverride;
+        public static string entrySoundString = "Play_railgunner_m2_scope_in";
+        public static string exitSoundString = "Play_railgunner_m2_scope_out";
 
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         private GenericSkill overriddenSkill;
+        private PilotController pilotController;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            Util.PlaySound(TargetAcquired.entrySoundString, base.gameObject);
+            Util.PlaySound("Play_railgunner_m2_scope_loop", base.gameObject);
+            pilotController = base.GetComponent<PilotController>();
+            if (pilotController) pilotController.BeginAutoAim();
             if (TargetAcquired.crosshairOverridePrefab)
             {
                 this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, TargetAcquired.crosshairOverridePrefab, CrosshairUtils.OverridePriority.Skill);
@@ -34,6 +43,7 @@ namespace EntityStates.Pilot.FireSelect
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
             if (base.isAuthority)
             {
                 //Enforce stock consistency
@@ -70,6 +80,13 @@ namespace EntityStates.Pilot.FireSelect
             {
                 this.crosshairOverrideRequest.Dispose();
             }
+
+            if (pilotController)
+            {
+                pilotController.EndAutoAim();
+            }
+            Util.PlaySound("Stop_railgunner_m2_scope_loop", base.gameObject);
+            Util.PlaySound(TargetAcquired.exitSoundString, base.gameObject);
             base.OnExit();
         }
 

@@ -1,7 +1,6 @@
 ﻿using EntityStates;
 using Pilot.Content.Components;
 using RoR2;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -20,8 +19,6 @@ namespace EntityStates.Pilot.Weapon
         public static string muzzleString = "";
         public static float spreadBloom = 0f;
         public static float recoil = 1f;
-        public static float autoAimDistance = 200f;
-        public static float autoaimAngle = 90f;
 
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/TracerRailgunCryo.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXFMJ.prefab").WaitForCompletion();
@@ -32,7 +29,6 @@ namespace EntityStates.Pilot.Weapon
         private float shotStopwatch;
         private bool crit;
         private PilotController pilotController;
-        private readonly BullseyeSearch search = new BullseyeSearch();
 
         public override void OnEnter()
         {
@@ -40,6 +36,7 @@ namespace EntityStates.Pilot.Weapon
             pilotController = base.GetComponent<PilotController>();
             if (pilotController)
             {
+                pilotController.BeginAutoAim();
                 pilotController.ConsumeSecondaryStock(1);
             }
 
@@ -88,6 +85,10 @@ namespace EntityStates.Pilot.Weapon
             {
                 base.characterBody.SetSpreadBloom(0f, false);
             }
+            if (pilotController)
+            {
+                pilotController.EndAutoAim();
+            }
             base.OnExit();
         }
 
@@ -102,6 +103,12 @@ namespace EntityStates.Pilot.Weapon
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
+                if (pilotController)
+                {
+                    pilotController.UpdateAutoAim();
+                    pilotController.UpdateIndicator();
+                }
+
                 new BulletAttack
                 {
                     aimVector = AutoTarget(aimRay),
@@ -137,18 +144,7 @@ namespace EntityStates.Pilot.Weapon
         {
             Vector3 aimDirection = aimRay.direction;
 
-            this.search.teamMaskFilter = TeamMask.GetEnemyTeams(base.teamComponent ? base.teamComponent.teamIndex : TeamIndex.None);
-            this.search.filterByLoS = true;
-            this.search.searchOrigin = aimRay.origin;
-            this.search.searchDirection = aimRay.direction;
-            this.search.sortMode = BullseyeSearch.SortMode.Angle;
-            this.search.maxDistanceFilter = FireTargetAcquired.autoAimDistance;
-            this.search.maxAngleFilter = FireTargetAcquired.autoaimAngle;
-            this.search.RefreshCandidates();
-            this.search.FilterOutGameObject(base.gameObject);
-
-            HurtBox bestTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
-
+            HurtBox bestTarget = pilotController ? pilotController.GetAutoaimHurtbox() : null;
             if (bestTarget)
             {
                 aimDirection = (bestTarget.transform.position - aimRay.origin);
