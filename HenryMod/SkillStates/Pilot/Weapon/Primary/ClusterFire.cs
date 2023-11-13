@@ -11,11 +11,11 @@ namespace EntityStates.Pilot.Weapon
         public static float recoilAmplitude = 1f;
         public static float comboRecoilAmplitude = 2f;
 
-        public static float damageCoefficient = 1f;
-        public static float force = 100f;
+        public static float damageCoefficient = 1.5f;
+        public static float force = 150f;
 
-        public static float comboDamageCoefficient = 2f;
-        public static float comboForce = 200f;
+        public static float comboDamageCoefficient = 3f;
+        public static float comboForce = 300f;
 
         public static float shotRadius = 0.5f;
         public static float comboShotRadius = 1f;
@@ -134,6 +134,7 @@ namespace EntityStates.Pilot.Weapon
             if (base.isAuthority && base.fixedAge >= this.duration)
             {
                 this.outer.SetNextStateToMain();
+                return;
             }
         }
 

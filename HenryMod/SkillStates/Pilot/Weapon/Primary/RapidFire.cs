@@ -6,7 +6,7 @@ namespace EntityStates.Pilot.Weapon
 {
     public class RapidFire : BaseState
 	{
-		public static float damageCoefficient = 0.8f;
+		public static float damageCoefficient = 1f;
 		public static float force = 80f;
 		public static float baseDuration = 0.14f;
         public static float spreadBloomValue = 1f;
@@ -65,6 +65,7 @@ namespace EntityStates.Pilot.Weapon
 			if (base.isAuthority && base.fixedAge >= this.duration)
             {
 				this.outer.SetNextStateToMain();
+				return;
             }
         }
 

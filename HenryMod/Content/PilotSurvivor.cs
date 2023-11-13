@@ -1,11 +1,13 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
+using EntityStates.Pilot.Parachute;
 using EntityStates.Pilot.Weapon;
 using Pilot.Modules.Characters;
 using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -75,6 +77,20 @@ namespace Pilot.Modules.Survivors
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            
+            EntityStateMachine parachuteStateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
+            parachuteStateMachine.customName = "Parachute";
+            parachuteStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
+            parachuteStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
+            NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
+            nsm.stateMachines = nsm.stateMachines.Append(parachuteStateMachine).ToArray();
+
+            SetStateOnHurt ssoh = bodyPrefab.GetComponent<SetStateOnHurt>();
+            if (ssoh)
+            {
+                Array.Resize(ref ssoh.idleStateMachine, ssoh.idleStateMachine.Length + 1);
+                ssoh.idleStateMachine[ssoh.idleStateMachine.Length - 1] = parachuteStateMachine;
+            }
         }
 
         public override void InitializeUnlockables()
@@ -100,8 +116,8 @@ namespace Pilot.Modules.Survivors
             SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
 
             InitPrimaries();
+            InitUtilities();
             Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { placeholder });
-            Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { placeholder });
         }
 
@@ -165,6 +181,41 @@ namespace Pilot.Modules.Survivors
             SkillDefs.Primaries.RapidFire = primaryAltDef;
 
             Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef });
+        }
+
+        private void InitUtilities()
+        {
+            //Steal icon from vanilla
+            SkillDef placeholderParachute = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Mage/MageBodyFlyUp.asset").WaitForCompletion();
+
+            SteppedSkillDef utilityDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            utilityDef.activationState = new SerializableEntityStateType(typeof(DeployParachute));
+            utilityDef.activationStateMachineName = "Parachute";
+            utilityDef.baseMaxStock = 1;
+            utilityDef.baseRechargeInterval = 8f;
+            utilityDef.beginSkillCooldownOnSkillEnd = false;
+            utilityDef.canceledFromSprinting = false;
+            utilityDef.dontAllowPastMaxStocks = true;
+            utilityDef.forceSprintDuringState = false;
+            utilityDef.fullRestockOnAssign = true;
+            utilityDef.icon = placeholderParachute.icon;
+            utilityDef.interruptPriority = InterruptPriority.Any;
+            utilityDef.isCombatSkill = false;
+            utilityDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            utilityDef.mustKeyPress = false;
+            utilityDef.cancelSprintingOnActivation = true;
+            utilityDef.rechargeStock = 1;
+            utilityDef.requiredStock = 1;
+            utilityDef.skillName = "PilotPrimary";
+            utilityDef.skillNameToken = "MOFFEIN_PILOT_BODY_UTILITY_NAME";
+            utilityDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION";
+            utilityDef.stockToConsume = 1;
+            utilityDef.stepCount = 3;
+            Skills.FixSkillName(utilityDef);
+            Pilot.Modules.Content.AddSkillDef(utilityDef);
+            SkillDefs.Utilities.RapidDeployment = utilityDef;
+
+            Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {utilityDef });
         }
         
         public override void InitializeSkins()
@@ -241,6 +292,10 @@ namespace Pilot.Modules.Survivors
             public static class Primaries
             {
                 public static SkillDef ClusterFire, RapidFire;
+            }
+            public static class Utilities
+            {
+                public static SkillDef RapidDeployment;
             }
         }
     }

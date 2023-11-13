@@ -12,6 +12,8 @@ namespace Pilot.Modules
             Modules.Content.AddEntityState(typeof(BaseMeleeAttack));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.RapidFire));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.ClusterFire));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.DeployParachute));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.Glide));
         }
     }
 }
