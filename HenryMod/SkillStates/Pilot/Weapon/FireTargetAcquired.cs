@@ -1,5 +1,5 @@
 ﻿using EntityStates;
-using Pilot.Content.MonoBehaviours;
+using Pilot.Content.Components;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -97,9 +97,8 @@ namespace EntityStates.Pilot.Weapon
 
             if (base.isAuthority)
             {
-                float dmg = FireTargetAcquired.damageCoefficient * this.damageStat;
                 Ray aimRay = base.GetAimRay();
-                BulletAttack bullet = new BulletAttack
+                new BulletAttack
                 {
                     aimVector = aimRay.direction,
                     origin = aimRay.origin,
@@ -116,19 +115,23 @@ namespace EntityStates.Pilot.Weapon
                     smartCollision = true,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
-                    radius = 1f,
+                    radius = 2f,
                     weapon = base.gameObject,
                     tracerEffectPrefab = tracerEffectPrefab,
                     hitEffectPrefab = hitEffectPrefab,
                     stopperMask = LayerIndex.world.mask
-                };
-                bullet.Fire();
+                }.Fire();
                 if (pilotController && pilotController.isParachuting
                     && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
                     base.characterBody.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             if (base.characterBody) base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.
+        }
+
+        private void AutoTarget(Ray aimRay)
+        {
+
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

@@ -3,7 +3,7 @@ using EntityStates;
 using EntityStates.Pilot.FireSelect;
 using EntityStates.Pilot.Parachute;
 using EntityStates.Pilot.Weapon;
-using Pilot.Content.MonoBehaviours;
+using Pilot.Content.Components;
 using Pilot.Modules.Characters;
 using RoR2;
 using RoR2.Skills;

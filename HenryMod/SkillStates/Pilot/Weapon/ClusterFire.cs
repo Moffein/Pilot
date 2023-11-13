@@ -1,4 +1,4 @@
-﻿using Pilot.Content.MonoBehaviours;
+﻿using Pilot.Content.Components;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;

@@ -3,7 +3,7 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Pilot.Content.MonoBehaviours
+namespace Pilot.Content.Components
 {
     [RequireComponent(typeof(SkillLocator))]
     public class PilotController : MonoBehaviour
