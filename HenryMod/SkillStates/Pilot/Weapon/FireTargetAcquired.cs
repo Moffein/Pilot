@@ -8,7 +8,7 @@ namespace EntityStates.Pilot.Weapon
 {
     public class FireTargetAcquired : BaseState
     {
-        public static float selfKnockbackForce = 600f;
+        public static float selfKnockbackForce = 450f;
 
         public static float damageCoefficient = 1.8f;
         public static float force = 180f;
@@ -28,20 +28,20 @@ namespace EntityStates.Pilot.Weapon
         private float shotDuration;
         private float shotStopwatch;
         private bool crit;
+        private PilotController pilotController;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            pilotController = base.GetComponent<PilotController>();
+            if (pilotController)
+            {
+                pilotController.ConsumeSecondaryStock(1);
+            }
 
             if (base.characterBody && base.skillLocator && base.skillLocator.secondary)
             {
                 base.characterBody.OnSkillActivated(base.skillLocator.secondary);
-            }
-
-            PilotController psc = base.GetComponent<PilotController>();
-            if (psc)
-            {
-                psc.ConsumeSecondaryStock(1);
             }
 
             crit = base.RollCrit();
@@ -123,7 +123,9 @@ namespace EntityStates.Pilot.Weapon
                     stopperMask = LayerIndex.world.mask
                 };
                 bullet.Fire();
-                if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
+                if (pilotController && pilotController.isParachuting
+                    && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+                    base.characterBody.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             if (base.characterBody) base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.

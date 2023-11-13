@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using Pilot.Content.MonoBehaviours;
+using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -35,8 +36,9 @@ namespace EntityStates.Pilot.Weapon
 
         public static GameObject comboTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/TracerGolem.prefab").WaitForCompletion();
         public static GameObject comboHitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
-
         public static GameObject muzzleEffectPrefab, comboMuzzleEffectPrefab;
+
+        private PilotController pilotController;
 
         private float duration;
         private int step;
@@ -49,7 +51,9 @@ namespace EntityStates.Pilot.Weapon
 		{
 			base.OnEnter();
 
-			Ray aimRay = base.GetAimRay();
+            pilotController = base.GetComponent<PilotController>();
+
+            Ray aimRay = base.GetAimRay();
             base.StartAimMode(aimRay, 3f, false);
             duration = baseDuration / this.attackSpeedStat;
 			base.characterBody.AddSpreadBloom(RapidFire.spreadBloomValue);
@@ -93,7 +97,9 @@ namespace EntityStates.Pilot.Weapon
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
                 }.Fire();
-                if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
+                if (pilotController && pilotController.isParachuting
+                    && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+                    base.characterBody.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
             }
             Util.PlaySound(ClusterFire.attackSoundString, base.gameObject);
             base.AddRecoil(-0.4f * ClusterFire.recoilAmplitude, -0.8f * ClusterFire.recoilAmplitude, -0.3f * ClusterFire.recoilAmplitude, 0.3f * ClusterFire.recoilAmplitude);

@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using Pilot.Content.MonoBehaviours;
+using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -20,11 +21,14 @@ namespace EntityStates.Pilot.Weapon
 		public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
 		public static GameObject muzzleEffectPrefab;
 
+		private PilotController pilotController;
+
 		private float duration;
 
         public override void OnEnter()
         {
             base.OnEnter();
+			pilotController = base.GetComponent<PilotController>();
 
 			Ray aimRay = base.GetAimRay();
 			base.StartAimMode(aimRay, 3f, false);
@@ -56,7 +60,9 @@ namespace EntityStates.Pilot.Weapon
 					falloffModel = BulletAttack.FalloffModel.DefaultBullet,
 					procCoefficient = 1f
 				}.Fire();
-				if (base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero) base.characterBody.characterMotor.ApplyForce(-RapidFire.selfKnockbackForce * aimRay.direction, false, false);
+				if (pilotController && pilotController.isParachuting
+					&& base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+					base.characterBody.characterMotor.ApplyForce(-RapidFire.selfKnockbackForce * aimRay.direction, false, false);
 			}
 			base.AddRecoil(-0.4f * RapidFire.recoilAmplitude, -0.8f * RapidFire.recoilAmplitude, -0.3f * RapidFire.recoilAmplitude, 0.3f * RapidFire.recoilAmplitude);
 			Util.PlaySound(RapidFire.attackSoundString, base.gameObject);
