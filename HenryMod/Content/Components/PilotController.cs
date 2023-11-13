@@ -19,11 +19,13 @@ namespace Pilot.Content.Components
         public static GameObject autoAimIndicatorPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion();
         public static float autoAimDistance = 200f;
         public static float autoAimAngle = 30f;
+        private static float autoAimUpdateTimer = 1f / 20f;
 
         private readonly BullseyeSearch search = new BullseyeSearch();
         private int currentAutoAimStates;    //Keeps track of whether or not AutoAim is in use
-        private int autoAimSearchFrequency = 20;
         private Indicator enemyIndicator;
+
+        private float autoAimStopwatch;
 
         private void Awake()
         {
@@ -31,6 +33,7 @@ namespace Pilot.Content.Components
             skillLocator = base.GetComponent<SkillLocator>();
             isParachuting = false;
             currentAutoAimStates = 0;
+            autoAimStopwatch = 0f;
             enemyIndicator = new Indicator(base.gameObject, autoAimIndicatorPrefab);
         }
 
@@ -38,8 +41,15 @@ namespace Pilot.Content.Components
         {
             if (currentAutoAimStates > 0)
             {
-                UpdateAutoAim();
-                UpdateIndicator();
+                autoAimStopwatch += Time.fixedDeltaTime;
+                if (autoAimStopwatch >= PilotController.autoAimUpdateTimer)
+                {
+                    autoAimStopwatch -= PilotController.autoAimUpdateTimer;
+
+                    //These get called during FireTargetAcquire to ensure maximum accuracy.
+                    UpdateAutoAim();
+                    UpdateIndicator();
+                }
             }
             else
             {
