@@ -132,8 +132,8 @@ namespace EntityStates.Pilot.Weapon
                     hitEffectPrefab = hitEffectPrefab,
                     stopperMask = LayerIndex.world.mask
                 }.Fire();
-                if (pilotController && pilotController.isParachuting && FireTargetAcquired.selfKnockbackForce != 0f
-                    && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+                if (FireTargetAcquired.selfKnockbackForce != 0f //pilotController && pilotController.isParachuting && 
+                    && base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
                     base.characterBody.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);

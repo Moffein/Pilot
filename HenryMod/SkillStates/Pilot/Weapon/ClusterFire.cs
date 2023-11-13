@@ -97,8 +97,8 @@ namespace EntityStates.Pilot.Weapon
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
                 }.Fire();
-                if (pilotController && pilotController.isParachuting && ClusterFire.selfKnockbackForce != 0f
-                    && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+                if (ClusterFire.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
+                    && base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
                     base.characterBody.characterMotor.ApplyForce(-ClusterFire.selfKnockbackForce * aimRay.direction, false, false);
             }
             Util.PlaySound(ClusterFire.attackSoundString, base.gameObject);
@@ -136,8 +136,8 @@ namespace EntityStates.Pilot.Weapon
                     procCoefficient = 1f,
                     stopperMask = LayerIndex.world.mask
                 }.Fire();
-                if (pilotController && pilotController.isParachuting && ClusterFire.comboSelfKnockbackForce != 0f
-                    && base.characterBody.characterMotor && base.characterBody.characterMotor.velocity != Vector3.zero)
+                if (ClusterFire.comboSelfKnockbackForce != 0f   //pilotController && pilotController.isParachuting && 
+                    && base.characterBody.characterMotor && !base.characterMotor.isGrounded && base.characterBody.characterMotor.velocity != Vector3.zero)
                     base.characterBody.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
             }
 
