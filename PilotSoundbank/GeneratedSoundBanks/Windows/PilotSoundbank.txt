@@ -1,0 +1,9 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2745370195	Play_Pilot_Select			\Default Work Unit\Play_Pilot_Select	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	689986003	wUI_Survivors_Pilot	C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wUI_Survivors_Pilot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Survivor\wUI_Survivors_Pilot		154880
+

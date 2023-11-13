@@ -45,7 +45,7 @@ namespace Pilot
             Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // survivor initialization
-            new Modules.Survivors.Pilot().Initialize();
+            new Modules.Survivors.PilotSurvivor().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();

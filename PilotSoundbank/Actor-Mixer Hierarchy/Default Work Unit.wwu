@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}" SchemaVersion="97">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Master Mixer" ID="{72746081-0AD3-40E9-A326-77BB7A4F91D3}" ShortID="814525782">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{009E51BB-8F8F-4D7E-8693-8A03FD34B1AD}" ShortID="410695096">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Volume_SFX" ID="{C9AE9379-2B33-4A01-BE77-3688AA20EE0E}" WorkUnitID="{1489ABDE-AE25-44EB-A014-2FCA86977CA9}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{2E05792B-D725-4C07-810E-F809D28E7514}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="SFX Mixer" ID="{61E00230-58E1-4330-A177-DC5B7258BDE9}" ShortID="854293168">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="Survivor" ID="{09444504-6277-4D56-A7AE-C85E90FF0BFA}" ShortID="89998972">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Survivor Attenuation" ID="{4BA3F105-FB23-40A4-9995-D32D4C055C77}" WorkUnitID="{8FCC88A5-895D-4E4C-852E-78BADE8D9208}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="wUI_Survivors_Pilot" ID="{7E6CCB37-DE0C-417A-9BE8-BEC7540374AA}" ShortID="425291472">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wUI_Survivors_Pilot" ID="{ED0F8B69-219D-441A-969C-F03E17CD8D18}">
+													<Language>SFX</Language>
+													<AudioFile>wUI_Survivors_Pilot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="689986003"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wUI_Survivors_Pilot" ID="{ED0F8B69-219D-441A-969C-F03E17CD8D18}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</ActorMixer>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

@@ -105,6 +105,11 @@ namespace Pilot.Modules
         #endregion
 
         #region skilldefs
+        public static void FixSkillName(SkillDef skillDef)
+        {
+            (skillDef as ScriptableObject).name = skillDef.name;
+        }
+
         public static SkillDef CreateSkillDef(SkillDefInfo skillDefInfo)
         {
             return CreateSkillDef<SkillDef>(skillDefInfo);

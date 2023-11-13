@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="263542888">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2624589540" Language="SFX" Hash="506748869">
+			<ObjectPath>\SoundBanks\Default Work Unit\PilotSoundbank</ObjectPath>
+			<ShortName>PilotSoundbank</ShortName>
+			<Path>PilotSoundbank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2745370195" Name="Play_Pilot_Select" ObjectPath="\Events\Default Work Unit\Play_Pilot_Select">
+					<IncludedMemoryFiles>
+						<File Id="689986003" Language="SFX">
+							<ShortName>wUI_Survivors_Pilot.wav</ShortName>
+							<Path>SFX\wUI_Survivors_Pilot_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+			</GameParameters>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

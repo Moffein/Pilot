@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Pilot.Modules.Characters
 {
-    internal class HenryItemDisplays : ItemDisplaysBase
+    internal class PilotItemDisplays : ItemDisplaysBase
     {
         protected override void SetItemDisplayRules(List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules)
         {

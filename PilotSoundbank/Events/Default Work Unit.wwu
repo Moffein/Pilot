@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Pilot_Select" ID="{5E622F16-EA2F-4307-8C4F-99473153B7CC}">
+					<ChildrenList>
+						<Action Name="" ID="{BDFA03D8-9807-44C9-BFD9-756D91C5FACA}" ShortID="812528799">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wUI_Survivors_Pilot" ID="{7E6CCB37-DE0C-417A-9BE8-BEC7540374AA}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

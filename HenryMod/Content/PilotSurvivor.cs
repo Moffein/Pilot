@@ -1,4 +1,6 @@
 ﻿using BepInEx.Configuration;
+using EntityStates;
+using EntityStates.Pilot.Weapon;
 using Pilot.Modules.Characters;
 using RoR2;
 using RoR2.Skills;
@@ -9,7 +11,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Pilot.Modules.Survivors
 {
-    internal class Pilot : SurvivorBase
+    internal class PilotSurvivor : SurvivorBase
     {
         //used when building your character using the prefabs you set up in unity
         //don't upload to thunderstore without changing this
@@ -27,7 +29,7 @@ namespace Pilot.Modules.Survivors
             subtitleNameToken = BODY_PREFIX + "SUBTITLE",
 
             characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texHenryIcon"),
-            bodyColor = Color.white,
+            bodyColor = new Color32(56, 148, 77, 255),
 
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
@@ -63,7 +65,7 @@ namespace Pilot.Modules.Survivors
 
         public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
 
-        public override ItemDisplaysBase itemDisplays => new HenryItemDisplays();
+        public override ItemDisplaysBase itemDisplays => new PilotItemDisplays();
 
                                                                           //if you have more than one character, easily create a config to enable/disable them like this
         public override ConfigEntry<bool> characterEnabledConfig => null; //Modules.Config.CharacterEnableConfig(bodyName);
@@ -97,10 +99,45 @@ namespace Pilot.Modules.Survivors
 
             SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
 
+            InitPrimaries();
             Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { placeholder });
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { placeholder });
+        }
+
+        private void InitPrimaries()
+        {
+            //Steal icon from vanilla
+            SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyFireShotgunBlast.asset").WaitForCompletion();
+
+            SkillDef primaryAltDef = ScriptableObject.CreateInstance<SkillDef>();
+            primaryAltDef.activationState = new SerializableEntityStateType(typeof(RapidFire));
+            primaryAltDef.activationStateMachineName = "Weapon";
+            primaryAltDef.baseMaxStock = 1;
+            primaryAltDef.baseRechargeInterval = 0f;
+            primaryAltDef.beginSkillCooldownOnSkillEnd = false;
+            primaryAltDef.canceledFromSprinting = false;
+            primaryAltDef.dontAllowPastMaxStocks = true;
+            primaryAltDef.forceSprintDuringState = false;
+            primaryAltDef.fullRestockOnAssign = true;
+            primaryAltDef.icon = placeholder.icon;
+            primaryAltDef.interruptPriority = InterruptPriority.Any;
+            primaryAltDef.isCombatSkill = true;
+            primaryAltDef.keywordTokens = new string[] { };
+            primaryAltDef.mustKeyPress = false;
+            primaryAltDef.cancelSprintingOnActivation = true;
+            primaryAltDef.rechargeStock = 1;
+            primaryAltDef.requiredStock = 1;
+            primaryAltDef.skillName = "PilotPrimaryAlt";
+            primaryAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_PRIMARY_ALT_NAME";
+            primaryAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION";
+            primaryAltDef.stockToConsume = 1;
+            Skills.FixSkillName(primaryAltDef);
+            Pilot.Modules.Content.AddSkillDef(primaryAltDef);
+            SkillDefs.Primaries.RapidFire = primaryAltDef;
+
+            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryAltDef });
         }
         
         public override void InitializeSkins()
@@ -169,6 +206,15 @@ namespace Pilot.Modules.Survivors
             #endregion
 
             skinController.skins = skins.ToArray();
+        }
+
+        //For easy access
+        public static class SkillDefs
+        {
+            public static class Primaries
+            {
+                public static SkillDef ClusterFire, RapidFire;
+            }
         }
     }
 }

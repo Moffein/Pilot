@@ -16,11 +16,12 @@
     <None Remove="HenryBank.bnk" />
     <None Remove="Modules\Characters\Henry.cs~RF6221a098.TMP" />
     <None Remove="myassetbundle" />
+    <None Remove="PilotSoundbank.bnk" />
   </ItemGroup>
 	
   <ItemGroup>
-    <EmbeddedResource Include="HenryBank.bnk" />
     <EmbeddedResource Include="myassetbundle" />
+    <EmbeddedResource Include="PilotSoundbank.bnk" />
   </ItemGroup>
 
   <ItemGroup>
@@ -357,7 +358,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SkillStates\Pilot\Weapon\" />
+    <Folder Include="SkillStates\Pilot\Parachute\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
