@@ -8,10 +8,10 @@ namespace EntityStates.Pilot.Weapon
 	{
 		public static float damageCoefficient = 1f;
 		public static float force = 80f;
-		public static float baseDuration = 0.14f;
+		public static float baseDuration = 0.12f;
         public static float spreadBloomValue = 1f;
 		public static float recoilAmplitude = 1f;
-		public static string attackSoundString = "Play_commando_M1";
+		public static string attackSoundString = "Play_Pilot_Primary_Rapid";
 		public static string muzzleName = "";
 		public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoShotgun.prefab").WaitForCompletion();
 		public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();

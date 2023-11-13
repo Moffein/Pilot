@@ -30,7 +30,7 @@ namespace Pilot.Modules.Survivors
             bodyNameToken = BODY_PREFIX + "NAME",
             subtitleNameToken = BODY_PREFIX + "SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texHenryIcon"),
+            characterPortrait = Assets.addAssetBundle.LoadAsset<Texture>("sPilotPortrait_0"),
             bodyColor = new Color32(56, 148, 77, 255),
 
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -77,12 +77,19 @@ namespace Pilot.Modules.Survivors
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
-            
+
+            NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
+
+            EntityStateMachine targetingMachine = bodyPrefab.AddComponent<EntityStateMachine>();
+            targetingMachine.customName = "FireSelect";
+            targetingMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
+            targetingMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
+            nsm.stateMachines = nsm.stateMachines.Append(targetingMachine).ToArray();
+
             EntityStateMachine parachuteStateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             parachuteStateMachine.customName = "Parachute";
             parachuteStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
             parachuteStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.BaseState));
-            NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
             nsm.stateMachines = nsm.stateMachines.Append(parachuteStateMachine).ToArray();
 
             SetStateOnHurt ssoh = bodyPrefab.GetComponent<SetStateOnHurt>();
@@ -123,10 +130,6 @@ namespace Pilot.Modules.Survivors
 
         private void InitPrimaries()
         {
-            //Steal icon from vanilla
-            SkillDef placeholderCluster = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Captain/CaptainShotgun.asset").WaitForCompletion();
-            SkillDef placeholderRapid = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Commando/CommandoBodyFireShotgunBlast.asset").WaitForCompletion();
-
             SteppedSkillDef primaryDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef.activationState = new SerializableEntityStateType(typeof(ClusterFire));
             primaryDef.activationStateMachineName = "Weapon";
@@ -137,7 +140,7 @@ namespace Pilot.Modules.Survivors
             primaryDef.dontAllowPastMaxStocks = true;
             primaryDef.forceSprintDuringState = false;
             primaryDef.fullRestockOnAssign = true;
-            primaryDef.icon = placeholderCluster.icon;
+            primaryDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
             primaryDef.interruptPriority = InterruptPriority.Any;
             primaryDef.isCombatSkill = true;
             primaryDef.keywordTokens = new string[] { };
@@ -164,7 +167,7 @@ namespace Pilot.Modules.Survivors
             primaryAltDef.dontAllowPastMaxStocks = true;
             primaryAltDef.forceSprintDuringState = false;
             primaryAltDef.fullRestockOnAssign = true;
-            primaryAltDef.icon = placeholderRapid.icon;
+            primaryAltDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_5");
             primaryAltDef.interruptPriority = InterruptPriority.Any;
             primaryAltDef.isCombatSkill = true;
             primaryAltDef.keywordTokens = new string[] { };
@@ -185,9 +188,6 @@ namespace Pilot.Modules.Survivors
 
         private void InitUtilities()
         {
-            //Steal icon from vanilla
-            SkillDef placeholderParachute = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Mage/MageBodyFlyUp.asset").WaitForCompletion();
-
             SteppedSkillDef utilityDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
             utilityDef.activationState = new SerializableEntityStateType(typeof(DeployParachute));
             utilityDef.activationStateMachineName = "Parachute";
@@ -198,7 +198,7 @@ namespace Pilot.Modules.Survivors
             utilityDef.dontAllowPastMaxStocks = true;
             utilityDef.forceSprintDuringState = false;
             utilityDef.fullRestockOnAssign = true;
-            utilityDef.icon = placeholderParachute.icon;
+            utilityDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_2");
             utilityDef.interruptPriority = InterruptPriority.Any;
             utilityDef.isCombatSkill = false;
             utilityDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };

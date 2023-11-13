@@ -14,6 +14,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Pilot_Primary_Rapid" ID="{F39257ED-8CA3-448F-BBD4-72E258060256}">
+					<ChildrenList>
+						<Action Name="" ID="{8C8D8345-39AB-44E5-B05A-BB466373A6D8}" ShortID="100768313">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Primary_Rapid" ID="{2987ECFB-017C-4A57-99E6-C68436E6EBDB}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Pilot_Primary_Cluster" ID="{CE309C89-DAFD-4143-AB43-D91AB3E3328C}">
+					<ChildrenList>
+						<Action Name="" ID="{7F32A58A-707E-4C99-8325-76D132FD9BB2}" ShortID="179092821">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Primary_Cluster" ID="{787CBCD0-9B78-467B-9588-0A2A1756AD86}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Pilot_Primary_Cluster_Combo" ID="{2E206A4A-521F-42C6-8B67-E3C915A33E31}">
+					<ChildrenList>
+						<Action Name="" ID="{3BDF715D-D4AD-4682-B013-5A995628DAE9}" ShortID="795559959">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Primary_Cluster_Combo" ID="{CE0D60E0-BB45-4719-B2F7-10807AD4477F}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

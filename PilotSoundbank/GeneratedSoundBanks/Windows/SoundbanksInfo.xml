@@ -16,11 +16,35 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2624589540" Language="SFX" Hash="506748869">
+		<SoundBank Id="2624589540" Language="SFX" Hash="1580097675">
 			<ObjectPath>\SoundBanks\Default Work Unit\PilotSoundbank</ObjectPath>
 			<ShortName>PilotSoundbank</ShortName>
 			<Path>PilotSoundbank.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1302150056" Name="Play_Pilot_Primary_Cluster" ObjectPath="\Events\Default Work Unit\Play_Pilot_Primary_Cluster">
+					<IncludedMemoryFiles>
+						<File Id="353063854" Language="SFX">
+							<ShortName>wBullet1.wav</ShortName>
+							<Path>SFX\wBullet1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="866753787" Name="Play_Pilot_Primary_Cluster_Combo" ObjectPath="\Events\Default Work Unit\Play_Pilot_Primary_Cluster_Combo">
+					<IncludedMemoryFiles>
+						<File Id="266180520" Language="SFX">
+							<ShortName>wBullet2.wav</ShortName>
+							<Path>SFX\wBullet2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2842033976" Name="Play_Pilot_Primary_Rapid" ObjectPath="\Events\Default Work Unit\Play_Pilot_Primary_Rapid">
+					<IncludedMemoryFiles>
+						<File Id="372196105" Language="SFX">
+							<ShortName>wBanditShoot1.wav</ShortName>
+							<Path>SFX\wBanditShoot1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2745370195" Name="Play_Pilot_Select" ObjectPath="\Events\Default Work Unit\Play_Pilot_Select">
 					<IncludedMemoryFiles>
 						<File Id="689986003" Language="SFX">

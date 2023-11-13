@@ -23,8 +23,8 @@ namespace EntityStates.Pilot.Weapon
         public static float baseDuration = 0.3f;
 
         public static string muzzleName = "";
-        public static string attackSoundString = "Play_commando_M1";
-        public static string comboAttackSoundString = "Play_bandit2_R_fire";
+        public static string attackSoundString = "Play_Pilot_Primary_Cluster";
+        public static string comboAttackSoundString = "Play_Pilot_Primary_Cluster_Combo";
 
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/TracerCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
@@ -123,7 +123,12 @@ namespace EntityStates.Pilot.Weapon
                 procCoefficient = 1f,
                 stopperMask = LayerIndex.world.mask
             }.Fire();
+
+
+            //This is intentional, need to play both to make it sound right.
+            Util.PlaySound(ClusterFire.attackSoundString, base.gameObject);
             Util.PlaySound(ClusterFire.comboAttackSoundString, base.gameObject);
+
             base.AddRecoil(-0.4f * ClusterFire.comboRecoilAmplitude, -0.8f * ClusterFire.comboRecoilAmplitude, -0.3f * ClusterFire.comboRecoilAmplitude, 0.3f * ClusterFire.comboRecoilAmplitude);
             base.characterBody.AddSpreadBloom(ClusterFire.spreadBloomValueCosmetic);
         }

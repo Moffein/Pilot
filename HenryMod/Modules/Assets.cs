@@ -25,6 +25,7 @@ namespace Pilot.Modules
 
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
+        internal static AssetBundle addAssetBundle;  //TODO REMOVE LATER
 
         // CHANGE THIS
         private const string assetbundleName = "myassetbundle";
@@ -54,6 +55,23 @@ namespace Pilot.Modules
                     using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{csProjName}.{assetbundleName}"))
                     {
                         mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error("Failed to load assetbundle. Make sure your assetbundle name is setup correctly\n" + e);
+                return;
+            }
+
+            //TODO MAKE PILOTBUNDLE THE MAIN ONE LATER
+            try
+            {
+                if (addAssetBundle == null)
+                {
+                    using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{csProjName}.{"pilotbundle"}"))
+                    {
+                        addAssetBundle = AssetBundle.LoadFromStream(assetStream);
                     }
                 }
             }

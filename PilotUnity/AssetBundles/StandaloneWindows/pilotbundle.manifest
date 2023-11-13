@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 4104097687
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c653a1523507790bda3bc7b65cd12b3b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c90fc19e2679e5295d10bd00f33cb4c3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Textures/Icons/Placeholder/sPilotPortrait_0.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_2.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_8.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_0.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_6.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_4.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_3.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_5.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_7.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_1.png
+Dependencies: []
