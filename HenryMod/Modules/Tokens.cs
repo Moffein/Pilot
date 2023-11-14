@@ -22,10 +22,16 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>100% damage</style>.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "Target Acquired!");
-            LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing</style> smartgun that deals <style=cIsDamage>3x180% damage</style>.");
+            LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing</style> smartgun that deals <style=cIsDamage>3x180% damage</style>. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "UTILITY_NAME", "Rapid Deployment");
             LanguageAPI.Add(prefix + "UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Launch into the air and <style=cIsUtility>activate your parachute</style>.");
+
+            LanguageAPI.Add(prefix + "SPECIAL_NAME", "Air Strike");
+            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "<style=cIsUtility>Dash</style> and leave a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>360% damage</style>. Can trigger <style=cIsDamage>multiple times</style>. Hold up to 2.");
+
+            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_NAME", "Air Raid");
+            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "");
         }
     }
 }

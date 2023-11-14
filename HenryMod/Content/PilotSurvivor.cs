@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
+using EntityStates.Pilot.Airstrike;
 using EntityStates.Pilot.FireSelect;
 using EntityStates.Pilot.Parachute;
 using EntityStates.Pilot.Weapon;
@@ -130,12 +131,10 @@ namespace Pilot.Modules.Survivors
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
             string prefix = PilotPlugin.DEVELOPER_PREFIX;
 
-            SkillDef placeholder = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
-
             InitPrimaries();
             InitSecondaries();
             InitUtilities();
-            Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { placeholder });
+            InitSpecials();
 
             //Default Air Strike
             //12 cooldown
@@ -249,7 +248,7 @@ namespace Pilot.Modules.Survivors
             secondaryOverrideDef.cancelSprintingOnActivation = true;
             secondaryOverrideDef.rechargeStock = 0;
             secondaryOverrideDef.requiredStock = 1;
-            secondaryOverrideDef.skillName = "PilotSecondaryFire";
+            secondaryOverrideDef.skillName = "PilotSecondaryOverride";
             secondaryOverrideDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_NAME";
             secondaryOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION";
             secondaryOverrideDef.stockToConsume = 1;
@@ -263,7 +262,7 @@ namespace Pilot.Modules.Survivors
 
         private void InitUtilities()
         {
-            SteppedSkillDef utilityDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            SkillDef utilityDef = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef.activationState = new SerializableEntityStateType(typeof(DeployParachute));
             utilityDef.activationStateMachineName = "Parachute";
             utilityDef.baseMaxStock = 1;
@@ -281,18 +280,48 @@ namespace Pilot.Modules.Survivors
             utilityDef.cancelSprintingOnActivation = true;
             utilityDef.rechargeStock = 1;
             utilityDef.requiredStock = 1;
-            utilityDef.skillName = "PilotPrimary";
+            utilityDef.skillName = "PilotParachute";
             utilityDef.skillNameToken = "MOFFEIN_PILOT_BODY_UTILITY_NAME";
             utilityDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION";
             utilityDef.stockToConsume = 1;
-            utilityDef.stepCount = 3;
             Skills.FixSkillName(utilityDef);
             Pilot.Modules.Content.AddSkillDef(utilityDef);
             SkillDefs.Utilities.RapidDeployment = utilityDef;
 
             Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {utilityDef });
         }
-        
+
+        private void InitSpecials()
+        {
+            SkillDef specialDef = ScriptableObject.CreateInstance<SkillDef>();
+            specialDef.activationState = new SerializableEntityStateType(typeof(PlaceAirstrike));
+            specialDef.activationStateMachineName = "Airstrike";
+            specialDef.baseMaxStock = 2;
+            specialDef.baseRechargeInterval = 12f;
+            specialDef.beginSkillCooldownOnSkillEnd = false;
+            specialDef.canceledFromSprinting = false;
+            specialDef.dontAllowPastMaxStocks = true;
+            specialDef.forceSprintDuringState = false;
+            specialDef.fullRestockOnAssign = true;
+            specialDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_3");
+            specialDef.interruptPriority = InterruptPriority.Any;
+            specialDef.isCombatSkill = true;
+            specialDef.keywordTokens = new string[] {};
+            specialDef.mustKeyPress = true;
+            specialDef.cancelSprintingOnActivation = true;
+            specialDef.rechargeStock = 1;
+            specialDef.requiredStock = 1;
+            specialDef.skillName = "PilotSpecial";
+            specialDef.skillNameToken = "MOFFEIN_PILOT_BODY_SPECIAL_NAME";
+            specialDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_DESCRIPTION";
+            specialDef.stockToConsume = 1;
+            Skills.FixSkillName(specialDef);
+            Pilot.Modules.Content.AddSkillDef(specialDef);
+            SkillDefs.Specials.Airstrike = specialDef;
+
+            Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { specialDef });
+        }
+
         public override void InitializeSkins()
         {
             ModelSkinController skinController = prefabCharacterModel.gameObject.AddComponent<ModelSkinController>();
@@ -376,6 +405,10 @@ namespace Pilot.Modules.Survivors
             public static class Utilities
             {
                 public static SkillDef RapidDeployment;
+            }
+            public static class Specials
+            {
+                public static SkillDef Airstrike;
             }
         }
     }
