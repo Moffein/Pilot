@@ -108,12 +108,29 @@ namespace EntityStates.Pilot.Airstrike
 
             Ray aimRay = base.GetAimRay();
 
-            Vector3 raycastHitPoint = Vector3.zero;
             RaycastHit raycastHit;
-            if (Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask))
-            {
-                raycastHitPoint = raycastHit.point;
 
+            bool successfulRaycast = Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
+            //Make 3 attempts to not raycast into the player
+            if (raycastHit.collider && raycastHit.collider.gameObject == base.gameObject)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Ray newRay = new Ray
+                    {
+                        origin = raycastHit.point,
+                        direction = aimRay.direction
+                    };
+                    successfulRaycast = Physics.Raycast(newRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
+                    if (successfulRaycast && raycastHit.collider && raycastHit.collider.gameObject != base.gameObject)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            if (successfulRaycast)
+            {
                 FireProjectileInfo projInfo = new FireProjectileInfo
                 {
                     projectilePrefab = proj,
@@ -122,7 +139,7 @@ namespace EntityStates.Pilot.Airstrike
                     damageColorIndex = DamageColorIndex.Default,
                     force = 0f,
                     owner = base.gameObject,
-                    position = raycastHitPoint,
+                    position = raycastHit.point,
                     procChainMask = default,
                     rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f),
                     speedOverride = 0f
