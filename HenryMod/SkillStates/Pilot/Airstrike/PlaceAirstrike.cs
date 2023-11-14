@@ -1,5 +1,7 @@
 ﻿using RoR2;
 using RoR2.Projectile;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -108,29 +110,27 @@ namespace EntityStates.Pilot.Airstrike
 
             Ray aimRay = base.GetAimRay();
 
-            RaycastHit raycastHit;
 
-            bool successfulRaycast = Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
-            //Make 3 attempts to not raycast into the player
-            if (raycastHit.collider && raycastHit.collider.gameObject == base.gameObject)
+            //Need to do this to prevent self-hits
+            RaycastHit[] raycastHits = Physics.RaycastAll(aimRay, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
+            List<RaycastHit> hitList = raycastHits.Where(hit => !(hit.collider && hit.collider.gameObject == base.gameObject)).ToList();
+            hitList.Sort(delegate(RaycastHit hit1, RaycastHit hit2)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    Ray newRay = new Ray
-                    {
-                        origin = raycastHit.point,
-                        direction = aimRay.direction
-                    };
-                    successfulRaycast = Physics.Raycast(newRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
-                    if (successfulRaycast && raycastHit.collider && raycastHit.collider.gameObject != base.gameObject)
-                    {
-                        break;
-                    }
-                }
-            }
+                float distSqr1 = hit1.point != null ? (hit1.point - aimRay.origin).sqrMagnitude : Mathf.Infinity;
+                float distSqr2 = hit2.point != null ? (hit2.point - aimRay.origin).sqrMagnitude : Mathf.Infinity;
 
-            if (successfulRaycast)
+                if (distSqr1 == distSqr2) return 0;
+                if (distSqr1 < distSqr2) return -1;
+                return 1;
+            });
+
+            /*RaycastHit raycastHit;
+            bool successfulRaycast = Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);*/
+
+            if (hitList.Count > 0)
             {
+
+                RaycastHit firstRaycast = hitList.FirstOrDefault();
                 FireProjectileInfo projInfo = new FireProjectileInfo
                 {
                     projectilePrefab = proj,
@@ -139,7 +139,7 @@ namespace EntityStates.Pilot.Airstrike
                     damageColorIndex = DamageColorIndex.Default,
                     force = 0f,
                     owner = base.gameObject,
-                    position = raycastHit.point,
+                    position = firstRaycast.point,
                     procChainMask = default,
                     rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f),
                     speedOverride = 0f
