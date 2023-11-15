@@ -8,7 +8,7 @@ namespace EntityStates.Pilot.Weapon
 {
     public class FireTargetAcquired : BaseState
     {
-        public static float selfKnockbackForce = 500f;
+        public static float selfKnockbackForce = 400f;
 
         public static float damageCoefficient = 1.8f;
         public static float force = 180f;
@@ -33,6 +33,9 @@ namespace EntityStates.Pilot.Weapon
         public override void OnEnter()
         {
             base.OnEnter();
+
+            if (base.characterMotor && base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
+
             pilotController = base.GetComponent<PilotController>();
             if (pilotController)
             {

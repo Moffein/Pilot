@@ -5,18 +5,19 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Switches\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\States\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\SoundBanks\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\SoundBanks\Default Work Unit.wwu" DateLow="1699858614" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Queries\Factory Queries.wwu" DateLow="1646551843" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Queries\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Presets\Factory Spatial Audio.wwu" DateLow="1646551843" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Presets\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\PilotSoundbank.wproj" DateLow="1699836658" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\PilotSoundbank.Node.wsettings" DateLow="1699862567" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Modulators\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Mixing Sessions\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Game Parameters\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Events\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Game Parameters\Default Work Unit.wwu" DateLow="1699836841" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Events\Default Work Unit.wwu" DateLow="1699858612" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Effects\Factory Effects.wwu" DateLow="1646551843" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Effects\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
@@ -24,6 +25,6 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Conversion Settings\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Control Surface Sessions\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Audio Devices\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Attenuations\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1699836658" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Attenuations\Default Work Unit.wwu" DateLow="1699836904" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1699862564" DateHigh="0"/>
 </ValidationCache>

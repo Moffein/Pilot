@@ -11,23 +11,11 @@ namespace EntityStates.Pilot.Airstrike
     public class PlaceAirstrike : BaseState
     {
         public static float damageCoefficient = 3.6f * 3f; //Damage per explosion. Hits up to 7 times. Remove the *3f once the actual projectile is implemented.
-        public static float baseDuration = 0.2f;    //Phase Blink is 0.1
         public static string attackSoundString = "Play_huntress_shift_mini_blink";
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
-        public static GameObject blinkPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/HuntressBlinkEffect.prefab").WaitForCompletion();
         public static string muzzleName = "";   //Where the laser effect originates from.
 
-        public static float smallHopVelocity = 24f;
-        public static float blinkSpeedCoefficient = 21.75f * 0.5f;  //Same as phase blink, scaled to duration. Includes sprint multiplier baked-in since this skill disables sprint.
-
-        private Vector3 blinkVector;
-        private bool isGrounded;
-        private bool shouldBlink;
-
-        private Transform modelTransform;
-        private CharacterModel characterModel;
-        private HurtBoxGroup hurtboxGroup;
 
         //Scepter uses upgraded projectile
         public virtual GameObject GetProjectilePrefab()
@@ -46,59 +34,26 @@ namespace EntityStates.Pilot.Airstrike
             base.OnEnter();
             Util.PlaySound(PlaceAirstrike.attackSoundString, base.gameObject);
 
-            this.modelTransform = base.GetModelTransform();
-            if (this.modelTransform)
-            {
-                this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
-                this.hurtboxGroup = this.modelTransform.GetComponent<HurtBoxGroup>();
-
-                TemporaryOverlay temporaryOverlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay.duration = 0.6f + PlaceAirstrike.baseDuration;
-                temporaryOverlay.animateShaderAlpha = true;
-                temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                temporaryOverlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                TemporaryOverlay temporaryOverlay2 = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay2.duration = 0.7f + PlaceAirstrike.baseDuration;
-                temporaryOverlay2.animateShaderAlpha = true;
-                temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                temporaryOverlay2.destroyComponentOnEnd = true;
-                temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
-                temporaryOverlay2.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-            }
-            /*if (this.characterModel)
-            {
-                this.characterModel.invisibilityCount++;
-            }
-            if (this.hurtboxGroup)
-            {
-                HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
-                int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter + 1;
-                hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
-            }*/
-            CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
-
-            shouldBlink = false;
-            isGrounded = true;
-            if (characterMotor)
-            {
-                isGrounded = characterMotor.isGrounded;
-                shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
-                if (shouldBlink)
-                {
-                    blinkVector = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
-                }
-            }
-
             if (base.isAuthority)
             {
                 PlaceProjectile();
+            }
 
-                if (!isGrounded)
-                {
-                    base.SmallHop(base.characterMotor, PlaceAirstrike.smallHopVelocity);
-                }
+            bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
+            if (shouldBlink)
+            {
+                this.outer.SetNextState(new DashGround());
+                return;
+            }
+            else if (!isGrounded)
+            {
+                this.outer.SetNextState(new DashAir());
+                return;
+            }
+            else
+            {
+                this.outer.SetNextStateToMain();
+                return;
             }
         }
 
@@ -164,66 +119,6 @@ namespace EntityStates.Pilot.Airstrike
                 maxDistance = 2000f,
                 muzzleName = PlaceAirstrike.muzzleName
             }.Fire();
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            if (base.isAuthority)
-            {
-                if (shouldBlink && base.characterMotor && base.characterDirection)
-                {
-                    base.characterMotor.velocity = Vector3.zero;
-                    base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * PlaceAirstrike.blinkSpeedCoefficient * Time.fixedDeltaTime);
-                }
-                if (base.fixedAge >= PlaceAirstrike.baseDuration)
-                {
-                    this.outer.SetNextStateToMain();
-                }
-            }
-        }
-        public override void OnExit()
-        {
-            if (!this.outer.destroying)
-            {
-                this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
-                /*this.modelTransform = base.GetModelTransform();
-                if (this.modelTransform)
-                {
-                    TemporaryOverlay temporaryOverlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                    temporaryOverlay.duration = 0.6f;
-                    temporaryOverlay.animateShaderAlpha = true;
-                    temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    temporaryOverlay.destroyComponentOnEnd = true;
-                    temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                    temporaryOverlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                    TemporaryOverlay temporaryOverlay2 = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                    temporaryOverlay2.duration = 0.7f;
-                    temporaryOverlay2.animateShaderAlpha = true;
-                    temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    temporaryOverlay2.destroyComponentOnEnd = true;
-                    temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
-                    temporaryOverlay2.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                }*/
-            }
-            /*if (this.characterModel)
-            {
-                this.characterModel.invisibilityCount--;
-            }
-            if (this.hurtboxGroup)
-            {
-                HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
-                int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter - 1;
-                hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
-            }*/
-            base.OnExit();
-        }
-        private void CreateBlinkEffect(Vector3 origin)
-        {
-            EffectData effectData = new EffectData();
-            effectData.rotation = Util.QuaternionSafeLookRotation(this.blinkVector);
-            effectData.origin = origin;
-            EffectManager.SpawnEffect(PlaceAirstrike.blinkPrefab, effectData, false);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
