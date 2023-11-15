@@ -9,10 +9,14 @@ namespace EntityStates.Pilot.Parachute
 {
     public class DeployParachute : BaseState
     {
-        public static float minDuration = 0.1f;
-        public static float baseDuration = 0.5f;
+        public static float liftDuration = 0f;
+        public static float baseDuration = 0.8f;
+        public static float liftVelocity = 72f;
+        //public static float hopVelocity = 36f;
+
         public static float boostVelocity = 18f;
-        public static float hopVelocity = 36f;
+
+
         public static float stunRadius = 12f;
         public static string deploySoundString = "Play_bandit2_shift_exit";
         public static GameObject stunEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bandit2/Bandit2SmokeBomb.prefab").WaitForCompletion();
@@ -29,12 +33,12 @@ namespace EntityStates.Pilot.Parachute
             if (base.isAuthority && base.characterMotor)
             {
                 base.characterMotor.disableAirControlUntilCollision = false;
-                base.SmallHop(base.characterMotor, DeployParachute.hopVelocity);
+                //base.SmallHop(base.characterMotor, DeployParachute.hopVelocity);
 
                 Ray aimRay = base.GetAimRay();
 
                 //Speed scaling.
-                float velocityMult = base.moveSpeedStat / (base.characterBody ? base.characterBody.baseMoveSpeed : 7f);
+                float velocityMult = base.moveSpeedStat / (base.characterBody && base.characterBody.baseMoveSpeed != 0f ? base.characterBody.baseMoveSpeed : 7f);
 
                 Vector3 directionFlat = aimRay.direction;
                 directionFlat.y = 0f;
@@ -54,12 +58,32 @@ namespace EntityStates.Pilot.Parachute
         {
             base.FixedUpdate();
 
+            if (base.characterMotor)
+            {
+                if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
+
+                float velocity = DeployParachute.liftVelocity;
+                if (base.fixedAge > DeployParachute.liftDuration)
+                {
+                    velocity *= Mathf.Lerp(DeployParachute.baseDuration, DeployParachute.liftDuration, base.fixedAge);
+                }
+
+                base.characterMotor.rootMotion.y += (velocity * Time.fixedDeltaTime);
+            }
+
             if (base.isAuthority)
             {
-                bool isFalling = base.fixedAge >= DeployParachute.minDuration && base.characterMotor && base.characterMotor.velocity.y <= 0f;
-                if (isFalling || base.fixedAge >= DeployParachute.baseDuration)
+                if (base.healthComponent && base.healthComponent.isInFrozenState)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+
+                //bool isFalling = base.fixedAge >= DeployParachute.minDuration && base.characterMotor && base.characterMotor.velocity.y <= 0f;
+                if (base.fixedAge >= DeployParachute.baseDuration)
                 {
                     this.outer.SetNextState(new Glide());
+                    return;
                 }
             }
         }

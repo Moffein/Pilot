@@ -8,7 +8,7 @@ namespace EntityStates.Pilot.Weapon
 {
     public class FireTargetAcquired : BaseState
     {
-        public static float selfKnockbackForce = 400f;
+        public static float selfKnockbackForce = 450f;
 
         public static float damageCoefficient = 1.8f;
         public static float force = 180f;
