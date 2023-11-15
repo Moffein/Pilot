@@ -15,7 +15,7 @@ namespace EntityStates.Pilot.Airstrike
         {
             if (base.characterMotor && base.characterDirection)
             {
-                base.characterMotor.velocity.y = 0;
+                if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
                 base.characterMotor.rootMotion.y += (this.moveSpeedStat * GetBlinkSpeed() * Time.fixedDeltaTime);
                 //base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * GetBlinkSpeed() * Time.fixedDeltaTime);
             }
