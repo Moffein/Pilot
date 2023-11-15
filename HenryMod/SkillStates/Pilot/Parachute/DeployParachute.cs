@@ -106,6 +106,8 @@ namespace EntityStates.Pilot.Parachute
                     EffectManager.SimpleEffect(DeployParachute.stunEffectPrefab, stunPosition, characterBody.coreTransform.rotation, true);
                 }
 
+                TeamIndex myTeam = base.GetTeam();
+
                 List<HealthComponent> hcList = new List<HealthComponent>();
                 Collider[] array = Physics.OverlapSphere(stunPosition, DeployParachute.stunRadius, LayerIndex.entityPrecise.mask);
                 for (int i = 0; i < array.Length; i++)
@@ -114,7 +116,7 @@ namespace EntityStates.Pilot.Parachute
                     if (hurtBox && hurtBox.healthComponent && !hcList.Contains(hurtBox.healthComponent))
                     {
                         hcList.Add(hurtBox.healthComponent);
-                        if (hurtBox.healthComponent.body.teamComponent && hurtBox.healthComponent.body.teamComponent.teamIndex != base.GetTeam())
+                        if (hurtBox.healthComponent.body.teamComponent && hurtBox.healthComponent.body.teamComponent.teamIndex != myTeam)
                         {
                             SetStateOnHurt ssoh = hurtBox.healthComponent.gameObject.GetComponent<SetStateOnHurt>();
                             if (ssoh && ssoh.canBeStunned)
