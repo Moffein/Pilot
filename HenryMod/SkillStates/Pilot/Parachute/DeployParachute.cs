@@ -11,7 +11,7 @@ namespace EntityStates.Pilot.Parachute
     {
         public static float liftDuration = 0f;
         public static float baseDuration = 0.8f;
-        public static float liftVelocity = 72f;
+        public static float liftVelocity = 72f; //This linearly lowers to 0 over the course of the skill.
         //public static float hopVelocity = 36f;
 
         public static float boostVelocity = 18f;
