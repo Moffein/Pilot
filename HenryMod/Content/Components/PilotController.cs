@@ -121,6 +121,8 @@ namespace Pilot.Content.Components
 
         public void RegisterAirstrike(GameObject gameObject)
         {
+            if (!NetworkServer.active) return;
+
             int maxAirStrikes = 2;
             if (skillLocator) maxAirStrikes = Mathf.Max(2, skillLocator.special.maxStock);
 

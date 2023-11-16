@@ -1,4 +1,6 @@
-﻿using RoR2;
+﻿using Pilot.Modules;
+using R2API;
+using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +12,11 @@ namespace EntityStates.Pilot.Airstrike
 {
     public class PlaceAirstrike : BaseState
     {
-        public static float damageCoefficient = 4f; //Damage per explosion.
+        public static float damageCoefficient = 3.2f; //Damage per explosion.
         public static string attackSoundString = "Play_huntress_shift_mini_blink";
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
         public static string muzzleName = "";   //Where the laser effect originates from.
-
-
-        //Scepter uses upgraded projectile
-        public virtual GameObject GetProjectilePrefab()
-        {
-            return PlaceAirstrike.projectilePrefab;
-        }
-
-        //Scepter uses higher damage
-        public virtual float GetDamageCoefficient()
-        {
-            return PlaceAirstrike.damageCoefficient;
-        }
 
         public override void OnEnter()
         {
@@ -47,7 +36,7 @@ namespace EntityStates.Pilot.Airstrike
                 else if (!isGrounded)
                 {
                     //this.outer.SetNextState(new DashAir());
-                    if (base.characterMotor) base.SmallHop(base.characterMotor, 17f);
+                    if (base.characterMotor) base.SmallHop(base.characterMotor, 24f);
                     this.outer.SetNextStateToMain();
                     return;
                 }
@@ -61,15 +50,9 @@ namespace EntityStates.Pilot.Airstrike
 
         private void PlaceProjectile()
         {
-            GameObject proj = GetProjectilePrefab();
-            float damageCoeff = GetDamageCoefficient();
-            if (!proj) return;
-
             Ray aimRay = base.GetAimRay();
-
-
-            //Need to do this to prevent self-hits
-            RaycastHit[] raycastHits = Physics.RaycastAll(aimRay, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
+            //Even with all this, the air strike still sometimes spawns on top of you.
+            /*RaycastHit[] raycastHits = Physics.RaycastAll(aimRay, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);
             List<RaycastHit> hitList = raycastHits.Where(hit => !(hit.collider && hit.collider.gameObject == base.gameObject)).ToList();
             hitList.Sort(delegate(RaycastHit hit1, RaycastHit hit2)
             {
@@ -79,12 +62,12 @@ namespace EntityStates.Pilot.Airstrike
                 if (distSqr1 == distSqr2) return 0;
                 if (distSqr1 < distSqr2) return -1;
                 return 1;
-            });
+            });*/
 
             /*RaycastHit raycastHit;
             bool successfulRaycast = Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask);*/
 
-            if (hitList.Count > 0)
+            /*if (hitList.Count > 0)
             {
 
                 RaycastHit firstRaycast = hitList.FirstOrDefault();
@@ -103,29 +86,53 @@ namespace EntityStates.Pilot.Airstrike
                 };
 
                 ProjectileManager.instance.FireProjectile(projInfo);
-            }
+            }*/
 
-            new BulletAttack
+            BulletAttack ba = new BulletAttack
             {
                 tracerEffectPrefab = PlaceAirstrike.tracerEffectPrefab,
                 damage = 0f,
-                procCoefficient = 0f,
+                procCoefficient = 0.1f,
                 damageType = DamageType.Silent | DamageType.NonLethal,
-                stopperMask = LayerIndex.world.mask | LayerIndex.defaultLayer.mask | LayerIndex.entityPrecise.mask,
                 owner = base.gameObject,
                 aimVector = aimRay.direction,
-                isCrit = false,
+                isCrit = base.RollCrit(),
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = aimRay.origin,
                 maxDistance = 2000f,
-                muzzleName = PlaceAirstrike.muzzleName
-            }.Fire();
+                muzzleName = PlaceAirstrike.muzzleName,
+                radius = 0.2f
+            };
+            ba.AddModdedDamageType(DamageTypes.PlaceAirstrike);
+            ba.Fire();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
+        }
+
+        public static void PlaceProjectile(GameObject attacker, bool crit, Vector3 position)
+        {
+            CharacterBody attackerBody = attacker.GetComponent<CharacterBody>();
+            if (!attackerBody) return;
+
+            FireProjectileInfo projInfo = new FireProjectileInfo
+            {
+                projectilePrefab = PlaceAirstrike.projectilePrefab,
+                crit = crit,
+                damage = attackerBody.damage * PlaceAirstrike.damageCoefficient,
+                damageColorIndex = DamageColorIndex.Default,
+                force = 0f,
+                owner = attacker,
+                position = position,
+                procChainMask = default,
+                rotation = Quaternion.Euler(0f, UnityEngine.Random.Range(0f, 360f), 0f),
+                speedOverride = 0f
+            };
+
+            ProjectileManager.instance.FireProjectile(projInfo);
         }
     }
 }

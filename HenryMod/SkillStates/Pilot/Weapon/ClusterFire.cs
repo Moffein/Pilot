@@ -12,10 +12,10 @@ namespace EntityStates.Pilot.Weapon
         public static float recoilAmplitude = 1f;
         public static float comboRecoilAmplitude = 2f;
 
-        public static float damageCoefficient = 1.6f;
+        public static float damageCoefficient = 1.5f;
         public static float force = 400f;
 
-        public static float comboDamageCoefficient = 3.2f;
+        public static float comboDamageCoefficient = 3f;
         public static float comboForce = 1200f;
 
         //Railgunner 300 for 5 shots per second
