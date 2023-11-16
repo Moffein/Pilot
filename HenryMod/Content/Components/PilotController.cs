@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using RoR2.Skills;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -14,6 +15,7 @@ namespace Pilot.Content.Components
         private SkillLocator skillLocator;
         public bool isParachuting;
         private HurtBox autoAimHurtbox;
+        private Queue<GameObject> activeAirStrikes;
 
         //Used for Secondary
         public static GameObject autoAimIndicatorPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion();
@@ -29,6 +31,7 @@ namespace Pilot.Content.Components
 
         private void Awake()
         {
+            activeAirStrikes = new Queue<GameObject>();
             characterBody = base.GetComponent<CharacterBody>();
             skillLocator = base.GetComponent<SkillLocator>();
             isParachuting = false;
@@ -114,6 +117,18 @@ namespace Pilot.Content.Components
             Transform targetTransform = (autoAimHurtbox ? autoAimHurtbox.transform : null);
             this.enemyIndicator.targetTransform = targetTransform;
             enemyIndicator.active = targetTransform != null;
+        }
+
+        public void RegisterAirstrike(GameObject gameObject)
+        {
+            int maxAirStrikes = 2;
+            if (skillLocator) maxAirStrikes = Mathf.Max(2, skillLocator.special.maxStock);
+
+            if (activeAirStrikes.Count >= maxAirStrikes)
+            {
+                Destroy(activeAirStrikes.Dequeue());
+            }
+            activeAirStrikes.Enqueue(gameObject);
         }
     }
 }

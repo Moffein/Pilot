@@ -33,15 +33,16 @@ namespace Pilot.Modules.Survivors
             bodyNameToken = BODY_PREFIX + "NAME",
             subtitleNameToken = BODY_PREFIX + "SUBTITLE",
 
-            characterPortrait = Assets.addAssetBundle.LoadAsset<Texture>("sPilotPortrait_0"),
+            characterPortrait = Assets.pilotAssetBundle.LoadAsset<Texture>("sPilotPortrait_0"),
             bodyColor = new Color32(56, 148, 77, 255),
 
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 110f,
+            maxHealth = 100f,
+            healthGrowth = 30f,
             healthRegen = 1f,
-            healthGrowth = 0.2f,
+            regenGrowth = 0.2f,
             damage = 12f,
             damageGrowth = 2.4f,
             armor = 0f,
@@ -156,7 +157,7 @@ namespace Pilot.Modules.Survivors
             primaryDef.dontAllowPastMaxStocks = true;
             primaryDef.forceSprintDuringState = false;
             primaryDef.fullRestockOnAssign = true;
-            primaryDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
+            primaryDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
             primaryDef.interruptPriority = InterruptPriority.Any;
             primaryDef.isCombatSkill = true;
             primaryDef.keywordTokens = new string[] { };
@@ -183,7 +184,7 @@ namespace Pilot.Modules.Survivors
             primaryAltDef.dontAllowPastMaxStocks = true;
             primaryAltDef.forceSprintDuringState = false;
             primaryAltDef.fullRestockOnAssign = true;
-            primaryAltDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_5");
+            primaryAltDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_5");
             primaryAltDef.interruptPriority = InterruptPriority.Any;
             primaryAltDef.isCombatSkill = true;
             primaryAltDef.keywordTokens = new string[] { };
@@ -214,7 +215,7 @@ namespace Pilot.Modules.Survivors
             secondaryDef.dontAllowPastMaxStocks = true;
             secondaryDef.forceSprintDuringState = false;
             secondaryDef.fullRestockOnAssign = true;
-            secondaryDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
             secondaryDef.interruptPriority = InterruptPriority.Any;
             secondaryDef.isCombatSkill = false;
             secondaryDef.keywordTokens = new string[] { };
@@ -240,7 +241,7 @@ namespace Pilot.Modules.Survivors
             secondaryOverrideDef.dontAllowPastMaxStocks = false;
             secondaryOverrideDef.forceSprintDuringState = false;
             secondaryOverrideDef.fullRestockOnAssign = true;
-            secondaryOverrideDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryOverrideDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
             secondaryOverrideDef.interruptPriority = InterruptPriority.Any;
             secondaryOverrideDef.isCombatSkill = true;
             secondaryOverrideDef.keywordTokens = new string[] { };
@@ -272,7 +273,7 @@ namespace Pilot.Modules.Survivors
             utilityDef.dontAllowPastMaxStocks = true;
             utilityDef.forceSprintDuringState = false;
             utilityDef.fullRestockOnAssign = true;
-            utilityDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_2");
+            utilityDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_2");
             utilityDef.interruptPriority = InterruptPriority.Any;
             utilityDef.isCombatSkill = false;
             utilityDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
@@ -303,7 +304,7 @@ namespace Pilot.Modules.Survivors
             specialDef.dontAllowPastMaxStocks = true;
             specialDef.forceSprintDuringState = false;
             specialDef.fullRestockOnAssign = true;
-            specialDef.icon = Assets.addAssetBundle.LoadAsset<Sprite>("sPilotSkills_3");
+            specialDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_3");
             specialDef.interruptPriority = InterruptPriority.Any;
             specialDef.isCombatSkill = true;
             specialDef.keywordTokens = new string[] {};

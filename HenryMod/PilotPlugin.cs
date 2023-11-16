@@ -37,6 +37,7 @@ namespace Pilot
             instance = this;
 
             Log.Init(Logger);
+            Modules.DamageTypes.RegisterDamageTypes();
             Modules.Assets.Initialize(); // load assets and read config
             Modules.Config.ReadConfig();
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs

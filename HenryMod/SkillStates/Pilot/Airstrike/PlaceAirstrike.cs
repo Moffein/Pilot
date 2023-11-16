@@ -10,7 +10,7 @@ namespace EntityStates.Pilot.Airstrike
 {
     public class PlaceAirstrike : BaseState
     {
-        public static float damageCoefficient = 3.6f * 3f; //Damage per explosion. Hits up to 7 times. Remove the *3f once the actual projectile is implemented.
+        public static float damageCoefficient = 4f; //Damage per explosion.
         public static string attackSoundString = "Play_huntress_shift_mini_blink";
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();

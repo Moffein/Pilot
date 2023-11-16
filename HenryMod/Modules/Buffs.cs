@@ -6,16 +6,9 @@ namespace Pilot.Modules
 {
     public static class Buffs
     {
-        // armor buff gained during roll
-        internal static BuffDef armorBuff;
 
         internal static void RegisterBuffs()
         {
-            armorBuff = AddNewBuff("HenryArmorBuff",
-                LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite, 
-                Color.white, 
-                false, 
-                false);
         }
 
         // simple helper method

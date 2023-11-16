@@ -1,45 +1,56 @@
-﻿using R2API;
+﻿using Pilot.Content.Components.Projectile;
+using R2API;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace Pilot.Modules
 {
     internal static class Projectiles
     {
-        internal static GameObject bombPrefab;
 
         internal static void RegisterProjectiles()
         {
-            CreateBomb();
+            NetworkSoundEventDef detSound = Assets.CreateNetworkSoundEventDef("Play_engi_M2_arm");
+            GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFX.prefab").WaitForCompletion().InstantiateClone("PilotAirstrikeBlastEffect", false);
+            EffectComponent ec = blastEffectPrefab.GetComponent<EffectComponent>();
+            ec.soundName = "Play_captain_shift_impact";
+            Content.AddEffectDef(new EffectDef(blastEffectPrefab));
 
-            AddProjectile(bombPrefab);
+            EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion(), blastEffectPrefab, detSound);
+        }
+
+        private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound)
+        {
+            GameObject proj = Assets.pilotAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            proj.AddComponent<NetworkIdentity>();
+
+            ProjectileController pc = proj.AddComponent<ProjectileController>();
+            pc.ghostPrefab = ghostPrefab;
+            pc.allowPrediction = false;
+            pc.procCoefficient = 1f;
+
+            proj.AddComponent<ProjectileNetworkTransform>();
+            proj.AddComponent<ProjectileDamage>();
+            proj.AddComponent<TeamFilter>();
+
+            DamageAPI.ModdedDamageTypeHolderComponent mdc = proj.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+            mdc.Add(DamageTypes.AirstrikeKnockup);
+
+            AirStrikeDamageComponent asdc = proj.AddComponent<AirStrikeDamageComponent>();
+            asdc.armSound = armSound;
+            asdc.blastEffectPrefab = blastEffectPrefab;
+
+            AddProjectile(proj);
+
+            return proj;
         }
 
         internal static void AddProjectile(GameObject projectileToAdd)
         {
             Modules.Content.AddProjectilePrefab(projectileToAdd);
-        }
-
-        private static void CreateBomb()
-        {
-            bombPrefab = CloneProjectilePrefab("CommandoGrenadeProjectile", "HenryBombProjectile");
-
-            ProjectileImpactExplosion bombImpactExplosion = bombPrefab.GetComponent<ProjectileImpactExplosion>();
-            InitializeImpactExplosion(bombImpactExplosion);
-
-            bombImpactExplosion.blastRadius = 16f;
-            bombImpactExplosion.destroyOnEnemy = true;
-            bombImpactExplosion.lifetime = 12f;
-            bombImpactExplosion.impactEffect = Modules.Assets.bombExplosionEffect;
-            //bombImpactExplosion.lifetimeExpiredSound = Modules.Assets.CreateNetworkSoundEventDef("HenryBombExplosion");
-            bombImpactExplosion.timerAfterImpact = true;
-            bombImpactExplosion.lifetimeAfterImpact = 0.1f;
-
-            ProjectileController bombController = bombPrefab.GetComponent<ProjectileController>();
-            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("HenryBombGhost") != null) bombController.ghostPrefab = CreateGhostPrefab("HenryBombGhost");
-            bombController.startSound = "";
         }
 
         private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)

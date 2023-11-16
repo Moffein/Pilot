@@ -10,7 +10,7 @@ namespace EntityStates.Pilot.Weapon
     {
         public static float selfKnockbackForce = 450f;
 
-        public static float damageCoefficient = 1.8f;
+        public static float damageCoefficient = 2f;
         public static float force = 180f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;
