@@ -37,23 +37,25 @@ namespace EntityStates.Pilot.Airstrike
             if (base.isAuthority)
             {
                 PlaceProjectile();
-            }
 
-            bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
-            if (shouldBlink)
-            {
-                this.outer.SetNextState(new DashGround());
-                return;
-            }
-            else if (!isGrounded)
-            {
-                this.outer.SetNextState(new DashAir());
-                return;
-            }
-            else
-            {
-                this.outer.SetNextStateToMain();
-                return;
+                bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
+                if (shouldBlink)
+                {
+                    this.outer.SetNextState(new DashGround());
+                    return;
+                }
+                else if (!isGrounded)
+                {
+                    //this.outer.SetNextState(new DashAir());
+                    if (base.characterMotor) base.SmallHop(base.characterMotor, 17f);
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+                else
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 

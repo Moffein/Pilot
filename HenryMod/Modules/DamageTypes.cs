@@ -8,10 +8,12 @@ namespace Pilot.Modules
     public static class DamageTypes
     {
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
+        public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
 
         internal static void RegisterDamageTypes()
         {
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
+            KeepAirborne = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
         }
@@ -40,6 +42,18 @@ namespace Pilot.Modules
                     damageInfo.force.y = -1200f;
                 }
             }
+
+            if (damageInfo.HasModdedDamageType(KeepAirborne))
+            {
+                if (!self.body.isFlying && self.body.characterMotor && !self.body.characterMotor.isGrounded)
+                {
+                    if (self.body.characterMotor.velocity.y < 17f)
+                    {
+                        self.body.characterMotor.velocity.y = 17f;
+                    }
+                }
+            }
+
             orig(self, damageInfo);
         }
     }

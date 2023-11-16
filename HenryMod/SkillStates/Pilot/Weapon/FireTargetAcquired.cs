@@ -1,5 +1,7 @@
 ﻿using EntityStates;
 using Pilot.Content.Components;
+using Pilot.Modules;
+using R2API;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -11,7 +13,7 @@ namespace EntityStates.Pilot.Weapon
         public static float selfKnockbackForce = 450f;
 
         public static float damageCoefficient = 2f;
-        public static float force = 180f;
+        public static float force = 400f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;
         public static string attackSoundString = "Play_Pilot_Secondary_FireBurst";
@@ -112,7 +114,7 @@ namespace EntityStates.Pilot.Weapon
                     pilotController.UpdateIndicator();
                 }
 
-                new BulletAttack
+                BulletAttack ba = new BulletAttack
                 {
                     aimVector = AutoTarget(aimRay),
                     origin = aimRay.origin,
@@ -134,7 +136,9 @@ namespace EntityStates.Pilot.Weapon
                     tracerEffectPrefab = tracerEffectPrefab,
                     hitEffectPrefab = hitEffectPrefab,
                     stopperMask = LayerIndex.world.mask
-                }.Fire();
+                };
+                ba.AddModdedDamageType(DamageTypes.KeepAirborne);
+                ba.Fire();
                 if (FireTargetAcquired.selfKnockbackForce != 0f //pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
                     base.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
