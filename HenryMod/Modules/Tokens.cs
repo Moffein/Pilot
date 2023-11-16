@@ -31,7 +31,7 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "<style=cIsUtility>Dash</style> and leave a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>320% damage</style>. Can trigger <style=cIsDamage>7</style> times. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_NAME", "Air Raid");
-            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "");
+            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "<style=cIsUtility>Dash</style> and leave a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>390% damage</style>. Can trigger <style=cIsDamage>10</style> times. Hold up to 2.");
         }
     }
 }

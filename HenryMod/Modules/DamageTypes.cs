@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using EntityStates.Pilot.Airstrike;
+using R2API;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,13 +10,15 @@ namespace Pilot.Modules
     {
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
         public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
-        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrike;
+        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrikeImpact;
+        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrikeScepterImpact;
 
         internal static void RegisterDamageTypes()
         {
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
             KeepAirborne = DamageAPI.ReserveDamageType();
-            PlaceAirstrike = DamageAPI.ReserveDamageType();
+            PlaceAirstrikeImpact = DamageAPI.ReserveDamageType();
+            PlaceAirstrikeScepterImpact = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitAll += GlobalEventManager_OnHitAll;
@@ -24,7 +27,14 @@ namespace Pilot.Modules
         private static void GlobalEventManager_OnHitAll(On.RoR2.GlobalEventManager.orig_OnHitAll orig, GlobalEventManager self, DamageInfo damageInfo, GameObject hitObject)
         {
             orig(self, damageInfo, hitObject);
-            if (damageInfo.HasModdedDamageType(PlaceAirstrike)) EntityStates.Pilot.Airstrike.PlaceAirstrike.PlaceProjectile(damageInfo.attacker, damageInfo.crit, damageInfo.position);
+            if (damageInfo.HasModdedDamageType(PlaceAirstrikeImpact))
+            {
+                PlaceAirstrike.PlaceProjectile(PlaceAirstrike.projectilePrefab, PlaceAirstrike.damageCoefficient, damageInfo.attacker, damageInfo.crit, damageInfo.position);
+            }
+            if (damageInfo.HasModdedDamageType(PlaceAirstrikeScepterImpact))
+            {
+                PlaceAirstrike.PlaceProjectile(PlaceAirstrikeScepter.scepterProjectilePrefab, PlaceAirstrikeScepter.scepterDamageCoefficient, damageInfo.attacker, damageInfo.crit, damageInfo.position);
+            }
         }
 
         //Velocity modification will only work on server-side things.
@@ -34,7 +44,7 @@ namespace Pilot.Modules
             {
                 if (!self.body.isFlying)
                 {
-                    damageInfo.force.y = 2400f;
+                    damageInfo.force.y = 2700f;
 
                     if (self.body.rigidbody)
                     {
@@ -49,7 +59,7 @@ namespace Pilot.Modules
                 }
                 else
                 {
-                    damageInfo.force.y = -1200f;
+                    damageInfo.force.y = -1350f;
                 }
             }
 
@@ -57,7 +67,7 @@ namespace Pilot.Modules
             {
                 if (!self.body.isFlying && self.body.characterMotor && !self.body.characterMotor.isGrounded)
                 {
-                    if (self.body.characterMotor.velocity.y < 5f)
+                    if (self.body.characterMotor.velocity.y < 6f)
                     {
                         self.body.characterMotor.velocity.y = 6f;
                     }

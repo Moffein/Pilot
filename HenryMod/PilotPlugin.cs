@@ -11,6 +11,10 @@ using System.Security.Permissions;
 
 namespace Pilot
 {
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
+
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
@@ -35,8 +39,9 @@ namespace Pilot
         private void Awake()
         {
             instance = this;
-
             Log.Init(Logger);
+
+            ModCompat.Init();
             Modules.DamageTypes.RegisterDamageTypes();
             Modules.Assets.Initialize(); // load assets and read config
             Modules.Config.ReadConfig();

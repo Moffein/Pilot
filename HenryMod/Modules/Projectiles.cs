@@ -19,10 +19,12 @@ namespace Pilot.Modules
             ec.soundName = "Play_captain_shift_impact";
             Content.AddEffectDef(new EffectDef(blastEffectPrefab));
 
-            EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion(), blastEffectPrefab, detSound);
+            GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion();
+            EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 7, 1.5f);
+            EntityStates.Pilot.Airstrike.PlaceAirstrikeScepter.scepterProjectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 10, 1f);
         }
 
-        private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound)
+        private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int maxTriggers, float rearmTime)
         {
             GameObject proj = Assets.pilotAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
             proj.AddComponent<NetworkIdentity>();
@@ -42,6 +44,8 @@ namespace Pilot.Modules
             AirStrikeDamageComponent asdc = proj.AddComponent<AirStrikeDamageComponent>();
             asdc.armSound = armSound;
             asdc.blastEffectPrefab = blastEffectPrefab;
+            asdc.maxTriggers = maxTriggers;
+            asdc.rearmDuration = rearmTime;
 
             AddProjectile(proj);
 

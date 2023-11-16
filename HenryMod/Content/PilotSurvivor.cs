@@ -320,6 +320,34 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(specialDef);
             SkillDefs.Specials.Airstrike = specialDef;
 
+            SkillDef specialScepterDef = ScriptableObject.CreateInstance<SkillDef>();
+            specialScepterDef.activationState = new SerializableEntityStateType(typeof(PlaceAirstrikeScepter));
+            specialScepterDef.activationStateMachineName = "Airstrike";
+            specialScepterDef.baseMaxStock = 2;
+            specialScepterDef.baseRechargeInterval = 12f;
+            specialScepterDef.beginSkillCooldownOnSkillEnd = false;
+            specialScepterDef.canceledFromSprinting = false;
+            specialScepterDef.dontAllowPastMaxStocks = true;
+            specialScepterDef.forceSprintDuringState = false;
+            specialScepterDef.fullRestockOnAssign = true;
+            specialScepterDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_4");
+            specialScepterDef.interruptPriority = InterruptPriority.Any;
+            specialScepterDef.isCombatSkill = true;
+            specialScepterDef.keywordTokens = new string[] { };
+            specialScepterDef.mustKeyPress = true;
+            specialScepterDef.cancelSprintingOnActivation = true;
+            specialScepterDef.rechargeStock = 1;
+            specialScepterDef.requiredStock = 1;
+            specialScepterDef.skillName = "PilotSpecialScepter";
+            specialScepterDef.skillNameToken = "MOFFEIN_PILOT_BODY_SPECIAL_SCEPTER_NAME";
+            specialScepterDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_SCEPTER_DESCRIPTION";
+            specialScepterDef.stockToConsume = 1;
+            Skills.FixSkillName(specialScepterDef);
+            Pilot.Modules.Content.AddSkillDef(specialScepterDef);
+            SkillDefs.Specials.AirstrikeScepter = specialScepterDef;
+
+            ModCompat.SetupScepter("PilotBody", specialScepterDef, SkillSlot.Special, 0);
+
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { specialDef });
         }
 
@@ -410,6 +438,7 @@ namespace Pilot.Modules.Survivors
             public static class Specials
             {
                 public static SkillDef Airstrike;
+                public static SkillDef AirstrikeScepter;
             }
         }
     }
