@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Pilot
 {
-    public class ModCompat
+    public static class ModCompat
     {
         public static bool ScepterLoaded, RiskOfOptionsLoaded, EmoteAPILoaded, InfernoLoaded;
 
