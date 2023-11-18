@@ -50,7 +50,7 @@ namespace EntityStates.Pilot.FireSelect
                 //Would be more ideal to directly hook when stocks are gained/lost
                 if (base.skillLocator)
                 {
-                    if (base.skillLocator.secondary.stock > this.overriddenSkill.stock || this.overriddenSkill.stock > base.skillLocator.secondary.stock) this.overriddenSkill.stock = base.skillLocator.secondary.stock;
+                    if (base.skillLocator.secondary.stock != this.overriddenSkill.stock) this.overriddenSkill.stock = base.skillLocator.secondary.stock;
                 }
 
                 bool outOfStock = !(base.skillLocator && base.skillLocator.secondary && base.skillLocator.secondary.stock > 0);

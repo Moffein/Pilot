@@ -15,7 +15,7 @@ namespace EntityStates.Pilot.Parachute
         //public static float hopVelocity = 36f;
 
         public static float boostVelocity = 18f;
-        public static float stopAscentVelocity = 6f;
+        public static float stopAscentVelocity = 12f;
 
 
         public static float stunRadius = 12f;

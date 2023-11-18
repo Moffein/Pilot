@@ -47,6 +47,13 @@ namespace EntityStates.Pilot.Parachute
 
         public override void FixedUpdate()
         {
+            base.FixedUpdate();
+            //Be lenient with movespeed so you can shoot while flying without ending the state
+            if (base.characterBody)
+            {
+                if (base.moveSpeedStat > base.characterBody.moveSpeed) base.moveSpeedStat = base.characterBody.moveSpeed;
+            }
+
             if (base.isAuthority)
             {
                 bool validWavedash = false;

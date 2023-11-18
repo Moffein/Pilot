@@ -290,7 +290,7 @@ namespace Pilot.Modules.Survivors
             SkillDefs.Utilities.RapidDeployment = utilityDef;
 
             SkillDef utilityAltDef = ScriptableObject.CreateInstance<SkillDef>();
-            utilityAltDef.activationState = new SerializableEntityStateType(typeof(AerobaticsDash));
+            utilityAltDef.activationState = new SerializableEntityStateType(typeof(AerobaticsDashEntry));
             utilityAltDef.activationStateMachineName = "Parachute";
             utilityAltDef.baseMaxStock = 1;
             utilityAltDef.baseRechargeInterval = 8f;
@@ -314,6 +314,33 @@ namespace Pilot.Modules.Survivors
             Skills.FixSkillName(utilityAltDef);
             Pilot.Modules.Content.AddSkillDef(utilityAltDef);
             SkillDefs.Utilities.Aerobatics = utilityAltDef;
+
+            SkillDef utilityAltOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
+            utilityAltOverrideDef.activationState = new SerializableEntityStateType(typeof(AerobaticsDashBase));
+            utilityAltOverrideDef.activationStateMachineName = "Parachute";
+            utilityAltOverrideDef.baseMaxStock = 1;
+            utilityAltOverrideDef.baseRechargeInterval = 0f;
+            utilityAltOverrideDef.beginSkillCooldownOnSkillEnd = false;
+            utilityAltOverrideDef.canceledFromSprinting = false;
+            utilityAltOverrideDef.dontAllowPastMaxStocks = true;
+            utilityAltOverrideDef.forceSprintDuringState = true;
+            utilityAltOverrideDef.fullRestockOnAssign = false;
+            utilityAltOverrideDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_6a");
+            utilityAltOverrideDef.interruptPriority = InterruptPriority.Any;
+            utilityAltOverrideDef.isCombatSkill = false;
+            utilityAltOverrideDef.keywordTokens = new string[] { };
+            utilityAltOverrideDef.mustKeyPress = true;
+            utilityAltOverrideDef.cancelSprintingOnActivation = false;
+            utilityAltOverrideDef.rechargeStock = 0;
+            utilityAltOverrideDef.requiredStock = 1;
+            utilityAltOverrideDef.skillName = "PilotDashOverride";
+            utilityAltOverrideDef.skillNameToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_NAME";
+            utilityAltOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION";
+            utilityAltOverrideDef.stockToConsume = 1;
+            Skills.FixSkillName(utilityAltOverrideDef);
+            Pilot.Modules.Content.AddSkillDef(utilityAltOverrideDef);
+            SkillDefs.Utilities.Aerobatics2 = utilityAltOverrideDef;
+            EntityStates.Pilot.Parachute.Wallbounce.utilityOverride = utilityAltOverrideDef;
 
             Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { utilityDef, utilityAltDef });
         }
@@ -459,7 +486,7 @@ namespace Pilot.Modules.Survivors
             }
             public static class Utilities
             {
-                public static SkillDef RapidDeployment, Aerobatics;
+                public static SkillDef RapidDeployment, Aerobatics, Aerobatics2;
             }
             public static class Specials
             {

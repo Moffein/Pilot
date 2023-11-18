@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 854210134
+CRC: 646756191
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 100d4c4e065aeb80a9b60b48f5fbda97
+    Hash: 6798c63fe388b9a05c540ffff074ce7c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 51c682616bd7f3dc763b52b2f08205a8
@@ -39,6 +39,7 @@ Assets:
 - Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_4.png
 - Assets/Resources/EmptyGameObject.prefab
 - Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_3.png
+- Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_6a.png
 - Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_5.png
 - Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_7.png
 - Assets/Resources/Textures/Icons/Placeholder/sPilotSkills_1.png
