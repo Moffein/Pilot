@@ -27,6 +27,9 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "UTILITY_NAME", "Rapid Deployment");
             LanguageAPI.Add(prefix + "UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Launch into the air and <style=cIsUtility>activate your parachute</style>.");
 
+            LanguageAPI.Add(prefix + "UTILITY_ALT_NAME", "Aerobatics");
+            LanguageAPI.Add(prefix + "UTILITY_ALT_DESCRIPTION", "<style=cIsUtility>Dash forwards</style> and <style=cIsUtility>cling to a wall</style>. Can be retriggered <style=cIsUtility>once</style> if you are <style=cIsUtility>wallclinging</style>.");
+
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "Air Strike");
             LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "<style=cIsUtility>Dash</style> and leave a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>320% damage</style>. Can trigger <style=cIsDamage>7</style> times. Hold up to 2.");
 

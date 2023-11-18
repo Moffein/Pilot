@@ -14,6 +14,7 @@ namespace Pilot.Content.Components
         private CharacterBody characterBody;
         private SkillLocator skillLocator;
         public bool isParachuting;
+        public bool isWavedashing;
         private HurtBox autoAimHurtbox;
         private Queue<GameObject> activeAirStrikes;
 
@@ -35,6 +36,7 @@ namespace Pilot.Content.Components
             characterBody = base.GetComponent<CharacterBody>();
             skillLocator = base.GetComponent<SkillLocator>();
             isParachuting = false;
+            isWavedashing = false;
             currentAutoAimStates = 0;
             autoAimStopwatch = 0f;
             enemyIndicator = new Indicator(base.gameObject, autoAimIndicatorPrefab);

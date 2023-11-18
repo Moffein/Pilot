@@ -8,6 +8,7 @@ namespace EntityStates.Pilot.Parachute
     {
         public static float maxFallVelocity = -6f;
         public static float exitHopVelocity = 17f;
+        public static GameObject jumpEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/CharacterLandImpact");
 
         private PilotController pilotController;
 
@@ -39,6 +40,11 @@ namespace EntityStates.Pilot.Parachute
                     if (jumped)
                     {
                         base.SmallHop(base.characterMotor, Glide.exitHopVelocity);
+                        if (base.characterBody) EffectManager.SpawnEffect(jumpEffect, new EffectData
+                        {
+                            origin = base.characterBody.footPosition,
+                            scale = base.characterBody.radius
+                        }, true);
                     }
                     this.outer.SetNextStateToMain();
                     return;

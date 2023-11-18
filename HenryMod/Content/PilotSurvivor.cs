@@ -83,6 +83,7 @@ namespace Pilot.Modules.Survivors
             base.InitializeCharacter();
 
             bodyPrefab.AddComponent<PilotController>();
+            bodyPrefab.AddComponent<WallclingController>();
 
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
 
@@ -277,8 +278,8 @@ namespace Pilot.Modules.Survivors
             utilityDef.interruptPriority = InterruptPriority.Any;
             utilityDef.isCombatSkill = false;
             utilityDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
-            utilityDef.mustKeyPress = false;
-            utilityDef.cancelSprintingOnActivation = true;
+            utilityDef.mustKeyPress = true;
+            utilityDef.cancelSprintingOnActivation = false;
             utilityDef.rechargeStock = 1;
             utilityDef.requiredStock = 1;
             utilityDef.skillName = "PilotParachute";
@@ -289,7 +290,33 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(utilityDef);
             SkillDefs.Utilities.RapidDeployment = utilityDef;
 
-            Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {utilityDef });
+            SkillDef utilityAltDef = ScriptableObject.CreateInstance<SkillDef>();
+            utilityAltDef.activationState = new SerializableEntityStateType(typeof(AerobaticsDash));
+            utilityAltDef.activationStateMachineName = "Parachute";
+            utilityAltDef.baseMaxStock = 1;
+            utilityAltDef.baseRechargeInterval = 8f;
+            utilityAltDef.beginSkillCooldownOnSkillEnd = false;
+            utilityAltDef.canceledFromSprinting = false;
+            utilityAltDef.dontAllowPastMaxStocks = true;
+            utilityAltDef.forceSprintDuringState = true;
+            utilityAltDef.fullRestockOnAssign = true;
+            utilityAltDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_6");
+            utilityAltDef.interruptPriority = InterruptPriority.Any;
+            utilityAltDef.isCombatSkill = false;
+            utilityAltDef.keywordTokens = new string[] {};
+            utilityAltDef.mustKeyPress = true;
+            utilityAltDef.cancelSprintingOnActivation = false;
+            utilityAltDef.rechargeStock = 1;
+            utilityAltDef.requiredStock = 1;
+            utilityAltDef.skillName = "PilotDash";
+            utilityAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_NAME";
+            utilityAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION";
+            utilityAltDef.stockToConsume = 1;
+            Skills.FixSkillName(utilityAltDef);
+            Pilot.Modules.Content.AddSkillDef(utilityAltDef);
+            SkillDefs.Utilities.Aerobatics = utilityAltDef;
+
+            Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { utilityDef, utilityAltDef });
         }
 
         private void InitSpecials()
@@ -433,7 +460,7 @@ namespace Pilot.Modules.Survivors
             }
             public static class Utilities
             {
-                public static SkillDef RapidDeployment;
+                public static SkillDef RapidDeployment, Aerobatics;
             }
             public static class Specials
             {

@@ -31,6 +31,7 @@ namespace EntityStates.Pilot.Weapon
         private float shotStopwatch;
         private bool crit;
         private PilotController pilotController;
+        private bool applySelfForce;
 
         public override void OnEnter()
         {
@@ -38,11 +39,13 @@ namespace EntityStates.Pilot.Weapon
 
             if (base.characterMotor && base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
 
+            applySelfForce = true;
             pilotController = base.GetComponent<PilotController>();
             if (pilotController)
             {
                 pilotController.BeginAutoAim();
                 pilotController.ConsumeSecondaryStock(1);
+                applySelfForce = !pilotController.isWavedashing;
             }
 
             if (base.characterBody && base.skillLocator && base.skillLocator.secondary)
@@ -139,7 +142,7 @@ namespace EntityStates.Pilot.Weapon
                 };
                 ba.AddModdedDamageType(DamageTypes.KeepAirborne);
                 ba.Fire();
-                if (FireTargetAcquired.selfKnockbackForce != 0f //pilotController && pilotController.isParachuting && 
+                if (applySelfForce && FireTargetAcquired.selfKnockbackForce != 0f //pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
                     base.characterMotor.ApplyForce(-FireTargetAcquired.selfKnockbackForce * aimRay.direction, false, false);
             }
