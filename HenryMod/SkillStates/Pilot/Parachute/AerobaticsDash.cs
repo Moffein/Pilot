@@ -103,15 +103,24 @@ namespace EntityStates.Pilot.Parachute
 
                 if (base.fixedAge >= AerobaticsDash.baseDuration)
                 {
-                    this.outer.SetNextStateToMain();
+                    CheckWallBounceExit();
                     return;
                 }
             }
         }
 
-        public void TriggerWallcling()
+        //Not the cleanest way to do this
+        private void CheckWallBounceExit()
         {
-            Debug.Log("Triggered wallcling");
+            if (base.characterBody && Physics.OverlapSphere(base.characterBody.corePosition, 1.1f * base.characterBody.radius, LayerIndex.world.mask.value).Length > 0)
+            {
+                this.outer.SetNextStateToMain();
+                //this.outer.SetNextState(new WallBounce);
+                return;
+            }
+
+            this.outer.SetNextStateToMain();
+            return;
         }
 
         public virtual void DashPhysics()

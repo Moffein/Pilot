@@ -83,7 +83,6 @@ namespace Pilot.Modules.Survivors
             base.InitializeCharacter();
 
             bodyPrefab.AddComponent<PilotController>();
-            bodyPrefab.AddComponent<WallclingController>();
 
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
 
@@ -299,7 +298,7 @@ namespace Pilot.Modules.Survivors
             utilityAltDef.canceledFromSprinting = false;
             utilityAltDef.dontAllowPastMaxStocks = true;
             utilityAltDef.forceSprintDuringState = true;
-            utilityAltDef.fullRestockOnAssign = true;
+            utilityAltDef.fullRestockOnAssign = false;
             utilityAltDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_6");
             utilityAltDef.interruptPriority = InterruptPriority.Any;
             utilityAltDef.isCombatSkill = false;

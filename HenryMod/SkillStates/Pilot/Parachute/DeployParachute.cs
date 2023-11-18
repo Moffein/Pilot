@@ -15,6 +15,7 @@ namespace EntityStates.Pilot.Parachute
         //public static float hopVelocity = 36f;
 
         public static float boostVelocity = 18f;
+        public static float stopAscentVelocity = 6f;
 
 
         public static float stunRadius = 12f;
@@ -22,10 +23,13 @@ namespace EntityStates.Pilot.Parachute
         public static GameObject stunEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bandit2/Bandit2SmokeBomb.prefab").WaitForCompletion();
 
         private PilotController pilotController;
+        private bool stopAscent;
 
         public override void OnEnter()
         {
             base.OnEnter();
+
+            stopAscent = false;
 
             Util.PlaySound(DeployParachute.deploySoundString, base.gameObject);
             if (NetworkServer.active && stunRadius > 0f) StunEnemies(base.transform.position);
@@ -58,7 +62,7 @@ namespace EntityStates.Pilot.Parachute
         {
             base.FixedUpdate();
 
-            if (base.characterMotor)
+            if (!stopAscent&& base.characterMotor)
             {
                 if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
 
@@ -68,7 +72,17 @@ namespace EntityStates.Pilot.Parachute
                     velocity *= Mathf.Lerp(DeployParachute.baseDuration, DeployParachute.liftDuration, base.fixedAge);
                 }
 
-                base.characterMotor.rootMotion.y += (velocity * Time.fixedDeltaTime);
+                if (velocity > DeployParachute.stopAscentVelocity)
+                {
+                    base.characterMotor.rootMotion.y += (velocity * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    //This smooths out the ending of the ascent by converting the pure linear rootmotion deceleration into the game's own force handling.
+                    //Could probably skipped if a VelocityCurve was set up.
+                    stopAscent = true;
+                    base.SmallHop(base.characterMotor, DeployParachute.stopAscentVelocity);
+                }
             }
 
             if (base.isAuthority)
@@ -80,7 +94,7 @@ namespace EntityStates.Pilot.Parachute
                 }
 
                 //bool isFalling = base.fixedAge >= DeployParachute.minDuration && base.characterMotor && base.characterMotor.velocity.y <= 0f;
-                if (base.fixedAge >= DeployParachute.baseDuration)
+                if (base.fixedAge >= DeployParachute.baseDuration || stopAscent)
                 {
                     this.outer.SetNextState(new Glide());
                     return;
