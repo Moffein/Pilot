@@ -105,7 +105,7 @@ namespace EntityStates.Pilot.Parachute
                     //Maintain currentSpeed as long as they input in the direction of their velocity.
                     Vector2 currentDirection2d = new Vector2(currentDirection.x, currentDirection.z);
                     Vector2 inputDirection2d = new Vector2(inputDirection.x, inputDirection.z);
-                    float maxTurnAngle = 5f;
+                    float maxTurnAngle = 30f;
                     float angle = Vector2.Angle(currentDirection2d, inputDirection2d);
                     float lerp = (angle <= maxTurnAngle) ? 1f : 1f - ((angle - maxTurnAngle) / (180f - maxTurnAngle)); //Allow for gradual turning without losing speed.
 

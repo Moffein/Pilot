@@ -19,7 +19,7 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>150% damage</style>. Every third hit <style=cIsDamage>pierces</style> and deals <style=cIsDamage>300% damage</style>.");
 
             LanguageAPI.Add(prefix + "PRIMARY_ALT_NAME", "Rapidfire");
-            LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>100% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>130% damage</style>.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "Target Acquired!");
             LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing</style> smartgun that deals <style=cIsDamage>3x200% damage</style>. Hold up to 2.");

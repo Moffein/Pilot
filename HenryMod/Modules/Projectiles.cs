@@ -27,6 +27,7 @@ namespace Pilot.Modules
         private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int maxTriggers, float rearmTime)
         {
             GameObject proj = Assets.pilotAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            proj.layer = LayerIndex.noCollision.intVal;
             proj.AddComponent<NetworkIdentity>();
 
             ProjectileController pc = proj.AddComponent<ProjectileController>();

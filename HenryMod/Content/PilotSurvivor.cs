@@ -39,8 +39,8 @@ namespace Pilot.Modules.Survivors
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 100f,
-            healthGrowth = 30f,
+            maxHealth = 90f,
+            healthGrowth = 27f,
             healthRegen = 1f,
             regenGrowth = 0.2f,
             damage = 12f,

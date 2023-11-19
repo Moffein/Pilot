@@ -24,7 +24,7 @@ namespace EntityStates.Pilot.Airstrike
             {
                 PlaceProjectile();
 
-                bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
+                /*bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
                 if (shouldBlink)
                 {
                     this.outer.SetNextState(new DashGround());
@@ -41,7 +41,10 @@ namespace EntityStates.Pilot.Airstrike
                 {
                     this.outer.SetNextStateToMain();
                     return;
-                }
+                }*/
+                if (base.characterMotor && !base.characterMotor.isGrounded) base.SmallHop(base.characterMotor, 24f);
+                this.outer.SetNextStateToMain();
+                return;
             }
         }
 

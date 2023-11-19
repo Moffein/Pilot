@@ -10,7 +10,7 @@ namespace EntityStates.Pilot.Weapon
 		//Railgunner 300 for 5 shots per second
 		public static float selfKnockbackForce = 0f;
 
-		public static float damageCoefficient = 1f;
+		public static float damageCoefficient = 1.3f;
 		public static float force = 200f;
 		public static float baseDuration = 0.12f;
         public static float spreadBloomValue = 0.5f;

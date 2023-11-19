@@ -19,13 +19,13 @@ namespace EntityStates.Pilot.Parachute
 
         public override void FixedUpdate()
         {
-            //if (base.isAuthority) CheckWallBounce();
+            if (base.isAuthority) CheckWallBounce();
             base.FixedUpdate();
         }
 
         private void CheckWallBounceExit()
         {
-            //if (!CheckWallBounce())
+            if (!CheckWallBounce())
                 this.outer.SetNextStateToMain();
             return;
         }
@@ -33,7 +33,7 @@ namespace EntityStates.Pilot.Parachute
         //Not the cleanest way to do this
         private bool CheckWallBounce()
         {
-            if (base.characterBody && Physics.OverlapSphere(base.characterBody.corePosition, 4f * base.characterBody.radius, LayerIndex.world.mask.value).Length > 0)
+            if (base.characterBody && Physics.OverlapSphere(base.characterBody.corePosition, 1.25f * base.characterBody.radius, LayerIndex.world.mask.value).Length > 0)
             {
                 this.outer.SetNextState(new Wallbounce());
                 return true;
