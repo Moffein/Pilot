@@ -6,7 +6,7 @@ namespace EntityStates.Pilot.Parachute
 {
     public class AerobaticsDashEntry : AerobaticsDashBase
     {
-
+        public static float minDurationBeforeWallbounce = 0.15f;
         protected override void CheckStateExit()
         {
             if (!base.isAuthority) return;
@@ -33,7 +33,7 @@ namespace EntityStates.Pilot.Parachute
         //Not the cleanest way to do this
         private bool CheckWallBounce()
         {
-            if (base.characterBody && Physics.OverlapSphere(base.characterBody.corePosition, 1.25f * base.characterBody.radius, LayerIndex.world.mask.value).Length > 0)
+            if (base.fixedAge > AerobaticsDashEntry.minDurationBeforeWallbounce && base.characterBody && Physics.OverlapSphere(base.characterBody.corePosition, 1.5f * base.characterBody.radius, LayerIndex.world.mask.value).Length > 0)
             {
                 this.outer.SetNextState(new Wallbounce());
                 return true;
