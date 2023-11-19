@@ -19,13 +19,14 @@ namespace EntityStates.Pilot.Parachute
 
         public override void FixedUpdate()
         {
-            if (base.isAuthority) CheckWallBounce();
+            //if (base.isAuthority) CheckWallBounce();
             base.FixedUpdate();
         }
 
         private void CheckWallBounceExit()
         {
-            if (!CheckWallBounce()) this.outer.SetNextStateToMain();
+            //if (!CheckWallBounce())
+                this.outer.SetNextStateToMain();
             return;
         }
 

@@ -6,7 +6,7 @@ namespace EntityStates.Pilot.Parachute
     public class Wallbounce : BaseState
     {
         public static string soundString = "Play_loader_m2_impact";
-        public static float baseDuration = 4f;
+        public static float baseDuration = 3f;
         public static float smallHopVelocity = 17f;
         //public static float minFallVelocity = -3f;
 
@@ -41,7 +41,7 @@ namespace EntityStates.Pilot.Parachute
 
             bool outOfStock = overriddenSkill && !(base.skillLocator && base.skillLocator.utility && base.skillLocator.utility.stock > 0);
 
-            if (outOfStock || base.fixedAge >= Wallbounce.baseDuration || (base.characterMotor && base.characterMotor.isGrounded))
+            if (outOfStock || base.fixedAge >= Wallbounce.baseDuration)// || (base.characterMotor && base.characterMotor.isGrounded)
             {
                 this.outer.SetNextStateToMain();
                 return;

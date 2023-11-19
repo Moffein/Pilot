@@ -11,6 +11,11 @@ namespace EntityStates.Pilot.Parachute
 
         private PilotController pilotController;
 
+        public static float groundSpeedLoss = 300f; //Speed lost per second when grounded
+        public static float groundGracePeriod = 0.15f; //Time before you start losing speed when grounded
+        private float speed;
+        private float groundStopwatch;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -40,8 +45,10 @@ namespace EntityStates.Pilot.Parachute
                     inputDirection.Normalize();
                 }
 
-                base.characterMotor.velocity.x = inputDirection.x * initialSpeed;
-                base.characterMotor.velocity.z = inputDirection.z * initialSpeed;
+                groundStopwatch = 0f;
+                speed = initialSpeed;
+                base.characterMotor.velocity.x = inputDirection.x * speed;
+                base.characterMotor.velocity.z = inputDirection.z * speed;
             }
         }
 
@@ -49,21 +56,35 @@ namespace EntityStates.Pilot.Parachute
         {
             base.FixedUpdate();
             //Be lenient with movespeed so you can shoot while flying without ending the state
-            if (base.characterBody)
-            {
-                if (base.moveSpeedStat > base.characterBody.moveSpeed) base.moveSpeedStat = base.characterBody.moveSpeed;
-            }
+            if (base.characterBody && base.moveSpeedStat > base.characterBody.moveSpeed) base.moveSpeedStat = base.characterBody.moveSpeed;
 
             if (base.isAuthority)
             {
                 bool validWavedash = false;
                 if (base.characterMotor && base.characterBody)
                 {
+                    //Slow down wavedash on the ground
+                    if (base.characterMotor.isGrounded)
+                    {
+                        groundStopwatch += Time.fixedDeltaTime;
+                        if (groundStopwatch >= Wavedash.groundGracePeriod)
+                        {
+                            speed -= Time.fixedDeltaTime * Wavedash.groundSpeedLoss;
+                        }
+                    }
+                    else
+                    {
+                        groundStopwatch = 0f;
+                    }
+
                     //Get current velocity
+                    float currentSpeedIfAirborne = 0f;
                     Vector3 currentDirection = base.characterMotor.velocity;
                     currentDirection.y = 0;
-                    float targetSpeed = currentDirection.magnitude; //Get targetSpeed before normalization
+                    currentSpeedIfAirborne = currentDirection.magnitude;    //Get speed before normalization 
                     currentDirection.Normalize();
+
+                    float targetSpeed = base.characterMotor.isGrounded ? speed : currentSpeedIfAirborne; //Get targetSpeed before normalization
 
                     //Get move input
                     Vector3 inputDirection = Vector3.zero;
@@ -81,35 +102,29 @@ namespace EntityStates.Pilot.Parachute
                         inputDirection.Normalize();
                     }
 
-                    //If midair, maintain currentSpeed as long as they input in the direction of their velocity.
-                    if (!base.characterMotor.isGrounded)
+                    //Maintain currentSpeed as long as they input in the direction of their velocity.
+                    Vector2 currentDirection2d = new Vector2(currentDirection.x, currentDirection.z);
+                    Vector2 inputDirection2d = new Vector2(inputDirection.x, inputDirection.z);
+                    float maxTurnAngle = 5f;
+                    float angle = Vector2.Angle(currentDirection2d, inputDirection2d);
+                    float lerp = (angle <= maxTurnAngle) ? 1f : 1f - ((angle - maxTurnAngle) / (180f - maxTurnAngle)); //Allow for gradual turning without losing speed.
+
+                    if (targetSpeed > this.moveSpeedStat)
                     {
-                        Vector2 currentDirection2d = new Vector2(currentDirection.x, currentDirection.z);
-
-                        Vector2 inputDirection2d = new Vector2(inputDirection.x, inputDirection.z);
-                        float maxTurnAngle = 45f;   //180 degrees total
-                        float angle = Vector2.Angle(currentDirection2d, inputDirection2d);
-                        float lerp = (angle <= maxTurnAngle) ? 1f : 1f - ((angle - maxTurnAngle) / (180f - maxTurnAngle)); //Allow for gradual turning without losing speed.
-
-                        if (targetSpeed > this.moveSpeedStat)
-                        {
-                            targetSpeed = Mathf.Lerp(this.moveSpeedStat, targetSpeed, lerp);
-                        }
-                        else
-                        {
-                            targetSpeed = this.moveSpeedStat;
-                        }
-
-                        Vector3 newVelocity = new Vector3(targetSpeed * inputDirection2d.x, base.characterMotor.velocity.y, targetSpeed * inputDirection2d.y);
-
-                        base.characterMotor.velocity = newVelocity;
+                        targetSpeed = Mathf.Lerp(this.moveSpeedStat, targetSpeed, lerp);
                     }
-                    
+                    else
+                    {
+                        targetSpeed = this.moveSpeedStat;
+                    }
+                    speed = targetSpeed;
+
+                    Vector3 newVelocity = new Vector3(targetSpeed * inputDirection2d.x, base.characterMotor.velocity.y, targetSpeed * inputDirection2d.y);
+
+                    base.characterMotor.velocity = newVelocity;
 
                     //Check if still wavedashing
-                    Vector3 checkVelocity = base.characterMotor.velocity;
-                    checkVelocity.y = 0f;
-                    if (checkVelocity.magnitude > this.moveSpeedStat)
+                    if (speed > this.moveSpeedStat)
                     {
                         validWavedash = true;
                     }
