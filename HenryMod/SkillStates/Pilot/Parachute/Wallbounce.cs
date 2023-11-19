@@ -6,7 +6,7 @@ namespace EntityStates.Pilot.Parachute
     public class Wallbounce : BaseState
     {
         public static string soundString = "Play_loader_m2_impact";
-        public static float baseDuration = 3f;
+        public static float baseDuration = 4f;
         public static float smallHopVelocity = 17f;
         //public static float minFallVelocity = -3f;
 

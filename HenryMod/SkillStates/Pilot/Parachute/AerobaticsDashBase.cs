@@ -64,7 +64,7 @@ namespace EntityStates.Pilot.Parachute
 
         public virtual float GetBlinkSpeed()
         {
-            return 12f;
+            return 14f;
         }
 
         public override void FixedUpdate()
