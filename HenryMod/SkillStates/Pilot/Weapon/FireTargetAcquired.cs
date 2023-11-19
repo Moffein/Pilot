@@ -69,6 +69,7 @@ namespace EntityStates.Pilot.Weapon
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            if (base.characterMotor && base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
             if (shotCount < FireTargetAcquired.baseShotCount)
             {
                 shotStopwatch += Time.fixedDeltaTime;
