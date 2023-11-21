@@ -6,7 +6,7 @@ namespace EntityStates.Pilot.Parachute
 {
     public class AerobaticsDashBase : BaseState
     {
-        public static float baseDuration = 0.3f;    //Phase Blink is 0.1
+        public static float baseDuration = 0.3f;
         public static GameObject blinkPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/HuntressBlinkEffect.prefab").WaitForCompletion();
         public static string blinkSoundString = "Play_huntress_shift_mini_blink";
 
@@ -17,6 +17,7 @@ namespace EntityStates.Pilot.Parachute
         private HurtBoxGroup hurtboxGroup;
         private bool startedAirborne;
         public static float minWavedashSpeedMult = 0.25f;
+        public static float maxWavedashSpeedMult = 1f;
         private float wavedashSpeedMult;
         private EntityStateMachine parachuteMachine;
 
@@ -52,7 +53,7 @@ namespace EntityStates.Pilot.Parachute
             }
 
             parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");
-            wavedashSpeedMult = 1f;
+            wavedashSpeedMult = AerobaticsDashBase.maxWavedashSpeedMult;
             startedAirborne = false;
             if (base.characterMotor) startedAirborne = !base.characterMotor.isGrounded;
         }

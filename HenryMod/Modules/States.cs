@@ -14,6 +14,7 @@ namespace Pilot.Modules
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.ClusterFire));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.FireSelect.TargetAcquired));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.FireTargetAcquired));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.FireSelect.ColdWar));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.DeployParachute));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.Glide));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.AerobaticsDashBase));

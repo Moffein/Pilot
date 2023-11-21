@@ -11,6 +11,7 @@ namespace EntityStates.Pilot.Parachute
 
         private PilotController pilotController;
 
+        public static float airSpeedLoss = 7.5f; //Speed lost per second when midair
         public static float groundSpeedLoss = 300f; //Speed lost per second when grounded
         public static float groundGracePeriod = 0.15f; //Time before you start losing speed when grounded
         private float speed;
@@ -75,6 +76,7 @@ namespace EntityStates.Pilot.Parachute
                     else
                     {
                         groundStopwatch = 0f;
+                        speed -= Time.fixedDeltaTime * Wavedash.airSpeedLoss;
                     }
 
                     //Get current velocity
@@ -105,8 +107,9 @@ namespace EntityStates.Pilot.Parachute
                     //Maintain currentSpeed as long as they input in the direction of their velocity.
                     Vector2 currentDirection2d = new Vector2(currentDirection.x, currentDirection.z);
                     Vector2 inputDirection2d = new Vector2(inputDirection.x, inputDirection.z);
-                    float maxTurnAngle = 30f;
+                    float maxTurnAngle = 2.5f;
                     float angle = Vector2.Angle(currentDirection2d, inputDirection2d);
+                    //Debug.Log("Angle: " + angle + (angle > maxTurnAngle ? ", Losing Speed" : string.Empty));
                     float lerp = (angle <= maxTurnAngle) ? 1f : 1f - ((angle - maxTurnAngle) / (180f - maxTurnAngle)); //Allow for gradual turning without losing speed.
 
                     if (targetSpeed > this.moveSpeedStat)
