@@ -11,7 +11,7 @@ namespace EntityStates.Pilot.Parachute
 
         private PilotController pilotController;
 
-        public static float airSpeedLoss = 7.5f; //Speed lost per second when midair
+        public static float airSpeedLoss = 10f; //Speed lost per second when midair
         public static float groundSpeedLoss = 300f; //Speed lost per second when grounded
         public static float groundGracePeriod = 0.15f; //Time before you start losing speed when grounded
         private float speed;

@@ -21,6 +21,7 @@ namespace EntityStates.Pilot.Parachute
 
             if (base.isAuthority && base.characterMotor)
             {
+                base.characterMotor.disableAirControlUntilCollision = false;
                 base.SmallHop(base.characterMotor, Wallbounce.smallHopVelocity);
             }
 

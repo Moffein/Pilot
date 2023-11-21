@@ -16,13 +16,13 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so he vanished, with the skies forever out of reach.");
 
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "Clusterfire");
-            LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>150% damage</style>. Every third hit <style=cIsDamage>pierces</style> and deals <style=cIsDamage>300% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>180% damage</style>. Every third hit <style=cIsDamage>pierces</style> and deals <style=cIsDamage>360% damage</style>.");
 
             LanguageAPI.Add(prefix + "PRIMARY_ALT_NAME", "Rapidfire");
-            LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>130% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>140% damage</style>.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "Target Acquired!");
-            LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing</style> smartgun that deals <style=cIsDamage>3x200% damage</style>. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing</style> smartgun that deals <style=cIsDamage>3x230% damage</style>. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "UTILITY_NAME", "Rapid Deployment");
             LanguageAPI.Add(prefix + "UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Launch into the air and <style=cIsUtility>activate your parachute</style>.");
