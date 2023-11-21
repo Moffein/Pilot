@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using RoR2;
 using Pilot.Content.Components;
+using System;
 
 namespace EntityStates.Pilot.Parachute
 {
@@ -11,7 +12,7 @@ namespace EntityStates.Pilot.Parachute
 
         private PilotController pilotController;
 
-        public static float airSpeedLoss = 10f; //Speed lost per second when midair
+        public static float airSpeedLoss = 7.5f; //Speed lost per second when midair
         public static float groundSpeedLoss = 300f; //Speed lost per second when grounded
         public static float groundGracePeriod = 0.15f; //Time before you start losing speed when grounded
         private float speed;
@@ -56,6 +57,9 @@ namespace EntityStates.Pilot.Parachute
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            base.StartAimMode(base.GetAimRay(), 3f, false);
+
             //Be lenient with movespeed so you can shoot while flying without ending the state
             if (base.characterBody && base.moveSpeedStat > base.characterBody.moveSpeed) base.moveSpeedStat = base.characterBody.moveSpeed;
 

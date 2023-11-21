@@ -42,25 +42,42 @@ namespace Pilot.Modules
         {
             if (damageInfo.HasModdedDamageType(AirstrikeKnockup))
             {
-                if (!self.body.isFlying)
+
+                bool isAir = self.body.isFlying || !(self.body.characterMotor && self.body.characterMotor.isGrounded);
+                float forceMult = 1f;
+
+                if (self.body.rigidbody)
                 {
-                    damageInfo.force.y = 2700f;
-
-                    if (self.body.rigidbody)
+                    forceMult = Mathf.Max(self.body.rigidbody.mass / 100f, 1f);
+                    /*if (isAir)
                     {
-                        float forceMult = Mathf.Max(self.body.rigidbody.mass / 100f, 1f);
-                        damageInfo.force *= forceMult;
-                    }
-
-                    if (self.body.characterMotor)
-                    {
-                        //self.body.characterMotor.velocity.y = 0f;
-                        self.body.characterMotor.velocity = Vector3.zero;
-                    }
+                        forceMult = Mathf.Min(7.5f, forceMult) * -1f; ;
+                    }*/
                 }
-                else
+
+                //damageInfo.force = forceMult * Vector3.up * 2700f;
+                if (!isAir)
                 {
-                    damageInfo.force.y = -1350f;
+                    damageInfo.force = 2700f * forceMult * Vector3.up;
+                }
+                else if (!self.body.isFlying)
+                {
+                    self.body.characterMotor.velocity.y = 17f;
+                }
+
+                if (self.body.characterMotor)
+                {
+                    //self.body.characterMotor.velocity.y = 0f;
+                    self.body.characterMotor.velocity.x = 0f;
+                    self.body.characterMotor.velocity.z = 0f;
+                    if (isAir && !self.body.isFlying)
+                    {
+                        if (self.body.characterMotor.velocity.y < 17f) self.body.characterMotor.velocity.y = 17f;
+                    }
+                    else
+                    {
+                        self.body.characterMotor.velocity.y = 0f;
+                    }
                 }
             }
 

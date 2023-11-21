@@ -16,8 +16,8 @@ namespace EntityStates.Pilot.Parachute
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
         private bool startedAirborne;
-        public static float minWavedashSpeedMult = 0.25f;
-        public static float maxWavedashSpeedMult = 1f;
+        public static float minWavedashSpeedMult = 0.5f;
+        public static float maxWavedashSpeedMult = 0.5f;
         private float wavedashSpeedMult;
         private EntityStateMachine parachuteMachine;
 
