@@ -54,7 +54,8 @@ namespace Pilot.Modules
 
                     if (self.body.characterMotor)
                     {
-                        self.body.characterMotor.velocity.y = 0f;
+                        //self.body.characterMotor.velocity.y = 0f;
+                        self.body.characterMotor.velocity = Vector3.zero;
                     }
                 }
                 else
