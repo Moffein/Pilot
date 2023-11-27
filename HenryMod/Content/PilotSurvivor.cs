@@ -29,7 +29,7 @@ namespace Pilot.Modules.Survivors
 
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            bodyName = "PilotBody",
+            bodyName = "MoffeinPilotBody",
             bodyNameToken = BODY_PREFIX + "NAME",
             subtitleNameToken = BODY_PREFIX + "SUBTITLE",
 
