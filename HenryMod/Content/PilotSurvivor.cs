@@ -258,7 +258,60 @@ namespace Pilot.Modules.Survivors
             SkillDefs.Secondaries.FireTargetAcquired = secondaryOverrideDef;
             TargetAcquired.primaryOverride = secondaryOverrideDef;
 
-            Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondaryDef });
+            SkillDef secondaryAltDef = ScriptableObject.CreateInstance<SkillDef>();
+            secondaryAltDef.activationState = new SerializableEntityStateType(typeof(ColdWar));
+            secondaryAltDef.activationStateMachineName = "FireSelect";
+            secondaryAltDef.baseMaxStock = 2;
+            secondaryAltDef.baseRechargeInterval = 4f;
+            secondaryAltDef.beginSkillCooldownOnSkillEnd = false;
+            secondaryAltDef.canceledFromSprinting = false;
+            secondaryAltDef.dontAllowPastMaxStocks = true;
+            secondaryAltDef.forceSprintDuringState = false;
+            secondaryAltDef.fullRestockOnAssign = true;
+            secondaryAltDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryAltDef.interruptPriority = InterruptPriority.Any;
+            secondaryAltDef.isCombatSkill = false;
+            secondaryAltDef.keywordTokens = new string[] { };
+            secondaryAltDef.mustKeyPress = false;
+            secondaryAltDef.cancelSprintingOnActivation = true;
+            secondaryAltDef.rechargeStock = 1;
+            secondaryAltDef.requiredStock = 1;
+            secondaryAltDef.skillName = "PilotSecondaryAlt";
+            secondaryAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME";
+            secondaryAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION";
+            secondaryAltDef.stockToConsume = 0;    //Toggling doesn't consume stocks
+            Skills.FixSkillName(secondaryAltDef);
+            Pilot.Modules.Content.AddSkillDef(secondaryAltDef);
+            SkillDefs.Secondaries.ColdWar = secondaryAltDef;
+
+            SkillDef secondaryAltOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
+            secondaryAltOverrideDef.activationState = new SerializableEntityStateType(typeof(FireColdWar));
+            secondaryAltOverrideDef.activationStateMachineName = "Weapon";
+            secondaryAltOverrideDef.baseMaxStock = 1;
+            secondaryAltOverrideDef.baseRechargeInterval = 0f;
+            secondaryAltOverrideDef.beginSkillCooldownOnSkillEnd = false;
+            secondaryAltOverrideDef.canceledFromSprinting = false;
+            secondaryAltOverrideDef.dontAllowPastMaxStocks = false;
+            secondaryAltOverrideDef.forceSprintDuringState = false;
+            secondaryAltOverrideDef.fullRestockOnAssign = true;
+            secondaryAltOverrideDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryAltOverrideDef.interruptPriority = InterruptPriority.Any;
+            secondaryAltOverrideDef.isCombatSkill = true;
+            secondaryAltOverrideDef.keywordTokens = new string[] { };
+            secondaryAltOverrideDef.mustKeyPress = false;
+            secondaryAltOverrideDef.cancelSprintingOnActivation = true;
+            secondaryAltOverrideDef.rechargeStock = 0;
+            secondaryAltOverrideDef.requiredStock = 1;
+            secondaryAltOverrideDef.skillName = "PilotSecondaryAltOverride";
+            secondaryAltOverrideDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME";
+            secondaryAltOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION";
+            secondaryAltOverrideDef.stockToConsume = 1;
+            Skills.FixSkillName(secondaryAltOverrideDef);
+            Pilot.Modules.Content.AddSkillDef(secondaryAltOverrideDef);
+            SkillDefs.Secondaries.FireColdWar = secondaryAltOverrideDef;
+            ColdWar.primaryOverride = secondaryAltOverrideDef;
+
+            Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondaryDef, secondaryAltDef });
         }
 
         private void InitUtilities()
@@ -481,8 +534,8 @@ namespace Pilot.Modules.Survivors
             }
             public static class Secondaries
             {
-                public static SkillDef TargetAcquired;
-                public static SkillDef FireTargetAcquired;
+                public static SkillDef TargetAcquired, FireTargetAcquired, ColdWar, FireColdWar;
+
             }
             public static class Utilities
             {

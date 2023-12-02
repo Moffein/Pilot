@@ -13,7 +13,7 @@ namespace EntityStates.Pilot.Weapon
         public static float selfKnockbackForce = 450f;
 
         public static float damageCoefficient = 2f;
-        public static float force = 400f;
+        public static float force = 450f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;
         public static string attackSoundString = "Play_Pilot_Secondary_FireBurst";
@@ -106,7 +106,7 @@ namespace EntityStates.Pilot.Weapon
             shotStopwatch = 0f;
             shotCount++;
             Util.PlaySound(FireTargetAcquired.attackSoundString, base.gameObject);
-            EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, muzzleString, false);
+            //EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, muzzleString, false);
             //base.PlayAnimation("Gesture, Override", "Primary", "Primary.playbackRate", this.duration);
 
             if (base.isAuthority)

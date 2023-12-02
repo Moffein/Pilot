@@ -14,14 +14,20 @@ namespace Pilot.Modules
         internal static void RegisterProjectiles()
         {
             NetworkSoundEventDef detSound = Assets.CreateNetworkSoundEventDef("Play_engi_M2_arm");
+            
             GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFX.prefab").WaitForCompletion().InstantiateClone("PilotAirstrikeBlastEffect", false);
-            EffectComponent ec = blastEffectPrefab.GetComponent<EffectComponent>();
-            ec.soundName = "Play_captain_shift_impact";
+            {
+                EffectComponent ec = blastEffectPrefab.GetComponent<EffectComponent>();
+                ec.soundName = "Play_captain_shift_impact";
+            }
             Content.AddEffectDef(new EffectDef(blastEffectPrefab));
 
             GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion();
             EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 7, 1.5f);
             EntityStates.Pilot.Airstrike.PlaceAirstrikeScepter.scepterProjectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 10, 1f);
+
+
+            EntityStates.Pilot.Weapon.FireColdWar.projectilePrefab = CreatePilotColdWarProjectile("PilotColdWarProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/LightningStakeNova.prefab").WaitForCompletion());
         }
 
         private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int maxTriggers, float rearmTime)
@@ -49,6 +55,39 @@ namespace Pilot.Modules
             asdc.rearmDuration = rearmTime;
 
             AddProjectile(proj);
+
+            return proj;
+        }
+
+        private static GameObject CreatePilotColdWarProjectile(string projectileName, GameObject explosionEffect)
+        {
+            GameObject proj = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltBasic.prefab").WaitForCompletion().InstantiateClone(projectileName, true);
+
+            Rigidbody rb = proj.GetComponent<Rigidbody>();
+            rb.useGravity = true;
+
+            ProjectileSimple ps = proj.GetComponent<ProjectileSimple>();
+            ps.lifetime = 5f;
+            ps.desiredForwardSpeed = 120f;
+
+            ProjectileImpactExplosion pie = proj.GetComponent<ProjectileImpactExplosion>();
+            pie.blastRadius = 6f;
+            pie.falloffModel = BlastAttack.FalloffModel.None;
+            if (explosionEffect) pie.explosionEffect = explosionEffect;
+
+            DamageAPI.ModdedDamageTypeHolderComponent mdc = proj.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+            if (mdc) UnityEngine.Object.Destroy(mdc);
+            mdc = proj.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+            mdc.Add(DamageTypes.KeepAirborne);
+
+            /*AntiGravityForce agf = proj.AddComponent<AntiGravityForce>();
+            agf.antiGravityCoefficient = 0.5f;
+            agf.rb = rb;*/
+
+            ProjectileDamage pd = proj.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.Generic;
+
+            Content.AddProjectilePrefab(proj);
 
             return proj;
         }
