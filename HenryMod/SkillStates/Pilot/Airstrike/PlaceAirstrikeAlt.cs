@@ -11,13 +11,17 @@ namespace EntityStates.Pilot.Airstrike
 {
     public class PlaceAirstrikeAlt : PlaceAirstrike
     {
-        public static new float damageCoefficient = 3.2f; //Damage per explosion.
+        public static new float damageCoefficient = 3.2f;
         public static new GameObject projectilePrefab;
 
-        //Jank way of placing the projectile due to issues with accidental self targeting when doing a raycast.
-        protected override void ModifyBulletAttack(BulletAttack bulletAttack)
+        protected override float GetDamageCoefficient()
         {
-            bulletAttack.AddModdedDamageType(DamageTypes.PlaceAirstrikeAltImpact);
+            return PlaceAirstrikeAlt.damageCoefficient;
+        }
+
+        protected override GameObject GetProjectile()
+        {
+            return PlaceAirstrikeAlt.projectilePrefab;
         }
     }
 }

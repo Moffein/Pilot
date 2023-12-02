@@ -9,12 +9,17 @@ namespace EntityStates.Pilot.Airstrike
 {
     public class PlaceAirstrikeScepter : PlaceAirstrike
     {
-        public static float scepterDamageCoefficient = 3.9f;
-        public static GameObject scepterProjectilePrefab;
+        public static new float damageCoefficient = 3.9f;
+        public static new GameObject projectilePrefab;
 
-        protected override void ModifyBulletAttack(BulletAttack bulletAttack)
+        protected override float GetDamageCoefficient()
         {
-            bulletAttack.AddModdedDamageType(DamageTypes.PlaceAirstrikeScepterImpact);
+            return PlaceAirstrikeScepter.damageCoefficient;
+        }
+
+        protected override GameObject GetProjectile()
+        {
+            return PlaceAirstrikeScepter.projectilePrefab;
         }
     }
 }

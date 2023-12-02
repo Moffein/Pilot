@@ -4,16 +4,17 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static RoR2.BulletAttack;
 
 namespace EntityStates.Pilot.Airstrike
 {
     public class PlaceAirstrike : BaseState
     {
-        public static float damageCoefficient = 3.2f; //Damage per explosion.
         public static string attackSoundString = "Play_huntress_shift_mini_blink";
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
         public static string muzzleName = "";   //Where the laser effect originates from.
+        public static float damageCoefficient = 3.2f;   //damage per explosion
 
         public override void OnEnter()
         {
@@ -48,6 +49,16 @@ namespace EntityStates.Pilot.Airstrike
             }
         }
 
+        protected virtual float GetDamageCoefficient()
+        {
+            return PlaceAirstrike.damageCoefficient;
+        }
+
+        protected virtual GameObject GetProjectile()
+        {
+            return PlaceAirstrike.projectilePrefab;
+        }
+
         private void PlaceProjectile()
         {
             Ray aimRay = base.GetAimRay();
@@ -60,22 +71,31 @@ namespace EntityStates.Pilot.Airstrike
                 damageType = DamageType.Silent | DamageType.NonLethal,
                 owner = base.gameObject,
                 aimVector = aimRay.direction,
-                isCrit = base.RollCrit(),
+                isCrit = false,
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = aimRay.origin,
                 maxDistance = 2000f,
                 muzzleName = PlaceAirstrike.muzzleName,
-                radius = 0.2f
+                radius = 0.2f,
+                hitCallback = AirstrikeHitCallback
             };
-            ModifyBulletAttack(ba);
             ba.Fire();
         }
 
-        //Jank way of placing the projectile due to issues with accidental self targeting when doing a raycast.
-        protected virtual void ModifyBulletAttack(BulletAttack bulletAttack)
+        private bool AirstrikeHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
         {
-            bulletAttack.AddModdedDamageType(DamageTypes.PlaceAirstrikeImpact);
+
+            bool placedAirstrike = false;
+
+            if (hitInfo.point != null)
+            {
+                PlaceAirstrike.PlaceProjectile(GetProjectile(), this.damageStat * GetDamageCoefficient(), base.gameObject, base.RollCrit(), hitInfo.point);
+                placedAirstrike = true;
+            }
+
+            //BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
+            return placedAirstrike;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
@@ -83,16 +103,13 @@ namespace EntityStates.Pilot.Airstrike
             return InterruptPriority.Skill;
         }
 
-        public static void PlaceProjectile(GameObject projectilePrefab, float damageCoefficient, GameObject attacker, bool crit, Vector3 position)
+        public static void PlaceProjectile(GameObject projectilePrefab, float damage, GameObject attacker, bool crit, Vector3 position)
         {
-            CharacterBody attackerBody = attacker.GetComponent<CharacterBody>();
-            if (!attackerBody) return;
-
             FireProjectileInfo projInfo = new FireProjectileInfo
             {
                 projectilePrefab = projectilePrefab,
                 crit = crit,
-                damage = attackerBody.damage * damageCoefficient,
+                damage = damage,
                 damageColorIndex = DamageColorIndex.Default,
                 force = 0f,
                 owner = attacker,

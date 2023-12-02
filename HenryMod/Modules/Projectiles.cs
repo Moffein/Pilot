@@ -23,8 +23,8 @@ namespace Pilot.Modules
             Content.AddEffectDef(new EffectDef(blastEffectPrefab));
 
             GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion();
-            EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 7, 1.5f);
-            EntityStates.Pilot.Airstrike.PlaceAirstrikeScepter.scepterProjectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 10, 1f);
+            EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 6, 1.5f);
+            EntityStates.Pilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 9, 1f);
 
 
             EntityStates.Pilot.Weapon.FireColdWar.projectilePrefab = CreatePilotColdWarProjectile("PilotColdWarProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/LightningStakeNova.prefab").WaitForCompletion());

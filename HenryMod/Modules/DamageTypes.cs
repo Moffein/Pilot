@@ -10,46 +10,12 @@ namespace Pilot.Modules
     {
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
         public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
-        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrikeImpact;
-        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrikeScepterImpact;
-
-        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrikeAltImpact;
-        public static R2API.DamageAPI.ModdedDamageType PlaceAirstrikeAltScepterImpact;
 
         internal static void RegisterDamageTypes()
         {
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
             KeepAirborne = DamageAPI.ReserveDamageType();
-            PlaceAirstrikeImpact = DamageAPI.ReserveDamageType();
-            PlaceAirstrikeScepterImpact = DamageAPI.ReserveDamageType();
-            PlaceAirstrikeAltImpact = DamageAPI.ReserveDamageType();
-            PlaceAirstrikeAltScepterImpact = DamageAPI.ReserveDamageType();
-
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
-            On.RoR2.GlobalEventManager.OnHitAll += GlobalEventManager_OnHitAll;
-        }
-
-        private static void GlobalEventManager_OnHitAll(On.RoR2.GlobalEventManager.orig_OnHitAll orig, GlobalEventManager self, DamageInfo damageInfo, GameObject hitObject)
-        {
-            orig(self, damageInfo, hitObject);
-
-            //BAD way of doing thiss
-            if (damageInfo.HasModdedDamageType(PlaceAirstrikeImpact))
-            {
-                PlaceAirstrike.PlaceProjectile(PlaceAirstrike.projectilePrefab, PlaceAirstrike.damageCoefficient, damageInfo.attacker, damageInfo.crit, damageInfo.position);
-            }
-            if (damageInfo.HasModdedDamageType(PlaceAirstrikeScepterImpact))
-            {
-                PlaceAirstrike.PlaceProjectile(PlaceAirstrikeScepter.scepterProjectilePrefab, PlaceAirstrikeScepter.scepterDamageCoefficient, damageInfo.attacker, damageInfo.crit, damageInfo.position);
-            }
-            if (damageInfo.HasModdedDamageType(PlaceAirstrikeAltImpact))
-            {
-                PlaceAirstrike.PlaceProjectile(PlaceAirstrikeAlt.projectilePrefab, PlaceAirstrikeAlt.damageCoefficient, damageInfo.attacker, damageInfo.crit, damageInfo.position);
-            }
-            if (damageInfo.HasModdedDamageType(PlaceAirstrikeAltScepterImpact))
-            {
-                PlaceAirstrike.PlaceProjectile(PlaceAirstrikeAltScepter.scepterProjectilePrefab, PlaceAirstrikeAltScepter.scepterDamageCoefficient, damageInfo.attacker, damageInfo.crit, damageInfo.position);
-            }
         }
 
         //Velocity modification will only work on server-side things.
