@@ -16,7 +16,7 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so he vanished, with the skies forever out of reach.");
 
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "Clusterfire");
-            LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>180% damage</style>. Every third hit <style=cIsDamage>pierces</style> and deals <style=cIsDamage>360% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>180% damage</style>. Every third hit <style=cIsDamage>explodes</style> and deals <style=cIsDamage>360% damage</style>.");
 
             LanguageAPI.Add(prefix + "PRIMARY_ALT_NAME", "Rapidfire");
             LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>140% damage</style>.");
