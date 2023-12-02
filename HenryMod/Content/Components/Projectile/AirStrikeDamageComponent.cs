@@ -41,6 +41,8 @@ namespace Pilot.Content.Components.Projectile
             teamFilter = base.GetComponent<TeamFilter>();
             projectileController = base.GetComponent<ProjectileController>();
             moddedDamageType = base.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+
+            if (!projectileDamage || !projectileController) Destroy(this);
         }
 
         private void Start()
@@ -110,7 +112,7 @@ namespace Pilot.Content.Components.Projectile
 
             BlastAttack ba = new BlastAttack()
             {
-                attacker = projectileController.owner,
+                attacker = projectileController ? projectileController.owner : null,
                 attackerFiltering = AttackerFiltering.Default,
                 baseDamage = projectileDamage.damage,
                 baseForce = 0f,
@@ -125,10 +127,10 @@ namespace Pilot.Content.Components.Projectile
                 procChainMask = default,
                 procCoefficient = 1f,
                 radius = blastRadius,
-                teamIndex = teamFilter.teamIndex
+                teamIndex = teamFilter ? teamFilter.teamIndex : TeamIndex.None
             };
 
-            moddedDamageType.CopyTo(ba);
+            if (moddedDamageType) moddedDamageType.CopyTo(ba);
 
             ba.Fire();
 

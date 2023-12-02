@@ -16,10 +16,13 @@ namespace EntityStates.Pilot.Airstrike
         public static string muzzleName = "";   //Where the laser effect originates from.
         public static float damageCoefficient = 3.2f;   //damage per explosion
 
+        private bool placedProjectile;
+
         public override void OnEnter()
         {
             base.OnEnter();
             Util.PlaySound(PlaceAirstrike.attackSoundString, base.gameObject);
+            placedProjectile = false;
 
             if (base.isAuthority)
             {
@@ -85,17 +88,13 @@ namespace EntityStates.Pilot.Airstrike
 
         private bool AirstrikeHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
         {
-
-            bool placedAirstrike = false;
-
-            if (hitInfo.point != null)
+            if (hitInfo.point != null && !placedProjectile)
             {
+                placedProjectile = true;
                 PlaceAirstrike.PlaceProjectile(GetProjectile(), this.damageStat * GetDamageCoefficient(), base.gameObject, base.RollCrit(), hitInfo.point);
-                placedAirstrike = true;
             }
 
-            //BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
-            return placedAirstrike;
+            return BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

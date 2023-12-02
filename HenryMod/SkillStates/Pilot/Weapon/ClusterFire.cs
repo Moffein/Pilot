@@ -1,8 +1,10 @@
-﻿using Pilot.Content.Components;
+﻿using EntityStates.Pilot.Airstrike;
+using Pilot.Content.Components;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static RoR2.BulletAttack;
 
 namespace EntityStates.Pilot.Weapon
 {
@@ -17,6 +19,7 @@ namespace EntityStates.Pilot.Weapon
 
         public static float comboDamageCoefficient = 3.6f;
         public static float comboForce = 1500f;
+        public static float comboBlastRadius = 6f;
 
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;
@@ -34,11 +37,13 @@ namespace EntityStates.Pilot.Weapon
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/TracerCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
 
+        public static GameObject comboExplosionEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion();
         public static GameObject comboTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
         public static GameObject comboHitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleEffectPrefab, comboMuzzleEffectPrefab;
 
         private PilotController pilotController;
+        private bool triggeredComboExplosion;
 
         private float duration;
         private int step;
@@ -51,6 +56,7 @@ namespace EntityStates.Pilot.Weapon
 		{
 			base.OnEnter();
 
+            triggeredComboExplosion = false;
             pilotController = base.GetComponent<PilotController>();
 
             Ray aimRay = base.GetAimRay();
@@ -95,7 +101,8 @@ namespace EntityStates.Pilot.Weapon
                     smartCollision = true,
                     damageType = DamageType.Generic,
                     falloffModel = BulletAttack.FalloffModel.None,
-                    procCoefficient = 1f
+                    procCoefficient = 1f,
+                    maxDistance = 2000f
                 }.Fire();
                 if (ClusterFire.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
@@ -114,7 +121,7 @@ namespace EntityStates.Pilot.Weapon
             }
             if (base.isAuthority)
             {
-                new BulletAttack
+                /*new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -135,7 +142,27 @@ namespace EntityStates.Pilot.Weapon
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f,
                     stopperMask = LayerIndex.world.mask
-                }.Fire();
+                }.Fire();*/
+
+                BulletAttack ba = new BulletAttack
+                {
+                    tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
+                    damage = 0f,
+                    procCoefficient = 0.1f,
+                    damageType = DamageType.Silent | DamageType.NonLethal,
+                    owner = base.gameObject,
+                    aimVector = aimRay.direction,
+                    isCrit = false,
+                    minSpread = 0f,
+                    maxSpread = 0f,
+                    origin = aimRay.origin,
+                    maxDistance = 2000f,
+                    muzzleName = ClusterFire.muzzleName,
+                    radius = 0.2f,
+                    hitCallback = ComboHitCallback
+                };
+                ba.Fire();
+
                 if (ClusterFire.comboSelfKnockbackForce != 0f   //pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
                     base.characterMotor.ApplyForce(-ClusterFire.comboSelfKnockbackForce * aimRay.direction, false, false);
@@ -148,6 +175,39 @@ namespace EntityStates.Pilot.Weapon
             base.AddRecoil(-0.4f * ClusterFire.comboRecoilAmplitude, -0.8f * ClusterFire.comboRecoilAmplitude, -0.3f * ClusterFire.comboRecoilAmplitude, 0.3f * ClusterFire.comboRecoilAmplitude);
             base.characterBody.AddSpreadBloom(ClusterFire.spreadBloomValueCosmetic);
         }
+
+        private bool ComboHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
+        {
+            if (hitInfo.point != null && !triggeredComboExplosion)
+            {
+                triggeredComboExplosion = true;
+
+                if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = ClusterFire.comboBlastRadius }, true);
+                BlastAttack ba = new BlastAttack()
+                {
+                    attacker = projectileController ? projectileController.owner : null,
+                    attackerFiltering = AttackerFiltering.Default,
+                    baseDamage = this.damageStat * ClusterFire.comboDamageCoefficient,
+                    baseForce = 0f,
+                    bonusForce = Vector3.zero,
+                    canRejectForce = true,
+                    crit = base.RollCrit(),
+                    damageColorIndex = DamageColorIndex.Default,
+                    damageType = DamageType.Generic,
+                    falloffModel = BlastAttack.FalloffModel.None,
+                    inflictor = base.gameObject,
+                    position = base.transform.position,
+                    procChainMask = default,
+                    procCoefficient = 1f,
+                    radius = ClusterFire.comboBlastRadius,
+                    teamIndex = base.GetTeam()
+                };
+                ba.Fire();
+            }
+
+            return BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
+        }
+
 
         public override void FixedUpdate()
         {

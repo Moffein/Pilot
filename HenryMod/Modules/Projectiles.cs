@@ -25,6 +25,8 @@ namespace Pilot.Modules
             GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion();
             EntityStates.Pilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 6, 1.5f);
             EntityStates.Pilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 9, 1f);
+            EntityStates.Pilot.Airstrike.PlaceAirstrikeAlt.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltProjectile", ghostPrefab, blastEffectPrefab, detSound, 5, 0.25f);
+            EntityStates.Pilot.Airstrike.PlaceAirstrikeAltScepter.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 8, 0.15f);
 
 
             EntityStates.Pilot.Weapon.FireColdWar.projectilePrefab = CreatePilotColdWarProjectile("PilotColdWarProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/LightningStakeNova.prefab").WaitForCompletion());
@@ -53,6 +55,38 @@ namespace Pilot.Modules
             asdc.blastEffectPrefab = blastEffectPrefab;
             asdc.maxTriggers = maxTriggers;
             asdc.rearmDuration = rearmTime;
+            asdc.blastRadius = 10f;
+            asdc.triggerRadius = 6f;
+            asdc.initialArmDuration = rearmTime;
+
+            AddProjectile(proj);
+
+            return proj;
+        }
+
+        private static GameObject CreatePilotAirstrikeAlt(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int explosionCount, float rearmTime)
+        {
+            GameObject proj = Assets.pilotAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            proj.layer = LayerIndex.noCollision.intVal;
+            proj.AddComponent<NetworkIdentity>();
+
+            ProjectileController pc = proj.AddComponent<ProjectileController>();
+            pc.ghostPrefab = ghostPrefab;
+            pc.allowPrediction = false;
+            pc.procCoefficient = 1f;
+
+            proj.AddComponent<ProjectileNetworkTransform>();
+            proj.AddComponent<ProjectileDamage>();
+            proj.AddComponent<TeamFilter>();
+
+            DamageAPI.ModdedDamageTypeHolderComponent mdc = proj.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+            mdc.Add(DamageTypes.AirstrikeKnockup);
+
+            AirStrikeAltDamageComponent asdca = proj.AddComponent<AirStrikeAltDamageComponent>();
+            asdca.blastEffectPrefab = blastEffectPrefab;
+            asdca.delayBetweenExplosions = rearmTime;
+            asdca.explosionCount = explosionCount;
+            asdca.blastRadius = 10f;
 
             AddProjectile(proj);
 

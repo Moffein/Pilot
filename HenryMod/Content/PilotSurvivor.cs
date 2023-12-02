@@ -452,9 +452,63 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(specialScepterDef);
             SkillDefs.Specials.AirstrikeScepter = specialScepterDef;
 
-            ModCompat.SetupScepter("PilotBody", specialScepterDef, SkillSlot.Special, 0);
 
-            Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { specialDef });
+            SkillDef specialAltDef = ScriptableObject.CreateInstance<SkillDef>();
+            specialAltDef.activationState = new SerializableEntityStateType(typeof(PlaceAirstrikeAlt));
+            specialAltDef.activationStateMachineName = "Airstrike";
+            specialAltDef.baseMaxStock = 1;
+            specialAltDef.baseRechargeInterval = 12f;
+            specialAltDef.beginSkillCooldownOnSkillEnd = false;
+            specialAltDef.canceledFromSprinting = false;
+            specialAltDef.dontAllowPastMaxStocks = true;
+            specialAltDef.forceSprintDuringState = false;
+            specialAltDef.fullRestockOnAssign = true;
+            specialAltDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_7");
+            specialAltDef.interruptPriority = InterruptPriority.Any;
+            specialAltDef.isCombatSkill = true;
+            specialAltDef.keywordTokens = new string[] { };
+            specialAltDef.mustKeyPress = true;
+            specialAltDef.cancelSprintingOnActivation = true;
+            specialAltDef.rechargeStock = 1;
+            specialAltDef.requiredStock = 1;
+            specialAltDef.skillName = "PilotSpecialAlt";
+            specialAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_SPECIAL_ALT_NAME";
+            specialAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_ALT_DESCRIPTION";
+            specialAltDef.stockToConsume = 1;
+            Skills.FixSkillName(specialAltDef);
+            Pilot.Modules.Content.AddSkillDef(specialAltDef);
+            SkillDefs.Specials.AerialSupport = specialAltDef;
+
+            SkillDef specialAltScepterDef = ScriptableObject.CreateInstance<SkillDef>();
+            specialAltScepterDef.activationState = new SerializableEntityStateType(typeof(PlaceAirstrikeAltScepter));
+            specialAltScepterDef.activationStateMachineName = "Airstrike";
+            specialAltScepterDef.baseMaxStock = 1;
+            specialAltScepterDef.baseRechargeInterval = 12f;
+            specialAltScepterDef.beginSkillCooldownOnSkillEnd = false;
+            specialAltScepterDef.canceledFromSprinting = false;
+            specialAltScepterDef.dontAllowPastMaxStocks = true;
+            specialAltScepterDef.forceSprintDuringState = false;
+            specialAltScepterDef.fullRestockOnAssign = true;
+            specialAltScepterDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_8");
+            specialAltScepterDef.interruptPriority = InterruptPriority.Any;
+            specialAltScepterDef.isCombatSkill = true;
+            specialAltScepterDef.keywordTokens = new string[] { };
+            specialAltScepterDef.mustKeyPress = true;
+            specialAltScepterDef.cancelSprintingOnActivation = true;
+            specialAltScepterDef.rechargeStock = 1;
+            specialAltScepterDef.requiredStock = 1;
+            specialAltScepterDef.skillName = "PilotSpecialAlt";
+            specialAltScepterDef.skillNameToken = "MOFFEIN_PILOT_BODY_SPECIAL_ALT_SCEPTER_NAME";
+            specialAltScepterDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_ALT_SCEPTER_DESCRIPTION";
+            specialAltScepterDef.stockToConsume = 1;
+            Skills.FixSkillName(specialAltScepterDef);
+            Pilot.Modules.Content.AddSkillDef(specialAltScepterDef);
+            SkillDefs.Specials.AerialSupportScepter = specialAltScepterDef;
+
+            Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { specialDef, specialAltDef });
+
+            ModCompat.SetupScepter("PilotBody", specialScepterDef, SkillSlot.Special, 0);
+            ModCompat.SetupScepter("PilotBody", specialAltScepterDef, SkillSlot.Special, 1);
         }
 
         public override void InitializeSkins()
@@ -543,8 +597,8 @@ namespace Pilot.Modules.Survivors
             }
             public static class Specials
             {
-                public static SkillDef Airstrike;
-                public static SkillDef AirstrikeScepter;
+                public static SkillDef Airstrike, AirstrikeScepter, AerialSupport, AerialSupportScepter;
+
             }
         }
     }

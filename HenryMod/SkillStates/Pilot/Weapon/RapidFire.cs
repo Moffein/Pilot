@@ -17,7 +17,7 @@ namespace EntityStates.Pilot.Weapon
 		public static float recoilAmplitude = 1f;
 		public static string attackSoundString = "Play_Pilot_Primary_Rapid";
 		public static string muzzleName = "";
-		public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoShotgun.prefab").WaitForCompletion();
+		public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/TracerEngiTurret.prefab").WaitForCompletion();
 		public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
 		public static GameObject muzzleEffectPrefab;
 

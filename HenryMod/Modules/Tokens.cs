@@ -38,6 +38,12 @@ namespace Pilot.Modules
 
             LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_NAME", "Air Raid");
             LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "Place a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>390% damage</style>. Can trigger <style=cIsDamage>9</style> times. Hold up to 2.");
+
+            LanguageAPI.Add(prefix + "SPECIAL_ALT_NAME", "Aerial Support");
+            LanguageAPI.Add(prefix + "SPECIAL_ALT_DESCRIPTION", "Bombard an area for <style=cIsDamage>5x320% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");
+
+            LanguageAPI.Add(prefix + "SPECIAL_ALT_SCEPTER_NAME", "Aerial Barrage");
+            LanguageAPI.Add(prefix + "SPECIAL_ALT_SCEPTER_DESCRIPTION", "Bombard an area for <style=cIsDamage>8x320% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");
         }
     }
 }
