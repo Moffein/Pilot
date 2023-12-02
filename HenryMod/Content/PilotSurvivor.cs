@@ -158,7 +158,7 @@ namespace Pilot.Modules.Survivors
             primaryDef.forceSprintDuringState = false;
             primaryDef.fullRestockOnAssign = true;
             primaryDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
-            primaryDef.interruptPriority = InterruptPriority.Any;
+            primaryDef.interruptPriority = InterruptPriority.Skill;
             primaryDef.isCombatSkill = true;
             primaryDef.keywordTokens = new string[] { };
             primaryDef.mustKeyPress = false;
@@ -174,10 +174,10 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(primaryDef);
             SkillDefs.Primaries.ClusterFire = primaryDef;
 
-            SkillDef primaryAltDef = ScriptableObject.CreateInstance<SkillDef>();
+            ReloadSkillDef primaryAltDef = ScriptableObject.CreateInstance<ReloadSkillDef>();
             primaryAltDef.activationState = new SerializableEntityStateType(typeof(RapidFire));
             primaryAltDef.activationStateMachineName = "Weapon";
-            primaryAltDef.baseMaxStock = 1;
+            primaryAltDef.baseMaxStock = 25;
             primaryAltDef.baseRechargeInterval = 0f;
             primaryAltDef.beginSkillCooldownOnSkillEnd = false;
             primaryAltDef.canceledFromSprinting = false;
@@ -185,17 +185,20 @@ namespace Pilot.Modules.Survivors
             primaryAltDef.forceSprintDuringState = false;
             primaryAltDef.fullRestockOnAssign = true;
             primaryAltDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_5");
-            primaryAltDef.interruptPriority = InterruptPriority.Any;
+            primaryAltDef.interruptPriority = InterruptPriority.Skill;
             primaryAltDef.isCombatSkill = true;
             primaryAltDef.keywordTokens = new string[] { };
             primaryAltDef.mustKeyPress = false;
             primaryAltDef.cancelSprintingOnActivation = true;
-            primaryAltDef.rechargeStock = 1;
+            primaryAltDef.rechargeStock = 0;
             primaryAltDef.requiredStock = 1;
             primaryAltDef.skillName = "PilotPrimaryAlt";
             primaryAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_PRIMARY_ALT_NAME";
             primaryAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION";
             primaryAltDef.stockToConsume = 1;
+            primaryAltDef.reloadInterruptPriority = InterruptPriority.Any;
+            primaryAltDef.reloadState = new SerializableEntityStateType(typeof(ReloadRapidFire));
+            primaryAltDef.graceDuration = 0.4f;
             Skills.FixSkillName(primaryAltDef);
             Pilot.Modules.Content.AddSkillDef(primaryAltDef);
             SkillDefs.Primaries.RapidFire = primaryAltDef;
@@ -242,7 +245,7 @@ namespace Pilot.Modules.Survivors
             secondaryOverrideDef.forceSprintDuringState = false;
             secondaryOverrideDef.fullRestockOnAssign = true;
             secondaryOverrideDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
-            secondaryOverrideDef.interruptPriority = InterruptPriority.Any;
+            secondaryOverrideDef.interruptPriority = InterruptPriority.Skill;
             secondaryOverrideDef.isCombatSkill = true;
             secondaryOverrideDef.keywordTokens = new string[] { };
             secondaryOverrideDef.mustKeyPress = false;
@@ -295,7 +298,7 @@ namespace Pilot.Modules.Survivors
             secondaryAltOverrideDef.forceSprintDuringState = false;
             secondaryAltOverrideDef.fullRestockOnAssign = true;
             secondaryAltOverrideDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
-            secondaryAltOverrideDef.interruptPriority = InterruptPriority.Any;
+            secondaryAltOverrideDef.interruptPriority = InterruptPriority.Skill;
             secondaryAltOverrideDef.isCombatSkill = true;
             secondaryAltOverrideDef.keywordTokens = new string[] { };
             secondaryAltOverrideDef.mustKeyPress = false;
@@ -584,7 +587,8 @@ namespace Pilot.Modules.Survivors
         {
             public static class Primaries
             {
-                public static SkillDef ClusterFire, RapidFire;
+                public static ReloadSkillDef RapidFire;
+                public static SkillDef ClusterFire;
             }
             public static class Secondaries
             {

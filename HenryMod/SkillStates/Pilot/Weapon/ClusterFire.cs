@@ -182,14 +182,16 @@ namespace EntityStates.Pilot.Weapon
             {
                 triggeredComboExplosion = true;
 
+                Vector3 attackForce = bulletRef.aimVector != null ? ClusterFire.comboForce * bulletRef.aimVector.normalized : Vector3.zero;
+
                 if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = ClusterFire.comboBlastRadius }, true);
                 BlastAttack ba = new BlastAttack()
                 {
-                    attacker = projectileController ? projectileController.owner : null,
+                    attacker = base.gameObject,
                     attackerFiltering = AttackerFiltering.Default,
                     baseDamage = this.damageStat * ClusterFire.comboDamageCoefficient,
                     baseForce = 0f,
-                    bonusForce = Vector3.zero,
+                    bonusForce = attackForce,
                     canRejectForce = true,
                     crit = base.RollCrit(),
                     damageColorIndex = DamageColorIndex.Default,
@@ -221,7 +223,7 @@ namespace EntityStates.Pilot.Weapon
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Skill;
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Pilot.Modules
         {
             Modules.Content.AddEntityState(typeof(BaseMeleeAttack));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.RapidFire));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.ReloadRapidFire));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.ClusterFire));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.FireSelect.TargetAcquired));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Weapon.FireTargetAcquired));

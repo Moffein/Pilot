@@ -126,7 +126,7 @@ namespace EntityStates.Pilot.Weapon
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Skill;
+            return InterruptPriority.PrioritySkill;
         }
     }
 }
