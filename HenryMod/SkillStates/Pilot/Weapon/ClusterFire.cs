@@ -26,7 +26,7 @@ namespace EntityStates.Pilot.Weapon
         public static float comboSelfKnockbackForce = 0f;
 
         public static float shotRadius = 0.5f;
-        public static float comboShotRadius = 1f;
+        public static float comboShotRadius = 0.5f;
 
         public static float baseDuration = 0.3f;
 
@@ -196,7 +196,7 @@ namespace EntityStates.Pilot.Weapon
                     damageType = DamageType.Generic,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
-                    position = base.transform.position,
+                    position = hitInfo.point,
                     procChainMask = default,
                     procCoefficient = 1f,
                     radius = ClusterFire.comboBlastRadius,
