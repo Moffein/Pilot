@@ -72,6 +72,7 @@ namespace EntityStates.Pilot.Airstrike
             ba.Fire();
         }
 
+        //Jank way of placing the projectile due to issues with accidental self targeting when doing a raycast.
         protected virtual void ModifyBulletAttack(BulletAttack bulletAttack)
         {
             bulletAttack.AddModdedDamageType(DamageTypes.PlaceAirstrikeImpact);
@@ -82,7 +83,7 @@ namespace EntityStates.Pilot.Airstrike
             return InterruptPriority.Skill;
         }
 
-        public static void PlaceProjectile(GameObject projectilePrefab, float damageCoefficient,GameObject attacker, bool crit, Vector3 position)
+        public static void PlaceProjectile(GameObject projectilePrefab, float damageCoefficient, GameObject attacker, bool crit, Vector3 position)
         {
             CharacterBody attackerBody = attacker.GetComponent<CharacterBody>();
             if (!attackerBody) return;

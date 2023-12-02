@@ -25,6 +25,9 @@ namespace Pilot.Modules
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.Wavedash));
 
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.PlaceAirstrike));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.PlaceAirstrikeAlt));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.PlaceAirstrikeScepter));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.PlaceAirstrikeAltScepter));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.DashGround));    //unused
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.DashAir));   //unused
         }
