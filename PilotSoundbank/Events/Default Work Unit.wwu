@@ -58,6 +58,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Pilot_Silencer" ID="{9281A8AC-8136-4381-8988-BBB399BA23A3}">
+					<ChildrenList>
+						<Action Name="" ID="{8D47F9E4-09BD-4232-8A27-C05281D6E795}" ShortID="105032611">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wSPistol" ID="{FDAEE91F-8DD2-44BD-AAEE-E34791FCF56B}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

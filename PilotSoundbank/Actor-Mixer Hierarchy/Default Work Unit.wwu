@@ -159,7 +159,7 @@
 												</Property>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-5</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -204,6 +204,35 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="wBullet3" ID="{B066E9B7-613D-4E17-A2AB-9F89090B6065}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="wSPistol" ID="{FDAEE91F-8DD2-44BD-AAEE-E34791FCF56B}" ShortID="177119726">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wSPistol" ID="{43D75385-CBDE-48DB-832C-8D327A4CED6E}">
+													<Language>SFX</Language>
+													<AudioFile>wSPistol.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="991900099"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wSPistol" ID="{43D75385-CBDE-48DB-832C-8D327A4CED6E}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

@@ -9,9 +9,9 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	49591001	Seocndary_Fire	C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Seocndary_Fire		121780
-	266180520	Primary_Cluster_Combo	C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster_Combo		188812
-	353063854	Primary_Cluster	C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster		135892
-	372196105	Primary_Rapid	C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBanditShoot1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Rapid		104962
-	689986003	wUI_Survivors_Pilot	C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wUI_Survivors_Pilot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wUI_Survivors_Pilot		154880
+	49591001	Seocndary_Fire	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Seocndary_Fire		121780
+	266180520	Primary_Cluster_Combo	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster_Combo		188812
+	353063854	Primary_Cluster	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster		135892
+	372196105	Primary_Rapid	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBanditShoot1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Rapid		104962
+	689986003	wUI_Survivors_Pilot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wUI_Survivors_Pilot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wUI_Survivors_Pilot		154880
 

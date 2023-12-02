@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\</ProjectRoot>
+		<SourceFilesRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Node\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2624589540" Language="SFX" Hash="200283861">
+		<SoundBank Id="2624589540" Language="SFX" Hash="3730767099">
 			<ObjectPath>\SoundBanks\Default Work Unit\PilotSoundbank</ObjectPath>
 			<ShortName>PilotSoundbank</ShortName>
 			<Path>PilotSoundbank.bnk</Path>
