@@ -9,7 +9,7 @@ namespace EntityStates.Pilot.Weapon
     {
         public static string startSoundString = "Play_commando_M2_grenade_throw";
         public static string endSoundString = "Play_captain_m1_reload";
-        public static float baseDuration = 1.5f;
+        public static float baseDuration = 1.4f;
 
         private float duration;
 
@@ -19,7 +19,7 @@ namespace EntityStates.Pilot.Weapon
 
             duration = ReloadRapidFire.baseDuration / this.attackSpeedStat;
 
-            Util.PlaySound(ReloadRapidFire.startSoundString, base.gameObject);
+            //Util.PlaySound(ReloadRapidFire.startSoundString, base.gameObject);
         }
 
         public override void FixedUpdate()

@@ -72,7 +72,7 @@ namespace EntityStates.Pilot.Parachute
             {
                 tracerEffectPrefab = null,
                 damage = 0f,
-                procCoefficient = 0.1f,
+                procCoefficient = 0f,
                 damageType = DamageType.Silent | DamageType.NonLethal,
                 owner = base.gameObject,
                 aimVector = forwardCheckDirection,
@@ -96,7 +96,7 @@ namespace EntityStates.Pilot.Parachute
                 clingPoint = hitInfo.point;
                 detectedWallbounce = true;
             }
-            return BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
+            return false;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

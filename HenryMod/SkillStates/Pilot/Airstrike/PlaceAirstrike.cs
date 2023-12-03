@@ -70,7 +70,7 @@ namespace EntityStates.Pilot.Airstrike
             {
                 tracerEffectPrefab = PlaceAirstrike.tracerEffectPrefab,
                 damage = 0f,
-                procCoefficient = 0.1f,
+                procCoefficient = 0f,
                 damageType = DamageType.Silent | DamageType.NonLethal,
                 owner = base.gameObject,
                 aimVector = aimRay.direction,
@@ -94,7 +94,7 @@ namespace EntityStates.Pilot.Airstrike
                 PlaceAirstrike.PlaceProjectile(GetProjectile(), this.damageStat * GetDamageCoefficient(), base.gameObject, base.RollCrit(), hitInfo.point);
             }
 
-            return BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
+            return false;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
