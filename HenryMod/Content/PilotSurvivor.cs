@@ -349,7 +349,7 @@ namespace Pilot.Modules.Survivors
             utilityDef.activationState = new SerializableEntityStateType(typeof(DeployParachute));
             utilityDef.activationStateMachineName = "Parachute";
             utilityDef.baseMaxStock = 1;
-            utilityDef.baseRechargeInterval = 8f;
+            utilityDef.baseRechargeInterval = 12f;
             utilityDef.beginSkillCooldownOnSkillEnd = false;
             utilityDef.canceledFromSprinting = false;
             utilityDef.dontAllowPastMaxStocks = true;

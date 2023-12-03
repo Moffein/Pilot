@@ -67,7 +67,8 @@ namespace EntityStates.MoffeinPilot.Parachute
         private void CheckWallBounce()
         {
             if (detectedWallbounce || base.fixedAge < AerobaticsDashEntry.minDurationBeforeWallbounce || !base.characterBody) return;
-
+            
+            //BodyRadius 0.5
             BulletAttack ForwardCheck = new BulletAttack
             {
                 tracerEffectPrefab = null,
@@ -80,9 +81,9 @@ namespace EntityStates.MoffeinPilot.Parachute
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = base.characterBody.corePosition,
-                maxDistance = base.characterBody.radius * 1.3f,
+                maxDistance = 0.75f,
                 muzzleName = null,
-                radius = base.characterBody.radius,
+                radius = 0.5f,
                 hitCallback = CheckWallbounceHitCallback,
                 stopperMask = LayerIndex.world.mask
             };

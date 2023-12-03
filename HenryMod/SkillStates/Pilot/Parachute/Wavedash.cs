@@ -12,9 +12,9 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         private PilotController pilotController;
 
-        public static float airSpeedLoss = 7.5f; //Speed lost per second when midair
+        public static float airSpeedLoss = 0f; //Speed lost per second when midair
         public static float groundSpeedLoss = 300f; //Speed lost per second when grounded
-        public static float groundGracePeriod = 0.15f; //Time before you start losing speed when grounded
+        public static float groundGracePeriod = 0.3f; //Time before you start losing speed when grounded
         private float speed;
         private float groundStopwatch;
 
@@ -84,10 +84,9 @@ namespace EntityStates.MoffeinPilot.Parachute
                     }
 
                     //Get current velocity
-                    float currentSpeedIfAirborne = 0f;
                     Vector3 currentDirection = base.characterMotor.velocity;
                     currentDirection.y = 0;
-                    currentSpeedIfAirborne = currentDirection.magnitude;    //Get speed before normalization 
+                    float currentSpeedIfAirborne = currentDirection.magnitude;    //Get speed before normalization 
                     currentDirection.Normalize();
 
                     float targetSpeed = base.characterMotor.isGrounded ? speed : currentSpeedIfAirborne; //Get targetSpeed before normalization

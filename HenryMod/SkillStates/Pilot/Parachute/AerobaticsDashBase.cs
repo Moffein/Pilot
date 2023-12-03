@@ -83,9 +83,9 @@ namespace EntityStates.MoffeinPilot.Parachute
 
             if (base.isAuthority)
             {
-                if (startedAirborne && base.characterMotor && base.characterMotor.isGrounded)
+                if (base.characterMotor && base.characterMotor.isGrounded)//startedAirborne && 
                 {
-                    if (base.inputBank && base.inputBank.jump.justPressed && parachuteMachine)
+                    if (base.inputBank && base.inputBank.jump.down && parachuteMachine)//base.inputBank.jump.justPressed
                     {
                         this.outer.SetNextState(new EntityStates.MoffeinPilot.Parachute.Wavedash()
                         {
