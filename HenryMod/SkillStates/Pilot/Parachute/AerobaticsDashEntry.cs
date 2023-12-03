@@ -80,7 +80,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = base.characterBody.corePosition,
-                maxDistance = base.characterBody.radius * 1.5f,
+                maxDistance = base.characterBody.radius * 1.3f,
                 muzzleName = null,
                 radius = base.characterBody.radius,
                 hitCallback = CheckWallbounceHitCallback,
