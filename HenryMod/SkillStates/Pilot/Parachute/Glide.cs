@@ -11,7 +11,8 @@ namespace EntityStates.Pilot.Parachute
         public static GameObject jumpEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/CharacterLandImpact");
 
         private PilotController pilotController;
-
+        private int origJumpCount;
+        private bool jumpReleased = false;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -20,6 +21,11 @@ namespace EntityStates.Pilot.Parachute
             if (pilotController)
             {
                 pilotController.isParachuting = true;
+            }
+            if (base.characterMotor)
+            {
+                origJumpCount = base.characterMotor.jumpCount;
+                base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
             }
         }
 
@@ -34,7 +40,14 @@ namespace EntityStates.Pilot.Parachute
                 }
 
                 bool isGrounded = base.characterMotor && base.characterMotor.isGrounded;
-                bool jumped = base.inputBank && base.inputBank.jump.down;
+                bool jumped = false;
+                if (base.inputBank)
+                {
+                    if (!jumpReleased) jumpReleased = !base.inputBank.jump.down;
+                    jumped = jumpReleased && base.inputBank.jump.down;
+                }
+                
+
                 if (isGrounded || jumped)
                 {
                     if (jumped)
@@ -55,6 +68,13 @@ namespace EntityStates.Pilot.Parachute
 
         public override void OnExit()
         {
+            if (base.characterMotor)
+            {
+                if (base.characterMotor.isGrounded)
+                    base.characterMotor.jumpCount = 0;
+                else
+                    base.characterMotor.jumpCount = Mathf.Max(origJumpCount, 1);
+            }
             if (pilotController)
             {
                 pilotController.isParachuting = false;

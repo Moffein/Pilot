@@ -23,6 +23,7 @@ namespace Pilot.Modules
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.AerobaticsDashBase));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.AerobaticsDashEntry));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.Wallbounce));
+            Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.Wallcling));
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Parachute.Wavedash));
 
             Modules.Content.AddEntityState(typeof(EntityStates.Pilot.Airstrike.PlaceAirstrike));

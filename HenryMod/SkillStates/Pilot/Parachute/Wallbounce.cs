@@ -12,6 +12,7 @@ namespace EntityStates.Pilot.Parachute
 
         public static SkillDef utilityOverride;
         private GenericSkill overriddenSkill;
+        private int initialJumps;
 
         public override void OnEnter()
         {
@@ -40,12 +41,14 @@ namespace EntityStates.Pilot.Parachute
 
             //if (base.characterMotor && base.characterMotor.velocity.y < Wallbounce.minFallVelocity) base.characterMotor.velocity.y = Wallbounce.minFallVelocity;
 
-            bool outOfStock = overriddenSkill && !(base.skillLocator && base.skillLocator.utility && base.skillLocator.utility.stock > 0);
-
-            if (outOfStock || base.fixedAge >= Wallbounce.baseDuration)// || (base.characterMotor && base.characterMotor.isGrounded)
+            if (base.isAuthority)
             {
-                this.outer.SetNextStateToMain();
-                return;
+                bool outOfStock = overriddenSkill && !(base.skillLocator && base.skillLocator.utility && base.skillLocator.utility.stock > 0);
+                if (outOfStock || base.fixedAge >= Wallbounce.baseDuration)// || (base.characterMotor && base.characterMotor.isGrounded)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 

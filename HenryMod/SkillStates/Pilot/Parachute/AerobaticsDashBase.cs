@@ -21,6 +21,8 @@ namespace EntityStates.Pilot.Parachute
         private float wavedashSpeedMult;
         private EntityStateMachine parachuteMachine;
 
+        private int origJumpCount;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -55,7 +57,13 @@ namespace EntityStates.Pilot.Parachute
             parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");
             wavedashSpeedMult = AerobaticsDashBase.maxWavedashSpeedMult;
             startedAirborne = false;
-            if (base.characterMotor) startedAirborne = !base.characterMotor.isGrounded;
+            if (base.characterMotor)
+            {
+                startedAirborne = !base.characterMotor.isGrounded;
+
+                origJumpCount = base.characterMotor.jumpCount;
+                base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
+            }
         }
 
         public virtual void SetBlinkVector()
@@ -115,6 +123,13 @@ namespace EntityStates.Pilot.Parachute
         public override void OnExit()
         {
             base.OnExit();
+            if (base.characterMotor)
+            {
+                if (base.characterMotor.isGrounded)
+                    base.characterMotor.jumpCount = 0;
+                else
+                    base.characterMotor.jumpCount = Mathf.Max(origJumpCount, 1);
+            }
             if (!this.outer.destroying)
             {
                 this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));

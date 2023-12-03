@@ -25,6 +25,8 @@ namespace EntityStates.Pilot.Parachute
         private PilotController pilotController;
         private bool stopAscent;
 
+        private int origJumpCount;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -34,21 +36,27 @@ namespace EntityStates.Pilot.Parachute
             Util.PlaySound(DeployParachute.deploySoundString, base.gameObject);
             if (NetworkServer.active && stunRadius > 0f) StunEnemies(base.transform.position);
 
-            if (base.isAuthority && base.characterMotor)
+            if (base.characterMotor)
             {
-                base.characterMotor.disableAirControlUntilCollision = false;
-                //base.SmallHop(base.characterMotor, DeployParachute.hopVelocity);
+                origJumpCount = base.characterMotor.jumpCount;
+                base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
 
-                Ray aimRay = base.GetAimRay();
+                if (base.isAuthority)
+                {
+                    base.characterMotor.disableAirControlUntilCollision = false;
+                    //base.SmallHop(base.characterMotor, DeployParachute.hopVelocity);
 
-                //Speed scaling.
-                float velocityMult = base.moveSpeedStat / (base.characterBody && base.characterBody.baseMoveSpeed != 0f ? base.characterBody.baseMoveSpeed : 7f);
+                    Ray aimRay = base.GetAimRay();
 
-                Vector3 directionFlat = aimRay.direction;
-                directionFlat.y = 0f;
-                directionFlat.Normalize();
+                    //Speed scaling.
+                    float velocityMult = base.moveSpeedStat / (base.characterBody && base.characterBody.baseMoveSpeed != 0f ? base.characterBody.baseMoveSpeed : 7f);
 
-                base.characterMotor.velocity += directionFlat * boostVelocity * velocityMult;
+                    Vector3 directionFlat = aimRay.direction;
+                    directionFlat.y = 0f;
+                    directionFlat.Normalize();
+
+                    base.characterMotor.velocity += directionFlat * boostVelocity * velocityMult;
+                }
             }
 
             pilotController = base.GetComponent<PilotController>();
@@ -104,10 +112,18 @@ namespace EntityStates.Pilot.Parachute
 
         public override void OnExit()
         {
+            if (base.characterMotor)
+            {
+                if (base.characterMotor.isGrounded)
+                    base.characterMotor.jumpCount = 0;
+                else
+                    base.characterMotor.jumpCount = Mathf.Max(origJumpCount, 1);
+            }
             if (pilotController)
             {
                 pilotController.isParachuting = false;
             }
+            if (base.characterMotor && !base.characterMotor.isGrounded) base.characterMotor.jumpCount = 1;
             base.OnExit();
         }
 

@@ -13,6 +13,9 @@ namespace EntityStates.Pilot.Parachute
         private bool detectedWallbounce = false;
         private bool triggeredWallbounce = false;
 
+        private Vector3 forwardCheckDirection;
+        private Vector3 clingPoint;
+
         protected override void CheckStateExit()
         {
             if (!base.isAuthority) return;
@@ -21,6 +24,15 @@ namespace EntityStates.Pilot.Parachute
                 CheckWallBounceExit();
                 return;
             }
+        }
+
+        public override void SetBlinkVector()
+        {
+            base.SetBlinkVector();
+
+            forwardCheckDirection = blinkVector;
+            forwardCheckDirection.y = 0f;
+            forwardCheckDirection.Normalize();
         }
 
         public override void FixedUpdate()
@@ -42,10 +54,10 @@ namespace EntityStates.Pilot.Parachute
         private bool AttemptTriggerWallbounce()
         {
             CheckWallBounce();
-            if (detectedWallbounce && !triggeredWallbounce)
+            if (detectedWallbounce && !triggeredWallbounce && !(base.characterMotor && base.characterMotor.isGrounded))
             {
                 triggeredWallbounce = true;
-                this.outer.SetNextState(new Wallbounce());
+                this.outer.SetNextState(new Wallcling() { clingPoint = this.clingPoint });
                 return true;
             }
 
@@ -55,6 +67,7 @@ namespace EntityStates.Pilot.Parachute
         private void CheckWallBounce()
         {
             if (detectedWallbounce || base.fixedAge < AerobaticsDashEntry.minDurationBeforeWallbounce || !base.characterBody) return;
+
             BulletAttack ForwardCheck = new BulletAttack
             {
                 tracerEffectPrefab = null,
@@ -62,12 +75,12 @@ namespace EntityStates.Pilot.Parachute
                 procCoefficient = 0.1f,
                 damageType = DamageType.Silent | DamageType.NonLethal,
                 owner = base.gameObject,
-                aimVector = blinkVector,
+                aimVector = forwardCheckDirection,
                 isCrit = false,
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = base.characterBody.corePosition,
-                maxDistance = base.characterBody.radius,
+                maxDistance = base.characterBody.radius * 1.5f,
                 muzzleName = null,
                 radius = base.characterBody.radius,
                 hitCallback = CheckWallbounceHitCallback,
@@ -78,8 +91,9 @@ namespace EntityStates.Pilot.Parachute
 
         private bool CheckWallbounceHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
         {
-            if (hitInfo.point != null && !detectedWallbounce)
+            if (!detectedWallbounce && hitInfo.point != null && hitInfo.collider && hitInfo.collider.gameObject.layer == LayerIndex.world.intVal)
             {
+                clingPoint = hitInfo.point;
                 detectedWallbounce = true;
             }
             return BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
