@@ -8,7 +8,7 @@ namespace EntityStates.Pilot.Parachute
     public class Wallcling : BaseState
     {
         public static float jumpExitForce = 5000f;
-        public static float jumpExitVerticalDistanceMult = 0.5f;
+        public static float jumpExitVerticalDistanceMult = 0.7f;
         public static string entrySoundString = "Play_loader_m2_impact";
         public static string jumpExitSoundString = "Play_loader_m1_swing";
         public static SkillDef utilityOverride;
