@@ -14,10 +14,10 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float recoilAmplitude = 1f;
         public static float comboRecoilAmplitude = 2f;
 
-        public static float damageCoefficient = 1.8f;
+        public static float damageCoefficient = 1.6f;
         public static float force = 500f;
 
-        public static float comboDamageCoefficient = 3.6f;
+        public static float comboDamageCoefficient = 3.2f;
         public static float comboForce = 1500f;
         public static float comboBlastRadius = 6f;
 

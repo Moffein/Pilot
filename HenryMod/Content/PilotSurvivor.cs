@@ -229,7 +229,7 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(primarySilencerDef);
             SkillDefs.Primaries.Silencer = primarySilencerDef;
 
-            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef, primarySilencerDef });
+            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef});//, primarySilencerDef Leaving this out until its ready
         }
 
         private void InitSecondaries()

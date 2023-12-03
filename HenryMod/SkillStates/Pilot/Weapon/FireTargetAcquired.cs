@@ -139,7 +139,8 @@ namespace EntityStates.MoffeinPilot.Weapon
                     weapon = base.gameObject,
                     tracerEffectPrefab = tracerEffectPrefab,
                     hitEffectPrefab = hitEffectPrefab,
-                    stopperMask = LayerIndex.world.mask
+                    stopperMask = LayerIndex.world.mask,
+                    maxDistance = 2000f
                 };
                 ba.AddModdedDamageType(DamageTypes.KeepAirborne);
                 ba.Fire();

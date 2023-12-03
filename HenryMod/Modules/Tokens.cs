@@ -16,7 +16,7 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so he vanished, with the skies forever out of reach.");
 
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "Clusterfire");
-            LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>180% damage</style>. Every third hit <style=cIsDamage>explodes</style> and deals <style=cIsDamage>360% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>160% damage</style>. Every third hit <style=cIsDamage>explodes</style> and deals <style=cIsDamage>320% damage</style>.");
 
             LanguageAPI.Add(prefix + "PRIMARY_ALT_NAME", "Rapidfire");
             LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>120% damage</style>. Reload every 25 shots.");
@@ -37,16 +37,16 @@ namespace Pilot.Modules
             LanguageAPI.Add(prefix + "UTILITY_ALT_DESCRIPTION", "<style=cIsUtility>Dash forwards</style> and <style=cIsUtility>cling to a wall</style>. Boost forwards when <style=cIsUtility>jumping off the wall</style>.");
 
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "Air Strike");
-            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "Place leave a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>320% damage</style>. Can trigger <style=cIsDamage>6</style> times. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "Place leave a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>300% damage</style>. Can trigger <style=cIsDamage>6</style> times. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_NAME", "Air Raid");
-            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "Place a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>390% damage</style>. Can trigger <style=cIsDamage>9</style> times. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "Place a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>360% damage</style>. Can trigger <style=cIsDamage>9</style> times. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "SPECIAL_ALT_NAME", "Aerial Support");
-            LanguageAPI.Add(prefix + "SPECIAL_ALT_DESCRIPTION", "Bombard an area for <style=cIsDamage>5x320% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");
+            LanguageAPI.Add(prefix + "SPECIAL_ALT_DESCRIPTION", "Bombard an area for <style=cIsDamage>5x300% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");
 
             LanguageAPI.Add(prefix + "SPECIAL_ALT_SCEPTER_NAME", "Aerial Barrage");
-            LanguageAPI.Add(prefix + "SPECIAL_ALT_SCEPTER_DESCRIPTION", "Bombard an area for <style=cIsDamage>8x320% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");
+            LanguageAPI.Add(prefix + "SPECIAL_ALT_SCEPTER_DESCRIPTION", "Bombard an area for <style=cIsDamage>8x360% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");
         }
     }
 }

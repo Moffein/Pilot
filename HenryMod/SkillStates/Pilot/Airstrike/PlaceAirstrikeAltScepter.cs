@@ -9,7 +9,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
 {
     public class PlaceAirstrikeAltScepter : PlaceAirstrikeAlt
     {
-        public static new float damageCoefficient = 3.9f;
+        public static new float damageCoefficient = 3.6f;
         public static new GameObject projectilePrefab;
 
         protected override float GetDamageCoefficient()
