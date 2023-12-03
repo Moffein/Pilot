@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using RoR2.UI;
 using System;
+using UnityEngine.AddressableAssets;
 
 namespace Pilot.Modules
 {
@@ -26,6 +27,7 @@ namespace Pilot.Modules
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
         internal static AssetBundle pilotAssetBundle;  //TODO SWAP MAINASSETBUNDLE TO THIS
+        public static GameObject EngiMissileIndicatorButRed;
 
         // CHANGE THIS
         private const string assetbundleName = "myassetbundle";
@@ -100,31 +102,8 @@ namespace Pilot.Modules
                 return;
             }
 
-            // feel free to delete everything in here and load in your own assets instead
-            // it should work fine even if left as is- even if the assets aren't in the bundle
-            
-            swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
-
-            bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
-
-            if (bombExplosionEffect)
-            {
-                ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-                shakeEmitter.amplitudeTimeDecay = true;
-                shakeEmitter.duration = 0.5f;
-                shakeEmitter.radius = 200f;
-                shakeEmitter.scaleShakeRadiusWithLocalScale = false;
-
-                shakeEmitter.wave = new Wave
-                {
-                    amplitude = 1f,
-                    frequency = 40f,
-                    cycleOffset = 0f
-                };
-            }
-
-            swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
-            swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+            EngiMissileIndicatorButRed = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion(), "PilotMissileTrackingIndicator", false);
+            EngiMissileIndicatorButRed.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().color = Color.red;
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
