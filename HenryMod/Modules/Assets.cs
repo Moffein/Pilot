@@ -103,7 +103,7 @@ namespace Pilot.Modules
             }
 
             EngiMissileIndicatorButRed = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion(), "PilotMissileTrackingIndicator", false);
-            EngiMissileIndicatorButRed.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().color = Color.red;
+            EngiMissileIndicatorButRed.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().color = new Color32(174, 26, 64, 255);
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
