@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.BulletAttack;
 
-namespace EntityStates.Pilot.Airstrike
+namespace EntityStates.MoffeinPilot.Airstrike
 {
     public class PlaceAirstrike : BaseState
     {

@@ -1,10 +1,10 @@
-﻿using EntityStates.Pilot.Airstrike;
+﻿using EntityStates.MoffeinPilot.Airstrike;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.BulletAttack;
 
-namespace EntityStates.Pilot.Parachute
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class AerobaticsDashEntry : AerobaticsDashBase
     {

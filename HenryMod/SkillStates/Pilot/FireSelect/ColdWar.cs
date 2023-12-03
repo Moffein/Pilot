@@ -8,7 +8,7 @@ using RoR2.Skills;
 using RoR2;
 using RoR2.UI;
 
-namespace EntityStates.Pilot.FireSelect
+namespace EntityStates.MoffeinPilot.FireSelect
 {
     public class ColdWar : BaseState
     {

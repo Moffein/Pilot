@@ -1,4 +1,4 @@
-﻿using EntityStates.Pilot.Airstrike;
+﻿using EntityStates.MoffeinPilot.Airstrike;
 using R2API;
 using RoR2;
 using UnityEngine;

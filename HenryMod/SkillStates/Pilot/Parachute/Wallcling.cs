@@ -1,9 +1,9 @@
-﻿using EntityStates.Pilot.Weapon;
+﻿using EntityStates.MoffeinPilot.Weapon;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 
-namespace EntityStates.Pilot.Parachute
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class Wallcling : BaseState
     {

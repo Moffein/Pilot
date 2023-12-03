@@ -5,7 +5,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Pilot.Airstrike
+namespace EntityStates.MoffeinPilot.Airstrike
 {
     public class PlaceAirstrikeScepter : PlaceAirstrike
     {

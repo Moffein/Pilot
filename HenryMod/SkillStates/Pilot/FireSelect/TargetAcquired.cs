@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EntityStates.Pilot.FireSelect
+namespace EntityStates.MoffeinPilot.FireSelect
 {
     public class TargetAcquired : BaseState
     {

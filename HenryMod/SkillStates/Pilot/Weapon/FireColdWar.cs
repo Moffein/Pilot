@@ -7,7 +7,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Pilot.Weapon
+namespace EntityStates.MoffeinPilot.Weapon
 {
     public class FireColdWar : BaseState
     {

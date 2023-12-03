@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.Pilot.Parachute
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class Glide : BaseState
     {

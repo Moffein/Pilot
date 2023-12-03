@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Pilot.Parachute
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class AerobaticsDashBase : BaseState
     {
@@ -87,7 +87,7 @@ namespace EntityStates.Pilot.Parachute
                 {
                     if (base.inputBank && base.inputBank.jump.justPressed && parachuteMachine)
                     {
-                        this.outer.SetNextState(new EntityStates.Pilot.Parachute.Wavedash()
+                        this.outer.SetNextState(new EntityStates.MoffeinPilot.Parachute.Wavedash()
                         {
                             initialSpeed = this.moveSpeedStat * GetBlinkSpeed() * Mathf.Max(wavedashSpeedMult, AerobaticsDashEntry.minWavedashSpeedMult),
                             entryDirection = blinkVector

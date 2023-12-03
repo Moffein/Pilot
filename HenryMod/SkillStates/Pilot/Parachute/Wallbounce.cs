@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using RoR2.Skills;
 
-namespace EntityStates.Pilot.Parachute
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class Wallbounce : BaseState
     {

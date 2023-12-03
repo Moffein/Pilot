@@ -1,4 +1,4 @@
-﻿using EntityStates.Pilot.Airstrike;
+﻿using EntityStates.MoffeinPilot.Airstrike;
 using Pilot.Content.Components;
 using RoR2;
 using RoR2.Skills;
@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static RoR2.BulletAttack;
 
-namespace EntityStates.Pilot.Weapon
+namespace EntityStates.MoffeinPilot.Weapon
 {
     public class ClusterFire : BaseSkillState, SteppedSkillDef.IStepSetter
     {

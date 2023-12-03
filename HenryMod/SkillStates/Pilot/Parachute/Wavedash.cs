@@ -3,7 +3,7 @@ using RoR2;
 using Pilot.Content.Components;
 using System;
 
-namespace EntityStates.Pilot.Parachute
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class Wavedash : BaseState
     {

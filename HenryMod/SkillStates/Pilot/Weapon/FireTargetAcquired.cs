@@ -6,7 +6,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Pilot.Weapon
+namespace EntityStates.MoffeinPilot.Weapon
 {
     public class FireTargetAcquired : BaseState
     {

@@ -1,9 +1,9 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
-using EntityStates.Pilot.Airstrike;
-using EntityStates.Pilot.FireSelect;
-using EntityStates.Pilot.Parachute;
-using EntityStates.Pilot.Weapon;
+using EntityStates.MoffeinPilot.Airstrike;
+using EntityStates.MoffeinPilot.FireSelect;
+using EntityStates.MoffeinPilot.Parachute;
+using EntityStates.MoffeinPilot.Weapon;
 using Pilot.Content.Components;
 using Pilot.Modules.Characters;
 using RoR2;
@@ -422,7 +422,7 @@ namespace Pilot.Modules.Survivors
             Skills.FixSkillName(utilityAltOverrideDef);
             Pilot.Modules.Content.AddSkillDef(utilityAltOverrideDef);
             SkillDefs.Utilities.Aerobatics2 = utilityAltOverrideDef;
-            EntityStates.Pilot.Parachute.Wallbounce.utilityOverride = utilityAltOverrideDef;
+            EntityStates.MoffeinPilot.Parachute.Wallbounce.utilityOverride = utilityAltOverrideDef;
 
             Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { utilityDef, utilityAltDef });
         }

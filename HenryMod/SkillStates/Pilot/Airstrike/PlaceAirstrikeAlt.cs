@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace EntityStates.Pilot.Airstrike
+namespace EntityStates.MoffeinPilot.Airstrike
 {
     public class PlaceAirstrikeAlt : PlaceAirstrike
     {

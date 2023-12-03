@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
 
-namespace EntityStates.Pilot.Weapon
+namespace EntityStates.MoffeinPilot.Weapon
 {
     public class FireSilencedPistol : BaseState
     {
