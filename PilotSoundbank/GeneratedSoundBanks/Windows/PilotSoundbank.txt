@@ -1,6 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
 	866753787	Play_Pilot_Primary_Cluster_Combo			\Default Work Unit\Play_Pilot_Primary_Cluster_Combo	
 	1302150056	Play_Pilot_Primary_Cluster			\Default Work Unit\Play_Pilot_Primary_Cluster	
+	1987319938	Play_Pilot_Silencer			\Default Work Unit\Play_Pilot_Silencer	
 	2745370195	Play_Pilot_Select			\Default Work Unit\Play_Pilot_Select	
 	2842033976	Play_Pilot_Primary_Rapid			\Default Work Unit\Play_Pilot_Primary_Rapid	
 	3375162600	Play_Pilot_Secondary_FireBurst			\Default Work Unit\Play_Pilot_Secondary_FireBurst	
@@ -14,4 +15,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	353063854	Primary_Cluster	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster		135892
 	372196105	Primary_Rapid	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBanditShoot1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Rapid		104962
 	689986003	wUI_Survivors_Pilot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wUI_Survivors_Pilot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wUI_Survivors_Pilot		154880
+	991900099	wSPistol	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wSPistol_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wSPistol		37312
 

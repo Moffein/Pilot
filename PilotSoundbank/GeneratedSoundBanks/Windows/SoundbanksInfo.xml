@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2624589540" Language="SFX" Hash="3730767099">
+		<SoundBank Id="2624589540" Language="SFX" Hash="2070998286">
 			<ObjectPath>\SoundBanks\Default Work Unit\PilotSoundbank</ObjectPath>
 			<ShortName>PilotSoundbank</ShortName>
 			<Path>PilotSoundbank.bnk</Path>
@@ -58,6 +58,14 @@
 						<File Id="689986003" Language="SFX">
 							<ShortName>wUI_Survivors_Pilot.wav</ShortName>
 							<Path>SFX\wUI_Survivors_Pilot_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1987319938" Name="Play_Pilot_Silencer" ObjectPath="\Events\Default Work Unit\Play_Pilot_Silencer">
+					<IncludedMemoryFiles>
+						<File Id="991900099" Language="SFX">
+							<ShortName>wSPistol.wav</ShortName>
+							<Path>SFX\wSPistol_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

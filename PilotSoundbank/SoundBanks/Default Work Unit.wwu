@@ -8,6 +8,7 @@
 						<ObjectRef Name="Play_Pilot_Primary_Cluster" ID="{CE309C89-DAFD-4143-AB43-D91AB3E3328C}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Pilot_Primary_Cluster_Combo" ID="{2E206A4A-521F-42C6-8B67-E3C915A33E31}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Pilot_Select" ID="{5E622F16-EA2F-4307-8C4F-99473153B7CC}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Pilot_Silencer" ID="{9281A8AC-8136-4381-8988-BBB399BA23A3}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Pilot_Primary_Rapid" ID="{F39257ED-8CA3-448F-BBD4-72E258060256}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Pilot_Secondary_FireBurst" ID="{F98B9D03-4014-4D98-8CA1-F5183F0188B0}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

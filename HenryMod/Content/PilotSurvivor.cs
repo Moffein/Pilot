@@ -203,7 +203,33 @@ namespace Pilot.Modules.Survivors
             Pilot.Modules.Content.AddSkillDef(primaryAltDef);
             SkillDefs.Primaries.RapidFire = primaryAltDef;
 
-            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef });
+            SkillDef primarySilencerDef = ScriptableObject.CreateInstance<SkillDef>();
+            primarySilencerDef.activationState = new SerializableEntityStateType(typeof(FireSilencedPistol));
+            primarySilencerDef.activationStateMachineName = "Weapon";
+            primarySilencerDef.baseMaxStock = 1;
+            primarySilencerDef.baseRechargeInterval = 0f;
+            primarySilencerDef.beginSkillCooldownOnSkillEnd = false;
+            primarySilencerDef.canceledFromSprinting = false;
+            primarySilencerDef.dontAllowPastMaxStocks = true;
+            primarySilencerDef.forceSprintDuringState = false;
+            primarySilencerDef.fullRestockOnAssign = true;
+            primarySilencerDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
+            primarySilencerDef.interruptPriority = InterruptPriority.Skill;
+            primarySilencerDef.isCombatSkill = true;
+            primarySilencerDef.keywordTokens = new string[] { };
+            primarySilencerDef.mustKeyPress = false;
+            primarySilencerDef.cancelSprintingOnActivation = true;
+            primarySilencerDef.rechargeStock = 1;
+            primarySilencerDef.requiredStock = 1;
+            primarySilencerDef.skillName = "PilotPrimarySilencer";
+            primarySilencerDef.skillNameToken = "MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_NAME";
+            primarySilencerDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION";
+            primarySilencerDef.stockToConsume = 1;
+            Skills.FixSkillName(primarySilencerDef);
+            Pilot.Modules.Content.AddSkillDef(primarySilencerDef);
+            SkillDefs.Primaries.Silencer = primarySilencerDef;
+
+            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef, primarySilencerDef });
         }
 
         private void InitSecondaries()
@@ -588,7 +614,8 @@ namespace Pilot.Modules.Survivors
             public static class Primaries
             {
                 public static ReloadSkillDef RapidFire;
-                public static SkillDef ClusterFire;
+                public static SteppedSkillDef ClusterFire;
+                public static SkillDef Silencer;
             }
             public static class Secondaries
             {
