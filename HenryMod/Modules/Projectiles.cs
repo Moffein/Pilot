@@ -23,9 +23,9 @@ namespace MoffeinPilot.Modules
             Content.AddEffectDef(new EffectDef(blastEffectPrefab));
 
             GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion();
-            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 6, 1.5f);
-            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 9, 1f);
-            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltProjectile", ghostPrefab, blastEffectPrefab, detSound, 5, 0.25f);
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 3, 1.5f);
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 6, 1.5f);
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltProjectile", ghostPrefab, blastEffectPrefab, detSound, 4, 0.25f);
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAltScepter.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 8, 0.15f);
 
 

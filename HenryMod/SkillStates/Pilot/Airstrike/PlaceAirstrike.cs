@@ -14,7 +14,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
         public static string muzzleName = "";   //Where the laser effect originates from.
-        public static float damageCoefficient = 3f;   //damage per explosion
+        public static float damageCoefficient = 5f;   //damage per explosion
 
         private bool placedProjectile;
 
