@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Pilot.SkillStates.BaseStates
+namespace MoffeinPilot.SkillStates.BaseStates
 {
     public class BaseMeleeAttack : BaseSkillState
     {

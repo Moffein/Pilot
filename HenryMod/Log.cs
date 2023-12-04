@@ -5,7 +5,7 @@ using System.Security.Permissions;
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
-namespace Pilot
+namespace MoffeinPilot
 {
     internal static class Log
     {

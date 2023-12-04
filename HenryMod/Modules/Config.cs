@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using UnityEngine;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     public static class Config
     {

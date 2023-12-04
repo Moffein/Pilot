@@ -4,7 +4,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     public static class DamageTypes
     {

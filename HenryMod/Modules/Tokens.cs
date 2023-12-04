@@ -1,7 +1,7 @@
 ﻿using R2API;
 using System;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     internal static class Tokens
     {

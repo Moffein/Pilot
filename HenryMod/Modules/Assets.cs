@@ -9,7 +9,7 @@ using RoR2.UI;
 using System;
 using UnityEngine.AddressableAssets;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     internal static class Assets
     {

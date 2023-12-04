@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     internal static class Helpers
     {

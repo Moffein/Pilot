@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 
-namespace Pilot
+namespace MoffeinPilot
 {
     public static class ModCompat
     {

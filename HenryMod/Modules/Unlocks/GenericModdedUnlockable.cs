@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using R2API;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     public abstract class GenericModdedUnlockable : ModdedUnlockable
     {

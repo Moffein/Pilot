@@ -1,4 +1,4 @@
-﻿using Pilot.Content.Components.Projectile;
+﻿using MoffeinPilot.Content.Components.Projectile;
 using R2API;
 using RoR2;
 using RoR2.Projectile;
@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     internal static class Projectiles
     {

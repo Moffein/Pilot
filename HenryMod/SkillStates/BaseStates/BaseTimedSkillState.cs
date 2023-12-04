@@ -1,7 +1,7 @@
 ﻿using EntityStates;
 using System;
 
-namespace Pilot.SkillStates.BaseStates
+namespace MoffeinPilot.SkillStates.BaseStates
 {
     //see example skills below
     public class BaseTimedSkillState : BaseSkillState

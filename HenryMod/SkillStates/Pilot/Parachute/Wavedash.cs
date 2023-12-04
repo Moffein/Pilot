@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using RoR2;
-using Pilot.Content.Components;
+using MoffeinPilot.Content.Components;
 using System;
 
 namespace EntityStates.MoffeinPilot.Parachute

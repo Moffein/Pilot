@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     internal static class ItemDisplays
     {

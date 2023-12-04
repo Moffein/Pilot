@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using System.Collections.Generic;
 
-namespace Pilot.Modules.Characters
+namespace MoffeinPilot.Modules.Characters
 {
     public abstract class ItemDisplaysBase
     {

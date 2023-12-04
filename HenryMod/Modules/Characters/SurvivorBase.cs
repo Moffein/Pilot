@@ -1,12 +1,12 @@
 ﻿using BepInEx.Configuration;
 using RoR2;
 using System;
-using Pilot.Modules.Characters;
+using MoffeinPilot.Modules.Characters;
 using UnityEngine;
 using System.Collections.Generic;
 using RoR2.Skills;
 
-namespace Pilot.Modules.Survivors
+namespace MoffeinPilot.Modules.Survivors
 {
     internal abstract class SurvivorBase : CharacterBase
     {

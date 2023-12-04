@@ -2,9 +2,9 @@
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
-using Pilot.Modules.Characters;
+using MoffeinPilot.Modules.Characters;
 
-namespace Pilot.Modules {
+namespace MoffeinPilot.Modules {
     // module for creating body prefabs and whatnot
     // recommended to simply avoid touching this unless you REALLY need to
     // oh boy do I need to

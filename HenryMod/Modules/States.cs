@@ -1,9 +1,9 @@
-﻿using Pilot.SkillStates;
-using Pilot.SkillStates.BaseStates;
+﻿using MoffeinPilot.SkillStates;
+using MoffeinPilot.SkillStates.BaseStates;
 using System.Collections.Generic;
 using System;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     public static class States
     {

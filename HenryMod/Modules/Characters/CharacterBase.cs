@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pilot.Modules.Characters
+namespace MoffeinPilot.Modules.Characters
 {
     internal abstract class CharacterBase
     {

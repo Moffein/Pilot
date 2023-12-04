@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using Pilot.Modules.Survivors;
+using MoffeinPilot.Modules.Survivors;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Security.Permissions;
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
-namespace Pilot
+namespace MoffeinPilot
 {
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]

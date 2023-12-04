@@ -1,4 +1,4 @@
-﻿using Pilot.Modules;
+﻿using MoffeinPilot.Modules;
 using R2API;
 using RoR2;
 using RoR2.Projectile;

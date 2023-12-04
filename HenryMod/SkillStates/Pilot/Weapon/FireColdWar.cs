@@ -1,6 +1,6 @@
 ﻿using EntityStates;
-using Pilot.Content.Components;
-using Pilot.Modules;
+using MoffeinPilot.Content.Components;
+using MoffeinPilot.Modules;
 using R2API;
 using RoR2;
 using RoR2.Projectile;

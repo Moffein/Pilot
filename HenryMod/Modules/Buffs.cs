@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
     public static class Buffs
     {

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace Pilot.Content.Components.Projectile
+namespace MoffeinPilot.Content.Components.Projectile
 {
     public class AirStrikeDamageComponent : MonoBehaviour
     {

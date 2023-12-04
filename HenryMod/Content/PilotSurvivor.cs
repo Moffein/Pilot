@@ -4,8 +4,8 @@ using EntityStates.MoffeinPilot.Airstrike;
 using EntityStates.MoffeinPilot.FireSelect;
 using EntityStates.MoffeinPilot.Parachute;
 using EntityStates.MoffeinPilot.Weapon;
-using Pilot.Content.Components;
-using Pilot.Modules.Characters;
+using MoffeinPilot.Content.Components;
+using MoffeinPilot.Modules.Characters;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -14,7 +14,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Pilot.Modules.Survivors
+namespace MoffeinPilot.Modules.Survivors
 {
     internal class PilotSurvivor : SurvivorBase
     {
@@ -171,7 +171,7 @@ namespace Pilot.Modules.Survivors
             primaryDef.stockToConsume = 1;
             primaryDef.stepCount = 3;
             Skills.FixSkillName(primaryDef);
-            Pilot.Modules.Content.AddSkillDef(primaryDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(primaryDef);
             SkillDefs.Primaries.ClusterFire = primaryDef;
 
             ReloadSkillDef primaryAltDef = ScriptableObject.CreateInstance<ReloadSkillDef>();
@@ -200,7 +200,7 @@ namespace Pilot.Modules.Survivors
             primaryAltDef.reloadState = new SerializableEntityStateType(typeof(ReloadRapidFire));
             primaryAltDef.graceDuration = 0.4f;
             Skills.FixSkillName(primaryAltDef);
-            Pilot.Modules.Content.AddSkillDef(primaryAltDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(primaryAltDef);
             SkillDefs.Primaries.RapidFire = primaryAltDef;
 
             SkillDef primarySilencerDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -226,7 +226,7 @@ namespace Pilot.Modules.Survivors
             primarySilencerDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION";
             primarySilencerDef.stockToConsume = 1;
             Skills.FixSkillName(primarySilencerDef);
-            Pilot.Modules.Content.AddSkillDef(primarySilencerDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(primarySilencerDef);
             SkillDefs.Primaries.Silencer = primarySilencerDef;
 
             Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef});//, primarySilencerDef Leaving this out until its ready
@@ -257,7 +257,7 @@ namespace Pilot.Modules.Survivors
             secondaryDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION";
             secondaryDef.stockToConsume = 0;    //Toggling doesn't consume stocks
             Skills.FixSkillName(secondaryDef);
-            Pilot.Modules.Content.AddSkillDef(secondaryDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(secondaryDef);
             SkillDefs.Secondaries.TargetAcquired = secondaryDef;
 
             SkillDef secondaryOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -283,7 +283,7 @@ namespace Pilot.Modules.Survivors
             secondaryOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION";
             secondaryOverrideDef.stockToConsume = 1;
             Skills.FixSkillName(secondaryOverrideDef);
-            Pilot.Modules.Content.AddSkillDef(secondaryOverrideDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(secondaryOverrideDef);
             SkillDefs.Secondaries.FireTargetAcquired = secondaryOverrideDef;
             TargetAcquired.primaryOverride = secondaryOverrideDef;
 
@@ -310,7 +310,7 @@ namespace Pilot.Modules.Survivors
             secondaryAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION";
             secondaryAltDef.stockToConsume = 0;    //Toggling doesn't consume stocks
             Skills.FixSkillName(secondaryAltDef);
-            Pilot.Modules.Content.AddSkillDef(secondaryAltDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(secondaryAltDef);
             SkillDefs.Secondaries.ColdWar = secondaryAltDef;
 
             SkillDef secondaryAltOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -336,7 +336,7 @@ namespace Pilot.Modules.Survivors
             secondaryAltOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION";
             secondaryAltOverrideDef.stockToConsume = 1;
             Skills.FixSkillName(secondaryAltOverrideDef);
-            Pilot.Modules.Content.AddSkillDef(secondaryAltOverrideDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(secondaryAltOverrideDef);
             SkillDefs.Secondaries.FireColdWar = secondaryAltOverrideDef;
             ColdWar.primaryOverride = secondaryAltOverrideDef;
 
@@ -368,7 +368,7 @@ namespace Pilot.Modules.Survivors
             utilityDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION";
             utilityDef.stockToConsume = 1;
             Skills.FixSkillName(utilityDef);
-            Pilot.Modules.Content.AddSkillDef(utilityDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(utilityDef);
             SkillDefs.Utilities.RapidDeployment = utilityDef;
 
             SkillDef utilityAltDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -394,7 +394,7 @@ namespace Pilot.Modules.Survivors
             utilityAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION";
             utilityAltDef.stockToConsume = 1;
             Skills.FixSkillName(utilityAltDef);
-            Pilot.Modules.Content.AddSkillDef(utilityAltDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(utilityAltDef);
             SkillDefs.Utilities.Aerobatics = utilityAltDef;
 
             SkillDef utilityAltOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -420,7 +420,7 @@ namespace Pilot.Modules.Survivors
             utilityAltOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION";
             utilityAltOverrideDef.stockToConsume = 1;
             Skills.FixSkillName(utilityAltOverrideDef);
-            Pilot.Modules.Content.AddSkillDef(utilityAltOverrideDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(utilityAltOverrideDef);
             SkillDefs.Utilities.Aerobatics2 = utilityAltOverrideDef;
             EntityStates.MoffeinPilot.Parachute.Wallbounce.utilityOverride = utilityAltOverrideDef;
 
@@ -452,7 +452,7 @@ namespace Pilot.Modules.Survivors
             specialDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_DESCRIPTION";
             specialDef.stockToConsume = 1;
             Skills.FixSkillName(specialDef);
-            Pilot.Modules.Content.AddSkillDef(specialDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(specialDef);
             SkillDefs.Specials.Airstrike = specialDef;
 
             SkillDef specialScepterDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -478,7 +478,7 @@ namespace Pilot.Modules.Survivors
             specialScepterDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_SCEPTER_DESCRIPTION";
             specialScepterDef.stockToConsume = 1;
             Skills.FixSkillName(specialScepterDef);
-            Pilot.Modules.Content.AddSkillDef(specialScepterDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(specialScepterDef);
             SkillDefs.Specials.AirstrikeScepter = specialScepterDef;
 
 
@@ -505,7 +505,7 @@ namespace Pilot.Modules.Survivors
             specialAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_ALT_DESCRIPTION";
             specialAltDef.stockToConsume = 1;
             Skills.FixSkillName(specialAltDef);
-            Pilot.Modules.Content.AddSkillDef(specialAltDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(specialAltDef);
             SkillDefs.Specials.AerialSupport = specialAltDef;
 
             SkillDef specialAltScepterDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -531,7 +531,7 @@ namespace Pilot.Modules.Survivors
             specialAltScepterDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SPECIAL_ALT_SCEPTER_DESCRIPTION";
             specialAltScepterDef.stockToConsume = 1;
             Skills.FixSkillName(specialAltScepterDef);
-            Pilot.Modules.Content.AddSkillDef(specialAltScepterDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(specialAltScepterDef);
             SkillDefs.Specials.AerialSupportScepter = specialAltScepterDef;
 
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { specialDef, specialAltDef });

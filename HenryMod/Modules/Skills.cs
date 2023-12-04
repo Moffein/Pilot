@@ -3,10 +3,10 @@ using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using Pilot;
+using MoffeinPilot;
 using UnityEngine;
 
-namespace Pilot.Modules
+namespace MoffeinPilot.Modules
 {
 
     internal static class Skills
@@ -42,7 +42,7 @@ namespace Pilot.Modules
 
             skill._skillFamily = newFamily;
 
-            Pilot.Modules.Content.AddSkillFamily(newFamily);
+            MoffeinPilot.Modules.Content.AddSkillFamily(newFamily);
             return skill;
         }
         #endregion
@@ -145,7 +145,7 @@ namespace Pilot.Modules
 
             skillDef.keywordTokens = skillDefInfo.keywordTokens;
 
-            Pilot.Modules.Content.AddSkillDef(skillDef);
+            MoffeinPilot.Modules.Content.AddSkillDef(skillDef);
 
 
             return skillDef;
