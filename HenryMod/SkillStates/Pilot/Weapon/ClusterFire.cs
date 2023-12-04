@@ -19,7 +19,7 @@ namespace EntityStates.MoffeinPilot.Weapon
 
         public static float comboDamageCoefficient = 3.2f;
         public static float comboForce = 1500f;
-        public static float comboBlastRadius = 6f;
+        public static float comboBlastRadius = 7f;
 
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;

@@ -9,7 +9,7 @@ namespace EntityStates.MoffeinPilot.Weapon
     {
         public static string startSoundString = "Play_commando_M2_grenade_throw";
         public static string endSoundString = "Play_captain_m1_reload";
-        public static float baseDuration = 1.4f;
+        public static float baseDuration = 1.1f;
 
         private float duration;
 
