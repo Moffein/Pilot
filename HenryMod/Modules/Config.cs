@@ -7,7 +7,9 @@ namespace Pilot.Modules
     {
         public static void ReadConfig()
         {
+            EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend = PilotPlugin.instance.Config.Bind("Controls", "Rapid Deployment - Hold to Ascend", false, "Rapid Deployment requires you to hold the Utility button to ascend, and ends early if you let go.");
 
+            ModCompat.SetupOptions();
         }
 
         // this helper automatically makes config entries for disabling survivors

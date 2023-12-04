@@ -1,9 +1,11 @@
-﻿using RoR2;
+﻿using RiskOfOptions;
+using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+using UnityEngine;
 
 namespace Pilot
 {
@@ -29,5 +31,18 @@ namespace Pilot
         {
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterSkill, bodyName, skillSlot, skillIndex);
         }
+
+        public static void SetupOptions()
+        {
+            if (RiskOfOptionsLoaded) SetupOptionsInternal();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static void SetupOptionsInternal()
+        {
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend));
+            ModSettingsManager.SetModIcon(Modules.Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotPortrait_0"));
+        }
+
     }
 }

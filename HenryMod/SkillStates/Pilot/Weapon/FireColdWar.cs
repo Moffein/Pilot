@@ -17,7 +17,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float force = 450f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;
-        public static string attackSoundString = "Play_Pilot_Secondary_FireBurst";
+        public static string attackSoundString = "Play_Pilot_Secondary_FireAlt";
         public static int baseShotCount = 3;
         public static string muzzleString = "";
         public static float spreadBloom = 0f;

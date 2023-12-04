@@ -1,4 +1,5 @@
-﻿using Pilot.Content.Components;
+﻿using BepInEx.Configuration;
+using Pilot.Content.Components;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace EntityStates.MoffeinPilot.Parachute
         public static float boostVelocity = 18f;
         public static float stopAscentVelocity = 12f;
 
+        public static float minDuration = 0.3f;
+        public static ConfigEntry<bool> holdToAscend;
 
         public static float stunRadius = 12f;
         public static string deploySoundString = "Play_bandit2_shift_exit";
@@ -70,7 +73,29 @@ namespace EntityStates.MoffeinPilot.Parachute
         {
             base.FixedUpdate();
 
-            if (!stopAscent&& base.characterMotor)
+            HandleMotion();
+
+            if (base.isAuthority)
+            {
+                if (base.healthComponent && base.healthComponent.isInFrozenState)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+
+                //bool isFalling = base.fixedAge >= DeployParachute.minDuration && base.characterMotor && base.characterMotor.velocity.y <= 0f;
+                if (base.fixedAge >= DeployParachute.baseDuration || stopAscent)
+                {
+                    this.outer.SetNextState(new Glide());
+                    return;
+                }
+            }
+        }
+
+        private void HandleMotion()
+        {
+
+            if (!stopAscent && base.characterMotor)
             {
                 if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
 
@@ -90,22 +115,13 @@ namespace EntityStates.MoffeinPilot.Parachute
                     //Could probably skipped if a VelocityCurve was set up.
                     stopAscent = true;
                     base.SmallHop(base.characterMotor, DeployParachute.stopAscentVelocity);
-                }
-            }
-
-            if (base.isAuthority)
-            {
-                if (base.healthComponent && base.healthComponent.isInFrozenState)
-                {
-                    this.outer.SetNextStateToMain();
                     return;
                 }
 
-                //bool isFalling = base.fixedAge >= DeployParachute.minDuration && base.characterMotor && base.characterMotor.velocity.y <= 0f;
-                if (base.fixedAge >= DeployParachute.baseDuration || stopAscent)
+                if (base.isAuthority && DeployParachute.holdToAscend.Value && base.fixedAge > DeployParachute.minDuration && base.inputBank && !base.inputBank.skill3.down)
                 {
-                    this.outer.SetNextState(new Glide());
-                    return;
+                    stopAscent = true;
+                    base.SmallHop(base.characterMotor, DeployParachute.stopAscentVelocity);
                 }
             }
         }
