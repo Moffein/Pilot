@@ -2,13 +2,14 @@
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EntityStates.MoffeinPilot.Parachute
 {
     public class Wallcling : BaseState
     {
-        public static float jumpExitForce = 5000f;
-        public static float jumpExitVerticalDistanceMult = 0.7f;
+        public static float jumpExitForce = 7000f;
+        public static float jumpExitVerticalDistanceMult = 0.5f;
         public static string entrySoundString = "Play_loader_m2_impact";
         public static string jumpExitSoundString = "Play_loader_m1_swing";
         public static SkillDef utilityOverride;
@@ -21,6 +22,7 @@ namespace EntityStates.MoffeinPilot.Parachute
         public override void OnEnter()
         {
             base.OnEnter();
+            if (base.characterBody && base.characterBody.isSprinting) base.characterBody.isSprinting = false;
 
             Util.PlaySound(entrySoundString, base.gameObject);
 
@@ -49,6 +51,12 @@ namespace EntityStates.MoffeinPilot.Parachute
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            //Works but the mushroom ward spawns on the ground, jank.
+            //if (NetworkServer.active && base.characterBody && base.characterBody.notMovingStopwatch < 1f) base.characterBody.notMovingStopwatch = 1f;
+
+            if (base.characterBody && base.characterBody.isSprinting) base.characterBody.isSprinting = false;
+
             if (base.isAuthority)
             {
                 bool isGrounded = false;
@@ -91,6 +99,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             {
                 this.overriddenSkill.UnsetSkillOverride(this, Wallbounce.utilityOverride, GenericSkill.SkillOverridePriority.Contextual);
             }*/
+            if (base.characterBody && !base.characterBody.isSprinting) base.characterBody.isSprinting = true;
 
             if (base.characterMotor)
             {

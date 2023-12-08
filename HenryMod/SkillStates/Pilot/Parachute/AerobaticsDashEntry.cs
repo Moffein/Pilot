@@ -8,7 +8,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 {
     public class AerobaticsDashEntry : AerobaticsDashBase
     {
-        public static float minDurationBeforeWallbounce = 0.06f;
+        public static float minDurationBeforeWallcling = 0.06f;
 
         private bool detectedWallbounce = false;
         private bool triggeredWallbounce = false;
@@ -39,21 +39,21 @@ namespace EntityStates.MoffeinPilot.Parachute
         {
             if (base.isAuthority)
             {
-                if (AttemptTriggerWallbounce()) return;
+                if (AttemptTriggerWallCling()) return;
             }
             base.FixedUpdate();
         }
 
         private void CheckWallBounceExit()
         {
-            if (!AttemptTriggerWallbounce())
+            if (!AttemptTriggerWallCling())
                 this.outer.SetNextStateToMain();
             return;
         }
 
-        private bool AttemptTriggerWallbounce()
+        private bool AttemptTriggerWallCling()
         {
-            CheckWallBounce();
+            CheckWallCling();
             if (detectedWallbounce && !triggeredWallbounce && !(base.characterMotor && base.characterMotor.isGrounded))
             {
                 triggeredWallbounce = true;
@@ -64,9 +64,9 @@ namespace EntityStates.MoffeinPilot.Parachute
             return false;
         }
 
-        private void CheckWallBounce()
+        private void CheckWallCling()
         {
-            if (detectedWallbounce || base.fixedAge < AerobaticsDashEntry.minDurationBeforeWallbounce || !base.characterBody) return;
+            if (detectedWallbounce || base.fixedAge < AerobaticsDashEntry.minDurationBeforeWallcling || !base.characterBody) return;
             
             //BodyRadius 0.5
             BulletAttack ForwardCheck = new BulletAttack
@@ -81,7 +81,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = base.characterBody.corePosition,
-                maxDistance = 0.75f,
+                maxDistance = 2f,
                 muzzleName = null,
                 radius = 0.5f,
                 hitCallback = CheckWallbounceHitCallback,
