@@ -57,7 +57,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (detectedWallbounce && !triggeredWallbounce && !(base.characterMotor && base.characterMotor.isGrounded))
             {
                 triggeredWallbounce = true;
-                this.outer.SetNextState(new Wallcling() { clingPoint = this.clingPoint });
+                this.outer.SetNextState(new Wallcling() { clingPoint = this.clingPoint, clingStartDirection = forwardCheckDirection });
                 return true;
             }
 
@@ -81,7 +81,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 minSpread = 0f,
                 maxSpread = 0f,
                 origin = base.characterBody.corePosition,
-                maxDistance = 0.75f,
+                maxDistance = 1f,
                 muzzleName = null,
                 radius = 0.5f,
                 hitCallback = CheckWallbounceHitCallback,
