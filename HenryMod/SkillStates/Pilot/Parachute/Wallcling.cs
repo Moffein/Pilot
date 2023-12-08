@@ -67,9 +67,14 @@ namespace EntityStates.MoffeinPilot.Parachute
                 }
 
                 //bool outOfStock = overriddenSkill && !(base.skillLocator && base.skillLocator.utility && base.skillLocator.utility.stock > 0);
-                if (jumpExit || isGrounded) //|| outOfStock
+                if (isGrounded) //|| outOfStock
                 {
                     this.outer.SetNextStateToMain();
+                    return;
+                }
+                else if (jumpExit)
+                {
+                    this.outer.SetNextState(new AirSpeedBoost());
                     return;
                 }
             }

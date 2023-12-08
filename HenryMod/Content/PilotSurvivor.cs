@@ -174,10 +174,10 @@ namespace MoffeinPilot.Modules.Survivors
             MoffeinPilot.Modules.Content.AddSkillDef(primaryDef);
             SkillDefs.Primaries.ClusterFire = primaryDef;
 
-            ReloadSkillDef primaryAltDef = ScriptableObject.CreateInstance<ReloadSkillDef>();
+            SkillDef primaryAltDef = ScriptableObject.CreateInstance<SkillDef>();
             primaryAltDef.activationState = new SerializableEntityStateType(typeof(RapidFire));
             primaryAltDef.activationStateMachineName = "Weapon";
-            primaryAltDef.baseMaxStock = 30;
+            primaryAltDef.baseMaxStock = 1;
             primaryAltDef.baseRechargeInterval = 0f;
             primaryAltDef.beginSkillCooldownOnSkillEnd = false;
             primaryAltDef.canceledFromSprinting = false;
@@ -190,15 +190,15 @@ namespace MoffeinPilot.Modules.Survivors
             primaryAltDef.keywordTokens = new string[] { };
             primaryAltDef.mustKeyPress = false;
             primaryAltDef.cancelSprintingOnActivation = true;
-            primaryAltDef.rechargeStock = 0;
+            primaryAltDef.rechargeStock = 1;
             primaryAltDef.requiredStock = 1;
             primaryAltDef.skillName = "PilotPrimaryAlt";
             primaryAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_PRIMARY_ALT_NAME";
             primaryAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION";
             primaryAltDef.stockToConsume = 1;
-            primaryAltDef.reloadInterruptPriority = InterruptPriority.Any;
-            primaryAltDef.reloadState = new SerializableEntityStateType(typeof(ReloadRapidFire));
-            primaryAltDef.graceDuration = 0.4f;
+            //primaryAltDef.reloadInterruptPriority = InterruptPriority.Any;
+            //primaryAltDef.reloadState = new SerializableEntityStateType(typeof(ReloadRapidFire));
+            //primaryAltDef.graceDuration = 0.4f;
             Skills.FixSkillName(primaryAltDef);
             MoffeinPilot.Modules.Content.AddSkillDef(primaryAltDef);
             SkillDefs.Primaries.RapidFire = primaryAltDef;
@@ -397,6 +397,7 @@ namespace MoffeinPilot.Modules.Survivors
             MoffeinPilot.Modules.Content.AddSkillDef(utilityAltDef);
             SkillDefs.Utilities.Aerobatics = utilityAltDef;
 
+            //Unused
             SkillDef utilityAltOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
             utilityAltOverrideDef.activationState = new SerializableEntityStateType(typeof(AerobaticsDashBase));
             utilityAltOverrideDef.activationStateMachineName = "Parachute";
@@ -613,7 +614,7 @@ namespace MoffeinPilot.Modules.Survivors
         {
             public static class Primaries
             {
-                public static ReloadSkillDef RapidFire;
+                public static SkillDef RapidFire;
                 public static SteppedSkillDef ClusterFire;
                 public static SkillDef Silencer;
             }

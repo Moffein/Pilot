@@ -23,8 +23,9 @@ namespace MoffeinPilot.Modules
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Glide));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.AerobaticsDashBase));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.AerobaticsDashEntry));
-            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wallbounce));
+            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wallbounce));  //unused
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wallcling));
+            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.AirSpeedBoost));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wavedash));
 
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.PlaceAirstrike));

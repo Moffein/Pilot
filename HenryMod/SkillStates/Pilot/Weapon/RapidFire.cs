@@ -10,9 +10,9 @@ namespace EntityStates.MoffeinPilot.Weapon
 		//Railgunner 300 for 5 shots per second
 		public static float selfKnockbackForce = 0f;
 
-		public static float damageCoefficient = 1.2f;
+		public static float damageCoefficient = 1.4f;
 		public static float force = 200f;
-		public static float baseDuration = 0.071f;	//0.12f for Returns duration
+		public static float baseDuration = 0.12f;	//0.12f for Returns duration
         public static float spreadBloomValue = 0.5f;
 		public static float recoilAmplitude = 1f;
 		public static string attackSoundString = "Play_Pilot_Primary_Rapid";
