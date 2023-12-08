@@ -177,7 +177,7 @@ namespace MoffeinPilot.Modules.Survivors
             ReloadSkillDef primaryAltDef = ScriptableObject.CreateInstance<ReloadSkillDef>();
             primaryAltDef.activationState = new SerializableEntityStateType(typeof(RapidFire));
             primaryAltDef.activationStateMachineName = "Weapon";
-            primaryAltDef.baseMaxStock = 25;
+            primaryAltDef.baseMaxStock = 30;
             primaryAltDef.baseRechargeInterval = 0f;
             primaryAltDef.beginSkillCooldownOnSkillEnd = false;
             primaryAltDef.canceledFromSprinting = false;
