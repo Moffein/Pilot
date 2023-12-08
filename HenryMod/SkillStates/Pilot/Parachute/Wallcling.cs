@@ -7,8 +7,8 @@ namespace EntityStates.MoffeinPilot.Parachute
 {
     public class Wallcling : BaseState
     {
-        public static float jumpExitSpeed = 12f;
-        public static float jumpExitVerticalMult = 0.7f;
+        public static float jumpExitForce = 5000f;
+        public static float jumpExitVerticalDistanceMult = 0.7f;
         public static string entrySoundString = "Play_loader_m2_impact";
         public static string jumpExitSoundString = "Play_loader_m1_swing";
         public static SkillDef utilityOverride;
@@ -17,7 +17,6 @@ namespace EntityStates.MoffeinPilot.Parachute
         private bool jumpExit = false;
         private Vector3 initialPosition;
         public Vector3 clingPoint;
-        public Vector3 clingStartDirection;
 
         public override void OnEnter()
         {
@@ -75,22 +74,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 }
                 else if (jumpExit)
                 {
-                    Util.PlaySound(jumpExitSoundString, base.gameObject);
-                    if (base.characterMotor)
-                    {
-                        base.characterMotor.disableAirControlUntilCollision = false;
-                        base.characterMotor.jumpCount = base.characterMotor.isGrounded ? 0 : 1;
-                    }
-
-                    Vector3 exitDirection = base.GetAimRay().direction;
-                    
-
-                    this.outer.SetNextState(new WavedashWallcling()
-                    {
-                        entryDirection = exitDirection,
-                        clingStartDirection = this.clingStartDirection,
-                        initialSpeed = jumpExitSpeed * this.moveSpeedStat
-                    });
+                    this.outer.SetNextState(new AirSpeedBoost());
                     return;
                 }
             }
@@ -107,6 +91,25 @@ namespace EntityStates.MoffeinPilot.Parachute
             {
                 this.overriddenSkill.UnsetSkillOverride(this, Wallbounce.utilityOverride, GenericSkill.SkillOverridePriority.Contextual);
             }*/
+
+            if (base.characterMotor)
+            {
+                base.characterMotor.disableAirControlUntilCollision = false;
+                base.characterMotor.jumpCount = base.characterMotor.isGrounded ? 0 : 1;
+
+                if (base.isAuthority && jumpExit)
+                {
+                    Util.PlaySound(jumpExitSoundString, base.gameObject);
+
+                    Vector3 jumpForce = base.GetAimRay().direction;
+                    if (jumpForce.y < 0.25f) jumpForce.y = 0.25f;
+                    jumpForce.Normalize();
+                    jumpForce *= Wallcling.jumpExitForce;
+                    jumpForce.y *= Wallcling.jumpExitVerticalDistanceMult;
+
+                    base.characterMotor.ApplyForce(jumpForce, true, false);
+                }
+            }
 
             base.OnExit();
         }
