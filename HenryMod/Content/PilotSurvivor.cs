@@ -114,13 +114,71 @@ namespace MoffeinPilot.Modules.Survivors
             }
         }
 
-        public override void InitializeDoppelganger()
+        private void InitializeDoppelgangerAfterSkills()
         {
-            GameObject doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "MoffeinPilotMonsterMaster", true);
+            GameObject doppelganger = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoMonsterMaster.prefab").WaitForCompletion(), "MoffeinPilotMonsterMaster", true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
             Modules.Prefabs.RemoveAISkillDrivers(doppelganger);
 
-            Modules.Prefabs.AddAISkillDriver(doppelganger, "Secondary", SkillSlot.Secondary, null,
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Primary", SkillSlot.Primary, SkillDefs.Secondaries.FireTargetAcquired,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 40f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, true, true,
+                AISkillDriver.MovementType.StrafeMovetarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Primary", SkillSlot.Primary, SkillDefs.Secondaries.FireColdWar,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 40f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, true, true,
+                AISkillDriver.MovementType.StrafeMovetarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Secondary", SkillSlot.Secondary, SkillDefs.Secondaries.TargetAcquired,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 40f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, true, false,
+                AISkillDriver.MovementType.StrafeMovetarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Secondary", SkillSlot.Secondary, SkillDefs.Secondaries.ColdWar,
                 true, false,
                 Mathf.NegativeInfinity, Mathf.Infinity,
                 Mathf.NegativeInfinity, Mathf.Infinity,
@@ -260,6 +318,8 @@ namespace MoffeinPilot.Modules.Survivors
             InitSecondaries();
             InitUtilities();
             InitSpecials();
+
+            InitializeDoppelgangerAfterSkills();
         }
 
         private void InitPrimaries()
