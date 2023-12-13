@@ -42,7 +42,7 @@ namespace MoffeinPilot.Modules.Characters
             InitializeSkins();
             InitializeItemDisplays();
 
-            InitializeDoppelganger("Merc");
+            InitializeDoppelganger();
         }
 
         protected virtual void InitializeCharacterBodyAndModel()
@@ -79,9 +79,8 @@ namespace MoffeinPilot.Modules.Characters
 
         public virtual void InitializeSkins() { }
 
-        public virtual void InitializeDoppelganger(string clone)
+        public virtual void InitializeDoppelganger()
         {
-            Modules.Prefabs.CreateGenericDoppelganger(bodyPrefab, bodyInfo.bodyName + "MonsterMaster", clone);
         }
 
         public virtual void InitializeItemDisplays()
