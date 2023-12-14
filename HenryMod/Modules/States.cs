@@ -1,7 +1,4 @@
-﻿using MoffeinPilot.SkillStates;
-using MoffeinPilot.SkillStates.BaseStates;
-using System.Collections.Generic;
-using System;
+﻿using MoffeinPilot.SkillStates.BaseStates;
 
 namespace MoffeinPilot.Modules
 {
@@ -23,17 +20,15 @@ namespace MoffeinPilot.Modules
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Glide));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.AerobaticsDashBase));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.AerobaticsDashEntry));
-            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wallbounce));  //unused
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wallcling));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.AirSpeedBoost));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.Wavedash));
+            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Parachute.DashGround));
 
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.PlaceAirstrike));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeScepter));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAltScepter));
-            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.DashGround));    //unused
-            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Airstrike.DashAir));   //unused
         }
     }
 }

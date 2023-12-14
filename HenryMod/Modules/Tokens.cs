@@ -25,10 +25,10 @@ namespace MoffeinPilot.Modules
             LanguageAPI.Add(prefix + "PRIMARY_SILENCER_DESCRIPTION", "Fire your silenced pistol for <style=cIsDamage>200% damage</style>.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "Target Acquired!");
-            LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing smartgun</style> that deals <style=cIsDamage>3x200% damage</style>. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing smartgun</style> that deals <style=cIsDamage>3x190% damage</style>. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "SECONDARY_ALT_NAME", "Bombs Away!");
-            LanguageAPI.Add(prefix + "SECONDARY_ALT_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>energy grenade launcher</style> that deals <style=cIsDamage>3x200% damage</style>. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SECONDARY_ALT_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>energy grenade launcher</style> that deals <style=cIsDamage>3x190% damage</style>. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "UTILITY_NAME", "Rapid Deployment");
             LanguageAPI.Add(prefix + "UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Launch into the air and <style=cIsUtility>activate your parachute</style>.");
@@ -37,10 +37,10 @@ namespace MoffeinPilot.Modules
             LanguageAPI.Add(prefix + "UTILITY_ALT_DESCRIPTION", "<style=cIsUtility>Dash forwards</style> and <style=cIsUtility>cling to a wall</style>. Boost forwards when <style=cIsUtility>jumping off the wall</style>.");
 
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "Air Strike");
-            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "Place a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>500% damage</style>. Can trigger <style=cIsDamage>3</style> times. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SPECIAL_DESCRIPTION", "<style=cIsUtility>Dash</style> and place a bomb <style=cIsDamage>at your feet</style> that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>600% damage</style>. Can trigger <style=cIsDamage>3</style> times. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_NAME", "Air Raid");
-            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "Place a bomb that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>750% damage</style>. Can trigger <style=cIsDamage>6</style> times. Hold up to 2.");
+            LanguageAPI.Add(prefix + "SPECIAL_SCEPTER_DESCRIPTION", "<style=cIsUtility>Dash</style> and place a bomb <style=cIsDamage>at your feet</style> that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>800% damage</style>. Can trigger <style=cIsDamage>6</style> times. Hold up to 2.");
 
             LanguageAPI.Add(prefix + "SPECIAL_ALT_NAME", "Aerial Support");
             LanguageAPI.Add(prefix + "SPECIAL_ALT_DESCRIPTION", "Bombard an area for <style=cIsDamage>4x400% damage</style>, <style=cIsDamage>knocking enemies into the air</style> on the final hit.");

@@ -14,7 +14,8 @@ namespace EntityStates.MoffeinPilot.Airstrike
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
         public static string muzzleName = "";   //Where the laser effect originates from.
-        public static float damageCoefficient = 5f;   //damage per explosion
+        public static float damageCoefficient = 6f;   //damage per explosion
+        public static float baseDuration = 0.21f;   //Slightly longer than DashGround duration so you dont whiff dashes
 
         private bool placedProjectile;
 
@@ -28,25 +29,27 @@ namespace EntityStates.MoffeinPilot.Airstrike
             {
                 PlaceProjectile();
 
-                /*bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
+                bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
                 if (shouldBlink)
                 {
-                    this.outer.SetNextState(new DashGround());
-                    return;
+                    EntityStateMachine parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");
+                    if (parachuteMachine && parachuteMachine.state.GetMinimumInterruptPriority() <= InterruptPriority.Any)
+                    {
+                        parachuteMachine.SetNextState(new EntityStates.MoffeinPilot.Parachute.DashGround());
+                    }
                 }
                 else if (!isGrounded)
                 {
-                    //this.outer.SetNextState(new DashAir());
                     if (base.characterMotor) base.SmallHop(base.characterMotor, 24f);
-                    this.outer.SetNextStateToMain();
-                    return;
                 }
-                else
-                {
-                    this.outer.SetNextStateToMain();
-                    return;
-                }*/
-                if (base.characterMotor && !base.characterMotor.isGrounded) base.SmallHop(base.characterMotor, 24f);
+            }
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (base.fixedAge >= PlaceAirstrike.baseDuration)
+            {
                 this.outer.SetNextStateToMain();
                 return;
             }
@@ -73,7 +76,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
                 procCoefficient = 0f,
                 damageType = DamageType.Silent | DamageType.NonLethal,
                 owner = base.gameObject,
-                aimVector = aimRay.direction,
+                aimVector = Vector3.down,//aimRay.direction,
                 isCrit = false,
                 minSpread = 0f,
                 maxSpread = 0f,
@@ -81,7 +84,8 @@ namespace EntityStates.MoffeinPilot.Airstrike
                 maxDistance = 2000f,
                 muzzleName = PlaceAirstrike.muzzleName,
                 radius = 0.2f,
-                hitCallback = AirstrikeHitCallback
+                hitCallback = AirstrikeHitCallback,
+                stopperMask = LayerIndex.world.mask
             };
             ba.Fire();
         }

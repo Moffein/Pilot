@@ -574,34 +574,6 @@ namespace MoffeinPilot.Modules.Survivors
             MoffeinPilot.Modules.Content.AddSkillDef(utilityAltDef);
             SkillDefs.Utilities.Aerobatics = utilityAltDef;
 
-            //Unused
-            SkillDef utilityAltOverrideDef = ScriptableObject.CreateInstance<SkillDef>();
-            utilityAltOverrideDef.activationState = new SerializableEntityStateType(typeof(AerobaticsDashBase));
-            utilityAltOverrideDef.activationStateMachineName = "Parachute";
-            utilityAltOverrideDef.baseMaxStock = 1;
-            utilityAltOverrideDef.baseRechargeInterval = 0f;
-            utilityAltOverrideDef.beginSkillCooldownOnSkillEnd = false;
-            utilityAltOverrideDef.canceledFromSprinting = false;
-            utilityAltOverrideDef.dontAllowPastMaxStocks = true;
-            utilityAltOverrideDef.forceSprintDuringState = true;
-            utilityAltOverrideDef.fullRestockOnAssign = false;
-            utilityAltOverrideDef.icon = Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotSkills_6a");
-            utilityAltOverrideDef.interruptPriority = InterruptPriority.Any;
-            utilityAltOverrideDef.isCombatSkill = false;
-            utilityAltOverrideDef.keywordTokens = new string[] { };
-            utilityAltOverrideDef.mustKeyPress = true;
-            utilityAltOverrideDef.cancelSprintingOnActivation = false;
-            utilityAltOverrideDef.rechargeStock = 0;
-            utilityAltOverrideDef.requiredStock = 1;
-            utilityAltOverrideDef.skillName = "PilotDashOverride";
-            utilityAltOverrideDef.skillNameToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_NAME";
-            utilityAltOverrideDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION";
-            utilityAltOverrideDef.stockToConsume = 1;
-            Skills.FixSkillName(utilityAltOverrideDef);
-            MoffeinPilot.Modules.Content.AddSkillDef(utilityAltOverrideDef);
-            SkillDefs.Utilities.Aerobatics2 = utilityAltOverrideDef;
-            EntityStates.MoffeinPilot.Parachute.Wallbounce.utilityOverride = utilityAltOverrideDef;
-
             Modules.Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { utilityDef, utilityAltDef });
         }
 
@@ -622,7 +594,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialDef.isCombatSkill = true;
             specialDef.keywordTokens = new string[] {};
             specialDef.mustKeyPress = true;
-            specialDef.cancelSprintingOnActivation = true;
+            specialDef.cancelSprintingOnActivation = false;
             specialDef.rechargeStock = 1;
             specialDef.requiredStock = 1;
             specialDef.skillName = "PilotSpecial";
@@ -648,7 +620,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialScepterDef.isCombatSkill = true;
             specialScepterDef.keywordTokens = new string[] { };
             specialScepterDef.mustKeyPress = true;
-            specialScepterDef.cancelSprintingOnActivation = true;
+            specialScepterDef.cancelSprintingOnActivation = false;
             specialScepterDef.rechargeStock = 1;
             specialScepterDef.requiredStock = 1;
             specialScepterDef.skillName = "PilotSpecialScepter";

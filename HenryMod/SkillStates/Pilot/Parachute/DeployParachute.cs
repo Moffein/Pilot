@@ -11,12 +11,14 @@ namespace EntityStates.MoffeinPilot.Parachute
     public class DeployParachute : BaseState
     {
         public static float liftDuration = 0f;
-        public static float baseDuration = 0.8f;
-        public static float liftVelocity = 72f; //This linearly lowers to 0 over the course of the skill.
-        //public static float hopVelocity = 36f;
+        public static float baseDuration = 1.2f;    //This just acts as a hard-cap to the duration in case anything weird happens, so you don't get softlocked.
+        public static float liftVelocity = 72f;     //This linearly lowers to 0 over the course of the skill.
 
         public static float boostVelocity = 18f;
         public static float stopAscentVelocity = 12f;
+
+        public static float airBoostMult = 1.4f;
+        public static float airLiftMult = 0.6f;
 
         public static float minDuration = 0.3f;
         public static ConfigEntry<bool> holdToAscend;
@@ -27,6 +29,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         private PilotController pilotController;
         private bool stopAscent;
+        private bool startedAirborne;
 
         private int origJumpCount;
 
@@ -39,8 +42,11 @@ namespace EntityStates.MoffeinPilot.Parachute
             Util.PlaySound(DeployParachute.deploySoundString, base.gameObject);
             if (NetworkServer.active && stunRadius > 0f) StunEnemies(base.transform.position);
 
+            startedAirborne = false;
             if (base.characterMotor)
             {
+                startedAirborne = !base.characterMotor.isGrounded;
+
                 origJumpCount = base.characterMotor.jumpCount;
                 base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
 
@@ -53,6 +59,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
                     //Speed scaling.
                     float velocityMult = base.moveSpeedStat / (base.characterBody && base.characterBody.baseMoveSpeed != 0f ? base.characterBody.baseMoveSpeed : 7f);
+                    if (startedAirborne) velocityMult *= DeployParachute.airBoostMult;
 
                     Vector3 directionFlat = aimRay.direction;
                     directionFlat.y = 0f;
@@ -100,6 +107,8 @@ namespace EntityStates.MoffeinPilot.Parachute
                 if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
 
                 float velocity = DeployParachute.liftVelocity;
+                if (startedAirborne) velocity *= DeployParachute.airLiftMult;
+
                 if (base.fixedAge > DeployParachute.liftDuration)
                 {
                     velocity *= Mathf.Lerp(DeployParachute.baseDuration, DeployParachute.liftDuration, base.fixedAge);

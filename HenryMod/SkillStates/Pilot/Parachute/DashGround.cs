@@ -1,8 +1,9 @@
-﻿using RoR2;
+﻿using EntityStates;
+using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.MoffeinPilot.Airstrike
+namespace EntityStates.MoffeinPilot.Parachute
 {
     public class DashGround : BaseState
     {
@@ -19,30 +20,30 @@ namespace EntityStates.MoffeinPilot.Airstrike
         {
             base.OnEnter();
 
-            CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+            CreateBlinkEffect(Util.GetCorePosition(gameObject));
 
             SetBlinkVector();
 
-            this.modelTransform = base.GetModelTransform();
-            if (this.modelTransform)
+            modelTransform = GetModelTransform();
+            if (modelTransform)
             {
-                this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
-                this.hurtboxGroup = this.modelTransform.GetComponent<HurtBoxGroup>();
+                characterModel = modelTransform.GetComponent<CharacterModel>();
+                hurtboxGroup = modelTransform.GetComponent<HurtBoxGroup>();
 
-                TemporaryOverlay temporaryOverlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay.duration = 0.6f + DashGround.baseDuration;
+                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                temporaryOverlay.duration = 0.6f + baseDuration;
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
                 temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                temporaryOverlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                TemporaryOverlay temporaryOverlay2 = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay2.duration = 0.7f + DashGround.baseDuration;
+                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+                TemporaryOverlay temporaryOverlay2 = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                temporaryOverlay2.duration = 0.7f + baseDuration;
                 temporaryOverlay2.animateShaderAlpha = true;
                 temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay2.destroyComponentOnEnd = true;
                 temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
-                temporaryOverlay2.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                temporaryOverlay2.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
             /*if (this.characterModel)
             {
@@ -58,8 +59,8 @@ namespace EntityStates.MoffeinPilot.Airstrike
 
         public virtual void SetBlinkVector()
         {
-            blinkVector = base.characterDirection ? base.characterDirection.forward.normalized : Vector3.zero;
-            if (base.inputBank && base.inputBank.moveVector != Vector3.zero) blinkVector = base.inputBank.moveVector.normalized;
+            blinkVector = characterDirection ? characterDirection.forward.normalized : Vector3.zero;
+            if (inputBank && inputBank.moveVector != Vector3.zero) blinkVector = inputBank.moveVector.normalized;
         }
 
         public virtual float GetBlinkSpeed()
@@ -72,28 +73,28 @@ namespace EntityStates.MoffeinPilot.Airstrike
             base.FixedUpdate();
             DashPhysics();
 
-            if (base.isAuthority && base.fixedAge >= DashGround.baseDuration)
+            if (isAuthority && fixedAge >= baseDuration)
             {
-                this.outer.SetNextStateToMain();
+                outer.SetNextStateToMain();
                 return;
             }
         }
 
         public virtual void DashPhysics()
         {
-            if (base.characterMotor && base.characterDirection)
+            if (characterMotor && characterDirection)
             {
-                base.characterMotor.velocity = Vector3.zero;
-                base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * GetBlinkSpeed() * Time.fixedDeltaTime);
+                characterMotor.velocity = Vector3.zero;
+                characterMotor.rootMotion += blinkVector * (moveSpeedStat * GetBlinkSpeed() * Time.fixedDeltaTime);
             }
         }
 
         public override void OnExit()
         {
             base.OnExit();
-            if (!this.outer.destroying)
+            if (!outer.destroying)
             {
-                this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+                CreateBlinkEffect(Util.GetCorePosition(gameObject));
                 /*this.modelTransform = base.GetModelTransform();
                 if (this.modelTransform)
                 {
@@ -128,13 +129,13 @@ namespace EntityStates.MoffeinPilot.Airstrike
         public virtual void CreateBlinkEffect(Vector3 origin)
         {
             EffectData effectData = new EffectData();
-            effectData.rotation = Util.QuaternionSafeLookRotation(this.blinkVector);
+            effectData.rotation = Util.QuaternionSafeLookRotation(blinkVector);
             effectData.origin = origin;
-            EffectManager.SpawnEffect(DashGround.blinkPrefab, effectData, false);
+            EffectManager.SpawnEffect(blinkPrefab, effectData, false);
         }
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Skill;
+            return InterruptPriority.Any;
         }
     }
 }
