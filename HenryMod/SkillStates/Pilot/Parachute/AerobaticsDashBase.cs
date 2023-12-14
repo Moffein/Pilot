@@ -64,6 +64,12 @@ namespace EntityStates.MoffeinPilot.Parachute
                 origJumpCount = base.characterMotor.jumpCount;
                 base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
             }
+            if (this.hurtboxGroup)
+            {
+                HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
+                int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter + 1;
+                hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
+            }
         }
 
         public virtual void SetBlinkVector()
@@ -133,6 +139,12 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (!this.outer.destroying)
             {
                 this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+            }
+            if (this.hurtboxGroup)
+            {
+                HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
+                int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter - 1;
+                hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
             }
         }
 

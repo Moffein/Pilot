@@ -48,13 +48,13 @@ namespace EntityStates.MoffeinPilot.Parachute
             /*if (this.characterModel)
             {
                 this.characterModel.invisibilityCount++;
-            }
+            }*/
             if (this.hurtboxGroup)
             {
                 HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
                 int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter + 1;
                 hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
-            }*/
+            }
         }
 
         public virtual void SetBlinkVector()
@@ -117,13 +117,13 @@ namespace EntityStates.MoffeinPilot.Parachute
             /*if (this.characterModel)
             {
                 this.characterModel.invisibilityCount--;
-            }
+            }*/
             if (this.hurtboxGroup)
             {
                 HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
                 int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter - 1;
                 hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
-            }*/
+            }
         }
 
         public virtual void CreateBlinkEffect(Vector3 origin)
