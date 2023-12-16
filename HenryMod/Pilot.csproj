@@ -21,7 +21,6 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <EmbeddedResource Include="myassetbundle" />
     <EmbeddedResource Include="pilotbundle" />
     <EmbeddedResource Include="PilotSoundbank.bnk" />
   </ItemGroup>
@@ -360,7 +359,11 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if &quot;$(Username)&quot; == &quot;MyPCUsername(don't dox yourself)&quot; copy &quot;$(TargetPath)&quot; &quot;C:\[PATH_TO_MY_R2MODMAN_PROFILE]\BepInEx\plugins&quot;" />
+    <Exec Command="if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy &quot;$(TargetPath)&quot; &quot;E:\r2modmanPlus-local\RiskOfRain2\profiles\Blinx Returns\BepInEx\plugins\Moffein-Pilot&quot;" />
+  </Target>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="if &quot;$(Username)&quot; == &quot;Erikbir&quot; copy &quot;$(ProjectDir)..\PilotUnity\AssetBundles&quot; &quot;$(ProjectDir)&quot;" />
   </Target>
 
 </Project>

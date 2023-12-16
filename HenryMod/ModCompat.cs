@@ -41,7 +41,7 @@ namespace MoffeinPilot
         private static void SetupOptionsInternal()
         {
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend));
-            ModSettingsManager.SetModIcon(Modules.Assets.pilotAssetBundle.LoadAsset<Sprite>("sPilotPortrait_0"));
+            ModSettingsManager.SetModIcon(Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sPilotPortrait_0"));
         }
 
     }

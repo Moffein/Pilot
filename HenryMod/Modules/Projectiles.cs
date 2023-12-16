@@ -34,7 +34,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int maxTriggers, float rearmTime)
         {
-            GameObject proj = Assets.pilotAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            GameObject proj = Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
             proj.layer = LayerIndex.noCollision.intVal;
             proj.AddComponent<NetworkIdentity>();
 
@@ -66,7 +66,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreatePilotAirstrikeAlt(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int explosionCount, float rearmTime)
         {
-            GameObject proj = Assets.pilotAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            GameObject proj = Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
             proj.layer = LayerIndex.noCollision.intVal;
             proj.AddComponent<NetworkIdentity>();
 
