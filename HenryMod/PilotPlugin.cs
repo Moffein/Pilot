@@ -30,7 +30,7 @@ namespace MoffeinPilot
     {
         public const string MODUID = "com.EnforcerGang.Pilot";
         public const string MODNAME = "Pilot";
-        public const string MODVERSION = "0.0.8";
+        public const string MODVERSION = "0.1.0";
 
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
