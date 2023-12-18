@@ -376,34 +376,54 @@ namespace MoffeinPilot.Modules {
             capsuleCollider.direction = 1;
         }
 
-        private static void SetupMainHurtbox(GameObject prefab, GameObject model)
-        {
+        private static void SetupMainHurtbox(GameObject prefab, GameObject model) {
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
-
-            if (!childLocator.FindChild("MainHurtbox"))
-            {
-                Debug.LogWarning("Could not set up main hurtbox: make sure you have a transform pair in your prefab's ChildLocator component called 'MainHurtbox'");
+            
+            if (!childLocator.FindChild("MainHurtbox")) {
+                Log.Warning("Could not set up main hurtbox: make sure you have a transform pair in your prefab's ChildLocator component called 'MainHurtbox'");
                 return;
             }
 
             HurtBoxGroup hurtBoxGroup = model.AddComponent<HurtBoxGroup>();
+
+            HurtBox headHurtbox = null;
+            GameObject headHurtboxObject = childLocator.FindChildGameObject("HeadHurtbox");
+            if (headHurtboxObject) {
+                headHurtbox = headHurtboxObject.AddComponent<HurtBox>();
+                headHurtbox.gameObject.layer = LayerIndex.entityPrecise.intVal;
+                headHurtbox.healthComponent = prefab.GetComponent<HealthComponent>();
+                headHurtbox.isBullseye = false;
+                headHurtbox.isSniperTarget = true;
+                headHurtbox.damageModifier = HurtBox.DamageModifier.Normal;
+                headHurtbox.hurtBoxGroup = hurtBoxGroup;
+                headHurtbox.indexInGroup = 1;
+            }
+
             HurtBox mainHurtbox = childLocator.FindChild("MainHurtbox").gameObject.AddComponent<HurtBox>();
             mainHurtbox.gameObject.layer = LayerIndex.entityPrecise.intVal;
             mainHurtbox.healthComponent = prefab.GetComponent<HealthComponent>();
             mainHurtbox.isBullseye = true;
+            mainHurtbox.isSniperTarget = headHurtbox == null;
             mainHurtbox.damageModifier = HurtBox.DamageModifier.Normal;
             mainHurtbox.hurtBoxGroup = hurtBoxGroup;
             mainHurtbox.indexInGroup = 0;
 
-            hurtBoxGroup.hurtBoxes = new HurtBox[]
-            {
-                mainHurtbox
-            };
-
+            if (headHurtbox) {
+                hurtBoxGroup.hurtBoxes = new HurtBox[]
+                {
+                    mainHurtbox,
+                    headHurtbox
+                };
+            } else {
+                hurtBoxGroup.hurtBoxes = new HurtBox[]
+                {
+                    mainHurtbox,
+                };
+            }
             hurtBoxGroup.mainHurtBox = mainHurtbox;
             hurtBoxGroup.bullseyeCount = 1;
         }
-
+        
         public static void SetupHurtBoxes(GameObject bodyPrefab) {
 
             HealthComponent healthComponent = bodyPrefab.GetComponent<HealthComponent>();

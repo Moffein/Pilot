@@ -222,6 +222,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: -0.000000014901159
       objectReference: {fileID: 0}
+    - target: {fileID: 5069739157484267302, guid: af1f1210c7546d84fa434817980cdf37,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f8931b2cdb1e7f54fb4912ef123de00b, type: 2}
     - target: {fileID: 5147161048001698822, guid: af1f1210c7546d84fa434817980cdf37,
         type: 3}
       propertyPath: m_ConnectedAnchor.x

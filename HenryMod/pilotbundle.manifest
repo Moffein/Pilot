@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3157538154
+CRC: 921158375
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1855e51d030dc140931e72e255609278
+    Hash: 84e7f6b615326d4186abe6ed0dabeee8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a306c9bc227a10bebd2ec106d142cfe1
+    Hash: f01a3af1edc3cb7d7275390daa9f3453
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,8 +25,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 54
-  Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
 - Class: 74
@@ -40,16 +38,18 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 5bbd5ce9682daee49b1118d40eb0809a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
-- Class: 144
+- Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
@@ -61,8 +61,10 @@ Assets:
 - Assets/PilotBundle/MoffeinPilotDisplay.prefab
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_6a.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_7.png
+- Assets/PilotBundle/Textures/Pilot/PIlotWeapon_emission.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_3.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_4.png
+- Assets/PilotBundle/Textures/Pilot/PIlotWeapon_normal.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotPortrait_0.png
 - Assets/PilotBundle/Materials/matPilotDefault1.mat
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_0.png

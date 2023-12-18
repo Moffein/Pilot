@@ -37,7 +37,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/TracerCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
 
-        public static GameObject comboExplosionEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion();
+        public static GameObject comboExplosionEffectPrefab = global::MoffeinPilot.Modules.Assets.ExplosionGolemButScale;
         public static GameObject comboTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
         public static GameObject comboHitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleEffectPrefab, comboMuzzleEffectPrefab;
@@ -183,8 +183,8 @@ namespace EntityStates.MoffeinPilot.Weapon
                 triggeredComboExplosion = true;
 
                 Vector3 attackForce = bulletRef.aimVector != null ? ClusterFire.comboForce * bulletRef.aimVector.normalized : Vector3.zero;
-
-                if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = ClusterFire.comboBlastRadius }, true);
+                                                                                                                                                                                                             //golem explosion effect was definitely not set up to scale 1:1 with radius
+                if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = ClusterFire.comboBlastRadius / 4.83f }, true);
                 BlastAttack ba = new BlastAttack()
                 {
                     attacker = base.gameObject,

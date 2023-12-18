@@ -16,6 +16,7 @@ namespace MoffeinPilot.Modules
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
         public static GameObject EngiMissileIndicatorButRed;
+        public static GameObject ExplosionGolemButScale;
 
         // CHANGE THIS
         private const string assetbundleName = "pilotbundle";
@@ -75,6 +76,10 @@ namespace MoffeinPilot.Modules
 
             EngiMissileIndicatorButRed = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion(), "PilotMissileTrackingIndicator", false);
             EngiMissileIndicatorButRed.transform.Find("Base Container/Base Core").GetComponent<SpriteRenderer>().color = new Color32(174, 26, 64, 255);
+
+            ExplosionGolemButScale = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion(), "PilotComboExplosion", false);
+            ExplosionGolemButScale.GetComponent<EffectComponent>().applyScale = true;
+            AddNewEffectDef(ExplosionGolemButScale);
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
