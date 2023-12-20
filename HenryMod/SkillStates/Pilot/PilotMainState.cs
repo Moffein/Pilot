@@ -1,5 +1,7 @@
-﻿using MoffeinPilot.Modules.Survivors;
+﻿using EntityStates.MoffeinPilot.FireSelect;
+using MoffeinPilot.Modules.Survivors;
 using RoR2.Skills;
+using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +11,7 @@ namespace EntityStates.MoffeinPilot
 {
     public class PilotMainState : GenericCharacterMain
     {
+
         public override void OnEnter()
         {
             base.OnEnter();

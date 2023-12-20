@@ -1,17 +1,19 @@
 Event	ID	Name			Wwise Object Path	Notes
-	866753787	Play_Pilot_Primary_Cluster_Combo			\Default Work Unit\Play_Pilot_Primary_Cluster_Combo	
-	1262862619	Play_Pilot_Secondary_FireAlt			\Default Work Unit\Play_Pilot_Secondary_FireAlt	
-	1302150056	Play_Pilot_Primary_Cluster			\Default Work Unit\Play_Pilot_Primary_Cluster	
-	1987319938	Play_Pilot_Silencer			\Default Work Unit\Play_Pilot_Silencer	
-	2745370195	Play_Pilot_Select			\Default Work Unit\Play_Pilot_Select	
-	2842033976	Play_Pilot_Primary_Rapid			\Default Work Unit\Play_Pilot_Primary_Rapid	
-	3375162600	Play_Pilot_Secondary_FireBurst			\Default Work Unit\Play_Pilot_Secondary_FireBurst	
+	29249252	Play_MoffeinPilot_Secondary_FireBurst			\Default Work Unit\Play_MoffeinPilot_Secondary_FireBurst	
+	310653585	Play_MoffeinPilot_Headshot			\Default Work Unit\Play_MoffeinPilot_Headshot	
+	555508599	Play_MoffeinPilot_Secondary_FireAlt			\Default Work Unit\Play_MoffeinPilot_Secondary_FireAlt	
+	775202588	Play_MoffeinPilot_Primary_Cluster			\Default Work Unit\Play_MoffeinPilot_Primary_Cluster	
+	983755999	Play_MoffeinPilot_Select			\Default Work Unit\Play_MoffeinPilot_Select	
+	1422204596	Play_MoffeinPilot_Primary_Rapid			\Default Work Unit\Play_MoffeinPilot_Primary_Rapid	
+	1595501726	Play_MoffeinPilot_Silencer			\Default Work Unit\Play_MoffeinPilot_Silencer	
+	1598594895	Play_MoffeinPilot_Primary_Cluster_Combo			\Default Work Unit\Play_MoffeinPilot_Primary_Cluster_Combo	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	49591001	Seocndary_Fire	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Seocndary_Fire		121780
+	172124556	wHeadshot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wHeadshot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wHeadshot		70336
 	266180520	Primary_Cluster_Combo	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster_Combo		188812
 	353063854	Primary_Cluster	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster		135892
 	372196105	Primary_Rapid	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBanditShoot1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Rapid		104962

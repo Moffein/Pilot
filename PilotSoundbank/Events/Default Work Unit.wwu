@@ -3,7 +3,7 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Pilot_Select" ID="{5E622F16-EA2F-4307-8C4F-99473153B7CC}">
+				<Event Name="Play_MoffeinPilot_Select" ID="{5E622F16-EA2F-4307-8C4F-99473153B7CC}">
 					<ChildrenList>
 						<Action Name="" ID="{BDFA03D8-9807-44C9-BFD9-756D91C5FACA}" ShortID="812528799">
 							<ReferenceList>
@@ -14,7 +14,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Pilot_Primary_Rapid" ID="{F39257ED-8CA3-448F-BBD4-72E258060256}">
+				<Event Name="Play_MoffeinPilot_Primary_Rapid" ID="{F39257ED-8CA3-448F-BBD4-72E258060256}">
 					<ChildrenList>
 						<Action Name="" ID="{8C8D8345-39AB-44E5-B05A-BB466373A6D8}" ShortID="100768313">
 							<ReferenceList>
@@ -25,7 +25,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Pilot_Primary_Cluster" ID="{CE309C89-DAFD-4143-AB43-D91AB3E3328C}">
+				<Event Name="Play_MoffeinPilot_Primary_Cluster" ID="{CE309C89-DAFD-4143-AB43-D91AB3E3328C}">
 					<ChildrenList>
 						<Action Name="" ID="{7F32A58A-707E-4C99-8325-76D132FD9BB2}" ShortID="179092821">
 							<ReferenceList>
@@ -36,7 +36,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Pilot_Primary_Cluster_Combo" ID="{2E206A4A-521F-42C6-8B67-E3C915A33E31}">
+				<Event Name="Play_MoffeinPilot_Primary_Cluster_Combo" ID="{2E206A4A-521F-42C6-8B67-E3C915A33E31}">
 					<ChildrenList>
 						<Action Name="" ID="{3BDF715D-D4AD-4682-B013-5A995628DAE9}" ShortID="795559959">
 							<ReferenceList>
@@ -47,7 +47,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Pilot_Secondary_FireBurst" ID="{F98B9D03-4014-4D98-8CA1-F5183F0188B0}">
+				<Event Name="Play_MoffeinPilot_Secondary_FireBurst" ID="{F98B9D03-4014-4D98-8CA1-F5183F0188B0}">
 					<ChildrenList>
 						<Action Name="" ID="{90425B5D-A913-4D8F-8999-522BA8F40064}" ShortID="185170790">
 							<ReferenceList>
@@ -58,7 +58,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Pilot_Silencer" ID="{9281A8AC-8136-4381-8988-BBB399BA23A3}">
+				<Event Name="Play_MoffeinPilot_Silencer" ID="{9281A8AC-8136-4381-8988-BBB399BA23A3}">
 					<ChildrenList>
 						<Action Name="" ID="{8D47F9E4-09BD-4232-8A27-C05281D6E795}" ShortID="105032611">
 							<ReferenceList>
@@ -69,12 +69,23 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Pilot_Secondary_FireAlt" ID="{32DFE69F-3ACD-4FD2-89F1-2D58EC0915C3}">
+				<Event Name="Play_MoffeinPilot_Secondary_FireAlt" ID="{32DFE69F-3ACD-4FD2-89F1-2D58EC0915C3}">
 					<ChildrenList>
 						<Action Name="" ID="{44EBFAB1-6695-4EA0-A583-93228C4B35E9}" ShortID="639699005">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Secondary_Alt" ID="{329DD466-F00D-469F-A3F5-B091FFEEF3F9}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Headshot" ID="{E28FF341-55EA-4235-B37B-9384A3E4C76A}">
+					<ChildrenList>
+						<Action Name="" ID="{527341E9-CDB3-4597-8CDB-0D5CF6F6315F}" ShortID="1035578085">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wHeadshot" ID="{7830436E-AF1C-4B49-9EE3-6998E3847932}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

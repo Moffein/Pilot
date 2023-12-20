@@ -11,6 +11,7 @@ using R2API;
 using RoR2;
 using RoR2.CharacterAI;
 using RoR2.Skills;
+using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -410,7 +411,29 @@ namespace MoffeinPilot.Modules.Survivors
             MoffeinPilot.Modules.Content.AddSkillDef(primarySilencerDef);
             SkillDefs.Primaries.Silencer = primarySilencerDef;
 
-            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef});//, primarySilencerDef Leaving this out until its ready
+
+            GameObject visualizer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/RailgunnerSniperTargetVisualizerLight.prefab").WaitForCompletion().InstantiateClone("MoffeinPilotTargetVisualizer", false);
+            GameObject crosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion().InstantiateClone("MoffeinPilotWeakpointCrosshair", false);
+            AddWeakpointUI(crosshairPrefab, visualizer);
+            PilotController.weakpointCrosshairPrefab = crosshairPrefab;
+
+            GameObject effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/SniperTargetHitEffect.prefab").WaitForCompletion().InstantiateClone("MoffeinPilotHeadshotEffect", false);
+            EffectComponent ec = effect.GetComponent<EffectComponent>();
+            ec.soundName = "";//"Play_SniperClassic_headshot";
+            Content.AddEffectDef(new EffectDef(effect));
+
+            FireSilencedPistol.weakpointEffectPrefab = effect;
+
+            Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef, primarySilencerDef });
+            visualizer.transform.localScale = 10f * Vector3.one;
+        }
+
+
+        private void AddWeakpointUI(GameObject crosshair, GameObject visualizerPrefab)
+        {
+            PointViewer pv = crosshair.AddComponent<PointViewer>();
+            SniperTargetViewer stv = crosshair.AddComponent<SniperTargetViewer>();
+            stv.visualizerPrefab = visualizerPrefab;
         }
 
         private void InitSecondaries()

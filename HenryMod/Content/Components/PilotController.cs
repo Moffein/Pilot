@@ -1,5 +1,7 @@
-﻿using RoR2;
+﻿using MoffeinPilot.Modules.Survivors;
+using RoR2;
 using RoR2.Skills;
+using RoR2.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +13,9 @@ namespace MoffeinPilot.Content.Components
     [RequireComponent(typeof(SkillLocator), typeof(CharacterBody))]
     public class PilotController : MonoBehaviour
     {
+        public static GameObject weakpointCrosshairPrefab;
+        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
+
         private CharacterBody characterBody;
         private SkillLocator skillLocator;
         public bool isParachuting;
@@ -28,6 +33,8 @@ namespace MoffeinPilot.Content.Components
         private int currentAutoAimStates;    //Keeps track of whether or not AutoAim is in use
         private Indicator enemyIndicator;
 
+        private bool isUsingPistol = false;
+
         private float autoAimStopwatch;
 
         private void Awake()
@@ -42,10 +49,21 @@ namespace MoffeinPilot.Content.Components
             enemyIndicator = new Indicator(base.gameObject, autoAimIndicatorPrefab);
         }
 
+        private void Start()
+        {
+            isUsingPistol = skillLocator && skillLocator.primary && skillLocator.primary.baseSkill == PilotSurvivor.SkillDefs.Primaries.Silencer;
+        }
+
         private void FixedUpdate()
         {
             if (currentAutoAimStates > 0)
             {
+                if (this.crosshairOverrideRequest != null)
+                {
+                    this.crosshairOverrideRequest.Dispose();
+                    this.crosshairOverrideRequest = null;
+                }
+
                 autoAimStopwatch += Time.fixedDeltaTime;
                 if (autoAimStopwatch >= PilotController.autoAimUpdateTimer)
                 {
@@ -59,6 +77,11 @@ namespace MoffeinPilot.Content.Components
             else
             {
                 enemyIndicator.active = false;
+
+                if (isUsingPistol && weakpointCrosshairPrefab && this.crosshairOverrideRequest == null)
+                {
+                    this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(characterBody, weakpointCrosshairPrefab, CrosshairUtils.OverridePriority.Skill);
+                }
             }
         }
 
@@ -68,6 +91,7 @@ namespace MoffeinPilot.Content.Components
             {
                 enemyIndicator.active = false;
             }
+            if (this.crosshairOverrideRequest != null) this.crosshairOverrideRequest.Dispose();
         }
 
         public void ConsumeSecondaryStock(int amount)

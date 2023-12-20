@@ -22,7 +22,7 @@ namespace MoffeinPilot.Modules
             LanguageAPI.Add(prefix + "PRIMARY_ALT_DESCRIPTION", "Rapidly fire your weapon for <style=cIsDamage>140% damage</style>.");// Reload every 30 shots.
 
             LanguageAPI.Add(prefix + "PRIMARY_SILENCER_NAME", "Service Pistol");
-            LanguageAPI.Add(prefix + "PRIMARY_SILENCER_DESCRIPTION", "Fire your silenced pistol for <style=cIsDamage>200% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_SILENCER_DESCRIPTION", "Fire your silenced pistol for <style=cIsDamage>230% damage</style>. Deal <style=cIsDamage>2x damage</style> when hitting <style=cIsDamage>Weak Points</style>.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "Target Acquired!");
             LanguageAPI.Add(prefix + "SECONDARY_DESCRIPTION", "Transform your weapon into a <style=cIsDamage>piercing smartgun</style> that deals <style=cIsDamage>3x190% damage</style>. Hold up to 2.");

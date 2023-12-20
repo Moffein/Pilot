@@ -31,8 +31,8 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float baseDuration = 0.3f;
 
         public static string muzzleName = "";
-        public static string attackSoundString = "Play_Pilot_Primary_Cluster";
-        public static string comboAttackSoundString = "Play_Pilot_Primary_Cluster_Combo";
+        public static string attackSoundString = "Play_MoffeinPilot_Primary_Cluster";
+        public static string comboAttackSoundString = "Play_MoffeinPilot_Primary_Cluster_Combo";
 
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/TracerCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
@@ -101,8 +101,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     smartCollision = true,
                     damageType = DamageType.Generic,
                     falloffModel = BulletAttack.FalloffModel.None,
-                    procCoefficient = 1f,
-                    maxDistance = 2000f
+                    procCoefficient = 1f
                 }.Fire();
                 if (ClusterFire.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)

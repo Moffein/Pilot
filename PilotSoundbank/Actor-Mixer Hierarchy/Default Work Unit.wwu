@@ -217,7 +217,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>-5</Value>
+														<Value>-3</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -269,6 +269,28 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="CyborgSecondary" ID="{61D6D833-130B-4B08-A66B-63A74BF07065}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="wHeadshot" ID="{7830436E-AF1C-4B49-9EE3-6998E3847932}" ShortID="994064686">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{597B1BCA-9F9E-49C2-9E9B-658B6990CB88}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="wHeadshot" ID="{28D572E0-606F-48EC-9A0B-2690BDA9EA91}">
+													<Language>SFX</Language>
+													<AudioFile>wHeadshot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="172124556"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="wHeadshot" ID="{28D572E0-606F-48EC-9A0B-2690BDA9EA91}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

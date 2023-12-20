@@ -15,7 +15,7 @@ namespace EntityStates.MoffeinPilot.Weapon
 		public static float baseDuration = 0.12f;	//0.12f for Returns duration
         public static float spreadBloomValue = 0.5f;
 		public static float recoilAmplitude = 1f;
-		public static string attackSoundString = "Play_Pilot_Primary_Rapid";
+		public static string attackSoundString = "Play_MoffeinPilot_Primary_Rapid";
 		public static string muzzleName = "";
 		public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/TracerEngiTurret.prefab").WaitForCompletion();
 		public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();

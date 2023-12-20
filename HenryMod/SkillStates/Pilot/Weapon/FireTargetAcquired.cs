@@ -16,7 +16,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float force = 450f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;
-        public static string attackSoundString = "Play_Pilot_Secondary_FireBurst";
+        public static string attackSoundString = "Play_MoffeinPilot_Secondary_FireBurst";
         public static int baseShotCount = 3;
         public static string muzzleString = "";
         public static float spreadBloom = 0f;
@@ -139,8 +139,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     weapon = base.gameObject,
                     tracerEffectPrefab = tracerEffectPrefab,
                     hitEffectPrefab = hitEffectPrefab,
-                    stopperMask = LayerIndex.world.mask,
-                    maxDistance = 2000f
+                    stopperMask = LayerIndex.world.mask
                 };
                 ba.AddModdedDamageType(DamageTypes.KeepAirborne);
                 ba.Fire();

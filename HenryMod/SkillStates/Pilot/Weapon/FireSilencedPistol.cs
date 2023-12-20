@@ -13,15 +13,18 @@ namespace EntityStates.MoffeinPilot.Weapon
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;
 
-        public static float damageCoefficient = 2f;
+        public static float damageCoefficient = 2.3f;
+        public static float weakpointMultiplier = 2f;
+        public static GameObject weakpointEffectPrefab;
+
         public static float force = 400f;
-        public static float baseDuration = 0.25f;
-        public static float spreadBloomValue = 0.5f;
+        public static float baseDuration = 0.33f;
+        public static float spreadBloomValue = 1f;
         public static float recoilAmplitude = 1f;
-        public static string attackSoundString = "Play_Pilot_Silencer";
+        public static string attackSoundString = "Play_MoffeinPilot_Silencer";
         public static string muzzleName = "";
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoDefault.prefab").WaitForCompletion();
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("\r\nRoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
         public static GameObject muzzleEffectPrefab;
 
         private PilotController pilotController;
@@ -42,7 +45,7 @@ namespace EntityStates.MoffeinPilot.Weapon
             }
             if (base.isAuthority)
             {
-                new BulletAttack
+                BulletAttack ba = new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -60,9 +63,31 @@ namespace EntityStates.MoffeinPilot.Weapon
                     radius = 0.5f,
                     smartCollision = true,
                     damageType = DamageType.Generic,
-                    falloffModel = BulletAttack.FalloffModel.DefaultBullet,
+                    falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
-                }.Fire();
+                };
+                ba.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
+                {
+                    if (BulletAttack.IsSniperTargetHit(hitInfo))
+                    {
+                        damageInfo.damage *= weakpointMultiplier;
+                        damageInfo.damageColorIndex = DamageColorIndex.Sniper;
+
+                        if (weakpointEffectPrefab)
+                        {
+                            EffectData effectData = new EffectData
+                            {
+                                origin = hitInfo.point,
+                                rotation = Quaternion.LookRotation(-hitInfo.direction)
+                            };
+                            effectData.SetHurtBoxReference(hitInfo.hitHurtBox);
+                            EffectManager.SpawnEffect(weakpointEffectPrefab, effectData, true);
+                        }
+
+                        RoR2.Util.PlaySound("Play_MoffeinPilot_Headshot", base.gameObject);
+                    }
+                };
+                ba.Fire();
                 if (FireSilencedPistol.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
                     base.characterMotor.ApplyForce(-FireSilencedPistol.selfKnockbackForce * aimRay.direction, false, false);
