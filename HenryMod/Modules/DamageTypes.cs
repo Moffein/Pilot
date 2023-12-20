@@ -23,6 +23,12 @@ namespace MoffeinPilot.Modules
         //Velocity modification will only work on server-side things.
         private static void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
+            if (damageInfo.HasModdedDamageType(SlayerExceptItActuallyWorks))
+            {
+                damageInfo.RemoveModdedDamageType(SlayerExceptItActuallyWorks);
+                damageInfo.damage *= Mathf.Lerp(3f, 1f, self.combinedHealthFraction);
+            }
+
             if (damageInfo.HasModdedDamageType(AirstrikeKnockup))
             {
 
@@ -73,12 +79,6 @@ namespace MoffeinPilot.Modules
                         self.body.characterMotor.velocity.y = 6f;
                     }
                 }
-            }
-
-            if (damageInfo.HasModdedDamageType(SlayerExceptItActuallyWorks))
-            {
-                damageInfo.RemoveModdedDamageType(SlayerExceptItActuallyWorks);
-                damageInfo.damage *= Mathf.Lerp(3f, 1f, self.combinedHealthFraction);
             }
 
             orig(self, damageInfo);
