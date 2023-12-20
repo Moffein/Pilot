@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
+using R2API;
+using MoffeinPilot.Modules;
 
 namespace EntityStates.MoffeinPilot.Weapon
 {
@@ -13,13 +15,13 @@ namespace EntityStates.MoffeinPilot.Weapon
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;
 
-        public static float damageCoefficient = 2.3f;
-        public static float weakpointMultiplier = 2f;
+        public static float damageCoefficient = 1f;
+        public static float weakpointMultiplier = 1f;
         public static GameObject weakpointEffectPrefab;
 
         public static float force = 400f;
-        public static float baseDuration = 0.33f;
-        public static float spreadBloomValue = 1f;
+        public static float baseDuration = 0.25f;
+        public static float spreadBloomValue = 0.75f;
         public static float recoilAmplitude = 1f;
         public static string attackSoundString = "Play_MoffeinPilot_Silencer";
         public static string muzzleName = "";
@@ -66,27 +68,31 @@ namespace EntityStates.MoffeinPilot.Weapon
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
                 };
-                ba.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
+                ba.AddModdedDamageType(DamageTypes.SlayerExceptItActuallyWorks);
+                if (weakpointMultiplier > 1f)
                 {
-                    if (BulletAttack.IsSniperTargetHit(hitInfo))
+                    ba.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)
                     {
-                        damageInfo.damage *= weakpointMultiplier;
-                        damageInfo.damageColorIndex = DamageColorIndex.Sniper;
-
-                        if (weakpointEffectPrefab)
+                        if (BulletAttack.IsSniperTargetHit(hitInfo))
                         {
-                            EffectData effectData = new EffectData
-                            {
-                                origin = hitInfo.point,
-                                rotation = Quaternion.LookRotation(-hitInfo.direction)
-                            };
-                            effectData.SetHurtBoxReference(hitInfo.hitHurtBox);
-                            EffectManager.SpawnEffect(weakpointEffectPrefab, effectData, true);
-                        }
+                            damageInfo.damage *= weakpointMultiplier;
+                            damageInfo.damageColorIndex = DamageColorIndex.Sniper;
 
-                        RoR2.Util.PlaySound("Play_MoffeinPilot_Headshot", base.gameObject);
-                    }
-                };
+                            if (weakpointEffectPrefab)
+                            {
+                                EffectData effectData = new EffectData
+                                {
+                                    origin = hitInfo.point,
+                                    rotation = Quaternion.LookRotation(-hitInfo.direction)
+                                };
+                                effectData.SetHurtBoxReference(hitInfo.hitHurtBox);
+                                EffectManager.SpawnEffect(weakpointEffectPrefab, effectData, true);
+                            }
+
+                            RoR2.Util.PlaySound("Play_MoffeinPilot_Headshot", base.gameObject);
+                        }
+                    };
+                }
                 ba.Fire();
                 if (FireSilencedPistol.selfKnockbackForce != 0f//pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)

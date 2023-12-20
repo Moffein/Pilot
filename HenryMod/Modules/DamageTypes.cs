@@ -8,11 +8,13 @@ namespace MoffeinPilot.Modules
 {
     public static class DamageTypes
     {
+        public static R2API.DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
         public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
 
         internal static void RegisterDamageTypes()
         {
+            SlayerExceptItActuallyWorks = DamageAPI.ReserveDamageType();
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
             KeepAirborne = DamageAPI.ReserveDamageType();
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
@@ -71,6 +73,12 @@ namespace MoffeinPilot.Modules
                         self.body.characterMotor.velocity.y = 6f;
                     }
                 }
+            }
+
+            if (damageInfo.HasModdedDamageType(SlayerExceptItActuallyWorks))
+            {
+                damageInfo.RemoveModdedDamageType(SlayerExceptItActuallyWorks);
+                damageInfo.damage *= Mathf.Lerp(3f, 1f, self.combinedHealthFraction);
             }
 
             orig(self, damageInfo);

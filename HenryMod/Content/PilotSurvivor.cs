@@ -398,7 +398,7 @@ namespace MoffeinPilot.Modules.Survivors
             primarySilencerDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
             primarySilencerDef.interruptPriority = InterruptPriority.Skill;
             primarySilencerDef.isCombatSkill = true;
-            primarySilencerDef.keywordTokens = new string[] { };
+            primarySilencerDef.keywordTokens = new string[] { "KEYWORD_SLAYER" };
             primarySilencerDef.mustKeyPress = false;
             primarySilencerDef.cancelSprintingOnActivation = true;
             primarySilencerDef.rechargeStock = 1;
@@ -415,7 +415,7 @@ namespace MoffeinPilot.Modules.Survivors
             GameObject visualizer = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/RailgunnerSniperTargetVisualizerLight.prefab").WaitForCompletion().InstantiateClone("MoffeinPilotTargetVisualizer", false);
             GameObject crosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion().InstantiateClone("MoffeinPilotWeakpointCrosshair", false);
             AddWeakpointUI(crosshairPrefab, visualizer);
-            PilotController.weakpointCrosshairPrefab = crosshairPrefab;
+            //PilotController.weakpointCrosshairPrefab = crosshairPrefab;
 
             GameObject effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/SniperTargetHitEffect.prefab").WaitForCompletion().InstantiateClone("MoffeinPilotHeadshotEffect", false);
             EffectComponent ec = effect.GetComponent<EffectComponent>();
