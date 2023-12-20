@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
+using EntityStates.MoffeinPilot;
 using EntityStates.MoffeinPilot.Airstrike;
 using EntityStates.MoffeinPilot.FireSelect;
 using EntityStates.MoffeinPilot.Parachute;
@@ -49,7 +50,7 @@ namespace MoffeinPilot.Modules.Survivors
             damageGrowth = 2.4f,
             armor = 0f,
 
-            jumpCount = 1,
+            jumpCount = 1
         };
 
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] 
@@ -85,6 +86,9 @@ namespace MoffeinPilot.Modules.Survivors
             base.InitializeCharacter();
 
             bodyPrefab.AddComponent<PilotController>();
+
+            EntityStateMachine bodyMachine = EntityStateMachine.FindByCustomName(bodyPrefab, "Body");
+            bodyMachine.mainStateType = new SerializableEntityStateType(typeof(PilotMainState));
             
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
 

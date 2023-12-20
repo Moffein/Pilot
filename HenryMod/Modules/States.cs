@@ -7,6 +7,9 @@ namespace MoffeinPilot.Modules
         internal static void RegisterStates()
         {
             Modules.Content.AddEntityState(typeof(BaseMeleeAttack));
+
+            Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.PilotMainState));
+
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Weapon.RapidFire));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Weapon.ReloadRapidFire));
             Modules.Content.AddEntityState(typeof(EntityStates.MoffeinPilot.Weapon.ClusterFire));
