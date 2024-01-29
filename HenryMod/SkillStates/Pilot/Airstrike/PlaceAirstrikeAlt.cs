@@ -23,5 +23,40 @@ namespace EntityStates.MoffeinPilot.Airstrike
         {
             return PlaceAirstrikeAlt.projectilePrefab;
         }
+
+        public override void PlaceProjectile()
+        {
+            Ray aimRay = base.GetAimRay();
+
+            BulletAttack ba = new BulletAttack
+            {
+                tracerEffectPrefab = PlaceAirstrike.tracerEffectPrefab,
+                damage = 0f,
+                procCoefficient = 0f,
+                damageType = DamageType.Silent | DamageType.NonLethal,
+                owner = base.gameObject,
+                aimVector = aimRay.direction,
+                isCrit = false,
+                minSpread = 0f,
+                maxSpread = 0f,
+                origin = aimRay.origin,
+                maxDistance = 2000f,
+                muzzleName = PlaceAirstrike.muzzleName,
+                radius = 0.2f,
+                hitCallback = base.AirstrikeHitCallback,
+                stopperMask = LayerIndex.world.mask
+            };
+            ba.Fire();
+        }
+
+        protected override void DoPhysics()
+        {
+            return;
+        }
+
+        protected override void DoAnim()
+        {
+            base.DoAnim();
+        }
     }
 }

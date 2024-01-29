@@ -28,25 +28,31 @@ namespace EntityStates.MoffeinPilot.Airstrike
             if (base.isAuthority)
             {
                 PlaceProjectile();
+                DoPhysics();
+            }
+            DoAnim();
+        }
 
-                bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
-                if (shouldBlink)
+        protected virtual void DoPhysics()
+        {
+            bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
+            if (shouldBlink)
+            {
+                EntityStateMachine parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");
+                if (parachuteMachine && parachuteMachine.state.GetMinimumInterruptPriority() <= InterruptPriority.Any)
                 {
-                    EntityStateMachine parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");
-                    if (parachuteMachine && parachuteMachine.state.GetMinimumInterruptPriority() <= InterruptPriority.Any)
-                    {
-                        parachuteMachine.SetNextState(new EntityStates.MoffeinPilot.Parachute.DashGround());
-                    }
-                }
-                else if (!isGrounded)
-                {
-                    if (base.characterMotor) base.SmallHop(base.characterMotor, 24f);
+                    parachuteMachine.SetNextState(new EntityStates.MoffeinPilot.Parachute.DashGround());
                 }
             }
-            if (!isGrounded) {
-
-                PlayAnimation("Gesture, Override", "PointDown", "Point.playbackRate", 0.4f);
+            else if (!isGrounded)
+            {
+                if (base.characterMotor) base.SmallHop(base.characterMotor, 24f);
             }
+        }
+
+        protected virtual void DoAnim()
+        {
+            if (!isGrounded) PlayAnimation("Gesture, Override", "PointDown", "Point.playbackRate", 0.4f);
         }
 
         public override void FixedUpdate()
@@ -69,7 +75,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
             return PlaceAirstrike.projectilePrefab;
         }
 
-        private void PlaceProjectile()
+        public virtual void PlaceProjectile()
         {
             Ray aimRay = base.GetAimRay();
 
@@ -94,7 +100,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
             ba.Fire();
         }
 
-        private bool AirstrikeHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
+        protected bool AirstrikeHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
         {
             if (hitInfo.point != null && !placedProjectile)
             {
