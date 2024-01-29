@@ -13,6 +13,8 @@ namespace EntityStates.MoffeinPilot.Parachute
         private PilotController pilotController;
         private int origJumpCount;
         private bool jumpReleased = false;
+        internal GameObject parachute;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -65,7 +67,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
             }
         }
-
+        
         public override void OnExit()
         {
             if (base.characterMotor)
@@ -79,6 +81,8 @@ namespace EntityStates.MoffeinPilot.Parachute
             {
                 pilotController.isParachuting = false;
             }
+
+            Destroy(parachute);
             base.OnExit();
         }
 

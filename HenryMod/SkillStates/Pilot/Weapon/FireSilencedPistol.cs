@@ -24,7 +24,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float spreadBloomValue = 0.75f;
         public static float recoilAmplitude = 1f;
         public static string attackSoundString = "Play_MoffeinPilot_Silencer";
-        public static string muzzleName = "";
+        public static string muzzleName = "Muzzle";
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoDefault.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
         public static GameObject muzzleEffectPrefab;

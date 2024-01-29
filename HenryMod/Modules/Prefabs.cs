@@ -312,9 +312,9 @@ namespace MoffeinPilot.Modules {
 
                         if (mat == null) {
                             if (customInfos[i].dontHotpoo) {
-                                mat = rend.material;
+                                mat = rend.sharedMaterial;
                             } else {
-                                mat = rend.material.SetHopooMaterial();
+                                mat = rend.sharedMaterial.SetHopooMaterial();
                             }
                         }
 

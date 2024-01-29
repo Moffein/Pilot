@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace MoffeinPilot.Content.Components
+namespace MoffeinPilot.Content.Components 
 {
     [RequireComponent(typeof(SkillLocator), typeof(CharacterBody))]
     public class PilotController : MonoBehaviour

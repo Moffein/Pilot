@@ -101,7 +101,7 @@ namespace MoffeinPilot.Modules
 
             List<SkinDef.MeshReplacement> meshReplacements = new List<SkinDef.MeshReplacement>();
 
-            for (int i = 0; i < defaultRendererInfos.Length; i++)
+            for (int i = 0; i < meshes.Length; i++)
             {
                 if (string.IsNullOrEmpty(meshes[i]))
                     continue;

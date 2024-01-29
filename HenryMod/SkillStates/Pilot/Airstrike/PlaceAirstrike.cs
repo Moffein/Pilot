@@ -13,7 +13,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
         public static string attackSoundString = "Play_huntress_shift_mini_blink";
         public static GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainAirstrikeProjectile1.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
-        public static string muzzleName = "";   //Where the laser effect originates from.
+        public static string muzzleName = "Muzzle";   //Where the laser effect originates from.
         public static float damageCoefficient = 6f;   //damage per explosion
         public static float baseDuration = 0.21f;   //Slightly longer than DashGround duration so you dont whiff dashes
 

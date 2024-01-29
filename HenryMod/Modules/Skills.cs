@@ -46,7 +46,7 @@ namespace MoffeinPilot.Modules
             return skill;
         }
         #endregion
-
+        
         #region skillfamilies
 
         //everything calls this

@@ -16,6 +16,7 @@ namespace MoffeinPilot.Modules
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
         public static GameObject EngiMissileIndicatorButRed;
+        public static GameObject TempParachute;
         public static GameObject ExplosionGolemButScale;
 
         // CHANGE THIS
@@ -80,6 +81,11 @@ namespace MoffeinPilot.Modules
             ExplosionGolemButScale = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion(), "PilotComboExplosion", false);
             ExplosionGolemButScale.GetComponent<EffectComponent>().applyScale = true;
             AddNewEffectDef(ExplosionGolemButScale);
+
+            TempParachute = mainAssetBundle.LoadAsset<GameObject>("PilotParachuteTempParachute");
+            foreach(var r in TempParachute.GetComponentsInChildren<SkinnedMeshRenderer>()) {
+                r.sharedMaterial.SetHopooMaterial();
+            }
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
@@ -117,7 +123,7 @@ namespace MoffeinPilot.Modules
 
             foreach (Renderer i in objectToConvert.GetComponentsInChildren<Renderer>())
             {
-                i?.material?.SetHopooMaterial();
+                i?.sharedMaterial?.SetHopooMaterial();
             }
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using MoffeinPilot.Modules;
 
 namespace EntityStates.MoffeinPilot.Parachute
 {
@@ -31,6 +32,9 @@ namespace EntityStates.MoffeinPilot.Parachute
         private bool stopAscent;
         private bool startedAirborne;
 
+        private GameObject parachute;
+        private bool uninterrupted;
+
         private int origJumpCount;
 
         public override void OnEnter()
@@ -43,6 +47,11 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (NetworkServer.active && stunRadius > 0f) StunEnemies(base.transform.position);
 
             startedAirborne = false;
+
+            parachute = Object.Instantiate(Assets.TempParachute, FindModelChild("ParachutePosition"), false);
+            parachute.transform.localPosition = Vector3.zero;
+            parachute.transform.localScale = Vector3.one;
+            parachute.transform.localRotation = Quaternion.identity;
 
             StartAimMode(1);
             if (base.characterMotor)
@@ -101,7 +110,8 @@ namespace EntityStates.MoffeinPilot.Parachute
                 //bool isFalling = base.fixedAge >= DeployParachute.minDuration && base.characterMotor && base.characterMotor.velocity.y <= 0f;
                 if (base.fixedAge >= DeployParachute.baseDuration || stopAscent)
                 {
-                    this.outer.SetNextState(new Glide());
+                    uninterrupted = true;
+                    this.outer.SetNextState(new Glide { parachute = parachute});
                     return;
                 }
             }
@@ -157,6 +167,10 @@ namespace EntityStates.MoffeinPilot.Parachute
                 pilotController.isParachuting = false;
             }
             if (base.characterMotor && !base.characterMotor.isGrounded) base.characterMotor.jumpCount = 1;
+
+            if (!uninterrupted) {
+                Destroy(parachute);
+            }
             base.OnExit();
         }
 

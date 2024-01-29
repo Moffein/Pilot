@@ -16,10 +16,10 @@ namespace EntityStates.MoffeinPilot.Weapon
 
         public static float damageCoefficient = 1.6f;
         public static float force = 500f;
-
+        
         public static float comboDamageCoefficient = 3.2f;
         public static float comboForce = 1500f;
-        public static float comboBlastRadius = 7f;
+        public static float comboBlastRadius = 11f;
 
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;
@@ -30,7 +30,7 @@ namespace EntityStates.MoffeinPilot.Weapon
 
         public static float baseDuration = 0.3f;
 
-        public static string muzzleName = "";
+        public static string muzzleName = "Muzzle";
         public static string attackSoundString = "Play_MoffeinPilot_Primary_Cluster";
         public static string comboAttackSoundString = "Play_MoffeinPilot_Primary_Cluster_Combo";
 
