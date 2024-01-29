@@ -33,6 +33,8 @@ namespace EntityStates.MoffeinPilot.Weapon
 			Ray aimRay = base.GetAimRay();
 			base.StartAimMode(aimRay, 3f, false);
 			duration = baseDuration/this.attackSpeedStat;
+																								  //second half of animation is recovery
+			base.PlayAnimation("Gesture, Additive", "Shoot1", "ShootGun.playbackRate", duration * 2f);
 			if (muzzleEffectPrefab)
             {
 				EffectManager.SimpleMuzzleFlash(RapidFire.muzzleEffectPrefab, base.gameObject, RapidFire.muzzleName, false);

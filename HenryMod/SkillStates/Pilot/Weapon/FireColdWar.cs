@@ -56,6 +56,7 @@ namespace EntityStates.MoffeinPilot.Weapon
             shotStopwatch = 0f;
             duration = FireColdWar.baseDuration / this.attackSpeedStat;
             shotDuration = FireColdWar.baseShotDuration / this.attackSpeedStat;
+
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(2f);
@@ -99,9 +100,10 @@ namespace EntityStates.MoffeinPilot.Weapon
         {
             shotStopwatch = 0f;
             shotCount++;
-            Util.PlaySound(FireColdWar.attackSoundString, base.gameObject);
+            Util.PlaySound(FireColdWar.attackSoundString, base.gameObject); 
+            base.PlayAnimation("Gesture, Additive", "Shoot1", "ShootGun.playbackRate", shotDuration * 2f);
+
             //EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, muzzleString, false);
-            //base.PlayAnimation("Gesture, Override", "Primary", "Primary.playbackRate", this.duration);
 
             if (base.isAuthority)
             {

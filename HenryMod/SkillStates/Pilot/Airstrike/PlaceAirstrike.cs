@@ -43,6 +43,10 @@ namespace EntityStates.MoffeinPilot.Airstrike
                     if (base.characterMotor) base.SmallHop(base.characterMotor, 24f);
                 }
             }
+            if (!isGrounded) {
+
+                PlayAnimation("Gesture, Override", "PointDown", "Point.playbackRate", 0.4f);
+            }
         }
 
         public override void FixedUpdate()

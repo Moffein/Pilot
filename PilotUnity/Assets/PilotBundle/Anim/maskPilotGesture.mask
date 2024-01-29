@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: maskPilotGesture
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/ROOT
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/IkArm.l
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/IkArm.l/Elbow_Target.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/IkArm.r
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/IkArm.r/Elbow_Target.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/Bone
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/Bone.002
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.L/leg1.L.001
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.L/leg1.L.001/leg3.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.L/leg1.L.001/leg3.L/foot.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.L/leg1.L.001/leg3.L/foot.L/toe.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.R/Bone.001
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.R/leg1.R.001
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.R/leg1.R.001/leg3.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.R/leg1.R.001/leg3.R/foot.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/leg1.R/leg1.R.001/leg3.R/foot.R/toe.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/pelvis/Pouch1.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/BASE/stomach
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/head
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/neck
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/Pipes1
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals0.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals0.L/thumb.02.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals0.L/thumb.02.L/thumb.03.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals1.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals1.L/f_index.01.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals1.L/f_index.01.L/f_index.02.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals1.L/f_index.01.L/f_index.02.L/f_index.03.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals2.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals2.L/f_middle.01.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals2.L/f_middle.01.L/f_middle.02.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals2.L/f_middle.01.L/f_middle.02.L/f_middle.03.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals3.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals3.L/f_ring.01.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals3.L/f_ring.01.L/f_ring.02.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals3.L/f_ring.01.L/f_ring.02.L/f_ring.03.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals4.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals4.L/f_pinky.01.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals4.L/f_pinky.01.L/f_pinky.02.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/metacarpals4.L/f_pinky.01.L/f_pinky.02.L/f_pinky.03.L
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/WeaponBoneMain
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/WeaponBoneMain/PilotPistol
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.L/arm1.L/arm3.L/armFix1.L/ArmFix2.L/hand.L/WeaponBoneMain/PilotWeapon
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals0.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals0.R/thumb.02.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals0.R/thumb.02.R/thumb.03.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals1.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals1.R/f_index.01.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals1.R/f_index.01.R/f_index.02.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals1.R/f_index.01.R/f_index.02.R/f_index.03.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals2.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals2.R/f_middle.01.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals2.R/f_middle.01.R/f_middle.02.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals2.R/f_middle.01.R/f_middle.02.R/f_middle.03.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals3.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals3.R/f_ring.01.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals3.R/f_ring.01.R/f_ring.02.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals3.R/f_ring.01.R/f_ring.02.R/f_ring.03.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals4.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals4.R/f_pinky.01.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals4.R/f_pinky.01.R/f_pinky.02.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/chest/shoulder.R/arm1.R/arm3.R/armFix1.R/ArmFix2.R/hand.R/metacarpals4.R/f_pinky.01.R/f_pinky.02.R/f_pinky.03.R
+    m_Weight: 1
+  - m_Path: Armature/ROOT/BASE/stomach/spine/spine1/Pipes2
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.L/FootRoll.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.L/FootRoll.L/ikLeg.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.L/Knee_Target.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.L/ToeControl.L
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.R/FootRoll.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.R/FootRoll.R/ikLeg.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.R/Knee_Target.R
+    m_Weight: 0
+  - m_Path: Armature/ROOT/LegControl.R/ToeControl.R
+    m_Weight: 0
+  - m_Path: PilotBody
+    m_Weight: 0
+  - m_Path: PilotBody.001
+    m_Weight: 0
+  - m_Path: PilotBreather
+    m_Weight: 0
+  - m_Path: PilotEyes
+    m_Weight: 0
+  - m_Path: Pilotfur
+    m_Weight: 0
+  - m_Path: PilotHead
+    m_Weight: 0
+  - m_Path: PilotMetal
+    m_Weight: 0
+  - m_Path: PilotPouches
+    m_Weight: 0

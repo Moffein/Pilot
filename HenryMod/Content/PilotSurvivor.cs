@@ -739,33 +739,40 @@ namespace MoffeinPilot.Modules.Survivors
             //    "meshHenrySword",
             //    "meshHenryGun",
             //    "meshHenry");
-
+            
             //add new skindef to our list of skindefs. this is what we'll be passing to the SkinController
             skins.Add(defaultSkin);
             #endregion
             
             //uncomment this when you have a mastery skin
             #region MasterySkin
-            /*
+            
             //creating a new skindef as we did before
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(HenryPlugin.DEVELOPER_PREFIX + "_HENRY_BODY_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(BODY_PREFIX + " scrawny fuck",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 defaultRendererinfos,
-                prefabCharacterModel.gameObject,
-                masterySkinUnlockableDef);
+                prefabCharacterModel.gameObject/*,
+                masterySkinUnlockableDef*/);
 
             //adding the mesh replacements as above. 
             //if you don't want to replace the mesh (for example, you only want to replace the material), pass in null so the order is preserved
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
-                "meshHenrySwordAlt",
-                null,//no gun mesh replacement. use same gun mesh
-                "meshHenryAlt");
+                "PilotPistol",
+                "PilotWeapon",
+                "PilotBody",
+                "PilotBody.001",
+                "PilotBreather",
+                "PilotEyes",
+                "Pilotfur",
+                "PilotHead",
+                "PilotMetal",
+                "PilotPouches");
 
             //masterySkin has a new set of RendererInfos (based on default rendererinfos)
             //you can simply access the RendererInfos defaultMaterials and set them to the new materials for your skin.
-            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
-            masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
-            masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
+            //masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
+            //masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
+            //masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHenryAlt");
 
             //here's a barebones example of using gameobjectactivations that could probably be streamlined or rewritten entirely, truthfully, but it works
             masterySkin.gameObjectActivations = new SkinDef.GameObjectActivation[]
@@ -779,7 +786,7 @@ namespace MoffeinPilot.Modules.Survivors
             //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
 
             skins.Add(masterySkin);
-            */
+            
             #endregion
 
             skinController.skins = skins.ToArray();

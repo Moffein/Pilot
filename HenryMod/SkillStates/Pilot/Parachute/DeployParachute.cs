@@ -43,12 +43,20 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (NetworkServer.active && stunRadius > 0f) StunEnemies(base.transform.position);
 
             startedAirborne = false;
+
+            StartAimMode(1);
             if (base.characterMotor)
             {
                 startedAirborne = !base.characterMotor.isGrounded;
 
                 origJumpCount = base.characterMotor.jumpCount;
                 base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
+
+                if (startedAirborne) {
+                    base.PlayAnimation("FullBody, Override", "ParachuteForward");
+                } else {
+                    base.PlayAnimation("FullBody, Override", "ParachuteUp");
+                }
 
                 if (base.isAuthority)
                 {

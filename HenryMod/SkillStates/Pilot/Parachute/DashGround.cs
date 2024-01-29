@@ -23,6 +23,8 @@ namespace EntityStates.MoffeinPilot.Parachute
             CreateBlinkEffect(Util.GetCorePosition(gameObject));
 
             SetBlinkVector();
+            StartAimMode(new Ray(transform.position, -blinkVector), 0.5f);
+            PlayAnimation("Gesture, Override", "PointGround", "Point.playbackRate", 0.5f);
 
             modelTransform = GetModelTransform();
             if (modelTransform)
@@ -66,6 +68,12 @@ namespace EntityStates.MoffeinPilot.Parachute
         public virtual float GetBlinkSpeed()
         {
             return 10.875f;  //Same as phase blink, scaled to duration. Includes sprint multiplier baked-in since this skill disables sprint.
+        }
+
+        public override void Update() {
+            base.Update();
+
+            characterDirection.forward = -blinkVector.normalized;
         }
 
         public override void FixedUpdate()

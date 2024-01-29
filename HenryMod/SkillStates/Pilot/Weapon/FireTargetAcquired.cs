@@ -108,7 +108,7 @@ namespace EntityStates.MoffeinPilot.Weapon
             Util.PlaySound(FireTargetAcquired.attackSoundString, base.gameObject);
             //EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, muzzleString, false);
             //base.PlayAnimation("Gesture, Override", "Primary", "Primary.playbackRate", this.duration);
-
+            base.PlayAnimation("Gesture, Additive", "Shoot1", "ShootGun.playbackRate", shotDuration * 2f);
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();

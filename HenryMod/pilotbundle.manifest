@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 921158375
+CRC: 2228789824
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 84e7f6b615326d4186abe6ed0dabeee8
+    Hash: ae5a3efdd9d77b6d9960e784baa504c8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f01a3af1edc3cb7d7275390daa9f3453
+    Hash: 57281068dac453ca60c3d4fd89995ca0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -24,6 +24,8 @@ ClassTypes:
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
+  Script: {instanceID: 0}
+- Class: 54
   Script: {instanceID: 0}
 - Class: 65
   Script: {instanceID: 0}
@@ -49,35 +51,50 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+- Class: 144
+  Script: {instanceID: 0}
 - Class: 213
+  Script: {instanceID: 0}
+- Class: 319
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/PilotBundle/mdlMoffeinPilot.prefab
-- Assets/PilotBundle/animPilot.controller
+- Assets/PilotBundle/Mesh/Pilotfur.mesh
+- Assets/PilotBundle/Anim/animPilot.controller
+- Assets/PilotBundle/Anim/maskPilotGesture.mask
 - Assets/PilotBundle/Materials/matPilotDefault2.mat
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_1.png
 - Assets/PilotBundle/Textures/Pilot/Pilot_diffuse.png
 - Assets/PilotBundle/MoffeinPilotDisplay.prefab
+- Assets/PilotBundle/Mesh/PilotBreather.mesh
+- Assets/PilotBundle/Mesh/PilotBody.001.mesh
+- Assets/PilotBundle/Mesh/PilotPistol.mesh
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_6a.png
+- Assets/PilotBundle/Mesh/PilotWeapon.mesh
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_7.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_emission.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_3.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_4.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_normal.png
+- Assets/PilotBundle/Mesh/PilotMetal.mesh
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotPortrait_0.png
 - Assets/PilotBundle/Materials/matPilotDefault1.mat
+- Assets/PilotBundle/Mesh/PilotEyes.mesh
+- Assets/PilotBundle/Mesh/PilotPouches.mesh
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_0.png
 - Assets/PilotBundle/Textures/Pilot/PIlot2_emission.png
 - Assets/PilotBundle/EmptyGameObject.prefab
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_2.png
 - Assets/PilotBundle/Materials/matPilotDefaultWeapon.mat
-- Assets/PilotBundle/animPilotDisplay.controller
+- Assets/PilotBundle/Anim/animPilotDisplay.controller
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_8.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_5.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_diffuse.png
 - Assets/PilotBundle/Textures/Pilot/PIlot2_normal.png
+- Assets/PilotBundle/Mesh/PilotBody.mesh
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_6.png
+- Assets/PilotBundle/Mesh/PilotHead.mesh
 - Assets/PilotBundle/Textures/Pilot/PIlot2_diffuse.png
 - Assets/PilotBundle/Textures/Pilot/Pilot_normal.png
 Dependencies: []

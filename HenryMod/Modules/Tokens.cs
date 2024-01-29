@@ -8,12 +8,12 @@ namespace MoffeinPilot.Modules
         internal static void AddTokens()
         {
             string prefix = PilotPlugin.DEVELOPER_PREFIX + "_PILOT_BODY_";
-            LanguageAPI.Add(prefix + "NAME", "Pilot");
+            LanguageAPI.Add(prefix + "NAME", "Pilont");
             LanguageAPI.Add(prefix + "DESCRIPTION", "The Pilot is an airborne fighter that excels at raining damage from above.");
             LanguageAPI.Add(prefix + "SUBTITLE", "Airborne Ace");
             LanguageAPI.Add(prefix + "LORE", "Pilot was born with a special power.");
-            LanguageAPI.Add(prefix + "OUTRO_FLAVOR", "..and so he left, with his dreams of the sky below.");
-            LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so he vanished, with the skies forever out of reach.");
+            LanguageAPI.Add(prefix + "OUTRO_FLAVOR", "..and so he left, his dreams of the sky below.");
+            LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so he vanished, the skies forever out of reach.");
 
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "Clusterfire");
             LanguageAPI.Add(prefix + "PRIMARY_DESCRIPTION", "Fire your weapon for <style=cIsDamage>160% damage</style>. Every third hit <style=cIsDamage>explodes</style> and deals <style=cIsDamage>320% damage</style>.");

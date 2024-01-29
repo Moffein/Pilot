@@ -107,7 +107,7 @@ namespace MoffeinPilot.Modules
         #region skilldefs
         public static void FixSkillName(SkillDef skillDef)
         {
-            (skillDef as ScriptableObject).name = skillDef.name;
+            (skillDef as ScriptableObject).name = skillDef.skillName;
         }
 
         public static SkillDef CreateSkillDef(SkillDefInfo skillDefInfo)

@@ -63,7 +63,7 @@ namespace EntityStates.MoffeinPilot.Weapon
             base.StartAimMode(aimRay, 3f, false);
             duration = baseDuration / this.attackSpeedStat;
 			base.characterBody.AddSpreadBloom(RapidFire.spreadBloomValue);
-
+            base.PlayAnimation("Gesture, Additive", "Shoot1", "ShootGun.playbackRate", duration * 2f);
             if (this.step == 2)
             {
                 FireBulletCombo(aimRay);
