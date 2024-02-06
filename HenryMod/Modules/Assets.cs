@@ -80,6 +80,13 @@ namespace MoffeinPilot.Modules
 
             ExplosionGolemButScale = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/ExplosionGolem.prefab").WaitForCompletion(), "PilotComboExplosion", false);
             ExplosionGolemButScale.GetComponent<EffectComponent>().applyScale = true;
+
+            ShakeEmitter[] shakeEmitters = ExplosionGolemButScale.GetComponentsInChildren<ShakeEmitter>();
+            for (int i = 0; i < shakeEmitters.Length; i++)
+            {
+                UnityEngine.Object.Destroy(shakeEmitters[i]);
+            }
+
             AddNewEffectDef(ExplosionGolemButScale);
 
             TempParachute = mainAssetBundle.LoadAsset<GameObject>("PilotParachuteTempParachute");
