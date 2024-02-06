@@ -152,7 +152,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             propertyStorage = new MaterialPropertyBlock();
             if (parachute) parachuteRenderers = parachute.GetComponentsInChildren<SkinnedMeshRenderer>();   //Just include SkinnedMeshRenderer for now to leave out the linerenderers.
 
-            if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value) return;
+            if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value || !(base.characterBody && base.characterBody.isPlayerControlled)) return;
             for (int i = 0; i < parachuteRenderers.Length; i++)
             {
                 parachuteRenderers[i].GetPropertyBlock(propertyStorage);
