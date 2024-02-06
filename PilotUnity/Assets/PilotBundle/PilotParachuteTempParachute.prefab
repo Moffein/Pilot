@@ -73,7 +73,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 4.5567727, y: 4.779714, z: 2.4401352}
+  - {x: 2.720001, y: 0.27942485, z: 1.6973234}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -232,8 +232,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4032296351809689670}
   m_LocalRotation: {x: -0.7071068, y: 2.842171e-14, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -3.410605e-13, y: -0.0000009536743, z: -5.9999995}
-  m_LocalScale: {x: 1.6752838, y: 1.6752838, z: 1.6752838}
+  m_LocalPosition: {x: -8.526513e-14, y: -0.00000023841858, z: -1.4999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9068611114823002507}
   - {fileID: 2776950534956482707}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tran: {fileID: 2680442325958349448}
   baseTran: {fileID: 3319221067374893068}
-  funny: 6
+  funny: 1.5
 --- !u!1 &4542270661062213379
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 4.870051, y: 4.7730126, z: -1.0159748}
+  - {x: 2.907001, y: 0.7754247, z: -0.36567628}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -629,7 +629,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -4.8566465, y: 4.7797146, z: -1.0109489}
+  - {x: -2.898999, y: 0.27942473, z: -0.36267614}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -805,7 +805,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -4.674041, y: 4.7797146, z: 2.4568884}
+  - {x: -2.789999, y: 0.7794248, z: 1.7073232}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123

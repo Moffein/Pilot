@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tran: {fileID: 1987862139421846848}
+  baseTran: {fileID: 0}
+  funny: 0
 --- !u!1 &2116949998824508292
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +88,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 2.7200007, y: -0.84057623, z: 7.627323}
+  - {x: 2.7200007, y: -0.840576, z: 2.8573232}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -231,7 +233,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -2.7899992, y: -0.8505755, z: 7.627323}
+  - {x: -2.7899992, y: -0.85057455, z: 2.8573232}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -376,7 +378,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -2.8989987, y: 1.2194242, z: 7.627323}
+  - {x: -2.8989987, y: 1.2194252, z: 2.8573234}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -521,7 +523,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 2.9070013, y: 1.2224236, z: 7.6233234}
+  - {x: 2.9070013, y: 1.2224238, z: 2.8533237}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -678,12 +680,12 @@ PrefabInstance:
     - target: {fileID: 222450950370141063, guid: 497c12b15fee0ee4ab38da105d2d0464,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 222450950370141063, guid: 497c12b15fee0ee4ab38da105d2d0464,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.77
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 222450950370141063, guid: 497c12b15fee0ee4ab38da105d2d0464,
         type: 3}
@@ -734,6 +736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323877558695562082, guid: 497c12b15fee0ee4ab38da105d2d0464,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6730233257632514670, guid: 497c12b15fee0ee4ab38da105d2d0464,
         type: 3}

@@ -15,6 +15,18 @@ namespace EntityStates.MoffeinPilot.Parachute
         private bool jumpReleased = false;
         internal GameObject parachute;
 
+        private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+
+        private CharacterCameraParamsData cameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 3.5f, //how far up should the camera go?
+            idealLocalCameraPos = zoomCameraPosition,
+            wallCushion = 0.1f
+        };
+        private static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -10f); // how far back should the camera go?
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -28,6 +40,18 @@ namespace EntityStates.MoffeinPilot.Parachute
             {
                 origJumpCount = base.characterMotor.jumpCount;
                 base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
+            }
+
+
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle);
+                CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+                {
+                    cameraParamsData = cameraParams,
+                    priority = 0f
+                };
+                camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0f);
             }
         }
 
@@ -60,6 +84,8 @@ namespace EntityStates.MoffeinPilot.Parachute
                             origin = base.characterBody.footPosition,
                             scale = base.characterBody.radius
                         }, true);
+
+                        //TODO: play jump anim
                     }
                     this.outer.SetNextStateToMain();
                     return;
@@ -82,6 +108,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 pilotController.isParachuting = false;
             }
 
+            if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, 0.5f);
             Destroy(parachute);
             base.OnExit();
         }

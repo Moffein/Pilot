@@ -8,7 +8,7 @@ namespace MoffeinPilot.Modules
         internal static void AddTokens()
         {
             string prefix = PilotPlugin.DEVELOPER_PREFIX + "_PILOT_BODY_";
-            LanguageAPI.Add(prefix + "NAME", "Pilont");
+            LanguageAPI.Add(prefix + "NAME", "Pilot");
             LanguageAPI.Add(prefix + "DESCRIPTION", "The Pilot is an airborne fighter that excels at raining damage from above.");
             LanguageAPI.Add(prefix + "SUBTITLE", "Airborne Ace");
             LanguageAPI.Add(prefix + "LORE", "Pilot was born with a special power.");

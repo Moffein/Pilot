@@ -37,6 +37,19 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         private int origJumpCount;
 
+
+        private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+
+        private CharacterCameraParamsData cameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 3.5f, //how far up should the camera go?
+            idealLocalCameraPos = zoomCameraPosition,
+            wallCushion = 0.1f
+        };
+        private static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -10f); // how far back should the camera go?
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -90,6 +103,18 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (pilotController)
             {
                 pilotController.isParachuting = true;
+            }
+
+
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle);
+                CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+                {
+                    cameraParamsData = cameraParams,
+                    priority = 0f
+                };
+                camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0.5f);
             }
         }
 
@@ -171,6 +196,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (!uninterrupted) {
                 Destroy(parachute);
             }
+            if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, 0.5f);
             base.OnExit();
         }
 
