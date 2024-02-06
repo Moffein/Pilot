@@ -1,4 +1,5 @@
-﻿using MoffeinPilot.Content.Components;
+﻿using BepInEx.Configuration;
+using MoffeinPilot.Content.Components;
 using RoR2;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace EntityStates.MoffeinPilot.Parachute
         private int origJumpCount;
         private bool jumpReleased = false;
         internal GameObject parachute;
+        private Renderer[] parachuteRenderers;
 
         private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
 
@@ -31,6 +33,13 @@ namespace EntityStates.MoffeinPilot.Parachute
         {
             base.OnEnter();
 
+            if (parachute)
+            {
+                DestroyOnTimer dt = parachute.GetComponent<DestroyOnTimer>();
+                if (dt) Destroy(dt);
+            }
+
+            SetupParachuteFade();
             pilotController = base.GetComponent<PilotController>();
             if (pilotController)
             {
@@ -41,7 +50,6 @@ namespace EntityStates.MoffeinPilot.Parachute
                 origJumpCount = base.characterMotor.jumpCount;
                 base.characterMotor.jumpCount = base.characterBody ? base.characterBody.maxJumpCount : 1;
             }
-
 
             if (cameraTargetParams)
             {
@@ -58,6 +66,7 @@ namespace EntityStates.MoffeinPilot.Parachute
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.StartAimMode();
             if (base.isAuthority)
             {
                 if (base.characterMotor)
@@ -116,6 +125,40 @@ namespace EntityStates.MoffeinPilot.Parachute
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Any;
+        }
+
+        //Duplicated code.
+        //Fade parachute if looking downwards.
+        private MaterialPropertyBlock propertyStorage;
+        /*public override void Update()
+        {
+            base.Update();
+
+            if (!base.isAuthority || !DeployParachute.enableParachuteFade.Value || !parachute || parachuteRenderers == null|| parachuteRenderers.Length <= 0) return;
+            Ray aimRay = base.GetAimRay();
+
+            //float fadeLerp = Mathf.Lerp(1f, fadeAmount, aimRay.direction.y / (-1f - fadeLookAngle));
+            float fadeLerp = aimRay.direction.y < DeployParachute.fadeLookAngle ? DeployParachute.fadeAmount : 1f;
+            for (int i = 0; i < parachuteRenderers.Length; i++)
+            {
+                parachuteRenderers[i].GetPropertyBlock(propertyStorage);
+                propertyStorage.SetFloat("_Fade", fadeLerp);
+                parachuteRenderers[i].SetPropertyBlock(propertyStorage);
+            }
+        }*/
+
+        private void SetupParachuteFade()
+        {
+            propertyStorage = new MaterialPropertyBlock();
+            if (parachute) parachuteRenderers = parachute.GetComponentsInChildren<SkinnedMeshRenderer>();   //Just include SkinnedMeshRenderer for now to leave out the linerenderers.
+
+            if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value) return;
+            for (int i = 0; i < parachuteRenderers.Length; i++)
+            {
+                parachuteRenderers[i].GetPropertyBlock(propertyStorage);
+                propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
+                parachuteRenderers[i].SetPropertyBlock(propertyStorage);
+            }
         }
     }
 }

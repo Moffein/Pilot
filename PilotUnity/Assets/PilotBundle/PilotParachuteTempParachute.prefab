@@ -73,7 +73,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 2.720001, y: 0.27942485, z: 1.6973234}
+  - {x: 4.080001, y: 0.40942484, z: 2.2473235}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -233,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 4032296351809689670}
   m_LocalRotation: {x: -0.7071068, y: 2.842171e-14, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -8.526513e-14, y: -0.00000023841858, z: -1.4999999}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 9068611114823002507}
   - {fileID: 2776950534956482707}
@@ -363,7 +363,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 2.907001, y: 0.7754247, z: -0.36567628}
+  - {x: 4.3605013, y: 0.40342456, z: -0.8471762}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -629,7 +629,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -2.898999, y: 0.27942473, z: -0.36267614}
+  - {x: -4.348499, y: 0.40942484, z: -0.84267604}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -805,7 +805,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -2.789999, y: 0.7794248, z: 1.7073232}
+  - {x: -4.184999, y: 0.40942472, z: 2.2623236}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
