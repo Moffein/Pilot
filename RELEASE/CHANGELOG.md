@@ -1,3 +1,6 @@
+`0.3.2`
+	- Fixed gun in emote rig
+
 `0.3.1`
 	- Fixed EntityStates not being registered. This should fix most MP bugs.
 	- Fixed Special projectile visuals not showing online.

@@ -17,22 +17,15 @@ namespace MoffeinPilot
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
 
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    //[BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        "PrefabAPI",
-        "LanguageAPI",
-        "SoundAPI",
-        "UnlockableAPI"
-    })]
 
     public class PilotPlugin : BaseUnityPlugin
     {
         public const string MODUID = "com.EnforcerGang.Pilot";
         public const string MODNAME = "Pilot";
-        public const string MODVERSION = "0.3.1";
+        public const string MODVERSION = "0.3.2";
 
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
