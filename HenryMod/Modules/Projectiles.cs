@@ -37,7 +37,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreateAirStrikeGhost(string prefabName)
         {
-            GameObject toReturn = Assets.mainAssetBundle.LoadAsset<GameObject>(prefabName);
+            GameObject toReturn = Assets.mainAssetBundle.LoadAsset<GameObject>(prefabName).InstantiateClone(prefabName + "Ghost", false);
 
             toReturn.AddComponent<ProjectileGhostController>();
             toReturn.AddComponent<RotationVisuals>();
@@ -76,6 +76,7 @@ namespace MoffeinPilot.Modules
             asdc.triggerRadius = 6f;
             asdc.initialArmDuration = rearmTime;
 
+            proj.RegisterNetworkPrefab();
             AddProjectile(proj);
 
             return proj;
@@ -105,6 +106,7 @@ namespace MoffeinPilot.Modules
             asdca.explosionCount = explosionCount;
             asdca.blastRadius = 10f;
 
+            proj.RegisterNetworkPrefab();
             AddProjectile(proj);
 
             return proj;
