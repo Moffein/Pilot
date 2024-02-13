@@ -728,8 +728,8 @@ namespace MoffeinPilot.Modules.Survivors
 
             #region DefaultSkin
             //this creates a SkinDef with all default fields
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(BODY_PREFIX + "DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texIconSkinPilotDefault"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
 

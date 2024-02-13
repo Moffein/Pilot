@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3532695645
+CRC: 555717802
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b1f78096cd857355040a9867441bb34b
+    Hash: 59c9465708f66b5910a9b995db9003f4
   TypeTreeHash:
     serializedVersion: 2
     Hash: 80fbf8b6ec4cdb4377abfdb95d2a48ba
@@ -86,6 +86,7 @@ Assets:
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_emission.png
 - Assets/PilotBundle/Materials/matAirStrikeCrossAlt.mat
 - Assets/PilotBundle/Textures/AirStrike/texPilotAirstrikeCrosshair.png
+- Assets/PilotBundle/Textures/Icons/texIconSkinPilotDefault.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_3.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_4.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_normal.png
