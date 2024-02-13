@@ -15,6 +15,7 @@ namespace MoffeinPilot
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
 
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
@@ -31,7 +32,7 @@ namespace MoffeinPilot
     {
         public const string MODUID = "com.EnforcerGang.Pilot";
         public const string MODNAME = "Pilot";
-        public const string MODVERSION = "0.3.0";
+        public const string MODVERSION = "0.3.1";
 
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
@@ -43,7 +44,7 @@ namespace MoffeinPilot
             Files.PluginInfo = this.Info;
             Log.Init(Logger);
 
-            ModCompat.Init();
+            ModCompat.CheckDependencies();
             Modules.DamageTypes.RegisterDamageTypes();
             Modules.Assets.Initialize(); // load assets and read config
             Modules.Config.ReadConfig();
@@ -57,6 +58,8 @@ namespace MoffeinPilot
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
+
+            ModCompat.Init();
         }
 
         private void Start()

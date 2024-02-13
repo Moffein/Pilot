@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace MoffeinPilot
 {
@@ -13,12 +14,17 @@ namespace MoffeinPilot
     {
         public static bool ScepterLoaded, RiskOfOptionsLoaded, EmoteAPILoaded, InfernoLoaded;
 
-        internal static void Init()
+        internal static void CheckDependencies()
         {
             RiskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
             ScepterLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             EmoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
             InfernoLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("HIFU.Inferno");
+        }
+
+        internal static void Init()
+        {
+            if (EmoteAPILoaded) SetupEmotes();
         }
 
         public static void SetupScepter(string bodyName, SkillDef scepterSkill, SkillDef skillToReplace)
@@ -45,5 +51,22 @@ namespace MoffeinPilot
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend));
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static void SetupEmotes()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    if (item.bodyPrefab.name == "MoffeinPilotBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("PilotEmotePrefab.prefab");
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                    }
+                }
+            };
+        }
     }
 }
