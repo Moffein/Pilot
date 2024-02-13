@@ -21,15 +21,15 @@ namespace MoffeinPilot
             InfernoLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("HIFU.Inferno");
         }
 
-        public static void SetupScepter(string bodyName, SkillDef scepterSkill, SkillSlot skillSlot, int skillIndex)
+        public static void SetupScepter(string bodyName, SkillDef scepterSkill, SkillDef skillToReplace)
         {
-            if (ScepterLoaded) SetupScepterInternal(bodyName, scepterSkill, skillSlot, skillIndex);
+            if (ScepterLoaded) SetupScepterInternal(bodyName, scepterSkill, skillToReplace);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        private static void SetupScepterInternal(string bodyName, SkillDef scepterSkill, SkillSlot skillSlot, int skillIndex)
+        private static void SetupScepterInternal(string bodyName, SkillDef scepterSkill, SkillDef skillToReplace)
         {
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterSkill, bodyName, skillSlot, skillIndex);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterSkill, bodyName, skillToReplace);
         }
 
         public static void SetupOptions()

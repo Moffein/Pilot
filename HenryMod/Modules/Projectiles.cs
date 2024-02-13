@@ -1,4 +1,5 @@
 ﻿using MoffeinPilot.Content.Components.Projectile;
+using Pilot.Content.Components.ProjectileGhost;
 using R2API;
 using RoR2;
 using RoR2.Projectile;
@@ -22,14 +23,30 @@ namespace MoffeinPilot.Modules
             }
             Content.AddEffectDef(new EffectDef(blastEffectPrefab));
 
-            GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Nullifier/NullifierPreBombGhost.prefab").WaitForCompletion();
+            GameObject ghostPrefab = CreateAirStrikeGhost("AirStrikeVisualPrefab");
+            GameObject ghostAltPrefab = CreateAirStrikeGhost("AirStrikeAltVisualPrefab");
+            GameObject ghostScepterPrefab = CreateAirStrikeGhost("AirStrikeScepterVisualPrefab");
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 3, 1.5f);
-            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 6, 1.5f);
-            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltProjectile", ghostPrefab, blastEffectPrefab, detSound, 4, 0.25f);
-            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAltScepter.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltScepterProjectile", ghostPrefab, blastEffectPrefab, detSound, 8, 0.15f);
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostScepterPrefab, blastEffectPrefab, detSound, 6, 1.5f);
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltProjectile", ghostAltPrefab, blastEffectPrefab, detSound, 4, 0.25f);
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAltScepter.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltScepterProjectile", ghostScepterPrefab, blastEffectPrefab, detSound, 8, 0.15f);
 
 
             EntityStates.MoffeinPilot.Weapon.FireColdWar.projectilePrefab = CreatePilotColdWarProjectile("PilotColdWarProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/LightningStakeNova.prefab").WaitForCompletion());
+        }
+
+        private static GameObject CreateAirStrikeGhost(string prefabName)
+        {
+            GameObject toReturn = Assets.mainAssetBundle.LoadAsset<GameObject>(prefabName).InstantiateClone("AirStrikeGhost", false);
+
+            toReturn.AddComponent<ProjectileGhostController>();
+            toReturn.AddComponent<RotationVisuals>();
+
+            VFXAttributes vfx = toReturn.AddComponent<VFXAttributes>();
+            vfx.vfxPriority = VFXAttributes.VFXPriority.Always;
+            vfx.vfxIntensity = VFXAttributes.VFXIntensity.Low;
+
+            return toReturn;
         }
 
         private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int maxTriggers, float rearmTime)

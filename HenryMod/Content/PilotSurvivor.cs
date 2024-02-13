@@ -713,8 +713,8 @@ namespace MoffeinPilot.Modules.Survivors
 
             Modules.Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { specialDef, specialAltDef });
 
-            ModCompat.SetupScepter("PilotBody", specialScepterDef, SkillSlot.Special, 0);
-            ModCompat.SetupScepter("PilotBody", specialAltScepterDef, SkillSlot.Special, 1);
+            ModCompat.SetupScepter("MoffeinPilotBody", specialScepterDef, specialDef);
+            ModCompat.SetupScepter("MoffeinPilotBody", specialAltScepterDef, specialAltDef);
         }
 
         public override void InitializeSkins()
