@@ -49,7 +49,7 @@ namespace MoffeinPilot
             Modules.Config.ReadConfig();
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-            Modules.Tokens.AddTokens(); // register name tokens
+            new Modules.LanguageTokens();
             Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // survivor initialization
