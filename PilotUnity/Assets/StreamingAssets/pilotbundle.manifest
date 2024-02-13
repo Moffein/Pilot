@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 555717802
+CRC: 1981525578
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 59c9465708f66b5910a9b995db9003f4
+    Hash: 17eb5714ea43b37f12234a6d55cf3e3c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 80fbf8b6ec4cdb4377abfdb95d2a48ba
@@ -118,6 +118,7 @@ Assets:
 - Assets/PilotBundle/Textures/Pilot/PIlot2_normal.png
 - Assets/PilotBundle/Mesh/PilotBody.mesh
 - Assets/PilotBundle/Materials/matAirStrikeDot.mat
+- Assets/PilotBundle/Textures/Icons/texIconPilot.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_6.png
 - Assets/PilotBundle/Materials/matAirStrikeCrossScepter.mat
 - Assets/PilotBundle/Textures/PilotParachute_normal.png

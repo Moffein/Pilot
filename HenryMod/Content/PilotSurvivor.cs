@@ -37,7 +37,7 @@ namespace MoffeinPilot.Modules.Survivors
             bodyNameToken = BODY_PREFIX + "NAME",
             subtitleNameToken = BODY_PREFIX + "SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("sPilotPortrait_0"),
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texIconPilot"),
             bodyColor = new Color32(56, 148, 77, 255),
 
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
