@@ -45,6 +45,7 @@ namespace MoffeinPilot
             Log.Init(Logger);
 
             ModCompat.CheckDependencies();
+            Modules.States.RegisterStates();
             Modules.DamageTypes.RegisterDamageTypes();
             Modules.Assets.Initialize(); // load assets and read config
             Modules.Config.ReadConfig();

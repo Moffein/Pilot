@@ -37,7 +37,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreateAirStrikeGhost(string prefabName)
         {
-            GameObject toReturn = Assets.mainAssetBundle.LoadAsset<GameObject>(prefabName).InstantiateClone("AirStrikeGhost", false);
+            GameObject toReturn = Assets.mainAssetBundle.LoadAsset<GameObject>(prefabName);
 
             toReturn.AddComponent<ProjectileGhostController>();
             toReturn.AddComponent<RotationVisuals>();
