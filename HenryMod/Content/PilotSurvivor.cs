@@ -785,7 +785,7 @@ namespace MoffeinPilot.Modules.Survivors
             };
             //simply find an object on your child locator you want to activate/deactivate and set if you want to activate/deacitvate it with this skin
 
-            skins.Add(masterySkin);
+            //skins.Add(masterySkin);
             
             #endregion
 

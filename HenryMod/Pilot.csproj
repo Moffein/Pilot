@@ -19,11 +19,6 @@
     <None Remove="pilotbundle" />
     <None Remove="PilotSoundbank.bnk" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <EmbeddedResource Include="pilotbundle" />
-    <EmbeddedResource Include="PilotSoundbank.bnk" />
-  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="0Harmony">

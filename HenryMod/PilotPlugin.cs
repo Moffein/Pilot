@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using MoffeinPilot.Modules.Survivors;
+using Pilot.Modules;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace MoffeinPilot
     {
         public const string MODUID = "com.EnforcerGang.Pilot";
         public const string MODNAME = "Pilot";
-        public const string MODVERSION = "0.2.0";
+        public const string MODVERSION = "0.3.0";
 
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
@@ -39,6 +40,7 @@ namespace MoffeinPilot
         private void Awake()
         {
             instance = this;
+            Files.PluginInfo = this.Info;
             Log.Init(Logger);
 
             ModCompat.Init();
@@ -55,6 +57,11 @@ namespace MoffeinPilot
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
+        }
+
+        private void Start()
+        {
+            SoundBanks.Init();
         }
     }
 }

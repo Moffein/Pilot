@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using RoR2.UI;
 using System;
 using UnityEngine.AddressableAssets;
+using Pilot.Modules;
 
 namespace MoffeinPilot.Modules
 {
@@ -34,7 +35,6 @@ namespace MoffeinPilot.Modules
             }*/
 
             LoadAssetBundle();
-            LoadSoundbank();
             PopulateAssets();
         }
 
@@ -44,26 +44,13 @@ namespace MoffeinPilot.Modules
             {
                 if (mainAssetBundle == null)
                 {
-                    using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{csProjName}.{assetbundleName}"))
-                    {
-                        mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                    }
+                    mainAssetBundle = AssetBundle.LoadFromFile(Files.GetPathToFile("AssetBundles", "pilotbundle"));
                 }
             }
             catch (Exception e)
             {
                 Log.Error("Failed to load assetbundle. Make sure your assetbundle name is setup correctly\n" + e);
                 return;
-            }
-        }
-
-        internal static void LoadSoundbank()
-        {
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{csProjName}.PilotSoundbank.bnk"))
-            {
-                byte[] array = new byte[manifestResourceStream2.Length];
-                manifestResourceStream2.Read(array, 0, array.Length);
-                SoundAPI.SoundBanks.Add(array);
             }
         }
 
