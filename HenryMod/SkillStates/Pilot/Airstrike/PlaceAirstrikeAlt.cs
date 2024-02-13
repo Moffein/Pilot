@@ -51,7 +51,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
 
         protected override void DoPhysics()
         {
-            return;
+            if (!isGrounded && base.characterMotor) base.SmallHop(base.characterMotor, 24f);
         }
 
         protected override void DoAnim()
