@@ -21,7 +21,12 @@ namespace EntityStates.MoffeinPilot
 
         private void SetWeaponModel()
         {
-            bool hidePistol = !(base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.baseSkill == PilotSurvivor.SkillDefs.Primaries.Silencer);
+            if (base.skillLocator == null)
+                return;
+            if (base.skillLocator.primary == null)
+                return;
+
+            bool showPistol = base.skillLocator.primary.baseSkill == PilotSurvivor.SkillDefs.Primaries.Silencer;
 
             ChildLocator childLocator = base.GetModelChildLocator();
             if (!childLocator) return;
@@ -29,16 +34,8 @@ namespace EntityStates.MoffeinPilot
             Transform pistol = childLocator.FindChild("PilotPistol");
             Transform defaultGun  = childLocator.FindChild("PilotWeapon");
 
-            if (hidePistol)
-            {
-                if (pistol) pistol.gameObject.SetActive(false);
-                if (defaultGun) defaultGun.gameObject.SetActive(true);
-            }
-            else
-            {
-                if (pistol) pistol.gameObject.SetActive(true);
-                if (defaultGun) defaultGun.gameObject.SetActive(false);
-            }
+            if (pistol) pistol.gameObject.SetActive(showPistol);
+            if (defaultGun) defaultGun.gameObject.SetActive(!showPistol);
         }
     }
 }

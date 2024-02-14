@@ -1,5 +1,97 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2157939252010106094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078900661344157177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeda06bfdd5bc1f41bb039619238af3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillChangeResponses:
+  - name: 1
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4974206497782200474}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 4554188048488558922}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 2
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4974206497782200474}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 4554188048488558922}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 3
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4974206497782200474}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4554188048488558922}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  skinChangeResponses: []
 --- !u!1001 &3551892365202643487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369,3 +461,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af1f1210c7546d84fa434817980cdf37, type: 3}
+--- !u!1 &3078900661344157177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2013294435067062246, guid: af1f1210c7546d84fa434817980cdf37,
+    type: 3}
+  m_PrefabInstance: {fileID: 3551892365202643487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4554188048488558922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1042973293313665877, guid: af1f1210c7546d84fa434817980cdf37,
+    type: 3}
+  m_PrefabInstance: {fileID: 3551892365202643487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4974206497782200474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8380413018251207301, guid: af1f1210c7546d84fa434817980cdf37,
+    type: 3}
+  m_PrefabInstance: {fileID: 3551892365202643487}
+  m_PrefabAsset: {fileID: 0}

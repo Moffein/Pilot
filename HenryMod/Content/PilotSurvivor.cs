@@ -117,6 +117,7 @@ namespace MoffeinPilot.Modules.Survivors
                 Array.Resize(ref ssoh.idleStateMachine, ssoh.idleStateMachine.Length + 1);
                 ssoh.idleStateMachine[ssoh.idleStateMachine.Length - 1] = parachuteStateMachine;
             }
+            FinalizeCSSPreviewDisplayController();
         }
 
         private void InitializeDoppelgangerAfterSkills()
@@ -426,6 +427,11 @@ namespace MoffeinPilot.Modules.Survivors
 
             Modules.Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primaryDef, primaryAltDef, primarySilencerDef });
             visualizer.transform.localScale = 10f * Vector3.one;
+
+            var locator = bodyPrefab.GetComponent<SkillLocator>();
+            AddCssPreviewSkill(0, locator.primary.skillFamily, primaryDef);
+            AddCssPreviewSkill(1, locator.primary.skillFamily, primaryAltDef);
+            AddCssPreviewSkill(2, locator.primary.skillFamily, primarySilencerDef);
         }
 
 

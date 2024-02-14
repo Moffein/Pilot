@@ -158,7 +158,7 @@ MonoBehaviour:
   - name: Chest
     transform: {fileID: 7388745509345867777}
   - name: PilotPistol
-    transform: {fileID: 971549558870994302}
+    transform: {fileID: 8020535710003597399}
   - name: Muzzle
     transform: {fileID: 1506517909569617603}
   - name: ParachutePosition
@@ -168,7 +168,7 @@ MonoBehaviour:
   - name: FootR
     transform: {fileID: 6219919194680539567}
   - name: PilotWeapon
-    transform: {fileID: 8020535710003597399}
+    transform: {fileID: 971549558870994302}
 --- !u!54 &725269401894434204
 Rigidbody:
   m_ObjectHideFlags: 0
