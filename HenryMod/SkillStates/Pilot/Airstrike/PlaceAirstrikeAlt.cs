@@ -43,8 +43,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
                 maxDistance = 2000f,
                 muzzleName = PlaceAirstrike.muzzleName,
                 radius = 0.2f,
-                hitCallback = base.AirstrikeHitCallback,
-                stopperMask = LayerIndex.world.mask
+                hitCallback = base.AirstrikeHitCallback
             };
             ba.Fire();
         }

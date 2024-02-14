@@ -1,3 +1,9 @@
+`0.3.5`
+
+- Fixed models for silenced pistol and regular primary being swapped.
+- Lobby weapon model now changes based on selected primary.
+- Fixed alt Air Strike placement targeting not checking for enemy bodies.
+
 `0.3.4`
 - Fixed internal version number.
 
