@@ -1,3 +1,6 @@
+`0.3.4`
+- Fixed internal version number.
+
 `0.3.3`
   - Fixed Parachute linerenderers lagging behind the model.
   - Cluster Fire

@@ -1,14 +1,13 @@
 {
     "author": "EnforcerGang",
     "name": "Pilot",
-    "version_number": "0.3.2",
+    "version_number": "0.3.4",
     "website_url": "https://github.com/Moffein/Pilot",
     "description": "BETA RELEASE. Adds the Pilot from Risk of Rain Returns.",
     "dependencies": [
         "bbepis-BepInExPack-5.4.1905",
         "RiskofThunder-R2API_Prefab-1.0.1",
         "RiskofThunder-R2API_DamageType-1.0.0",
-        "RiskofThunder-R2API_Language-1.0.0",
         "RiskofThunder-R2API_Sound-1.0.0"
     ]
 }
