@@ -2,7 +2,10 @@
 
 - Cluster Fire
 	- Fixed online bug where combo shot would apply upwards knockback when used after one of the Specials applied upwards knockback.
-	- No longer deals self damage with Chaos.
+	- Increased shot radius from 0.2 -> 0.5
+	- Fixed combo shot playing the Defense Matrix sound.
+	- Combo shot no longer deals self damage with Chaos.
+	- Fixed combo shot's internal raycast being able to proc.
 
 `0.3.5`
 

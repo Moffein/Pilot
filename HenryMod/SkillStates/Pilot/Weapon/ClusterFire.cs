@@ -23,7 +23,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float comboForce = 1500f;
         public static float comboBlastRadius = 11f;
 
-        public static float comboMinDistance = 1.5f;    //Distance where blast radius stays at minimum
+        public static float comboMinDistance = 2f;    //Distance where blast radius stays at minimum
         public static float comboMinBlastRadius = 3f;   //Blast Radius at min distance
 
         //Railgunner 300 for 5 shots per second
@@ -42,8 +42,8 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/TracerCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
 
-        public static GameObject comboExplosionEffectPrefab = global::MoffeinPilot.Modules.Assets.ExplosionGolemButScale;
-        public static GameObject comboTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion();
+        public static GameObject comboExplosionEffectPrefab;
+        public static GameObject comboTracerEffectPrefab;
         public static GameObject comboHitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/HitsparkCaptainShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleEffectPrefab, comboMuzzleEffectPrefab;
 
@@ -139,7 +139,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     origin = aimRay.origin,
                     maxDistance = 2000f,
                     muzzleName = ClusterFire.muzzleName,
-                    radius = ClusterFire.shotRadius,
+                    radius = ClusterFire.comboShotRadius,
                     hitCallback = ComboHitCallback
                 }.Fire();
 
@@ -179,7 +179,11 @@ namespace EntityStates.MoffeinPilot.Weapon
                 }
 
                 //golem explosion effect was definitely not set up to scale 1:1 with radius
-                if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = calcRadius / 4.83f }, true);
+                if (ClusterFire.comboExplosionEffectPrefab)
+                {
+                    EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin = hitInfo.point, scale = calcRadius / 4.83f }, true);
+                }
+
                 new BlastAttack()
                 {
                     attacker = base.gameObject,

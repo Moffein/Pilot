@@ -75,11 +75,18 @@ namespace MoffeinPilot.Modules
             }
 
             AddNewEffectDef(ExplosionGolemButScale);
+            EntityStates.MoffeinPilot.Weapon.ClusterFire.comboExplosionEffectPrefab = ExplosionGolemButScale;
 
             TempParachute = mainAssetBundle.LoadAsset<GameObject>("PilotParachuteTempParachute");
             foreach(var r in TempParachute.GetComponentsInChildren<SkinnedMeshRenderer>()) {
                 r.sharedMaterial.SetHopooMaterial();
             }
+
+            GameObject redLaserTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion().InstantiateClone("PilotComboTracer", false);
+            EffectComponent ec = redLaserTracer.GetComponent<EffectComponent>();
+            ec.soundName = "";
+            AddNewEffectDef(redLaserTracer);
+            EntityStates.MoffeinPilot.Weapon.ClusterFire.comboTracerEffectPrefab = redLaserTracer;
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
