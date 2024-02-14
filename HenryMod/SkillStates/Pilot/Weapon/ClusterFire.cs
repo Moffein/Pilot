@@ -21,6 +21,9 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float comboForce = 1500f;
         public static float comboBlastRadius = 11f;
 
+        public static float comboMinDistance = 1.5f;    //Distance where blast radius stays at minimum
+        public static float comboMinBlastRadius = 3f;   //Blast Radius at min distance
+
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;
         public static float comboSelfKnockbackForce = 0f;
@@ -177,13 +180,28 @@ namespace EntityStates.MoffeinPilot.Weapon
 
         private bool ComboHitCallback(BulletAttack bulletRef, ref BulletHit hitInfo)
         {
-            if (hitInfo.point != null && !triggeredComboExplosion)
+            if (hitInfo.point != null && !triggeredComboExplosion && base.characterBody)
             {
                 triggeredComboExplosion = true;
 
                 Vector3 attackForce = bulletRef.aimVector != null ? ClusterFire.comboForce * bulletRef.aimVector.normalized : Vector3.zero;
-                                                                                                                                                                                                             //golem explosion effect was definitely not set up to scale 1:1 with radius
-                if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = ClusterFire.comboBlastRadius / 4.83f }, true);
+
+                float hitDistance = (hitInfo.point - base.characterBody.corePosition).magnitude;
+                float calcRadius = comboBlastRadius;
+                if (hitDistance < comboBlastRadius)
+                {
+                    if (hitDistance <= comboMinDistance)
+                    {
+                        calcRadius = comboMinBlastRadius;
+                    }
+                    else
+                    {
+                        calcRadius = Mathf.Lerp(comboMinBlastRadius, comboBlastRadius, (hitDistance - comboMinDistance) / (comboBlastRadius - comboMinDistance));
+                    }
+                }
+
+                //golem explosion effect was definitely not set up to scale 1:1 with radius
+                if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = calcRadius / 4.83f }, true);
                 BlastAttack ba = new BlastAttack()
                 {
                     attacker = base.gameObject,
@@ -200,7 +218,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     position = hitInfo.point,
                     procChainMask = default,
                     procCoefficient = 1f,
-                    radius = ClusterFire.comboBlastRadius,
+                    radius = calcRadius,
                     teamIndex = base.GetTeam()
                 };
                 ba.Fire();
