@@ -64,9 +64,6 @@ namespace MoffeinPilot.Modules
             proj.AddComponent<ProjectileDamage>();
             proj.AddComponent<TeamFilter>();
 
-            DamageAPI.ModdedDamageTypeHolderComponent mdc = proj.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            mdc.Add(DamageTypes.AirstrikeKnockup);
-
             AirStrikeDamageComponent asdc = proj.AddComponent<AirStrikeDamageComponent>();
             asdc.armSound = armSound;
             asdc.blastEffectPrefab = blastEffectPrefab;
@@ -96,9 +93,6 @@ namespace MoffeinPilot.Modules
             proj.AddComponent<ProjectileNetworkTransform>();
             proj.AddComponent<ProjectileDamage>();
             proj.AddComponent<TeamFilter>();
-
-            DamageAPI.ModdedDamageTypeHolderComponent mdc = proj.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            mdc.Add(DamageTypes.AirstrikeKnockup);
 
             AirStrikeAltDamageComponent asdca = proj.AddComponent<AirStrikeAltDamageComponent>();
             asdca.blastEffectPrefab = blastEffectPrefab;

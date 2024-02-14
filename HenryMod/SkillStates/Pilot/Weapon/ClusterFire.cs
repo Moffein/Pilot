@@ -1,5 +1,7 @@
 ﻿using EntityStates.MoffeinPilot.Airstrike;
 using MoffeinPilot.Content.Components;
+using MoffeinPilot.Modules;
+using R2API;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
@@ -123,34 +125,11 @@ namespace EntityStates.MoffeinPilot.Weapon
             }
             if (base.isAuthority)
             {
-                /*new BulletAttack
-                {
-                    owner = base.gameObject,
-                    weapon = base.gameObject,
-                    origin = aimRay.origin,
-                    aimVector = aimRay.direction,
-                    minSpread = 0f,
-                    maxSpread = 0f,
-                    bulletCount = 1u,
-                    damage = ClusterFire.comboDamageCoefficient * this.damageStat,
-                    force = ClusterFire.comboForce,
-                    tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
-                    muzzleName = ClusterFire.muzzleName,
-                    hitEffectPrefab = ClusterFire.comboHitEffectPrefab,
-                    isCrit = base.RollCrit(),
-                    radius = ClusterFire.comboShotRadius,
-                    smartCollision = true,
-                    damageType = DamageType.Generic,
-                    falloffModel = BulletAttack.FalloffModel.None,
-                    procCoefficient = 1f,
-                    stopperMask = LayerIndex.world.mask
-                }.Fire();*/
-
-                BulletAttack ba = new BulletAttack
+                new BulletAttack
                 {
                     tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
                     damage = 0f,
-                    procCoefficient = 0.1f,
+                    procCoefficient = 0f,
                     damageType = DamageType.Silent | DamageType.NonLethal,
                     owner = base.gameObject,
                     aimVector = aimRay.direction,
@@ -160,10 +139,9 @@ namespace EntityStates.MoffeinPilot.Weapon
                     origin = aimRay.origin,
                     maxDistance = 2000f,
                     muzzleName = ClusterFire.muzzleName,
-                    radius = 0.2f,
+                    radius = ClusterFire.shotRadius,
                     hitCallback = ComboHitCallback
-                };
-                ba.Fire();
+                }.Fire();
 
                 if (ClusterFire.comboSelfKnockbackForce != 0f   //pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
@@ -202,10 +180,10 @@ namespace EntityStates.MoffeinPilot.Weapon
 
                 //golem explosion effect was definitely not set up to scale 1:1 with radius
                 if (ClusterFire.comboExplosionEffectPrefab) EffectManager.SpawnEffect(ClusterFire.comboExplosionEffectPrefab, new EffectData { origin =  hitInfo.point, scale = calcRadius / 4.83f }, true);
-                BlastAttack ba = new BlastAttack()
+                new BlastAttack()
                 {
                     attacker = base.gameObject,
-                    attackerFiltering = AttackerFiltering.Default,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
                     baseDamage = this.damageStat * ClusterFire.comboDamageCoefficient,
                     baseForce = 0f,
                     bonusForce = attackForce,
@@ -220,11 +198,10 @@ namespace EntityStates.MoffeinPilot.Weapon
                     procCoefficient = 1f,
                     radius = calcRadius,
                     teamIndex = base.GetTeam()
-                };
-                ba.Fire();
+                }.Fire();
             }
 
-            return BulletAttack.defaultHitCallback.Invoke(bulletRef, ref hitInfo);
+            return false;
         }
 
 

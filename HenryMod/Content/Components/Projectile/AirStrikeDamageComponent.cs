@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using MoffeinPilot.Modules;
+using R2API;
 using RoR2;
 using RoR2.Projectile;
 using System.Collections.Generic;
@@ -30,7 +31,6 @@ namespace MoffeinPilot.Content.Components.Projectile
         private ProjectileDamage projectileDamage;
         private TeamFilter teamFilter;
         private ProjectileController projectileController;
-        private DamageAPI.ModdedDamageTypeHolderComponent moddedDamageType;
 
         private void Awake()
         {
@@ -40,7 +40,6 @@ namespace MoffeinPilot.Content.Components.Projectile
             projectileDamage = base.GetComponent<ProjectileDamage>();
             teamFilter = base.GetComponent<TeamFilter>();
             projectileController = base.GetComponent<ProjectileController>();
-            moddedDamageType = base.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
 
             if (!projectileDamage || !projectileController) Destroy(this);
         }
@@ -129,9 +128,7 @@ namespace MoffeinPilot.Content.Components.Projectile
                 radius = blastRadius,
                 teamIndex = teamFilter ? teamFilter.teamIndex : TeamIndex.None
             };
-
-            if (moddedDamageType) moddedDamageType.CopyTo(ba);
-
+            ba.AddModdedDamageType(DamageTypes.AirstrikeKnockup);
             ba.Fire();
 
             triggerCount++;

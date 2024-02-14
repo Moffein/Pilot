@@ -25,8 +25,6 @@
 		</PackageReference>
 		<PackageReference Include="R2API.Core" Version="5.*" />
 		<PackageReference Include="R2API.Prefab" Version="1.*" />
-		<PackageReference Include="R2API.RecalculateStats" Version="1.*" />
-		<PackageReference Include="R2API.Language" Version="1.*" />
 		<PackageReference Include="R2API.DamageType" Version="1.*" />
 	</ItemGroup>
 
@@ -51,15 +49,6 @@
     <Reference Include="CustomEmotesAPI">
       <HintPath>..\libs\SoftDependencies\CustomEmotesAPI.dll</HintPath>
     </Reference>
-    <Reference Include="Decalicious">
-      <HintPath>..\libs\Decalicious.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Steamworks">
-      <HintPath>..\libs\Facepunch.Steamworks.dll</HintPath>
-    </Reference>
-    <Reference Include="GenericIK">
-      <HintPath>..\libs\GenericIK.dll</HintPath>
-    </Reference>
     <Reference Include="HGCSharpUtils">
       <HintPath>..\libs\HGCSharpUtils.dll</HintPath>
     </Reference>
@@ -78,9 +67,6 @@
     <Reference Include="LegacyResourcesAPI">
       <HintPath>..\libs\LegacyResourcesAPI.dll</HintPath>
     </Reference>
-    <Reference Include="ModLoader">
-      <HintPath>..\libs\ModLoader.dll</HintPath>
-    </Reference>
 
     <Reference Include="Rewired_CSharp">
       <HintPath>..\libs\Rewired_CSharp.dll</HintPath>
@@ -88,14 +74,8 @@
     <Reference Include="RiskOfOptions">
       <HintPath>..\libs\SoftDependencies\RiskOfOptions.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleJSON">
-      <HintPath>..\libs\SimpleJSON.dll</HintPath>
-    </Reference>
     <Reference Include="Wwise">
       <HintPath>..\libs\Wwise.dll</HintPath>
-    </Reference>
-    <Reference Include="Zio">
-      <HintPath>..\libs\Zio.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -29,20 +29,13 @@ namespace MoffeinPilot.Modules
                 damageInfo.damage *= Mathf.Lerp(3f, 1f, self.combinedHealthFraction);
             }
 
-            if (damageInfo.HasModdedDamageType(AirstrikeKnockup))
+            //This check is a bandaid fix for clientside blast attacks being bugged with damageAPI
+            if (damageInfo.HasModdedDamageType(AirstrikeKnockup) && damageInfo.attacker != damageInfo.inflictor)
             {
-
                 bool isAir = self.body.isFlying || !(self.body.characterMotor && self.body.characterMotor.isGrounded);
                 float forceMult = 1f;
 
-                if (self.body.rigidbody)
-                {
-                    forceMult = Mathf.Max(self.body.rigidbody.mass / 100f, 1f);
-                    /*if (isAir)
-                    {
-                        forceMult = Mathf.Min(7.5f, forceMult) * -1f; ;
-                    }*/
-                }
+                if (self.body.rigidbody) forceMult = Mathf.Max(self.body.rigidbody.mass / 100f, 1f);
 
                 //damageInfo.force = forceMult * Vector3.up * 2700f;
                 if (!isAir)

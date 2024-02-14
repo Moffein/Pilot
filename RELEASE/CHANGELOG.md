@@ -1,3 +1,9 @@
+`0.3.6`
+
+- Cluster Fire
+	- Fixed online bug where combo shot would apply upwards knockback when used after one of the Specials applied upwards knockback.
+	- No longer deals self damage with Chaos.
+
 `0.3.5`
 
 - Fixed models for silenced pistol and regular primary being swapped.
