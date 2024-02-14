@@ -72,8 +72,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 4.080001, y: 0.40942484, z: 2.2473235}
+  - {x: -2.4394236, y: -0.2482593, z: -1.1}
+  - {x: 0, y: 0, z: -0.00000023841858}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -127,7 +127,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &1373756612079078547
 MonoBehaviour:
@@ -231,8 +231,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4032296351809689670}
-  m_LocalRotation: {x: -0.7071068, y: 2.842171e-14, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -8.526513e-14, y: -0.00000023841858, z: -1.4999999}
+  m_LocalRotation: {x: -0.00000011920929, y: -0, z: -1.659676e-14, w: 1}
+  m_LocalPosition: {x: -0.000000042219966, y: 1.5, z: -0.00000023841835}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 9068611114823002507}
@@ -362,8 +362,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: 4.3605013, y: 0.40342456, z: -0.8471762}
+  - {x: -2.6264236, y: -0.2442593, z: 0.963}
+  - {x: 0.00000023841858, y: -0.000000059604645, z: 0.00000023841858}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -417,7 +417,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &5629639821900210063
 MonoBehaviour:
@@ -628,8 +628,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -4.348499, y: 0.40942484, z: -0.84267604}
+  - {x: 2.6184223, y: -0.2482593, z: 0.9599999}
+  - {x: 0, y: -0.00000017881393, z: 0.00000017881393}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -683,7 +683,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &3166115500860090535
 MonoBehaviour:
@@ -804,8 +804,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.42086554, y: 0.019424736, z: 0.6149347}
-  - {x: -4.184999, y: 0.40942472, z: 2.2623236}
+  - {x: 2.5094223, y: -0.2482593, z: -1.11}
+  - {x: 0, y: 0, z: -0.00000035762787}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.026702123
@@ -859,7 +859,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!114 &5545129626381277989
 MonoBehaviour:

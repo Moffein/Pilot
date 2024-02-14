@@ -25,7 +25,7 @@ namespace MoffeinPilot.Content.Components {
                 Array.Resize(ref points, pointTransforms.Length);
             }
             for (int i = 0; i < pointTransforms.Length; i++) {
-                points[i] = pointTransforms[i].position;
+                points[i] = transform.InverseTransformPoint(pointTransforms[i].position);
             }
             lineRenderer?.SetPositions(points);
         }

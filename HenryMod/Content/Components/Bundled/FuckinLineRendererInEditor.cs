@@ -8,7 +8,7 @@ namespace MoffeinPilot.Content.Components {
 
         [SerializeField]
         private LineRenderer lineRenderer;
-
+        
         private Vector3[] points = new Vector3[0];
 
         void Reset() {
@@ -21,7 +21,7 @@ namespace MoffeinPilot.Content.Components {
                 Array.Resize(ref points, pointTransforms.Length);
             }
             for (int i = 0; i < pointTransforms.Length; i++) {
-                points[i] = pointTransforms[i].position;
+                points[i] = transform.InverseTransformPoint(pointTransforms[i].position);
             }
             lineRenderer?.SetPositions(points);
         }
