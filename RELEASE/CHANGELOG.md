@@ -1,5 +1,10 @@
+`0.3.4`
+- Fixed internal version number.
+
 `0.3.3`
-  - Fixed funny line renderers.
+  - Fixed Parachute linerenderers lagging behind the model.
+  - Cluster Fire
+	- AoE is reduced at point blank (11m -> 3m), and scales up to full at 11m.
 
 `0.3.2`
   - Fixed gun in emote rig.
