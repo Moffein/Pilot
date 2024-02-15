@@ -1,3 +1,8 @@
+`0.3.7`
+
+- Cluster Fire
+	- Added config option to choose between the current combo explosion and Returns' combo piercing laser. Can be changed in-game with Risk of Options.
+
 `0.3.6`
 
 - Cluster Fire

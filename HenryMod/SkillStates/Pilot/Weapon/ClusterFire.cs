@@ -1,4 +1,5 @@
-﻿using EntityStates.MoffeinPilot.Airstrike;
+﻿using BepInEx.Configuration;
+using EntityStates.MoffeinPilot.Airstrike;
 using MoffeinPilot.Content.Components;
 using MoffeinPilot.Modules;
 using R2API;
@@ -12,6 +13,8 @@ namespace EntityStates.MoffeinPilot.Weapon
 {
     public class ClusterFire : BaseSkillState, SteppedSkillDef.IStepSetter
     {
+        public static ConfigEntry<bool> useLaser;
+
         public static float spreadBloomValueCosmetic = 1f; //Show crosshair spread but keep it perfectly accurate
         public static float recoilAmplitude = 1f;
         public static float comboRecoilAmplitude = 2f;
@@ -32,6 +35,7 @@ namespace EntityStates.MoffeinPilot.Weapon
 
         public static float shotRadius = 0.5f;
         public static float comboShotRadius = 0.5f;
+        public static float comboShotRadiusLaser = 1f;
 
         public static float baseDuration = 0.3f;
 
@@ -125,23 +129,52 @@ namespace EntityStates.MoffeinPilot.Weapon
             }
             if (base.isAuthority)
             {
-                new BulletAttack
+                if (!useLaser.Value)
                 {
-                    tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
-                    damage = 0f,
-                    procCoefficient = 0f,
-                    damageType = DamageType.Silent | DamageType.NonLethal,
-                    owner = base.gameObject,
-                    aimVector = aimRay.direction,
-                    isCrit = false,
-                    minSpread = 0f,
-                    maxSpread = 0f,
-                    origin = aimRay.origin,
-                    maxDistance = 2000f,
-                    muzzleName = ClusterFire.muzzleName,
-                    radius = ClusterFire.comboShotRadius,
-                    hitCallback = ComboHitCallback
-                }.Fire();
+                    new BulletAttack
+                    {
+                        tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
+                        damage = 0f,
+                        procCoefficient = 0f,
+                        damageType = DamageType.Silent | DamageType.NonLethal,
+                        owner = base.gameObject,
+                        aimVector = aimRay.direction,
+                        isCrit = false,
+                        minSpread = 0f,
+                        maxSpread = 0f,
+                        origin = aimRay.origin,
+                        maxDistance = 2000f,
+                        muzzleName = ClusterFire.muzzleName,
+                        radius = ClusterFire.comboShotRadius,
+                        hitCallback = ComboHitCallback
+                    }.Fire();
+                }
+                else
+                {
+                    new BulletAttack
+                    {
+                        owner = base.gameObject,
+                        weapon = base.gameObject,
+                        origin = aimRay.origin,
+                        aimVector = aimRay.direction,
+                        minSpread = 0f,
+                        maxSpread = 0f,
+                        bulletCount = 1u,
+                        damage = ClusterFire.comboDamageCoefficient * this.damageStat,
+                        force = ClusterFire.comboForce,
+                        tracerEffectPrefab = ClusterFire.comboTracerEffectPrefab,
+                        muzzleName = ClusterFire.muzzleName,
+                        hitEffectPrefab = ClusterFire.hitEffectPrefab,
+                        isCrit = base.RollCrit(),
+                        radius = ClusterFire.comboShotRadiusLaser,
+                        smartCollision = true,
+                        damageType = DamageType.Generic,
+                        falloffModel = BulletAttack.FalloffModel.None,
+                        procCoefficient = 1f,
+                        stopperMask = LayerIndex.world.mask,
+                        maxDistance = 2000f
+                    }.Fire();
+                }
 
                 if (ClusterFire.comboSelfKnockbackForce != 0f   //pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
