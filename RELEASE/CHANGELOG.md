@@ -1,3 +1,8 @@
+`0.3.8`
+
+- Cluster Fire
+	- Piercing Version: Combo shot radius increased from 1 -> 1.5
+
 `0.3.7`
 
 - Cluster Fire

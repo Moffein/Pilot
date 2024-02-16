@@ -35,7 +35,7 @@ namespace EntityStates.MoffeinPilot.Weapon
 
         public static float shotRadius = 0.5f;
         public static float comboShotRadius = 0.5f;
-        public static float comboShotRadiusLaser = 1f;
+        public static float comboShotRadiusLaser = 1.5f;
 
         public static float baseDuration = 0.3f;
 
