@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using MoffeinPilot.Content.Components;
+using MoffeinPilot.Modules;
 using RoR2;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace EntityStates.MoffeinPilot.Parachute
         private PilotController pilotController;
         private int origJumpCount;
         private bool jumpReleased = false;
-        internal GameObject parachute;
+        private GameObject parachute;
         private Renderer[] parachuteRenderers;
 
         private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
@@ -39,7 +40,8 @@ namespace EntityStates.MoffeinPilot.Parachute
                 if (dt) Destroy(dt);
             }
 
-            SetupParachuteFade();
+            CreateParachute();
+
             pilotController = base.GetComponent<PilotController>();
             if (pilotController)
             {
@@ -117,8 +119,8 @@ namespace EntityStates.MoffeinPilot.Parachute
                 pilotController.isParachuting = false;
             }
 
+            DestroyParachute();
             if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, 0.5f);
-            Destroy(parachute);
             base.OnExit();
         }
 
@@ -159,6 +161,21 @@ namespace EntityStates.MoffeinPilot.Parachute
                 propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
                 parachuteRenderers[i].SetPropertyBlock(propertyStorage);
             }
+        }
+
+        private void CreateParachute()
+        {
+            parachute = Object.Instantiate(Assets.TempParachute, FindModelChild("ParachutePosition"), false);
+            parachute.transform.localPosition = Vector3.zero;
+            parachute.transform.localScale = Vector3.one;
+            parachute.transform.localRotation = Quaternion.identity;
+
+            SetupParachuteFade();
+        }
+
+        private void DestroyParachute()
+        {
+            if (parachute) Destroy(parachute);
         }
     }
 }

@@ -2,6 +2,8 @@
 
 - Cluster Fire
 	- Piercing Version: Combo shot radius increased from 1 -> 1.5
+	
+- Fixed parachute visuals not showing for online clients.
 
 `0.3.7`
 

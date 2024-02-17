@@ -62,16 +62,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
             startedAirborne = false;
 
-            parachute = Object.Instantiate(Assets.TempParachute, FindModelChild("ParachutePosition"), false);
-            parachute.transform.localPosition = Vector3.zero;
-            parachute.transform.localScale = Vector3.one;
-            parachute.transform.localRotation = Quaternion.identity;
-
-            //Only the authority knows about the proper state change, so this is a failsafe.
-            DestroyOnTimer dt = parachute.AddComponent<DestroyOnTimer>();
-            dt.duration = 4f;
-
-            SetupParachuteFade();
+            CreateParachute();
 
             StartAimMode(1);
             if (base.characterMotor)
@@ -144,7 +135,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 if (base.fixedAge >= DeployParachute.baseDuration || stopAscent)
                 {
                     uninterrupted = true;
-                    this.outer.SetNextState(new Glide { parachute = parachute});
+                    this.outer.SetNextState(new Glide());
                     return;
                 }
             }
@@ -201,10 +192,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             }
             if (base.characterMotor && !base.characterMotor.isGrounded) base.characterMotor.jumpCount = 1;
 
-            //Only the authority knows the Uninterrupted variable. Parachute may persist for a bit online.
-            if (!uninterrupted) {
-                Destroy(parachute);
-            }
+            DestroyParachute();
             if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, 0.5f);
             base.OnExit();
         }
@@ -282,6 +270,21 @@ namespace EntityStates.MoffeinPilot.Parachute
                 propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
                 parachuteRenderers[i].SetPropertyBlock(propertyStorage);
             }
+        }
+
+        private void CreateParachute()
+        {
+            parachute = Object.Instantiate(Assets.TempParachute, FindModelChild("ParachutePosition"), false);
+            parachute.transform.localPosition = Vector3.zero;
+            parachute.transform.localScale = Vector3.one;
+            parachute.transform.localRotation = Quaternion.identity;
+
+            SetupParachuteFade();
+        }
+
+        private void DestroyParachute()
+        {
+            if (parachute) Destroy(parachute);
         }
     }
 }
