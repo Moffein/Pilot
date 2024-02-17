@@ -4,6 +4,7 @@
 	- Piercing Version: Combo shot radius increased from 1 -> 1.5
 	
 - Fixed parachute visuals not showing for online clients.
+- Air Strike markers now disappear after death.
 
 `0.3.7`
 

@@ -92,6 +92,15 @@ namespace MoffeinPilot.Content.Components
                 enemyIndicator.active = false;
             }
             if (this.crosshairOverrideRequest != null) this.crosshairOverrideRequest.Dispose();
+
+            if (NetworkServer.active)
+            {
+                while(activeAirStrikes.Count > 0)
+                {
+                    GameObject go = activeAirStrikes.Dequeue();
+                    Destroy(go);
+                }
+            }
         }
 
         public void ConsumeSecondaryStock(int amount)
