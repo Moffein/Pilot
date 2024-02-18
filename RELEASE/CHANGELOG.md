@@ -1,3 +1,8 @@
+`0.3.9`
+
+- Aerial Support
+	- Shorthop can now be disabled in config/Risk of Options
+
 `0.3.8`
 
 - Cluster Fire

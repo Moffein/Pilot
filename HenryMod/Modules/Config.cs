@@ -14,6 +14,8 @@ namespace MoffeinPilot.Modules
             EntityStates.MoffeinPilot.Parachute.DeployParachute.enableParachuteFade = PilotPlugin.instance.Config.Bind("Settings", "Parachute Fade", true, "Pilot's parachute becomes transparent when looking downwards.");
             EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend = PilotPlugin.instance.Config.Bind("Controls", "Rapid Deployment - Hold to Ascend", false, "Rapid Deployment requires you to hold the Utility button to ascend, and ends early if you let go.");
 
+            EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.useShorthop = PilotPlugin.instance.Config.Bind("Controls", "Aerial Support - Shorthop", true, "Using this skill midair gives a vertical boost.");
+
             ModCompat.SetupOptions();
         }
 

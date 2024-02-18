@@ -1,4 +1,5 @@
-﻿using MoffeinPilot.Modules;
+﻿using BepInEx.Configuration;
+using MoffeinPilot.Modules;
 using R2API;
 using RoR2;
 using RoR2.Projectile;
@@ -13,6 +14,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
     {
         public static new float damageCoefficient = 4f;
         public static new GameObject projectilePrefab;
+        public static ConfigEntry<bool> useShorthop;
 
         protected override float GetDamageCoefficient()
         {
@@ -50,7 +52,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
 
         protected override void DoPhysics()
         {
-            if (!isGrounded && base.characterMotor) base.SmallHop(base.characterMotor, 24f);
+            if (useShorthop.Value && !isGrounded && base.characterMotor) base.SmallHop(base.characterMotor, 24f);
         }
 
         protected override void DoAnim()
