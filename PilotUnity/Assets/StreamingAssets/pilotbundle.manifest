@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2442669542
+CRC: 3977759006
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: adbbfb5f663c8662e6247654085c019b
+    Hash: 0a5cc39bfffeeb5530543e52ad1ca28c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 80fbf8b6ec4cdb4377abfdb95d2a48ba
+    Hash: ce028bb282e62e53bbc50a6cd879ac79
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -47,6 +47,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: db7cd61cd4906a840ac2e6bba32bb5cb, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aeda06bfdd5bc1f41bb039619238af3a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 120
@@ -113,6 +115,7 @@ Assets:
 - Assets/PilotBundle/Anim/animPilotDisplay.controller
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_8.png
 - Assets/PilotBundle/Materials/matAirStrikeDotAlt.mat
+- Assets/PilotBundle/AirStrikeAltScepterVisualPrefab.prefab
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_5.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_diffuse.png
 - Assets/PilotBundle/PilotParachuteTempParachute.prefab

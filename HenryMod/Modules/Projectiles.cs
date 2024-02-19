@@ -26,6 +26,7 @@ namespace MoffeinPilot.Modules
             GameObject ghostPrefab = CreateAirStrikeGhost("AirStrikeVisualPrefab");
             GameObject ghostAltPrefab = CreateAirStrikeGhost("AirStrikeAltVisualPrefab");
             GameObject ghostScepterPrefab = CreateAirStrikeGhost("AirStrikeScepterVisualPrefab");
+            GameObject ghostAltScepterPrefab = CreateAirStrikeGhost("AirStrikeAltScepterVisualPrefab");
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrike.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeProjectile", ghostPrefab, blastEffectPrefab, detSound, 3, 1.5f);
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeScepter.projectilePrefab = CreatePilotAirstrike("PilotAirstrikeScepterProjectile", ghostScepterPrefab, blastEffectPrefab, detSound, 6, 1.5f);
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.projectilePrefab = CreatePilotAirstrikeAlt("PilotAirstrikeAltProjectile", ghostAltPrefab, blastEffectPrefab, detSound, 4, 0.25f);
@@ -45,6 +46,20 @@ namespace MoffeinPilot.Modules
             VFXAttributes vfx = toReturn.AddComponent<VFXAttributes>();
             vfx.vfxPriority = VFXAttributes.VFXPriority.Always;
             vfx.vfxIntensity = VFXAttributes.VFXIntensity.Low;
+
+            ChildLocator cl = toReturn.GetComponent<ChildLocator>();
+            if (cl)
+            {
+                Transform sphere = cl.FindChild("Sphere");
+                if (sphere)
+                {
+                    MeshRenderer m = sphere.GetComponent<MeshRenderer>();
+                    if (m)
+                    {
+                        m.material = Addressables.LoadAssetAsync<Material>("RoR2/Base/NearbyDamageBonus/matNearbyDamageBonusRangeIndicator.mat").WaitForCompletion();
+                    }
+                }
+            }
 
             return toReturn;
         }
