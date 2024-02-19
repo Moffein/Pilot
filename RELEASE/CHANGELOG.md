@@ -5,7 +5,7 @@
 
 - Air Strike
 	- Added option to make it only dash backwards like in Returns. (Disabled by default)
-	- Now shows radius indicator (TODO)
+	- Now shows radius indicator.
 
 - Aerial Support
 	- Midair shorthop is now a config option. (Enabled by default)
