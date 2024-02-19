@@ -96,7 +96,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                             scale = base.characterBody.radius
                         }, true);
 
-                        //TODO: play jump anim
+                        base.PlayAnimation("Body", "Jump");
                     }
                     this.outer.SetNextStateToMain();
                     return;

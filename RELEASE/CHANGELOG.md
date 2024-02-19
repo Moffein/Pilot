@@ -1,5 +1,8 @@
 `0.3.9`
 
+- Parachute
+	- Now plays jump anim when exiting midair.
+
 - Air Strike
 	- Added option to make it only dash backwards like in Returns. (Disabled by default)
 	- Now shows radius indicator (TODO)
