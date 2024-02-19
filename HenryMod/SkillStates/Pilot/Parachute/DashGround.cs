@@ -1,4 +1,5 @@
-﻿using EntityStates;
+﻿using BepInEx.Configuration;
+using EntityStates;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,6 +8,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 {
     public class DashGround : BaseState
     {
+        public static ConfigEntry<bool> onlyDashBackwards;
         public static float baseDuration = 0.2f;    //Phase Blink is 0.1
         public static GameObject blinkPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/HuntressBlinkEffect.prefab").WaitForCompletion();
 
@@ -61,8 +63,15 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         public virtual void SetBlinkVector()
         {
-            blinkVector = characterDirection ? characterDirection.forward.normalized : Vector3.zero;
-            if (inputBank && inputBank.moveVector != Vector3.zero) blinkVector = inputBank.moveVector.normalized;
+            if (!onlyDashBackwards.Value)
+            {
+                blinkVector = characterDirection ? characterDirection.forward.normalized : Vector3.zero;
+                if (inputBank && inputBank.moveVector != Vector3.zero) blinkVector = inputBank.moveVector.normalized;
+            }
+            else
+            {
+                blinkVector = characterDirection ? -characterDirection.forward.normalized : Vector3.zero;
+            }
         }
 
         public virtual float GetBlinkSpeed()

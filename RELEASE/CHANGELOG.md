@@ -1,7 +1,10 @@
 `0.3.9`
 
+- Air Strike
+	- Added option to make it only dash backwards like in Returns. (Disabled by default)
+
 - Aerial Support
-	- Shorthop can now be disabled in config/Risk of Options
+	- Midair shorthop is now a config option. (Enabled by default)
 
 `0.3.8`
 
