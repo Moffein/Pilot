@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using EntityStates.MoffeinPilot.Parachute;
 using MoffeinPilot.Modules;
 using R2API;
 using RoR2;
@@ -36,7 +37,7 @@ namespace EntityStates.MoffeinPilot.Airstrike
 
         protected virtual void DoPhysics()
         {
-            bool shouldBlink = isGrounded && characterMotor.velocity != Vector3.zero;
+            bool shouldBlink = isGrounded && (characterMotor.velocity != Vector3.zero || DashGround.onlyDashBackwards.Value);
             if (shouldBlink)
             {
                 EntityStateMachine parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");

@@ -1,3 +1,9 @@
+`0.3.10`
+
+- Air Strike
+	- Always Dash Backwards config option
+		- Now dashes backwards even when stationary.
+
 `0.3.9`
 
 - Parachute
