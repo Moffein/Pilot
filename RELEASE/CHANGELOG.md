@@ -1,3 +1,17 @@
+`0.3.11`
+
+- Cluster Fire
+	- Reduced combo shot AoE from 11m -> 9m
+	
+- Suppressed Fire
+	- Enabled damage falloff.
+	
+- Bombs Away!
+	- Increased damage from 190% -> 220%
+	- Increased AoE from 6m -> 9m
+	
+	*Damage increase should make this able to kill Lemurians/Beetles in 1 burst earlygame, and also accounts for the skill being harder to use than the default secondary.*
+
 `0.3.10`
 
 - Air Strike

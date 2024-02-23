@@ -24,7 +24,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         
         public static float comboDamageCoefficient = 3.2f;
         public static float comboForce = 1500f;
-        public static float comboBlastRadius = 11f;
+        public static float comboBlastRadius = 9f;
 
         public static float comboMinDistance = 2f;    //Distance where blast radius stays at minimum
         public static float comboMinBlastRadius = 3f;   //Blast Radius at min distance

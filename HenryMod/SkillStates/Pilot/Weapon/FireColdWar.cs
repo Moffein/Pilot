@@ -13,7 +13,7 @@ namespace EntityStates.MoffeinPilot.Weapon
     {
         public static float selfKnockbackForce = 450f;
 
-        public static float damageCoefficient = 1.9f;
+        public static float damageCoefficient = 2.2f;
         public static float force = 450f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;

@@ -66,7 +66,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     radius = 0.5f,
                     smartCollision = true,
                     damageType = DamageType.Generic,
-                    falloffModel = BulletAttack.FalloffModel.None,
+                    falloffModel = BulletAttack.FalloffModel.DefaultBullet,
                     procCoefficient = 1f
                 };
                 ba.AddModdedDamageType(DamageTypes.SlayerExceptItActuallyWorks);

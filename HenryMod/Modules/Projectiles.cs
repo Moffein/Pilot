@@ -133,7 +133,7 @@ namespace MoffeinPilot.Modules
             ps.desiredForwardSpeed = 120f;
 
             ProjectileImpactExplosion pie = proj.GetComponent<ProjectileImpactExplosion>();
-            pie.blastRadius = 6f;
+            pie.blastRadius = 9f;
             pie.falloffModel = BlastAttack.FalloffModel.None;
             if (explosionEffect) pie.explosionEffect = explosionEffect;
 
