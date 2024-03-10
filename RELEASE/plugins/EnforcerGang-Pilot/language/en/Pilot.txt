@@ -8,6 +8,7 @@
 	
 	"MOFFEIN_PILOT_BODY_OUTRO_FLAVOR" : "..and so he left, his dreams of the sky below.",
 	"MOFFEIN_PILOT_BODY_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR" : "..and so he vanished, the skies forever out of reach.",
+	"MOFFEIN_PILOT_BODY_OUTRO_FAILURE" : "..and so he vanished, the skies forever out of reach.",
 	
 	"MOFFEIN_PILOT_BODY_PRIMARY_NAME" : "Cluster Fire",
 	"MOFFEIN_PILOT_BODY_PRIMARY_DESCRIPTION" : "Fire your weapon for <style=cIsDamage>160% damage</style>. Every third hit <style=cIsDamage>explodes</style> and deals <style=cIsDamage>320% damage</style>.",

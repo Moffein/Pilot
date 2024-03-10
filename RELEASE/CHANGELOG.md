@@ -1,3 +1,7 @@
+`0.3.12`
+
+- Fixed MOFFEIN_PILOT_BODY_OUTRO_FAILURE
+
 `0.3.11`
 
 - Cluster Fire
