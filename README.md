@@ -17,3 +17,7 @@ Kit is in, works online, anims and polishing needs work.
 - Moffein (Code)
 - TimeSweeper (Anims + Unity + Code)
 - dotflare (Model + Anims)
+
+## Translation Credits
+
+- Russian: marklecard

@@ -1,3 +1,7 @@
+`0.3.13`
+
+- Added RU TL (Thanks marklecard!)
+
 `0.3.12`
 
 - Fixed MOFFEIN_PILOT_BODY_OUTRO_FAILURE
