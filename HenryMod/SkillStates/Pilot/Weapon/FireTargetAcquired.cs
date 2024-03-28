@@ -22,7 +22,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         public static float spreadBloom = 0f;
         public static float recoil = 1f;
 
-        public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/Railgunner/TracerRailgunCryo.prefab").WaitForCompletion();
+        public static GameObject tracerEffectPrefab;
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXFMJ.prefab").WaitForCompletion();
 
         private int shotCount;

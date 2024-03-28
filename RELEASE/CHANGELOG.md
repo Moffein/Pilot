@@ -1,6 +1,28 @@
+`0.3.14`
+
+- Updated RU TL
+- Added skill icons (Thanks Leaf_It!)
+	- Some skills still need icons.
+	
+- Rapid Fire
+	- Reduced spread per shot from 0.5 to 0.3
+	- Tweaked tracer VFX.
+
+- Target Acquired
+	- Changed tracer VFX.
+
+- Air Strike
+	- Increased trigger radius from 6m to 10m to match the explosive radius.
+	- Fixed the trigger radius indicator visual being 50% smaller than the actual radius.
+	
+- Aerial Support
+	- Reduced shorthop velocity from 24 -> 6
+	
+	*Having a full hop on this felt weird. New velocity will make it simply break your fall.*
+
 `0.3.13`
 
-- Added RU TL (Thanks marklecard!)
+- Added RU TL (Thanks Lecard!)
 
 `0.3.12`
 

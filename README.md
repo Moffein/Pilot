@@ -1,6 +1,6 @@
 ## Pilot (BETA)
 
-Kit is in, works online, anims and polishing needs work.
+Fully functional, just needs animation polish and some skins.
 
 [<img src="https://raw.githubusercontent.com/Moffein/Pilot/master/Art%20Assets/LobbyPreview.jpg">](https://raw.githubusercontent.com/Moffein/Pilot/master/Art%20Assets/LobbyPreview.jpg)
 [<img src="https://raw.githubusercontent.com/Moffein/Pilot/master/Art%20Assets/texIconPilot.png">](https://raw.githubusercontent.com/Moffein/Pilot/master/Art%20Assets/texIconPilot.png)
@@ -9,7 +9,7 @@ Kit is in, works online, anims and polishing needs work.
 
 - Polish anims (a lot)
 - Skins
-- Make parachute visuals less jank
+- Polish parachute visuals
 - Drone in skybox?
 
 ## Credits
@@ -17,7 +17,8 @@ Kit is in, works online, anims and polishing needs work.
 - Moffein (Code)
 - TimeSweeper (Anims + Unity + Code)
 - dotflare (Model + Anims)
+- Leaf_It (Skill Icons)
 
 ## Translation Credits
 
-- Russian: marklecard
+- Russian: Lecard

@@ -18,7 +18,7 @@ namespace MoffeinPilot.Content.Components.Projectile
         public float detonationDelay = 0.5f;
         public float initialArmDuration = 1f;
         public float blastRadius = 12f;
-        public float triggerRadius = 8f;
+        public float triggerRadius = 12f;
         public float enemyCheckFrequency = 10f;
 
         public NetworkSoundEventDef armSound;

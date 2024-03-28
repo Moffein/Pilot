@@ -85,7 +85,7 @@ namespace MoffeinPilot.Modules
             asdc.maxTriggers = maxTriggers;
             asdc.rearmDuration = rearmTime;
             asdc.blastRadius = 10f;
-            asdc.triggerRadius = 6f;
+            asdc.triggerRadius = 10f;
             asdc.initialArmDuration = rearmTime;
 
             proj.RegisterNetworkPrefab();

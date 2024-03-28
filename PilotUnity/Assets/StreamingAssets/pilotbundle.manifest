@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3977759006
+CRC: 3403618502
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0a5cc39bfffeeb5530543e52ad1ca28c
+    Hash: c9b20ea7ba254f5e067d955a633f1353
   TypeTreeHash:
     serializedVersion: 2
     Hash: ce028bb282e62e53bbc50a6cd879ac79
@@ -68,12 +68,15 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/PilotBundle/mdlMoffeinPilot.prefab
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillTargetAcquired.png
 - Assets/PilotBundle/Mesh/Pilotfur.mesh
 - Assets/PilotBundle/Anim/animPilot.controller
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillRapidFire.png
 - Assets/PilotBundle/Anim/maskPilotGesture.mask
 - Assets/PilotBundle/Materials/matPilotDefault2.mat
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_1.png
 - Assets/PilotBundle/Textures/Pilot/Pilot_diffuse.png
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillClusterFire.png
 - Assets/PilotBundle/MoffeinPilotDisplay.prefab
 - Assets/PilotBundle/Mesh/PilotBreather.mesh
 - Assets/PilotBundle/Mesh/PilotBody.001.mesh
@@ -82,7 +85,9 @@ Assets:
 - Assets/PilotBundle/Materials/matAirStrikeArrowAlt.mat
 - Assets/PilotBundle/Materials/matAirStrikeCross.mat
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_6a.png
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillAerialSupportScepter.png
 - Assets/PilotBundle/Mesh/PilotWeapon.mesh
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillAerialSupport.png
 - Assets/PilotBundle/Materials/matAirStrikeArrow.mat
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_7.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_emission.png
@@ -90,6 +95,7 @@ Assets:
 - Assets/PilotBundle/Textures/AirStrike/texPilotAirstrikeCrosshair.png
 - Assets/PilotBundle/PilotEmotePrefab.prefab
 - Assets/PilotBundle/Textures/Icons/texIconSkinPilotDefault.png
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillAirstrike.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_3.png
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotSkills_4.png
 - Assets/PilotBundle/Textures/Pilot/PIlotWeapon_normal.png
@@ -97,8 +103,10 @@ Assets:
 - Assets/PilotBundle/Materials/matAirStrikeArrowScepter.mat
 - Assets/PilotBundle/Textures/Icons/Placeholder/sPilotPortrait_0.png
 - Assets/PilotBundle/Materials/Parachute.mat
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillAirstrikeScepter.png
 - Assets/PilotBundle/Materials/matPilotDefault1.mat
 - Assets/PilotBundle/Materials/ParachuteLines.mat
+- Assets/PilotBundle/Textures/Icons/Skills/texSkillRapidDeployment.png
 - Assets/PilotBundle/Mesh/PilotEyes.mesh
 - Assets/PilotBundle/Textures/AirStrike/texPilotAirstrikeDot.png
 - Assets/PilotBundle/AirStrikeVisualPrefab.prefab
