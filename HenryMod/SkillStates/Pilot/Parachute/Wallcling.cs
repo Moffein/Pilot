@@ -26,7 +26,15 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (base.characterBody && base.characterBody.isSprinting) base.characterBody.isSprinting = false;
             if (NetworkServer.active && base.characterBody)
             {
-                base.characterBody.AddBuff(Buffs.WallclingBonus);
+                if (!base.characterBody.HasBuff(Buffs.WallclingBonus))
+                {
+                    base.characterBody.AddBuff(Buffs.WallclingBonus);
+                }
+
+                if (base.characterBody.HasBuff(Buffs.WallclingBonusAirborne))
+                {
+                    base.characterBody.RemoveBuff(Buffs.WallclingBonusAirborne);
+                }
             }
 
             Util.PlaySound(entrySoundString, base.gameObject);
@@ -104,9 +112,17 @@ namespace EntityStates.MoffeinPilot.Parachute
             {
                 this.overriddenSkill.UnsetSkillOverride(this, Wallbounce.utilityOverride, GenericSkill.SkillOverridePriority.Contextual);
             }*/
-            if (NetworkServer.active && base.characterBody && base.characterBody.HasBuff(Buffs.WallclingBonus))
+            if (NetworkServer.active && base.characterBody)
             {
-                base.characterBody.RemoveBuff(Buffs.WallclingBonus);
+                if (base.characterBody.HasBuff(Buffs.WallclingBonus))
+                {
+                    base.characterBody.RemoveBuff(Buffs.WallclingBonus);
+                }
+
+                if (base.characterMotor && !base.characterMotor.isGrounded && !base.characterBody.HasBuff(Buffs.WallclingBonusAirborne))
+                {
+                    base.characterBody.AddBuff(Buffs.WallclingBonusAirborne);
+                }
             }
 
             if (base.characterBody && !base.characterBody.isSprinting) base.characterBody.isSprinting = true;

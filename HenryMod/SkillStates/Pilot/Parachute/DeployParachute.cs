@@ -13,7 +13,7 @@ namespace EntityStates.MoffeinPilot.Parachute
     {
         public static float liftDuration = 0f;
         public static float baseDuration = 1.2f;    //This just acts as a hard-cap to the duration in case anything weird happens, so you don't get softlocked.
-        public static float liftVelocity = 72f;     //This linearly lowers to 0 over the course of the skill.
+        public static float liftVelocity = 54f;     //This linearly lowers to 0 over the course of the skill.
 
         public static float boostVelocity = 18f;
         public static float stopAscentVelocity = 12f;

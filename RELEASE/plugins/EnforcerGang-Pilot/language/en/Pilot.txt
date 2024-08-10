@@ -27,10 +27,10 @@
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Transform your weapon into a <style=cIsDamage>energy grenade launcher</style> that deals <style=cIsDamage>3x220% damage</style>. Hold up to 2.",
 	
 	"MOFFEIN_PILOT_BODY_UTILITY_NAME" : "Rapid Deployment",
-	"MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION" : "<style=cIsDamage>Stunning</style>. Launch into the air and <style=cIsUtility>activate your parachute</style>.",
+	"MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION" : "<style=cIsDamage>Stunning</style>. Launch into the air and <style=cIsUtility>activate your parachute</style>. Using this midair <style=cIsHealth>reduces lift</style> in exchange for more <style=cIsUtility>forward force</style>.",
 	
 	"MOFFEIN_PILOT_BODY_UTILITY_ALT_NAME" : "Aerobatics",
-	"MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION" : "<style=cIsUtility>Dash forwards</style> and <style=cIsUtility>cling to a wall</style>. Boost forwards when <style=cIsUtility>jumping off the wall</style>.",
+	"MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION" : "<style=cIsUtility>Dash forwards</style> and <style=cIsUtility>cling to a wall</style> while gaining <style=cIsDamage>30% attack speed</style>. Boost forwards when <style=cIsUtility>jumping off the wall</style>.",
 	
 	"MOFFEIN_PILOT_BODY_SPECIAL_NAME" : "Air Strike",
 	"MOFFEIN_PILOT_BODY_SPECIAL_DESCRIPTION" : "<style=cIsUtility>Dash</style> and place a bomb <style=cIsDamage>at your feet</style> that <style=cIsDamage>knocks enemies into the air</style> for <style=cIsDamage>600% damage</style>. Can trigger <style=cIsDamage>3</style> times. Hold up to 2.",

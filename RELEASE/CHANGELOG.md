@@ -2,16 +2,14 @@
 
 - Added PT-BR TL (Thanks kauzok!)
 
-
-
-- Rapid Deployment (TODO)
-	- Reduced height 33%
-	- Reduced cooldown
+- Rapid Deployment
+	- Skill description now mentions the airborn/grounded difference.
+	- Reduced height 25%
+	
+	*Old height was based on Ion Surge, while new height aims to be closer to the feel of Returns.*
 	
 - Aerobatics
-	- Grants +30% Attack Speed and +30 Armor while wallclinging.
-	
-	*Just a small buff to wallclinging, don't really expect it to be gamechanging.*
+	- Now grants +30% Attack Speed while wallclinging, lasts until you hit the ground.
 
 `0.3.14`
 

@@ -3,29 +3,43 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace MoffeinPilot.Modules
 {
     public static class Buffs
     {
         public static BuffDef WallclingBonus;
+        public static BuffDef WallclingBonusAirborne;
 
         internal static void RegisterBuffs()
         {
             BuffDef vanillaWarbanner = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/WardOnLevel/bdWarbanner.asset").WaitForCompletion();
             WallclingBonus = AddNewBuff("MoffeinPilotWallclingBonus",
-                Addressables.LoadAssetAsync<Sprite>("RoR2/Base/CritOnUse/texBuffFullCritIcon.tif").WaitForCompletion(), 
+                Addressables.LoadAssetAsync<Sprite>("RoR2/Base/CritOnUse/texBuffFullCritIcon.tif").WaitForCompletion(),
+                vanillaWarbanner.buffColor,
+                false,
+                false);
+
+            WallclingBonusAirborne = AddNewBuff("MoffeinPilotWallclingBonusAirborne",
+                Addressables.LoadAssetAsync<Sprite>("RoR2/Base/CritOnUse/texBuffFullCritIcon.tif").WaitForCompletion(),
                 vanillaWarbanner.buffColor,
                 false,
                 false);
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+            On.RoR2.CharacterMotor.OnHitGroundServer += CharacterMotor_OnHitGroundServer;
+        }
+
+        private static void CharacterMotor_OnHitGroundServer(On.RoR2.CharacterMotor.orig_OnHitGroundServer orig, CharacterMotor self, CharacterMotor.HitGroundInfo hitGroundInfo)
+        {
+            orig(self, hitGroundInfo);
+            if (NetworkServer.active && self.body && self.body.HasBuff(WallclingBonusAirborne)) self.body.RemoveBuff(WallclingBonusAirborne);
         }
 
         private static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (sender.HasBuff(WallclingBonus))
+            if (sender.HasBuff(WallclingBonus) || sender.HasBuff(WallclingBonusAirborne))
             {
-                args.armorAdd += 30;
                 args.attackSpeedMultAdd += 0.3f;
             }
         }
