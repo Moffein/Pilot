@@ -1,6 +1,7 @@
 `0.3.15`
 
 - Added PT-BR TL (Thanks kauzok!)
+- Thanks to Kaban for updating the RU TL as well!
 
 - Rapid Deployment
 	- Skill description now mentions the airborn/grounded difference.

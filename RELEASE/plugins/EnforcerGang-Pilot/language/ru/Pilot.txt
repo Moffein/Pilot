@@ -27,10 +27,10 @@
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>энергетический гранатомёт</style>, который наносит <style=cIsDamage>3x220% урона</style> каждым выстрелом. Можно хранить до 2.",
 	
 	"MOFFEIN_PILOT_BODY_UTILITY_NAME" : "Быстрое развёртывание",
-	"MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION" : "<style=cIsDamage>Оглушение</style>. Пилот запускает себя в воздух, а затем <style=cIsUtility>раскрывает парашют</style>.",
-	
-	"MOFFEIN_PILOT_BODY_UTILITY_ALT_NAME" : "Высший пилотаж",
-	"MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION" : "<style=cIsUtility>Совершает рывок вперёд</style> и <style=cIsUtility>цепляется к стене</style>. <style=cIsUtility>При прыжке со стены</style>, Пилот стремится вперёд.",
+    "MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION" : "<style=cIsDamage>Оглушение</style>. Запускает вас в воздух и <style=cIsUtility>активирует ваш парашут</style>. Используя этот навык в воздухе <style=cIsHealth>уменьшает подъёмную силу</style> в обмен на увелечение <style=cIsUtility>ускоряющей вперёд</style>.",
+    
+    "MOFFEIN_PILOT_BODY_UTILITY_ALT_NAME" : "Высший пилотаж",
+    "MOFFEIN_PILOT_BODY_UTILITY_ALT_DESCRIPTION" : "<style=cIsUtility>Выполните рывок вперёд</style> и <style=cIsUtility>прицепитесь к стене,</style> получая <style=cIsDamage>30% к скорости атаки</style>. При <style=cIsUtility>прыжке от стены,</style> вы стремитесь вперёд.",
 	
 	"MOFFEIN_PILOT_BODY_SPECIAL_NAME" : "Залп с воздуха",
 	"MOFFEIN_PILOT_BODY_SPECIAL_DESCRIPTION" : "<style=cIsUtility>Совершает рывок</style> и закладывает <style=cIsDamage>под ногами</style> заряд, который <style=cIsDamage>подбрасывает врагов в воздух</style>, нанося им <style=cIsDamage>600% урона</style>. Срабатывает до <style=cIsDamage>3</style> раз. Можно хранить до 2.",

@@ -119,7 +119,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                     base.characterBody.RemoveBuff(Buffs.WallclingBonus);
                 }
 
-                if (base.characterMotor && !base.characterMotor.isGrounded && !base.characterBody.HasBuff(Buffs.WallclingBonusAirborne))
+                if (base.characterMotor && !base.characterMotor.netIsGrounded && !base.characterBody.HasBuff(Buffs.WallclingBonusAirborne))
                 {
                     base.characterBody.AddBuff(Buffs.WallclingBonusAirborne);
                 }
