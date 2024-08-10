@@ -38,7 +38,7 @@
 	"MOFFEIN_PILOT_BODY_SPECIAL_SCEPTER_NAME" : "Incursão Aérea",
 	"MOFFEIN_PILOT_BODY_SPECIAL_SCEPTER_DESCRIPTION" : "Realize uma <style=cIsUtility>investida</style>, soltando uma bomba <style=cIsDamage>no local</style> que <style=cIsDamage>lança inimigos no ar</style> e causa <style=cIsDamage>800% de dano</style>. Pode ser ativada <style=cIsDamage>6</style> vezes. Máximo de 2.",
 
-	"MOFFEIN_PILOT_BODY_SPECIAL_ALT_NAME" : "Apoio Aéreo"
+	"MOFFEIN_PILOT_BODY_SPECIAL_ALT_NAME" : "Apoio Aéreo",
 	"MOFFEIN_PILOT_BODY_SPECIAL_ALT_DESCRIPTION" : "Bombardeie uma área, causando <style=cIsDamage>4x400% de dano</style>, <style=cIsDamage>lançando inimigos no ar</style> no último acero.",
 
 	"MOFFEIN_PILOT_BODY_SPECIAL_ALT_SCEPTER_NAME" : "Barragem Aérea",

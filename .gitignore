@@ -258,3 +258,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PilotUnity/Assets/StreamingAssets/pilotbundle.manifest.meta
+/PilotUnity/Assets/StreamingAssets/pilotbundle.meta
+/PilotUnity/Assets/StreamingAssets/StandaloneWindows.manifest.meta
+/PilotUnity/Assets/StreamingAssets/StandaloneWindows.meta
+/PilotUnity/Assets/StreamingAssets.meta
