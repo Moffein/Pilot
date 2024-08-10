@@ -14,16 +14,16 @@ namespace MoffeinPilot.Modules
 
         internal static void RegisterBuffs()
         {
-            BuffDef vanillaWarbanner = Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/WardOnLevel/bdWarbanner.asset").WaitForCompletion();
+            Color pilotColor = new Color32(65, 247, 197, 255);
             WallclingBonus = AddNewBuff("MoffeinPilotWallclingBonus",
                 Addressables.LoadAssetAsync<Sprite>("RoR2/Base/CritOnUse/texBuffFullCritIcon.tif").WaitForCompletion(),
-                vanillaWarbanner.buffColor,
+                pilotColor,
                 false,
                 false);
 
             WallclingBonusAirborne = AddNewBuff("MoffeinPilotWallclingBonusAirborne",
                 Addressables.LoadAssetAsync<Sprite>("RoR2/Base/CritOnUse/texBuffFullCritIcon.tif").WaitForCompletion(),
-                vanillaWarbanner.buffColor,
+                pilotColor,
                 false,
                 false);
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
