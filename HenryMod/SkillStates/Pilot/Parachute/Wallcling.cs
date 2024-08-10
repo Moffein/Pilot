@@ -1,4 +1,5 @@
 ﻿using EntityStates.MoffeinPilot.Weapon;
+using MoffeinPilot.Modules;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
@@ -23,6 +24,10 @@ namespace EntityStates.MoffeinPilot.Parachute
         {
             base.OnEnter();
             if (base.characterBody && base.characterBody.isSprinting) base.characterBody.isSprinting = false;
+            if (NetworkServer.active && base.characterBody)
+            {
+                base.characterBody.AddBuff(Buffs.WallclingBonus);
+            }
 
             Util.PlaySound(entrySoundString, base.gameObject);
 
@@ -99,6 +104,11 @@ namespace EntityStates.MoffeinPilot.Parachute
             {
                 this.overriddenSkill.UnsetSkillOverride(this, Wallbounce.utilityOverride, GenericSkill.SkillOverridePriority.Contextual);
             }*/
+            if (NetworkServer.active && base.characterBody && base.characterBody.HasBuff(Buffs.WallclingBonus))
+            {
+                base.characterBody.RemoveBuff(Buffs.WallclingBonus);
+            }
+
             if (base.characterBody && !base.characterBody.isSprinting) base.characterBody.isSprinting = true;
 
             if (base.characterMotor)

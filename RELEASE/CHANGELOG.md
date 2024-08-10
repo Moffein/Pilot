@@ -1,3 +1,18 @@
+`0.3.15`
+
+- Added PT-BR TL (Thanks kauzok!)
+
+
+
+- Rapid Deployment (TODO)
+	- Reduced height 33%
+	- Reduced cooldown
+	
+- Aerobatics
+	- Grants +30% Attack Speed and +30 Armor while wallclinging.
+	
+	*Just a small buff to wallclinging, don't really expect it to be gamechanging.*
+
 `0.3.14`
 
 - Updated RU TL

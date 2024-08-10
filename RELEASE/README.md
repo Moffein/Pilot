@@ -22,3 +22,4 @@ Fully functional, just needs animation polish and some skins.
 ## Translation Credits
 
 - Russian: Lecard
+- Portuguese: Kauzok

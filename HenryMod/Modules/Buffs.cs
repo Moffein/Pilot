@@ -1,14 +1,32 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace MoffeinPilot.Modules
 {
     public static class Buffs
     {
+        public static BuffDef WallclingBonus;
 
         internal static void RegisterBuffs()
         {
+            WallclingBonus = AddNewBuff("MoffeinPilotWallclingBonus",
+                Addressables.LoadAssetAsync<Sprite>("RoR2/Base/CritOnUse/texBuffFullCritIcon.tif").WaitForCompletion(), 
+                new Color(),
+                false,
+                false);
+            RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+        }
+
+        private static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.HasBuff(WallclingBonus))
+            {
+                args.armorAdd += 30;
+                args.attackSpeedMultAdd += 0.3f;
+            }
         }
 
         // simple helper method
