@@ -17,6 +17,7 @@ Fully functional, just needs animation polish and some skins.
 - Moffein (Code)
 - TimeSweeper (Anims + Unity + Code)
 - dotflare (Model + Anims)
+- FORCED_REASSEMBLY (Drone Model)
 - Leaf_It (Skill Icons)
 
 ## Translation Credits

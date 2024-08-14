@@ -45,6 +45,9 @@ namespace MoffeinPilot.Modules
                 if (mainAssetBundle == null)
                 {
                     mainAssetBundle = AssetBundle.LoadFromFile(Files.GetPathToFile("AssetBundles", "pilotbundle"));
+
+                    //Async causes this to not work properly
+                    ShaderSwapper.ShaderSwapper.UpgradeStubbedShaders(mainAssetBundle);
                 }
             }
             catch (Exception e)

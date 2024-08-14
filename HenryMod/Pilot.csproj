@@ -75,6 +75,9 @@
     <Reference Include="RiskOfOptions">
       <HintPath>..\libs\SoftDependencies\RiskOfOptions.dll</HintPath>
     </Reference>
+    <Reference Include="ShaderSwapper">
+      <HintPath>..\libs\HardDependencies\ShaderSwapper.dll</HintPath>
+    </Reference>
     <Reference Include="Wwise">
       <HintPath>..\libs\Wwise.dll</HintPath>
     </Reference>
