@@ -1,3 +1,7 @@
+`0.3.17`
+
+- UpdatedTakeDamage hook to TakeDamageProcess.
+
 `0.3.16`
 
 - DLC2 fix.
