@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2FC077E3-385E-4D6B-BD21-5604B6823059}" SchemaVersion="97">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{2FC077E3-385E-4D6B-BD21-5604B6823059}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="PilotSoundbank" ID="{7DB1A15B-E2DA-4FA4-97FB-5091B09483EF}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_MoffeinPilot_Primary_Cluster" ID="{CE309C89-DAFD-4143-AB43-D91AB3E3328C}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Headshot" ID="{E28FF341-55EA-4235-B37B-9384A3E4C76A}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Primary_Cluster_Combo" ID="{2E206A4A-521F-42C6-8B67-E3C915A33E31}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Select" ID="{5E622F16-EA2F-4307-8C4F-99473153B7CC}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Silencer" ID="{9281A8AC-8136-4381-8988-BBB399BA23A3}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Primary_Rapid" ID="{F39257ED-8CA3-448F-BBD4-72E258060256}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Secondary_FireBurst" ID="{F98B9D03-4014-4D98-8CA1-F5183F0188B0}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MoffeinPilot_Secondary_FireAlt" ID="{32DFE69F-3ACD-4FD2-89F1-2D58EC0915C3}" WorkUnitID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

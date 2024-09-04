@@ -1,94 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\</ProjectRoot>
-		<SourceFilesRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
-	<StreamedFiles/>
-	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="263542888">
-			<ObjectPath>Init</ObjectPath>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{7F3A15DD-340D-EF22-59CE-AC32EA50B08A}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2624589540" Language="SFX" Hash="3040038864">
-			<ObjectPath>\SoundBanks\Default Work Unit\PilotSoundbank</ObjectPath>
+		<SoundBank Id="2624589540" Type="User" Language="SFX" Hash="{9A537F54-F620-D3F2-7D54-5BA1E29CE669}">
 			<ShortName>PilotSoundbank</ShortName>
 			<Path>PilotSoundbank.bnk</Path>
-			<IncludedEvents>
-				<Event Id="310653585" Name="Play_MoffeinPilot_Headshot" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Headshot">
-					<IncludedMemoryFiles>
-						<File Id="172124556" Language="SFX">
-							<ShortName>wHeadshot.wav</ShortName>
-							<Path>SFX\wHeadshot_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+			<Media>
+				<File Id="49591001" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wBullet3.wav</ShortName>
+					<CachePath>SFX/wBullet3_818F3B66.wem</CachePath>
+				</File>
+				<File Id="172124556" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wHeadshot.wav</ShortName>
+					<CachePath>SFX/wHeadshot_818F3B66.wem</CachePath>
+				</File>
+				<File Id="266180520" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wBullet2.wav</ShortName>
+					<CachePath>SFX/wBullet2_818F3B66.wem</CachePath>
+				</File>
+				<File Id="353063854" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wBullet1.wav</ShortName>
+					<CachePath>SFX/wBullet1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="372196105" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wBanditShoot1.wav</ShortName>
+					<CachePath>SFX/wBanditShoot1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="565653580" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>CyborgSecondary.wav</ShortName>
+					<CachePath>SFX/CyborgSecondary_818F3B66.wem</CachePath>
+				</File>
+				<File Id="689986003" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wUI_Survivors_Pilot.wav</ShortName>
+					<CachePath>SFX/wUI_Survivors_Pilot_818F3B66.wem</CachePath>
+				</File>
+				<File Id="991900099" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>wSPistol.wav</ShortName>
+					<CachePath>SFX/wSPistol_818F3B66.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="310653585" Name="Play_MoffeinPilot_Headshot">
+					<MediaRefs>
+						<MediaRef Id="172124556"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="775202588" Name="Play_MoffeinPilot_Primary_Cluster" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Primary_Cluster">
-					<IncludedMemoryFiles>
-						<File Id="353063854" Language="SFX">
-							<ShortName>wBullet1.wav</ShortName>
-							<Path>SFX\wBullet1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="775202588" Name="Play_MoffeinPilot_Primary_Cluster">
+					<MediaRefs>
+						<MediaRef Id="353063854"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1598594895" Name="Play_MoffeinPilot_Primary_Cluster_Combo" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Primary_Cluster_Combo">
-					<IncludedMemoryFiles>
-						<File Id="266180520" Language="SFX">
-							<ShortName>wBullet2.wav</ShortName>
-							<Path>SFX\wBullet2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1598594895" Name="Play_MoffeinPilot_Primary_Cluster_Combo">
+					<MediaRefs>
+						<MediaRef Id="266180520"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1422204596" Name="Play_MoffeinPilot_Primary_Rapid" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Primary_Rapid">
-					<IncludedMemoryFiles>
-						<File Id="372196105" Language="SFX">
-							<ShortName>wBanditShoot1.wav</ShortName>
-							<Path>SFX\wBanditShoot1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1422204596" Name="Play_MoffeinPilot_Primary_Rapid">
+					<MediaRefs>
+						<MediaRef Id="372196105"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="555508599" Name="Play_MoffeinPilot_Secondary_FireAlt" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Secondary_FireAlt">
-					<IncludedMemoryFiles>
-						<File Id="565653580" Language="SFX">
-							<ShortName>CyborgSecondary.wav</ShortName>
-							<Path>SFX\CyborgSecondary_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="555508599" Name="Play_MoffeinPilot_Secondary_FireAlt">
+					<MediaRefs>
+						<MediaRef Id="565653580"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="29249252" Name="Play_MoffeinPilot_Secondary_FireBurst" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Secondary_FireBurst">
-					<IncludedMemoryFiles>
-						<File Id="49591001" Language="SFX">
-							<ShortName>wBullet3.wav</ShortName>
-							<Path>SFX\wBullet3_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="29249252" Name="Play_MoffeinPilot_Secondary_FireBurst">
+					<MediaRefs>
+						<MediaRef Id="49591001"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="983755999" Name="Play_MoffeinPilot_Select" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Select">
-					<IncludedMemoryFiles>
-						<File Id="689986003" Language="SFX">
-							<ShortName>wUI_Survivors_Pilot.wav</ShortName>
-							<Path>SFX\wUI_Survivors_Pilot_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="983755999" Name="Play_MoffeinPilot_Select">
+					<MediaRefs>
+						<MediaRef Id="689986003"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1595501726" Name="Play_MoffeinPilot_Silencer" ObjectPath="\Events\Default Work Unit\Play_MoffeinPilot_Silencer">
-					<IncludedMemoryFiles>
-						<File Id="991900099" Language="SFX">
-							<ShortName>wSPistol.wav</ShortName>
-							<Path>SFX\wSPistol_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1595501726" Name="Play_MoffeinPilot_Silencer">
+					<MediaRefs>
+						<MediaRef Id="991900099"/>
+					</MediaRefs>
 				</Event>
-			</IncludedEvents>
+			</Events>
 			<GameParameters>
-				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
+	<FileHash>{213D6DC3-EE5F-CA55-B7B2-8A653645A2CC}</FileHash>
 </SoundBanksInfo>

@@ -1,39 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}" SchemaVersion="97">
+<WwiseDocument Type="WorkUnit" ID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}" PersistMode="Standalone">
 			<ChildrenList>
 				<ActorMixer Name="Master Mixer" ID="{72746081-0AD3-40E9-A326-77BB7A4F91D3}" ShortID="814525782">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<RTPCList>
-								<RTPC Name="" ID="{009E51BB-8F8F-4D7E-8693-8A03FD34B1AD}" ShortID="410695096">
-									<ReferenceList>
-										<Reference Name="ControlInput">
-											<ObjectRef Name="Volume_SFX" ID="{C9AE9379-2B33-4A01-BE77-3688AA20EE0E}" WorkUnitID="{1489ABDE-AE25-44EB-A014-2FCA86977CA9}"/>
-										</Reference>
-									</ReferenceList>
-									<Curve Name="" ID="{2E05792B-D725-4C07-810E-F809D28E7514}">
-										<PropertyList>
-											<Property Name="Flags" Type="int32" Value="3"/>
-										</PropertyList>
-										<PointList>
-											<Point>
-												<XPos>0</XPos>
-												<YPos>-200</YPos>
-												<Flags>5</Flags>
-											</Point>
-											<Point>
-												<XPos>100</XPos>
-												<YPos>0</YPos>
-												<Flags>37</Flags>
-											</Point>
-										</PointList>
-									</Curve>
-								</RTPC>
-							</RTPCList>
-						</Property>
-					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{155CAC6B-FD7D-4D48-91B3-68F697402DCF}"/>
@@ -298,6 +268,45 @@
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<Reference>
+								<Local>
+									<RTPC Name="" ID="{009E51BB-8F8F-4D7E-8693-8A03FD34B1AD}" ShortID="410695096">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Volume_SFX" ID="{C9AE9379-2B33-4A01-BE77-3688AA20EE0E}" WorkUnitID="{1489ABDE-AE25-44EB-A014-2FCA86977CA9}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{2E05792B-D725-4C07-810E-F809D28E7514}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>

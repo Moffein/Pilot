@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{741E0D8F-54F0-410A-AAD7-7AFF22AB5EB8}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_MoffeinPilot_Select" ID="{5E622F16-EA2F-4307-8C4F-99473153B7CC}">
+					<ChildrenList>
+						<Action Name="" ID="{BDFA03D8-9807-44C9-BFD9-756D91C5FACA}" ShortID="812528799">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wUI_Survivors_Pilot" ID="{7E6CCB37-DE0C-417A-9BE8-BEC7540374AA}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Primary_Rapid" ID="{F39257ED-8CA3-448F-BBD4-72E258060256}">
+					<ChildrenList>
+						<Action Name="" ID="{8C8D8345-39AB-44E5-B05A-BB466373A6D8}" ShortID="100768313">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Primary_Rapid" ID="{2987ECFB-017C-4A57-99E6-C68436E6EBDB}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Primary_Cluster" ID="{CE309C89-DAFD-4143-AB43-D91AB3E3328C}">
+					<ChildrenList>
+						<Action Name="" ID="{7F32A58A-707E-4C99-8325-76D132FD9BB2}" ShortID="179092821">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Primary_Cluster" ID="{787CBCD0-9B78-467B-9588-0A2A1756AD86}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Primary_Cluster_Combo" ID="{2E206A4A-521F-42C6-8B67-E3C915A33E31}">
+					<ChildrenList>
+						<Action Name="" ID="{3BDF715D-D4AD-4682-B013-5A995628DAE9}" ShortID="795559959">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Primary_Cluster_Combo" ID="{CE0D60E0-BB45-4719-B2F7-10807AD4477F}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Secondary_FireBurst" ID="{F98B9D03-4014-4D98-8CA1-F5183F0188B0}">
+					<ChildrenList>
+						<Action Name="" ID="{90425B5D-A913-4D8F-8999-522BA8F40064}" ShortID="185170790">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Seocndary_Fire" ID="{746A8D72-F7D5-48AF-8C79-DA926961BCA4}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Silencer" ID="{9281A8AC-8136-4381-8988-BBB399BA23A3}">
+					<ChildrenList>
+						<Action Name="" ID="{8D47F9E4-09BD-4232-8A27-C05281D6E795}" ShortID="105032611">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wSPistol" ID="{FDAEE91F-8DD2-44BD-AAEE-E34791FCF56B}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Secondary_FireAlt" ID="{32DFE69F-3ACD-4FD2-89F1-2D58EC0915C3}">
+					<ChildrenList>
+						<Action Name="" ID="{44EBFAB1-6695-4EA0-A583-93228C4B35E9}" ShortID="639699005">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Secondary_Alt" ID="{329DD466-F00D-469F-A3F5-B091FFEEF3F9}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MoffeinPilot_Headshot" ID="{E28FF341-55EA-4235-B37B-9384A3E4C76A}">
+					<ChildrenList>
+						<Action Name="" ID="{527341E9-CDB3-4597-8CDB-0D5CF6F6315F}" ShortID="1035578085">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wHeadshot" ID="{7830436E-AF1C-4B49-9EE3-6998E3847932}" WorkUnitID="{6589AEAC-4283-42F3-9EA8-276FA9CFB1B5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

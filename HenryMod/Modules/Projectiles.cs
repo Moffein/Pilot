@@ -39,14 +39,11 @@ namespace MoffeinPilot.Modules
         private static GameObject CreateAirStrikeGhost(string prefabName)
         {
             GameObject toReturn = Asset.mainAssetBundle.LoadAsset<GameObject>(prefabName).InstantiateClone(prefabName + "Ghost", false);
-
             toReturn.AddComponent<ProjectileGhostController>();
             toReturn.AddComponent<RotationVisuals>();
-
             VFXAttributes vfx = toReturn.AddComponent<VFXAttributes>();
             vfx.vfxPriority = VFXAttributes.VFXPriority.Always;
             vfx.vfxIntensity = VFXAttributes.VFXIntensity.Low;
-
             ChildLocator cl = toReturn.GetComponent<ChildLocator>();
             if (cl)
             {
@@ -60,7 +57,6 @@ namespace MoffeinPilot.Modules
                     }
                 }
             }
-
             return toReturn;
         }
 

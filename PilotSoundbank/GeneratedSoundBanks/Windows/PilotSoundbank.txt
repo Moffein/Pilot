@@ -12,12 +12,12 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	49591001	Seocndary_Fire	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Seocndary_Fire		121780
-	172124556	wHeadshot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wHeadshot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wHeadshot		70336
-	266180520	Primary_Cluster_Combo	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster_Combo		188812
-	353063854	Primary_Cluster	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster		135892
-	372196105	Primary_Rapid	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBanditShoot1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Rapid		104962
-	565653580	Secondary_Alt	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\CyborgSecondary_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Secondary_Alt		252740
-	689986003	wUI_Survivors_Pilot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wUI_Survivors_Pilot_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wUI_Survivors_Pilot		154880
-	991900099	wSPistol	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wSPistol_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wSPistol		37312
+	49591001	Seocndary_Fire	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet3_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Seocndary_Fire		121812
+	172124556	wHeadshot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wHeadshot_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wHeadshot		70368
+	266180520	Primary_Cluster_Combo	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet2_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster_Combo		188844
+	353063854	Primary_Cluster	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBullet1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Cluster		135924
+	372196105	Primary_Rapid	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wBanditShoot1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Primary_Rapid		104994
+	565653580	Secondary_Alt	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\CyborgSecondary_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\Secondary_Alt		252772
+	689986003	wUI_Survivors_Pilot	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wUI_Survivors_Pilot_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wUI_Survivors_Pilot		154912
+	991900099	wSPistol	D:\Projects\RoR2 Mods\Pilot\PilotSoundbank\.cache\Windows\SFX\wSPistol_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\Pilot\wSPistol		37344
 

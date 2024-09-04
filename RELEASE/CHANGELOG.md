@@ -1,3 +1,7 @@
+`0.3.16`
+
+- DLC2 fix.
+
 `0.3.15`
 
 - Added PT-BR TL (Thanks kauzok!)
