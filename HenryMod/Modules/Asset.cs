@@ -12,7 +12,7 @@ using Pilot.Modules;
 
 namespace MoffeinPilot.Modules
 {
-    internal static class Assets
+    internal static class Asset
     {
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;

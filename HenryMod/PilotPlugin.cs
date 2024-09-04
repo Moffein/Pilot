@@ -40,7 +40,7 @@ namespace MoffeinPilot
             ModCompat.CheckDependencies();
             Modules.States.RegisterStates();
             Modules.DamageTypes.RegisterDamageTypes();
-            Modules.Assets.Initialize(); // load assets and read config
+            Modules.Asset.Initialize(); // load assets and read config
             Modules.Config.ReadConfig();
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles

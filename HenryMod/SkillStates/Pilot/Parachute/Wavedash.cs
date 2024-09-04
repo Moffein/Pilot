@@ -71,16 +71,16 @@ namespace EntityStates.MoffeinPilot.Parachute
                     //Slow down wavedash on the ground
                     if (base.characterMotor.isGrounded)
                     {
-                        groundStopwatch += Time.fixedDeltaTime;
+                        groundStopwatch += Time.deltaTime;
                         if (groundStopwatch >= Wavedash.groundGracePeriod)
                         {
-                            speed -= Time.fixedDeltaTime * Wavedash.groundSpeedLoss;
+                            speed -= Time.deltaTime * Wavedash.groundSpeedLoss;
                         }
                     }
                     else
                     {
                         groundStopwatch = 0f;
-                        speed -= Time.fixedDeltaTime * Wavedash.airSpeedLoss;
+                        speed -= Time.deltaTime * Wavedash.airSpeedLoss;
                     }
 
                     //Get current velocity

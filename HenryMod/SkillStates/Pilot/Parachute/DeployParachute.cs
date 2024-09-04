@@ -158,7 +158,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
                 if (velocity > DeployParachute.stopAscentVelocity)
                 {
-                    base.characterMotor.rootMotion.y += (velocity * Time.fixedDeltaTime);
+                    base.characterMotor.rootMotion.y += (velocity * Time.deltaTime);
                 }
                 else
                 {
@@ -274,7 +274,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         private void CreateParachute()
         {
-            parachute = Object.Instantiate(Assets.TempParachute, FindModelChild("ParachutePosition"), false);
+            parachute = Object.Instantiate(Asset.TempParachute, FindModelChild("ParachutePosition"), false);
             parachute.transform.localPosition = Vector3.zero;
             parachute.transform.localScale = Vector3.one;
             parachute.transform.localRotation = Quaternion.identity;

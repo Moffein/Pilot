@@ -46,7 +46,7 @@ namespace MoffeinPilot
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void SetupOptionsInternal()
         {
-            ModSettingsManager.SetModIcon(Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texIconPilot"));
+            ModSettingsManager.SetModIcon(Modules.Asset.mainAssetBundle.LoadAsset<Sprite>("texIconPilot"));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Weapon.ClusterFire.useLaser));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.enableParachuteFade));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend));
@@ -62,7 +62,7 @@ namespace MoffeinPilot
                 {
                     if (item.bodyPrefab.name == "MoffeinPilotBody")
                     {
-                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("PilotEmotePrefab.prefab");
+                        var skele = Modules.Asset.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("PilotEmotePrefab.prefab");
                         EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
                         skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
                     }

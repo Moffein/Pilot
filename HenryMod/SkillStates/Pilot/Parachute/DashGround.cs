@@ -102,7 +102,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (characterMotor && characterDirection)
             {
                 characterMotor.velocity = Vector3.zero;
-                characterMotor.rootMotion += blinkVector * (moveSpeedStat * GetBlinkSpeed() * Time.fixedDeltaTime);
+                characterMotor.rootMotion += blinkVector * (moveSpeedStat * GetBlinkSpeed() * Time.deltaTime);
             }
         }
 

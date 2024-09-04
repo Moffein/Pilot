@@ -37,10 +37,10 @@ namespace MoffeinPilot.Modules.Survivors
             bodyNameToken = BODY_PREFIX + "NAME",
             subtitleNameToken = BODY_PREFIX + "SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texIconPilot"),
+            characterPortrait = Asset.mainAssetBundle.LoadAsset<Texture>("texIconPilot"),
             bodyColor = new Color32(56, 148, 77, 255),
 
-            crosshair = Modules.Assets.LoadCrosshair("Standard"),
+            crosshair = Modules.Asset.LoadCrosshair("Standard"),
             podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
             maxHealth = 90f,
@@ -340,7 +340,7 @@ namespace MoffeinPilot.Modules.Survivors
             primaryDef.dontAllowPastMaxStocks = true;
             primaryDef.forceSprintDuringState = false;
             primaryDef.fullRestockOnAssign = true;
-            primaryDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillClusterFire");
+            primaryDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillClusterFire");
             primaryDef.interruptPriority = InterruptPriority.Skill;
             primaryDef.isCombatSkill = true;
             primaryDef.keywordTokens = new string[] { };
@@ -367,7 +367,7 @@ namespace MoffeinPilot.Modules.Survivors
             primaryAltDef.dontAllowPastMaxStocks = true;
             primaryAltDef.forceSprintDuringState = false;
             primaryAltDef.fullRestockOnAssign = true;
-            primaryAltDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidFire");
+            primaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidFire");
             primaryAltDef.interruptPriority = InterruptPriority.Skill;
             primaryAltDef.isCombatSkill = true;
             primaryAltDef.keywordTokens = new string[] { };
@@ -396,7 +396,7 @@ namespace MoffeinPilot.Modules.Survivors
             primarySilencerDef.dontAllowPastMaxStocks = true;
             primarySilencerDef.forceSprintDuringState = false;
             primarySilencerDef.fullRestockOnAssign = true;
-            primarySilencerDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
+            primarySilencerDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
             primarySilencerDef.interruptPriority = InterruptPriority.Skill;
             primarySilencerDef.isCombatSkill = true;
             primarySilencerDef.keywordTokens = new string[] { "KEYWORD_SLAYER" };
@@ -467,7 +467,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryDef.dontAllowPastMaxStocks = true;
             secondaryDef.forceSprintDuringState = false;
             secondaryDef.fullRestockOnAssign = true;
-            secondaryDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillTargetAcquired");
+            secondaryDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillTargetAcquired");
             secondaryDef.interruptPriority = InterruptPriority.Any;
             secondaryDef.isCombatSkill = false;
             secondaryDef.keywordTokens = new string[] { };
@@ -493,7 +493,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryOverrideDef.dontAllowPastMaxStocks = false;
             secondaryOverrideDef.forceSprintDuringState = false;
             secondaryOverrideDef.fullRestockOnAssign = true;
-            secondaryOverrideDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillTargetAcquired");
+            secondaryOverrideDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillTargetAcquired");
             secondaryOverrideDef.interruptPriority = InterruptPriority.Skill;
             secondaryOverrideDef.isCombatSkill = true;
             secondaryOverrideDef.keywordTokens = new string[] { };
@@ -520,7 +520,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryAltDef.dontAllowPastMaxStocks = true;
             secondaryAltDef.forceSprintDuringState = false;
             secondaryAltDef.fullRestockOnAssign = true;
-            secondaryAltDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
             secondaryAltDef.interruptPriority = InterruptPriority.Any;
             secondaryAltDef.isCombatSkill = false;
             secondaryAltDef.keywordTokens = new string[] { };
@@ -546,7 +546,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryAltOverrideDef.dontAllowPastMaxStocks = false;
             secondaryAltOverrideDef.forceSprintDuringState = false;
             secondaryAltOverrideDef.fullRestockOnAssign = true;
-            secondaryAltOverrideDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryAltOverrideDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
             secondaryAltOverrideDef.interruptPriority = InterruptPriority.Skill;
             secondaryAltOverrideDef.isCombatSkill = true;
             secondaryAltOverrideDef.keywordTokens = new string[] { };
@@ -578,7 +578,7 @@ namespace MoffeinPilot.Modules.Survivors
             utilityDef.dontAllowPastMaxStocks = true;
             utilityDef.forceSprintDuringState = false;
             utilityDef.fullRestockOnAssign = true;
-            utilityDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidDeployment");
+            utilityDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidDeployment");
             utilityDef.interruptPriority = InterruptPriority.Any;
             utilityDef.isCombatSkill = false;
             utilityDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
@@ -604,7 +604,7 @@ namespace MoffeinPilot.Modules.Survivors
             utilityAltDef.dontAllowPastMaxStocks = true;
             utilityAltDef.forceSprintDuringState = true;
             utilityAltDef.fullRestockOnAssign = false;
-            utilityAltDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_6");
+            utilityAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_6");
             utilityAltDef.interruptPriority = InterruptPriority.Any;
             utilityAltDef.isCombatSkill = false;
             utilityAltDef.keywordTokens = new string[] {};
@@ -635,7 +635,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialDef.dontAllowPastMaxStocks = true;
             specialDef.forceSprintDuringState = false;
             specialDef.fullRestockOnAssign = true;
-            specialDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillAirstrike");
+            specialDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAirstrike");
             specialDef.interruptPriority = InterruptPriority.Any;
             specialDef.isCombatSkill = true;
             specialDef.keywordTokens = new string[] {};
@@ -661,7 +661,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialScepterDef.dontAllowPastMaxStocks = true;
             specialScepterDef.forceSprintDuringState = false;
             specialScepterDef.fullRestockOnAssign = true;
-            specialScepterDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillAirstrikeScepter");
+            specialScepterDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAirstrikeScepter");
             specialScepterDef.interruptPriority = InterruptPriority.Any;
             specialScepterDef.isCombatSkill = true;
             specialScepterDef.keywordTokens = new string[] { };
@@ -688,7 +688,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialAltDef.dontAllowPastMaxStocks = true;
             specialAltDef.forceSprintDuringState = false;
             specialAltDef.fullRestockOnAssign = true;
-            specialAltDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillAerialSupport");
+            specialAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAerialSupport");
             specialAltDef.interruptPriority = InterruptPriority.Any;
             specialAltDef.isCombatSkill = true;
             specialAltDef.keywordTokens = new string[] { };
@@ -714,7 +714,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialAltScepterDef.dontAllowPastMaxStocks = true;
             specialAltScepterDef.forceSprintDuringState = false;
             specialAltScepterDef.fullRestockOnAssign = true;
-            specialAltScepterDef.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSkillAerialSupportScepter");
+            specialAltScepterDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAerialSupportScepter");
             specialAltScepterDef.interruptPriority = InterruptPriority.Any;
             specialAltScepterDef.isCombatSkill = true;
             specialAltScepterDef.keywordTokens = new string[] { };
@@ -748,7 +748,7 @@ namespace MoffeinPilot.Modules.Survivors
             #region DefaultSkin
             //this creates a SkinDef with all default fields
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texIconSkinPilotDefault"),
+                Asset.mainAssetBundle.LoadAsset<Sprite>("texIconSkinPilotDefault"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);
 
@@ -768,7 +768,7 @@ namespace MoffeinPilot.Modules.Survivors
             
             //creating a new skindef as we did before
             SkinDef masterySkin = Modules.Skins.CreateSkinDef(BODY_PREFIX + " scrawny fuck",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+                Asset.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject/*,
                 masterySkinUnlockableDef*/);

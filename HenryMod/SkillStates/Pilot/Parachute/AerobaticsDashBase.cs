@@ -100,7 +100,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                         });
                         return;
                     }
-                    wavedashSpeedMult -= Time.fixedDeltaTime / AerobaticsDashBase.baseDuration;
+                    wavedashSpeedMult -= Time.deltaTime / AerobaticsDashBase.baseDuration;
                 }
             }
 
@@ -122,7 +122,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;
-                base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * GetBlinkSpeed() * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * GetBlinkSpeed() * Time.deltaTime);
             }
         }
 

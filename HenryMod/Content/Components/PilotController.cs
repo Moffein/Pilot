@@ -24,7 +24,7 @@ namespace MoffeinPilot.Content.Components
         private Queue<GameObject> activeAirStrikes;
 
         //Used for Secondary
-        public static GameObject autoAimIndicatorPrefab = Modules.Assets.EngiMissileIndicatorButRed;
+        public static GameObject autoAimIndicatorPrefab = Modules.Asset.EngiMissileIndicatorButRed;
         public static float autoAimDistance = 200f;
         public static float autoAimAngle = 30f;
         private static float autoAimUpdateTimer = 1f / 20f;

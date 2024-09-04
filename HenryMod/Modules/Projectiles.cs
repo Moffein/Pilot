@@ -14,7 +14,7 @@ namespace MoffeinPilot.Modules
 
         internal static void RegisterProjectiles()
         {
-            NetworkSoundEventDef detSound = Assets.CreateNetworkSoundEventDef("Play_engi_M2_arm");
+            NetworkSoundEventDef detSound = Asset.CreateNetworkSoundEventDef("Play_engi_M2_arm");
             
             GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFX.prefab").WaitForCompletion().InstantiateClone("PilotAirstrikeBlastEffect", false);
             {
@@ -38,7 +38,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreateAirStrikeGhost(string prefabName)
         {
-            GameObject toReturn = Assets.mainAssetBundle.LoadAsset<GameObject>(prefabName).InstantiateClone(prefabName + "Ghost", false);
+            GameObject toReturn = Asset.mainAssetBundle.LoadAsset<GameObject>(prefabName).InstantiateClone(prefabName + "Ghost", false);
 
             toReturn.AddComponent<ProjectileGhostController>();
             toReturn.AddComponent<RotationVisuals>();
@@ -66,7 +66,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreatePilotAirstrike(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int maxTriggers, float rearmTime)
         {
-            GameObject proj = Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            GameObject proj = Asset.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
             proj.layer = LayerIndex.noCollision.intVal;
             proj.AddComponent<NetworkIdentity>();
 
@@ -96,7 +96,7 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreatePilotAirstrikeAlt(string projectileName, GameObject ghostPrefab, GameObject blastEffectPrefab, NetworkSoundEventDef armSound, int explosionCount, float rearmTime)
         {
-            GameObject proj = Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
+            GameObject proj = Asset.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone(projectileName, false); //Load from AssetBundle so it stays in memory. Is there a better way to do this?
             proj.layer = LayerIndex.noCollision.intVal;
             proj.AddComponent<NetworkIdentity>();
 
@@ -184,11 +184,11 @@ namespace MoffeinPilot.Modules
 
         private static GameObject CreateGhostPrefab(string ghostName)
         {
-            GameObject ghostPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(ghostName);
+            GameObject ghostPrefab = Modules.Asset.mainAssetBundle.LoadAsset<GameObject>(ghostName);
             if (!ghostPrefab.GetComponent<NetworkIdentity>()) ghostPrefab.AddComponent<NetworkIdentity>();
             if (!ghostPrefab.GetComponent<ProjectileGhostController>()) ghostPrefab.AddComponent<ProjectileGhostController>();
 
-            Modules.Assets.ConvertAllRenderersToHopooShader(ghostPrefab);
+            Modules.Asset.ConvertAllRenderersToHopooShader(ghostPrefab);
 
             return ghostPrefab;
         }

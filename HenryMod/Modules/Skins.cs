@@ -110,7 +110,7 @@ namespace MoffeinPilot.Modules
                 new SkinDef.MeshReplacement
                 {
                     renderer = defaultRendererInfos[i].renderer,
-                    mesh = Assets.mainAssetBundle.LoadAsset<Mesh>(meshes[i])
+                    mesh = Asset.mainAssetBundle.LoadAsset<Mesh>(meshes[i])
                 });
             }
 
