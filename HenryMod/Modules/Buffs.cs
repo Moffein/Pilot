@@ -27,15 +27,14 @@ namespace MoffeinPilot.Modules
                 false,
                 false);
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
-            Log.Error("CharacterMotor.OnHitGroundServer DOESN'T EXIST FIX THE HOOK");
-            //On.RoR2.CharacterMotor.OnHitGroundServer += CharacterMotor_OnHitGroundServer;
+            On.RoR2.GlobalEventManager.OnCharacterHitGroundServer += GlobalEventManager_OnCharacterHitGroundServer;
         }
 
-        //private static void CharacterMotor_OnHitGroundServer(On.RoR2.CharacterMotor.orig_OnHitGroundServer orig, CharacterMotor self, CharacterMotor.HitGroundInfo hitGroundInfo)
-        //{
-        //    orig(self, hitGroundInfo);
-        //    if (NetworkServer.active && self.body && self.body.HasBuff(WallclingBonusAirborne)) self.body.RemoveBuff(WallclingBonusAirborne);
-        //}
+        private static void GlobalEventManager_OnCharacterHitGroundServer(On.RoR2.GlobalEventManager.orig_OnCharacterHitGroundServer orig, GlobalEventManager self, CharacterBody characterBody, CharacterMotor.HitGroundInfo hitGroundInfo)
+        {
+            orig(self, characterBody, hitGroundInfo);
+            if (NetworkServer.active && characterBody && characterBody.HasBuff(WallclingBonusAirborne)) characterBody.RemoveBuff(WallclingBonusAirborne);
+        }
 
         private static void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
