@@ -1,3 +1,7 @@
+`0.3.18`
+
+- Fixed nullref when dashing.
+
 `0.3.17`
 
 - UpdatedTakeDamage hook to TakeDamageProcess.

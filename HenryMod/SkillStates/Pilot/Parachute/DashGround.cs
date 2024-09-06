@@ -34,20 +34,28 @@ namespace EntityStates.MoffeinPilot.Parachute
                 characterModel = modelTransform.GetComponent<CharacterModel>();
                 hurtboxGroup = modelTransform.GetComponent<HurtBoxGroup>();
 
-                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay.duration = 0.6f + baseDuration;
-                temporaryOverlay.animateShaderAlpha = true;
-                temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
-                TemporaryOverlay temporaryOverlay2 = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay2.duration = 0.7f + baseDuration;
-                temporaryOverlay2.animateShaderAlpha = true;
-                temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                temporaryOverlay2.destroyComponentOnEnd = true;
-                temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
-                temporaryOverlay2.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+                CharacterModel cm = this.modelTransform.GetComponent<CharacterModel>();
+                if (cm)
+                {
+                    TemporaryOverlayInstance temporaryOverlay = TemporaryOverlayManager.AddOverlay(cm.gameObject);
+                    temporaryOverlay.duration = 0.6f + baseDuration;
+                    temporaryOverlay.animateShaderAlpha = true;
+                    temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    temporaryOverlay.destroyComponentOnEnd = true;
+                    temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
+                    temporaryOverlay.AddToCharacterModel(cm);
+                    temporaryOverlay.Start();
+
+
+                    TemporaryOverlayInstance temporaryOverlay2 = TemporaryOverlayManager.AddOverlay(cm.gameObject);
+                    temporaryOverlay2.duration = 0.7f + baseDuration;
+                    temporaryOverlay2.animateShaderAlpha = true;
+                    temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    temporaryOverlay2.destroyComponentOnEnd = true;
+                    temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
+                    temporaryOverlay2.AddToCharacterModel(cm);
+                    temporaryOverlay2.Start();
+                }
             }
             /*if (this.characterModel)
             {
@@ -112,29 +120,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (!outer.destroying)
             {
                 CreateBlinkEffect(Util.GetCorePosition(gameObject));
-                /*this.modelTransform = base.GetModelTransform();
-                if (this.modelTransform)
-                {
-                    TemporaryOverlay temporaryOverlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                    temporaryOverlay.duration = 0.6f;
-                    temporaryOverlay.animateShaderAlpha = true;
-                    temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    temporaryOverlay.destroyComponentOnEnd = true;
-                    temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                    temporaryOverlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                    TemporaryOverlay temporaryOverlay2 = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                    temporaryOverlay2.duration = 0.7f;
-                    temporaryOverlay2.animateShaderAlpha = true;
-                    temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                    temporaryOverlay2.destroyComponentOnEnd = true;
-                    temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
-                    temporaryOverlay2.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                }*/
             }
-            /*if (this.characterModel)
-            {
-                this.characterModel.invisibilityCount--;
-            }*/
             if (this.hurtboxGroup)
             {
                 HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;

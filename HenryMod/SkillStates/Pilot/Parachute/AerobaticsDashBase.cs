@@ -38,20 +38,28 @@ namespace EntityStates.MoffeinPilot.Parachute
                 this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
                 this.hurtboxGroup = this.modelTransform.GetComponent<HurtBoxGroup>();
 
-                TemporaryOverlay temporaryOverlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay.duration = 0.6f + AerobaticsDashBase.baseDuration;
-                temporaryOverlay.animateShaderAlpha = true;
-                temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
-                temporaryOverlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
-                TemporaryOverlay temporaryOverlay2 = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
-                temporaryOverlay2.duration = 0.7f + AerobaticsDashBase.baseDuration;
-                temporaryOverlay2.animateShaderAlpha = true;
-                temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
-                temporaryOverlay2.destroyComponentOnEnd = true;
-                temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
-                temporaryOverlay2.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                CharacterModel cm = this.modelTransform.GetComponent<CharacterModel>();
+                if (cm)
+                {
+                    TemporaryOverlayInstance temporaryOverlay = TemporaryOverlayManager.AddOverlay(cm.gameObject);
+                    temporaryOverlay.duration = 0.6f + AerobaticsDashBase.baseDuration;
+                    temporaryOverlay.animateShaderAlpha = true;
+                    temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    temporaryOverlay.destroyComponentOnEnd = true;
+                    temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
+                    temporaryOverlay.AddToCharacterModel(cm);
+                    temporaryOverlay.Start();
+
+
+                    TemporaryOverlayInstance temporaryOverlay2 = TemporaryOverlayManager.AddOverlay(cm.gameObject);
+                    temporaryOverlay2.duration = 0.7f + AerobaticsDashBase.baseDuration;
+                    temporaryOverlay2.animateShaderAlpha = true;
+                    temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    temporaryOverlay2.destroyComponentOnEnd = true;
+                    temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
+                    temporaryOverlay2.AddToCharacterModel(cm);
+                    temporaryOverlay2.Start();
+                }
             }
 
             parachuteMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Parachute");
