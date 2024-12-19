@@ -10,13 +10,16 @@ namespace MoffeinPilot.Modules
     {
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
         public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
+
         public static R2API.DamageAPI.ModdedDamageType BonusDamageToAirborne;
+        public static R2API.ModdedProcType BonusDamageToAirborneProc;
 
         internal static void RegisterDamageTypes()
         {
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
             KeepAirborne = DamageAPI.ReserveDamageType();
             BonusDamageToAirborne = DamageAPI.ReserveDamageType();
+            BonusDamageToAirborneProc = ProcTypeAPI.ReserveProcType();
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
         }
 
@@ -68,8 +71,9 @@ namespace MoffeinPilot.Modules
                 }
             }
 
-            if (damageInfo.HasModdedDamageType(BonusDamageToAirborne))
+            if (damageInfo.HasModdedDamageType(BonusDamageToAirborne) && !damageInfo.procChainMask.HasModdedProc(BonusDamageToAirborneProc))
             {
+                damageInfo.procChainMask.AddModdedProc(BonusDamageToAirborneProc);
                 if (self.body.isFlying || (self.body.characterMotor && !self.body.characterMotor.isGrounded))
                 {
                     damageInfo.damage *= 1.5f;
