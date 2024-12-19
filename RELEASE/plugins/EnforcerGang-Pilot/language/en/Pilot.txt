@@ -21,7 +21,7 @@
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION" : "<style=cIsDamage>Slayer</style>. Fire your silenced pistol for <style=cIsDamage>100% damage</style>.",
 	
 	"MOFFEIN_PILOT_BODY_SECONDARY_NAME" : "Target Acquired!",
-	"MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION" : "Transform your weapon into a <style=cIsDamage>piercing smartgun</style> that deals <style=cIsDamage>3x190% damage</style>. Hold up to 2.",
+	"MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION" : "Transform your weapon into a <style=cIsDamage>piercing smartgun</style> that deals <style=cIsDamage>3x160% damage</style>. Deals <style=cIsDamage>50%</style> more damage to <style=cIsUtility>airborne</style> targets. Hold up to 2.",
 	
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME" : "Bombs Away!",
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Transform your weapon into a <style=cIsDamage>energy grenade launcher</style> that deals <style=cIsDamage>3x220% damage</style>. Hold up to 2.",

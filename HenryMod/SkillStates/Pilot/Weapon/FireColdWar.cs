@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using MoffeinPilot.Content.Components;
 using MoffeinPilot.Modules;
+using MoffeinPilot.Modules.Survivors;
 using R2API;
 using RoR2;
 using RoR2.Projectile;
@@ -62,6 +63,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                 base.characterBody.SetAimTimer(2f);
             }
 
+            PilotSurvivor.HandleLuminousShotServer(base.characterBody);
             FireProjectile();
         }
 

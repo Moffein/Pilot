@@ -108,7 +108,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     isCrit = base.RollCrit(),
                     radius = ClusterFire.shotRadius,
                     smartCollision = true,
-                    damageType = DamageType.Generic,
+                    damageType = DamageTypeCombo.GenericPrimary,
                     falloffModel = BulletAttack.FalloffModel.None,
                     procCoefficient = 1f
                 }.Fire();
@@ -168,7 +168,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                         isCrit = base.RollCrit(),
                         radius = ClusterFire.comboShotRadiusLaser,
                         smartCollision = true,
-                        damageType = DamageType.Generic,
+                        damageType = DamageTypeCombo.GenericPrimary,
                         falloffModel = BulletAttack.FalloffModel.None,
                         procCoefficient = 1f,
                         stopperMask = LayerIndex.world.mask,
@@ -227,7 +227,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     canRejectForce = true,
                     crit = base.RollCrit(),
                     damageColorIndex = DamageColorIndex.Default,
-                    damageType = DamageType.Generic,
+                    damageType = DamageTypeCombo.GenericPrimary,
                     falloffModel = BlastAttack.FalloffModel.None,
                     inflictor = base.gameObject,
                     position = hitInfo.point,

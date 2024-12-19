@@ -72,7 +72,8 @@ namespace MoffeinPilot.Modules
             pc.procCoefficient = 1f;
 
             proj.AddComponent<ProjectileNetworkTransform>();
-            proj.AddComponent<ProjectileDamage>();
+            ProjectileDamage pd = proj.AddComponent<ProjectileDamage>();
+            pd.damageType = DamageTypeCombo.GenericSpecial;
             proj.AddComponent<TeamFilter>();
 
             AirStrikeDamageComponent asdc = proj.AddComponent<AirStrikeDamageComponent>();
@@ -102,7 +103,8 @@ namespace MoffeinPilot.Modules
             pc.procCoefficient = 1f;
 
             proj.AddComponent<ProjectileNetworkTransform>();
-            proj.AddComponent<ProjectileDamage>();
+            ProjectileDamage pd = proj.AddComponent<ProjectileDamage>();
+            pd.damageType = DamageTypeCombo.GenericSpecial;
             proj.AddComponent<TeamFilter>();
 
             AirStrikeAltDamageComponent asdca = proj.AddComponent<AirStrikeAltDamageComponent>();
@@ -133,17 +135,13 @@ namespace MoffeinPilot.Modules
             pie.falloffModel = BlastAttack.FalloffModel.None;
             if (explosionEffect) pie.explosionEffect = explosionEffect;
 
-            DamageAPI.ModdedDamageTypeHolderComponent mdc = proj.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            if (mdc) UnityEngine.Object.Destroy(mdc);
-            mdc = proj.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            mdc.Add(DamageTypes.KeepAirborne);
-
             /*AntiGravityForce agf = proj.AddComponent<AntiGravityForce>();
             agf.antiGravityCoefficient = 0.5f;
             agf.rb = rb;*/
 
             ProjectileDamage pd = proj.GetComponent<ProjectileDamage>();
-            pd.damageType = DamageType.Generic;
+            pd.damageType = DamageTypeCombo.GenericSecondary; ;
+            pd.damageType.AddModdedDamageType(DamageTypes.KeepAirborne);
 
             Content.AddProjectilePrefab(proj);
 

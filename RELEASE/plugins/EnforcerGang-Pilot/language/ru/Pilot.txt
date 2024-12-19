@@ -21,7 +21,7 @@
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION" : "<style=cIsDamage>Гроза</style>. Выстреливает из заглушённого пистолета, нанося <style=cIsDamage>100% урона</style>.",
 	
 	"MOFFEIN_PILOT_BODY_SECONDARY_NAME" : "Цель захвачена!",
-	"MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>умный пистолет с пробивающими снарядами</style>, который наносит <style=cIsDamage>3x190% урона</style> каждым выстрелом. Можно хранить до 2.",
+	"MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>умный пистолет с пробивающими снарядами</style>, который наносит <style=cIsDamage>3x160% урона</style> каждым выстрелом. Наносит <style=cIsDamage>на 50%</style> больше урона <style=cIsUtility>воздушным</style> целям. Можно хранить до 2.",
 	
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME" : "Бомбы за борт!",
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>энергетический гранатомёт</style>, который наносит <style=cIsDamage>3x220% урона</style> каждым выстрелом. Можно хранить до 2.",

@@ -58,7 +58,7 @@ namespace EntityStates.MoffeinPilot.Weapon
 					isCrit = base.RollCrit(),
 					radius = 0.2f,
 					smartCollision = true,
-					damageType = DamageType.Generic,
+					damageType = DamageTypeCombo.GenericPrimary,
 					falloffModel = BulletAttack.FalloffModel.DefaultBullet,
 					procCoefficient = 1f
 				}.Fire();

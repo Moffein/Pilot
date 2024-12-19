@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using MoffeinPilot.Content.Components;
 using MoffeinPilot.Modules;
+using MoffeinPilot.Modules.Survivors;
 using R2API;
 using RoR2;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace EntityStates.MoffeinPilot.Weapon
     {
         public static float selfKnockbackForce = 450f;
 
-        public static float damageCoefficient = 1.9f;
+        public static float damageCoefficient = 1.6f;
         public static float force = 450f;
         public static float baseDuration = 0.3f;
         public static float baseShotDuration = 0.1f;
@@ -63,6 +64,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                 base.characterBody.SetAimTimer(2f);
             }
 
+            PilotSurvivor.HandleLuminousShotServer(base.characterBody);
             FireBullet();
         }
 
@@ -123,7 +125,7 @@ namespace EntityStates.MoffeinPilot.Weapon
                     aimVector = AutoTarget(aimRay),
                     origin = aimRay.origin,
                     damage = damageCoefficient * damageStat,
-                    damageType = DamageType.Generic,
+                    damageType = DamageTypeCombo.GenericSecondary,
                     damageColorIndex = DamageColorIndex.Default,
                     minSpread = 0f,
                     maxSpread = 0f,
@@ -141,7 +143,8 @@ namespace EntityStates.MoffeinPilot.Weapon
                     hitEffectPrefab = hitEffectPrefab,
                     stopperMask = LayerIndex.world.mask
                 };
-                ba.AddModdedDamageType(DamageTypes.KeepAirborne);
+                ba.damageType.AddModdedDamageType(DamageTypes.KeepAirborne);
+                ba.damageType.AddModdedDamageType(DamageTypes.BonusDamageToAirborne);
                 ba.Fire();
                 if (applySelfForce && FireTargetAcquired.selfKnockbackForce != 0f //pilotController && pilotController.isParachuting && 
                     && base.characterMotor && !base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)

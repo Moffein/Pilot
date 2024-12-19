@@ -8,27 +8,21 @@ namespace MoffeinPilot.Modules
 {
     public static class DamageTypes
     {
-        public static R2API.DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
         public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
+        public static R2API.DamageAPI.ModdedDamageType BonusDamageToAirborne;
 
         internal static void RegisterDamageTypes()
         {
-            SlayerExceptItActuallyWorks = DamageAPI.ReserveDamageType();
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
             KeepAirborne = DamageAPI.ReserveDamageType();
+            BonusDamageToAirborne = DamageAPI.ReserveDamageType();
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
         }
 
         //Velocity modification will only work on server-side things.
         private static void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
-            if (damageInfo.HasModdedDamageType(SlayerExceptItActuallyWorks))
-            {
-                damageInfo.RemoveModdedDamageType(SlayerExceptItActuallyWorks);
-                damageInfo.damage *= Mathf.Lerp(3f, 1f, self.combinedHealthFraction);
-            }
-
             //This check is a bandaid fix for clientside blast attacks being bugged with damageAPI
             if (damageInfo.HasModdedDamageType(AirstrikeKnockup) && damageInfo.attacker != damageInfo.inflictor)
             {
@@ -70,6 +64,19 @@ namespace MoffeinPilot.Modules
                     if (self.body.characterMotor.velocity.y < 6f)
                     {
                         self.body.characterMotor.velocity.y = 6f;
+                    }
+                }
+            }
+
+            if (damageInfo.HasModdedDamageType(BonusDamageToAirborne))
+            {
+                Debug.Log("Has DT");
+                if (self.body.isFlying || (self.body.characterMotor && !self.body.characterMotor.isGrounded))
+                {
+                    damageInfo.damage *= 1.5f;
+                    if (damageInfo.damageColorIndex == DamageColorIndex.Default)
+                    {
+                        damageInfo.damageColorIndex = DamageColorIndex.WeakPoint;
                     }
                 }
             }

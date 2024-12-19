@@ -65,11 +65,10 @@ namespace EntityStates.MoffeinPilot.Weapon
                     isCrit = base.RollCrit(),
                     radius = 0.5f,
                     smartCollision = true,
-                    damageType = DamageType.Generic,
+                    damageType = (DamageTypeCombo) DamageType.BonusToLowHealth | DamageSource.Primary,
                     falloffModel = BulletAttack.FalloffModel.DefaultBullet,
                     procCoefficient = 1f
                 };
-                ba.AddModdedDamageType(DamageTypes.SlayerExceptItActuallyWorks);
                 if (weakpointMultiplier > 1f)
                 {
                     ba.modifyOutgoingDamageCallback = delegate (BulletAttack _bulletAttack, ref BulletAttack.BulletHit hitInfo, DamageInfo damageInfo)

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace MoffeinPilot.Modules.Survivors
 {
@@ -479,6 +480,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_NAME";
             secondaryDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION";
             secondaryDef.stockToConsume = 0;    //Toggling doesn't consume stocks
+            secondaryDef.autoHandleLuminousShot = false;
             Skills.FixSkillName(secondaryDef);
             MoffeinPilot.Modules.Content.AddSkillDef(secondaryDef);
             SkillDefs.Secondaries.TargetAcquired = secondaryDef;
@@ -532,6 +534,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryAltDef.skillNameToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME";
             secondaryAltDef.skillDescriptionToken = "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION";
             secondaryAltDef.stockToConsume = 0;    //Toggling doesn't consume stocks
+            secondaryAltDef.autoHandleLuminousShot = false;
             Skills.FixSkillName(secondaryAltDef);
             MoffeinPilot.Modules.Content.AddSkillDef(secondaryAltDef);
             SkillDefs.Secondaries.ColdWar = secondaryAltDef;
@@ -564,6 +567,14 @@ namespace MoffeinPilot.Modules.Survivors
             ColdWar.primaryOverride = secondaryAltOverrideDef;
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondaryDef, secondaryAltDef });
+        }
+
+        internal static void HandleLuminousShotServer(CharacterBody body)
+        {
+            if (!NetworkServer.active || !body || !body.inventory) return;
+            if (body.inventory.GetItemCount(DLC2Content.Items.IncreasePrimaryDamage) <= 0) return;
+
+            body.AddIncreasePrimaryDamageStack();
         }
 
         private void InitUtilities()
