@@ -1,6 +1,7 @@
 `0.4.0`
 
 - Fixed for latest update.
+- Fixed Luminous Shot interaction.
 - Target Acquired
 		- Damage reduced from 3x190% -> 3x160%
 		- Gains a 50% damage bonus against airborne enemies (3x240% damage total)

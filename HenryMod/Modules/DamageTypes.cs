@@ -70,7 +70,6 @@ namespace MoffeinPilot.Modules
 
             if (damageInfo.HasModdedDamageType(BonusDamageToAirborne))
             {
-                Debug.Log("Has DT");
                 if (self.body.isFlying || (self.body.characterMotor && !self.body.characterMotor.isGrounded))
                 {
                     damageInfo.damage *= 1.5f;
