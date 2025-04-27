@@ -1,6 +1,6 @@
 `0.5.0`
 
-- Reduced size 10% to be around Commando-sized.
+- Reduced size 12.5% to be around Commando-sized.
 - Adjusted camera params to be less zoomed-out, so he won't look awkwardly small anymore.
 - Increased hitbox size to be closer to vanilla survivors.
 
@@ -10,7 +10,9 @@
 	- While grounded, shoots a single projectile for 480% damage with no drop and 2x travel speed.
 	- Airborne behavior works as before, 3x220% with drop and low speed.
 	
-	*Trying to lean into the grounded/airborne kit differences that Returns has. How does this feel?*
+*Trying to lean into the grounded/airborne kit differences that Returns has. How does this feel?*
+
+- Added drone to skybox.
 
 `0.4.0`
 
