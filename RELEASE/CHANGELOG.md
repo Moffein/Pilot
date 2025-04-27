@@ -2,6 +2,7 @@
 
 - Reduced size 10% to be around Commando-sized.
 - Adjusted camera params to be less zoomed-out, so he won't look awkwardly small anymore.
+- Increased hitbox size to be closer to vanilla survivors.
 
 *Always was bugged by how he both looked small in the camera while also being really tall for some reason.*
 
