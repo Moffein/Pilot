@@ -24,7 +24,7 @@
 	"MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>умный пистолет с пробивающими снарядами</style>, который наносит <style=cIsDamage>3x160% урона</style> каждым выстрелом. Наносит <style=cIsDamage>на 50%</style> больше урона <style=cIsUtility>воздушным</style> целям. Можно хранить до 2.",
 	
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME" : "Бомбы за борт!",
-	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>энергетический гранатомёт</style>, который наносит <style=cIsDamage>3x220% урона</style> каждым выстрелом. Можно хранить до 2.",
+    "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Превращает ваше оружие в <style=cIsDamage>энергетический гранатомёт</style>, который наносит <style=cIsDamage>480% урона</style>. При стрельбе <style=cIsUtility>из воздуха</style> вместо этого наносит <style=cIsDamage>3x220% урона</style>. Можно хранить до 2.",
 	
 	"MOFFEIN_PILOT_BODY_UTILITY_NAME" : "Быстрое развёртывание",
     "MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION" : "<style=cIsDamage>Оглушение</style>. Запускает Пилота в воздух и <style=cIsUtility>активирует его парашут</style>. Используя этот навык в воздухе <style=cIsHealth>уменьшает подъёмную силу</style> в обмен на увелечение <style=cIsUtility>ускоряющей вперёд</style>.",

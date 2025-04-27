@@ -22,5 +22,5 @@ Fully functional, just needs animation polish and some skins.
 
 ## Translation Credits
 
-- Russian: Lecard, Kaban
+- Russian: Lecard, Kaban, JAG
 - Portuguese: Kauzok

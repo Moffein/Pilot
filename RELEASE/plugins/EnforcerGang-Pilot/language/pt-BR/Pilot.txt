@@ -24,7 +24,7 @@
 	"MOFFEIN_PILOT_BODY_SECONDARY_DESCRIPTION" : "Transforme sua arma em uma <style=cIsDamage>arma de perfuração inteligente</style>, causando <style=cIsDamage>3x160% de dano</style>. Causa <style=cIsDamage>50%</style> a mais de dano a alvos <style=cIsUtility>no ar</style>. Máximo de 2.",
 	
 	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_NAME" : "Aí vão bombas!",
-	"MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Transforme sua arma em um <style=cIsDamage>lança-granada de energia</style>, causando <style=cIsDamage>3x220% de dano</style>. Máximo de 2.",
+    "MOFFEIN_PILOT_BODY_SECONDARY_ALT_DESCRIPTION" : "Transforme sua arma em um <style=cIsDamage>lançador de granadas de energia</style>, causando <style=cIsDamage>480% de dano</style>. Enquanto estiver <style=cIsUtility>no ar</style>, cause <style=cIsDamage>3x220% de dano</style>. Máximo de 2.", 
 	
 	"MOFFEIN_PILOT_BODY_UTILITY_NAME" : "Implementação Rápida",
     "MOFFEIN_PILOT_BODY_UTILITY_DESCRIPTION" : "<style=cIsDamage>Atordoante</style>. Lance-se para o alto e <style=cIsUtility>ative seu paraquedas</style>. Se utilizado no ar. <style=cIsHealth>reduz a elevação</style> em troca de um maior impulso frontal</style>.",
