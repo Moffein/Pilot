@@ -1,9 +1,15 @@
-`0.4.1`
+`0.5.0`
 
 - Reduced size 10% to be around Commando-sized.
 - Adjusted camera params to be less zoomed-out, so he won't look awkwardly small anymore.
 
 *Always was bugged by how he both looked small in the camera while also being really tall for some reason.*
+
+- Bombs Away
+	- While grounded, shoots a single projectile for 480% damage with no drop and 2x travel speed.
+	- Airborne behavior works as before, 3x220% with drop and low speed.
+	
+	*Trying to lean into the grounded/airborne kit differences that Returns has. How does this feel?*
 
 `0.4.0`
 

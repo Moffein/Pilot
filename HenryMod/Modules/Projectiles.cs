@@ -34,6 +34,7 @@ namespace MoffeinPilot.Modules
 
 
             EntityStates.MoffeinPilot.Weapon.FireColdWar.projectilePrefab = CreatePilotColdWarProjectile("PilotColdWarProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/LightningStakeNova.prefab").WaitForCompletion());
+            EntityStates.MoffeinPilot.Weapon.FireColdWar.projectilePrefabGrounded = CreatePilotColdWarGroundProjectile("PilotColdWarGroundedProjectile", Addressables.LoadAssetAsync<GameObject>("RoR2/Base/EliteLightning/LightningStakeNova.prefab").WaitForCompletion());
         }
 
         private static GameObject CreateAirStrikeGhost(string prefabName)
@@ -129,6 +130,32 @@ namespace MoffeinPilot.Modules
             ProjectileSimple ps = proj.GetComponent<ProjectileSimple>();
             ps.lifetime = 5f;
             ps.desiredForwardSpeed = 120f;
+
+            ProjectileImpactExplosion pie = proj.GetComponent<ProjectileImpactExplosion>();
+            pie.blastRadius = 9f;
+            pie.falloffModel = BlastAttack.FalloffModel.None;
+            if (explosionEffect) pie.explosionEffect = explosionEffect;
+
+            /*AntiGravityForce agf = proj.AddComponent<AntiGravityForce>();
+            agf.antiGravityCoefficient = 0.5f;
+            agf.rb = rb;*/
+
+            ProjectileDamage pd = proj.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageTypeCombo.GenericSecondary; ;
+            pd.damageType.AddModdedDamageType(DamageTypes.KeepAirborne);
+
+            Content.AddProjectilePrefab(proj);
+
+            return proj;
+        }
+
+        private static GameObject CreatePilotColdWarGroundProjectile(string projectileName, GameObject explosionEffect)
+        {
+            GameObject proj = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltBasic.prefab").WaitForCompletion().InstantiateClone(projectileName, true);
+
+            ProjectileSimple ps = proj.GetComponent<ProjectileSimple>();
+            ps.lifetime = 5f;
+            ps.desiredForwardSpeed = 240f;
 
             ProjectileImpactExplosion pie = proj.GetComponent<ProjectileImpactExplosion>();
             pie.blastRadius = 9f;

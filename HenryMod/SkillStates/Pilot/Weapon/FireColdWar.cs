@@ -14,6 +14,9 @@ namespace EntityStates.MoffeinPilot.Weapon
     {
         public static float selfKnockbackForce = 450f;
 
+        public static float damageCoefficientGrounded = 4.8f;
+        public static GameObject projectilePrefabGrounded;
+
         public static float damageCoefficient = 2.2f;
         public static float force = 450f;
         public static float baseDuration = 0.3f;
@@ -32,10 +35,16 @@ namespace EntityStates.MoffeinPilot.Weapon
         private bool crit;
         private PilotController pilotController;
         private bool applySelfForce;
+        private bool startedGrounded = false;
 
         public override void OnEnter()
         {
             base.OnEnter();
+
+            if (base.characterMotor && base.characterMotor.isGrounded)
+            {
+                startedGrounded = true;
+            }
 
             if (base.characterMotor && base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y = 0;
 
@@ -65,6 +74,12 @@ namespace EntityStates.MoffeinPilot.Weapon
 
             PilotSurvivor.HandleLuminousShotServer(base.characterBody);
             FireProjectile();
+
+            //Jank
+            if (startedGrounded)
+            {
+                shotCount = FireColdWar.baseShotCount;
+            }
         }
 
         public override void FixedUpdate()
@@ -112,11 +127,11 @@ namespace EntityStates.MoffeinPilot.Weapon
                 Ray aimRay = base.GetAimRay();
 
                 ProjectileManager.instance.FireProjectile(
-                    FireColdWar.projectilePrefab,
+                    (!startedGrounded ? FireColdWar.projectilePrefab : FireColdWar.projectilePrefabGrounded),
                     aimRay.origin,
                     Util.QuaternionSafeLookRotation(aimRay.direction),
                     base.gameObject,
-                    this.damageStat * FireColdWar.damageCoefficient,
+                    this.damageStat * (!startedGrounded ? FireColdWar.damageCoefficient: FireColdWar.damageCoefficientGrounded),
                     FireColdWar.force,
                     this.crit);
 
