@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using RoR2.UI;
 using System;
 using UnityEngine.AddressableAssets;
-using Pilot.Modules;
+using MoffeinPilot.Modules;
+using MoffeinPilot.Content.Components.SkyboxDrone;
 
 namespace MoffeinPilot.Modules
 {
@@ -19,6 +20,7 @@ namespace MoffeinPilot.Modules
         public static GameObject EngiMissileIndicatorButRed;
         public static GameObject TempParachute;
         public static GameObject ExplosionGolemButScale;
+        public static GameObject SkyboxDronePrefab;
 
         // CHANGE THIS
         private const string assetbundleName = "pilotbundle";
@@ -90,6 +92,15 @@ namespace MoffeinPilot.Modules
             ec.soundName = "";
             AddNewEffectDef(redLaserTracer);
             EntityStates.MoffeinPilot.Weapon.ClusterFire.comboTracerEffectPrefab = redLaserTracer;
+
+            CreateSkyboxDronePrefab();
+        }
+
+        private static void CreateSkyboxDronePrefab()
+        {
+            SkyboxDronePrefab = mainAssetBundle.LoadAsset<GameObject>("PilotDronePrefab");
+            SkyboxDronePrefab.AddComponent<SkyboxDroneController>();
+            RoR2.CharacterBody.onBodyStartGlobal += SkyboxDroneController.CharacterBody_onBodyStartGlobal;
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

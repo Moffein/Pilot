@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 using MoffeinPilot.Modules.Survivors;
-using Pilot.Modules;
+using MoffeinPilot.Modules;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;

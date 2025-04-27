@@ -1,5 +1,5 @@
 ﻿using MoffeinPilot.Content.Components.Projectile;
-using Pilot.Content.Components.ProjectileGhost;
+using MoffeinPilot.Content.Components.ProjectileGhost;
 using R2API;
 using RoR2;
 using RoR2.Projectile;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Pilot.Content.Components.ProjectileGhost
+namespace MoffeinPilot.Content.Components.ProjectileGhost
 {
     public class RotationVisuals : MonoBehaviour
     {
