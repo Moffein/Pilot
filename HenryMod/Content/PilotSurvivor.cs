@@ -119,6 +119,10 @@ namespace MoffeinPilot.Modules.Survivors
                 ssoh.idleStateMachine[ssoh.idleStateMachine.Length - 1] = parachuteStateMachine;
             }
             FinalizeCSSPreviewDisplayController();
+
+            //Probably should move this to the Unity project when you get the chance
+            displayPrefab.transform.localScale *= 0.9f;
+            bodyPrefab.GetComponentInChildren<CharacterModel>().transform.localScale *= 0.9f;
         }
 
         private void InitializeDoppelgangerAfterSkills()

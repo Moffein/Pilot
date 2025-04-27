@@ -1,3 +1,10 @@
+`0.4.1`
+
+- Reduced size 10% to be around Commando-sized.
+- Adjusted camera params to be less zoomed-out, so he won't look awkwardly small anymore.
+
+*Always was bugged by how he both looked small in the camera while also being really tall for some reason.*
+
 `0.4.0`
 
 - Fixed for latest update.
