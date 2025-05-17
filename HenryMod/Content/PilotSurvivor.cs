@@ -342,7 +342,7 @@ namespace MoffeinPilot.Modules.Survivors
             primaryDef.baseRechargeInterval = 0f;
             primaryDef.beginSkillCooldownOnSkillEnd = false;
             primaryDef.canceledFromSprinting = false;
-            primaryDef.dontAllowPastMaxStocks = true;
+            primaryDef.dontAllowPastMaxStocks = false;
             primaryDef.forceSprintDuringState = false;
             primaryDef.fullRestockOnAssign = true;
             primaryDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillClusterFire");
@@ -369,7 +369,7 @@ namespace MoffeinPilot.Modules.Survivors
             primaryAltDef.baseRechargeInterval = 0f;
             primaryAltDef.beginSkillCooldownOnSkillEnd = false;
             primaryAltDef.canceledFromSprinting = false;
-            primaryAltDef.dontAllowPastMaxStocks = true;
+            primaryAltDef.dontAllowPastMaxStocks = false;
             primaryAltDef.forceSprintDuringState = false;
             primaryAltDef.fullRestockOnAssign = true;
             primaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidFire");
@@ -398,7 +398,7 @@ namespace MoffeinPilot.Modules.Survivors
             primarySilencerDef.baseRechargeInterval = 0f;
             primarySilencerDef.beginSkillCooldownOnSkillEnd = false;
             primarySilencerDef.canceledFromSprinting = false;
-            primarySilencerDef.dontAllowPastMaxStocks = true;
+            primarySilencerDef.dontAllowPastMaxStocks = false;
             primarySilencerDef.forceSprintDuringState = false;
             primarySilencerDef.fullRestockOnAssign = true;
             primarySilencerDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
@@ -469,7 +469,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryDef.baseRechargeInterval = 4f;
             secondaryDef.beginSkillCooldownOnSkillEnd = false;
             secondaryDef.canceledFromSprinting = false;
-            secondaryDef.dontAllowPastMaxStocks = true;
+            secondaryDef.dontAllowPastMaxStocks = false;
             secondaryDef.forceSprintDuringState = false;
             secondaryDef.fullRestockOnAssign = true;
             secondaryDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillTargetAcquired");
@@ -523,7 +523,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryAltDef.baseRechargeInterval = 4f;
             secondaryAltDef.beginSkillCooldownOnSkillEnd = false;
             secondaryAltDef.canceledFromSprinting = false;
-            secondaryAltDef.dontAllowPastMaxStocks = true;
+            secondaryAltDef.dontAllowPastMaxStocks = false;
             secondaryAltDef.forceSprintDuringState = false;
             secondaryAltDef.fullRestockOnAssign = true;
             secondaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
@@ -590,7 +590,7 @@ namespace MoffeinPilot.Modules.Survivors
             utilityDef.baseRechargeInterval = 12f;
             utilityDef.beginSkillCooldownOnSkillEnd = false;
             utilityDef.canceledFromSprinting = false;
-            utilityDef.dontAllowPastMaxStocks = true;
+            utilityDef.dontAllowPastMaxStocks = false;
             utilityDef.forceSprintDuringState = false;
             utilityDef.fullRestockOnAssign = true;
             utilityDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidDeployment");
@@ -616,7 +616,7 @@ namespace MoffeinPilot.Modules.Survivors
             utilityAltDef.baseRechargeInterval = 8f;
             utilityAltDef.beginSkillCooldownOnSkillEnd = false;
             utilityAltDef.canceledFromSprinting = false;
-            utilityAltDef.dontAllowPastMaxStocks = true;
+            utilityAltDef.dontAllowPastMaxStocks = false;
             utilityAltDef.forceSprintDuringState = true;
             utilityAltDef.fullRestockOnAssign = false;
             utilityAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_6");
@@ -647,7 +647,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialDef.baseRechargeInterval = 12f;
             specialDef.beginSkillCooldownOnSkillEnd = false;
             specialDef.canceledFromSprinting = false;
-            specialDef.dontAllowPastMaxStocks = true;
+            specialDef.dontAllowPastMaxStocks = false;
             specialDef.forceSprintDuringState = false;
             specialDef.fullRestockOnAssign = true;
             specialDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAirstrike");
@@ -673,7 +673,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialScepterDef.baseRechargeInterval = 12f;
             specialScepterDef.beginSkillCooldownOnSkillEnd = false;
             specialScepterDef.canceledFromSprinting = false;
-            specialScepterDef.dontAllowPastMaxStocks = true;
+            specialScepterDef.dontAllowPastMaxStocks = false;
             specialScepterDef.forceSprintDuringState = false;
             specialScepterDef.fullRestockOnAssign = true;
             specialScepterDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAirstrikeScepter");
@@ -700,7 +700,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialAltDef.baseRechargeInterval = 12f;
             specialAltDef.beginSkillCooldownOnSkillEnd = false;
             specialAltDef.canceledFromSprinting = false;
-            specialAltDef.dontAllowPastMaxStocks = true;
+            specialAltDef.dontAllowPastMaxStocks = false;
             specialAltDef.forceSprintDuringState = false;
             specialAltDef.fullRestockOnAssign = true;
             specialAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAerialSupport");
@@ -726,7 +726,7 @@ namespace MoffeinPilot.Modules.Survivors
             specialAltScepterDef.baseRechargeInterval = 12f;
             specialAltScepterDef.beginSkillCooldownOnSkillEnd = false;
             specialAltScepterDef.canceledFromSprinting = false;
-            specialAltScepterDef.dontAllowPastMaxStocks = true;
+            specialAltScepterDef.dontAllowPastMaxStocks = false;
             specialAltScepterDef.forceSprintDuringState = false;
             specialAltScepterDef.fullRestockOnAssign = true;
             specialAltScepterDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAerialSupportScepter");

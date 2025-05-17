@@ -1,3 +1,8 @@
+`0.5.1`
+
+- Removed dontAllowPastMaxStocks check
+- Drone no longer spawns in hidden realms
+
 `0.5.0`
 
 - Reduced size 12.5% to be around Commando-sized.

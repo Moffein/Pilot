@@ -264,6 +264,91 @@ namespace MoffeinPilot.Content.Components.SkyboxDrone
                     disableOnStage = false
                 }
             },
+
+            {
+                "arena",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "voidstage",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "voidraid",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "goldshores",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "arena",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "bazaar",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "artifactworld",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "artifactworld01",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "artifactworld02",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "artifactworld03",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "mysteryspace",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
+            {
+                "limbo",
+                new OrbitInfo
+                {
+                    disableOnStage = true
+                }
+            },
         };
 
         public class OrbitInfo
