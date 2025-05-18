@@ -294,13 +294,6 @@ namespace MoffeinPilot.Content.Components.SkyboxDrone
                 }
             },
             {
-                "arena",
-                new OrbitInfo
-                {
-                    disableOnStage = true
-                }
-            },
-            {
                 "bazaar",
                 new OrbitInfo
                 {

@@ -1,3 +1,7 @@
+`0.5.2`
+
+- Oops.
+
 `0.5.1`
 
 - Removed dontAllowPastMaxStocks check

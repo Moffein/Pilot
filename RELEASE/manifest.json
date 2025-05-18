@@ -1,7 +1,7 @@
 {
     "author": "EnforcerGang",
     "name": "Pilot",
-    "version_number": "0.5.1",
+    "version_number": "0.5.2",
     "website_url": "https://github.com/Moffein/Pilot",
     "description": "BETA RELEASE. Adds the Pilot from Risk of Rain Returns.",
     "dependencies": [
