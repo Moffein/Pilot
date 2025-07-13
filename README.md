@@ -19,6 +19,7 @@ Fully functional, just needs animation polish and some skins.
 - dotflare (Model + Anims)
 - FORCED_REASSEMBLY (Drone Model)
 - Leaf_It (Skill Icons)
+- Ikachap (Concept Art)
 
 ## Translation Credits
 
