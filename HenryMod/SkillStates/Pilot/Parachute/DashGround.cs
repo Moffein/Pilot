@@ -96,12 +96,14 @@ namespace EntityStates.MoffeinPilot.Parachute
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            DashPhysics();
-
-            if (isAuthority && fixedAge >= baseDuration)
+            if (isAuthority)
             {
-                outer.SetNextStateToMain();
-                return;
+                DashPhysics();
+                if (fixedAge >= baseDuration)
+                {
+                    outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 
