@@ -31,7 +31,6 @@ namespace EntityStates.MoffeinPilot.FireSelect
             {
                 this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, ColdWar.crosshairOverridePrefab, CrosshairUtils.OverridePriority.Skill);
             }
-            SkillLocator skillLocator = base.skillLocator;
             GenericSkill genericSkill = (skillLocator != null) ? skillLocator.primary : null;
             if (genericSkill)
             {
@@ -65,7 +64,6 @@ namespace EntityStates.MoffeinPilot.FireSelect
 
         public override void OnExit()
         {
-            SkillLocator skillLocator = base.skillLocator;
             GenericSkill genericSkill = (skillLocator != null) ? skillLocator.primary : null;
             if (genericSkill)
             {
