@@ -11,6 +11,7 @@ namespace MoffeinPilot.Modules
     {
         public static BuffDef WallclingBonus;
         public static BuffDef WallclingBonusAirborne;
+        public static BuffDef ParachuteSpeed;
 
         internal static void RegisterBuffs()
         {
@@ -28,6 +29,13 @@ namespace MoffeinPilot.Modules
                 false);
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
             On.RoR2.GlobalEventManager.OnCharacterHitGroundServer += GlobalEventManager_OnCharacterHitGroundServer;
+
+            ParachuteSpeed = AddNewBuff("MoffeinPilotParachuteSpeed",
+                Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/texMovespeedBuffIcon.tif").WaitForCompletion(),
+                Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Bandit2/bdCloakSpeed.asset").WaitForCompletion().buffColor,
+                false,
+                false);
+            ParachuteSpeed.isHidden = true;
         }
 
         private static void GlobalEventManager_OnCharacterHitGroundServer(On.RoR2.GlobalEventManager.orig_OnCharacterHitGroundServer orig, GlobalEventManager self, CharacterBody characterBody, CharacterMotor.HitGroundInfo hitGroundInfo)
@@ -41,6 +49,10 @@ namespace MoffeinPilot.Modules
             if (sender.HasBuff(WallclingBonus) || sender.HasBuff(WallclingBonusAirborne))
             {
                 args.attackSpeedMultAdd += 0.3f;
+            }
+
+            if (sender.HasBuff(ParachuteSpeed)) {
+                args.moveSpeedMultAdd += 0.2f;
             }
         }
 

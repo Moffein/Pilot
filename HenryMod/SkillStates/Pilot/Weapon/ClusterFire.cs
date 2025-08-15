@@ -24,10 +24,10 @@ namespace EntityStates.MoffeinPilot.Weapon
         
         public static float comboDamageCoefficient = 3.2f;
         public static float comboForce = 1500f;
-        public static float comboBlastRadius = 9f;
+        public static float comboBlastRadius = 8f;
 
-        public static float comboMinDistance = 2f;    //Distance where blast radius stays at minimum
-        public static float comboMinBlastRadius = 3f;   //Blast Radius at min distance
+        public static float comboMinDistance = 2.5f;    //Distance where blast radius stays at minimum
+        public static float comboMinBlastRadius = 2.5f;   //Blast Radius at min distance
 
         //Railgunner 300 for 5 shots per second
         public static float selfKnockbackForce = 0f;
@@ -67,6 +67,10 @@ namespace EntityStates.MoffeinPilot.Weapon
 
             triggeredComboExplosion = false;
             pilotController = base.GetComponent<PilotController>();
+            if (isAuthority && characterBody && !characterBody.HasBuff(Buffs.ParachuteSpeed))
+            {
+                characterBody.isSprinting = false;
+            }
 
             Ray aimRay = base.GetAimRay();
             base.StartAimMode(aimRay, 3f, false);

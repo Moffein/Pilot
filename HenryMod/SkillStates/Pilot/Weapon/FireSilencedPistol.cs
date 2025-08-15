@@ -48,6 +48,10 @@ namespace EntityStates.MoffeinPilot.Weapon
             }
             if (base.isAuthority)
             {
+                if (characterBody && characterBody.HasBuff(Buffs.ParachuteSpeed))
+                {
+                    characterBody.isSprinting = false;
+                }
                 BulletAttack ba = new BulletAttack
                 {
                     owner = base.gameObject,

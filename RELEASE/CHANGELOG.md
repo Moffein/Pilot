@@ -1,3 +1,22 @@
+`0.6.0`
+
+- Added updated skill icons from Leaf_it.
+- Cluster Fire
+	- Reduced blast radius from 3-9m -> 2.5-8m
+	
+- Rapid Fire
+	- Now is Agile.
+	
+- Suppressed Fire
+	- Hitting enemies below 50% HP now shows an extra impact effect + damage color.
+	
+- Bombs Away
+	- Fixed wallclinging sometimes counting as being grounded.
+	
+- Rapid Deployment
+	- Now forces sprinting during state.
+	- Added Sniper's Shoulder camera as an alternate camera mode in the config.
+
 `0.5.2`
 
 - Oops.

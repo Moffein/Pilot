@@ -15,7 +15,7 @@
 	"MOFFEIN_PILOT_BODY_PRIMARY_RETURNS_DESCRIPTION" : "Даёт кучный залп из орудия, нанося <style=cIsDamage>160% урона</style>. Каждое третье попадание наносит <style=cIsDamage>320% урона</style> и <style=cIsDamage>пробивает цель насквозь</style>.",
 	
 	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_NAME" : "Беглый огонь",
-	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION" : "Открывает беглый огонь из орудия, нанося <style=cIsDamage>140% урона</style>.",
+	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION" : "<style=cIsUtility>Подвижность</style>. Открывает беглый огонь из орудия, нанося <style=cIsDamage>140% урона</style>.",
 	
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_NAME" : "Заглушённый огонь",
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION" : "<style=cIsDamage>Гроза</style>. Выстреливает из заглушённого пистолета, нанося <style=cIsDamage>100% урона</style>.",

@@ -1,12 +1,9 @@
-﻿using EntityStates;
-using MoffeinPilot.Content.Components;
+﻿using MoffeinPilot.Content.Components;
 using MoffeinPilot.Modules;
 using MoffeinPilot.Modules.Survivors;
-using R2API;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace EntityStates.MoffeinPilot.Weapon
 {
@@ -41,7 +38,7 @@ namespace EntityStates.MoffeinPilot.Weapon
         {
             base.OnEnter();
 
-            if (base.characterMotor && base.characterMotor.isGrounded)
+            if (base.characterMotor && base.characterMotor.isGrounded && !(characterBody && characterBody.HasBuff(Buffs.WallclingBonus)))
             {
                 startedGrounded = true;
             }
@@ -70,6 +67,10 @@ namespace EntityStates.MoffeinPilot.Weapon
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(2f);
+                if (isAuthority && !characterBody.HasBuff(Buffs.ParachuteSpeed))
+                {
+                    characterBody.isSprinting = false;
+                }
             }
 
             PilotSurvivor.HandleLuminousShotServer(base.characterBody);

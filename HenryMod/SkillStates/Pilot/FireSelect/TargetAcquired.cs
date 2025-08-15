@@ -1,4 +1,5 @@
 ﻿using MoffeinPilot.Content.Components;
+using MoffeinPilot.Modules;
 using RoR2;
 using RoR2.Skills;
 using RoR2.UI;
@@ -30,6 +31,10 @@ namespace EntityStates.MoffeinPilot.FireSelect
             if (TargetAcquired.crosshairOverridePrefab)
             {
                 this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, TargetAcquired.crosshairOverridePrefab, CrosshairUtils.OverridePriority.Skill);
+            }
+            if (isAuthority && characterBody && !characterBody.HasBuff(Buffs.ParachuteSpeed))
+            {
+                characterBody.isSprinting = false;
             }
 
             GenericSkill genericSkill = (skillLocator != null) ? skillLocator.primary : null;

@@ -15,7 +15,7 @@
 	"MOFFEIN_PILOT_BODY_PRIMARY_RETURNS_DESCRIPTION" : "Fire your weapon for <style=cIsDamage>160% damage</style>. Every third hit deals <style=cIsDamage>320% damage</style> and <style=cIsDamage>pierces</style>.",
 	
 	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_NAME" : "Rapid Fire",
-	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION" : "Rapidly fire your weapon for <style=cIsDamage>140% damage</style>.",
+	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION" : "<style=cIsUtility>Agile</style>. Rapidly fire your weapon for <style=cIsDamage>140% damage</style>.",
 	
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_NAME" : "Suppressed Fire",
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION" : "<style=cIsDamage>Slayer</style>. Fire your silenced pistol for <style=cIsDamage>100% damage</style>.",

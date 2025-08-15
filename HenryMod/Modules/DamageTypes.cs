@@ -10,12 +10,14 @@ namespace MoffeinPilot.Modules
     {
         public static R2API.DamageAPI.ModdedDamageType AirstrikeKnockup;
         public static R2API.DamageAPI.ModdedDamageType KeepAirborne;
+        public static R2API.DamageAPI.ModdedDamageType ShowLowHealthBonus;
 
         public static R2API.DamageAPI.ModdedDamageType BonusDamageToAirborne;
         public static R2API.ModdedProcType BonusDamageToAirborneProc;
 
         internal static void RegisterDamageTypes()
         {
+            ShowLowHealthBonus = DamageAPI.ReserveDamageType();
             AirstrikeKnockup = DamageAPI.ReserveDamageType();
             KeepAirborne = DamageAPI.ReserveDamageType();
             BonusDamageToAirborne = DamageAPI.ReserveDamageType();
@@ -82,6 +84,12 @@ namespace MoffeinPilot.Modules
                         damageInfo.damageColorIndex = DamageColorIndex.WeakPoint;
                     }
                 }
+            }
+
+            if (damageInfo.HasModdedDamageType(ShowLowHealthBonus) && self.combinedHealthFraction <= 0.5f)
+            {
+                damageInfo.damageColorIndex = DamageColorIndex.WeakPoint;
+                EffectManager.SimpleImpactEffect(HealthComponent.AssetReferences.bossDamageBonusImpactEffectPrefab, damageInfo.position, damageInfo.force, true);
             }
 
             orig(self, damageInfo);

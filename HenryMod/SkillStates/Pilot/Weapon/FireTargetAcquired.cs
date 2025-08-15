@@ -62,6 +62,10 @@ namespace EntityStates.MoffeinPilot.Weapon
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(2f);
+                if (isAuthority && !characterBody.HasBuff(Buffs.ParachuteSpeed))
+                {
+                    characterBody.isSprinting = false;
+                }
             }
 
             PilotSurvivor.HandleLuminousShotServer(base.characterBody);
@@ -113,6 +117,11 @@ namespace EntityStates.MoffeinPilot.Weapon
             base.PlayAnimation("Gesture, Additive", "Shoot1", "ShootGun.playbackRate", shotDuration * 2f);
             if (base.isAuthority)
             {
+                if (characterBody && characterBody.HasBuff(Buffs.ParachuteSpeed))
+                {
+                    characterBody.isSprinting = false;
+                }
+
                 Ray aimRay = base.GetAimRay();
                 if (pilotController)
                 {

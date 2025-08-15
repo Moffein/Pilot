@@ -7,6 +7,7 @@ using UnityEngine;
 using RoR2.Skills;
 using RoR2;
 using RoR2.UI;
+using MoffeinPilot.Modules;
 
 namespace EntityStates.MoffeinPilot.FireSelect
 {
@@ -27,6 +28,10 @@ namespace EntityStates.MoffeinPilot.FireSelect
             Util.PlaySound(ColdWar.entrySoundString, base.gameObject);
             Util.PlaySound("Play_railgunner_m2_scope_loop", base.gameObject);
             pilotController = base.GetComponent<PilotController>();
+            if (isAuthority && characterBody && !characterBody.HasBuff(Buffs.ParachuteSpeed))
+            {
+                characterBody.isSprinting = false;
+            }
             if (ColdWar.crosshairOverridePrefab)
             {
                 this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, ColdWar.crosshairOverridePrefab, CrosshairUtils.OverridePriority.Skill);

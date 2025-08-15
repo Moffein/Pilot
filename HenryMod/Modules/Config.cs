@@ -13,17 +13,19 @@ namespace MoffeinPilot.Modules
 
             EntityStates.MoffeinPilot.Parachute.DeployParachute.enableParachuteFade = PilotPlugin.instance.Config.Bind("Settings", "Parachute Fade", true, "Pilot's parachute becomes transparent when looking downwards.");
             EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend = PilotPlugin.instance.Config.Bind("Controls", "Rapid Deployment - Hold to Ascend", false, "Rapid Deployment requires you to hold the Utility button to ascend, and ends early if you let go.");
+            EntityStates.MoffeinPilot.Parachute.DeployParachute.cameraMode = PilotPlugin.instance.Config.Bind("Controls", "Rapid Deployment - Camera Mode", EntityStates.MoffeinPilot.Parachute.DeployParachute.CameraModes.Above, "Camera position while using this skill.");
 
             EntityStates.MoffeinPilot.Parachute.DashGround.onlyDashBackwards = PilotPlugin.instance.Config.Bind("Controls", "Air Strike - Only Dash Backwards", false, "Air Strike ground dash only moves backwards like in Returns.");
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.useShorthop = PilotPlugin.instance.Config.Bind("Controls", "Aerial Support - Shorthop", true, "Using this skill midair gives a vertical boost.");
 
             ModCompat.SetupOptions();
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions")) RiskOfOptionsCompat();
         }
 
         private static void UseLaser_SettingChanged(object sender, System.EventArgs e)
         {
             if (!PilotSurvivor.SkillDefs.Primaries.ClusterFire) return;
-            PilotSurvivor.SkillDefs.Primaries.ClusterFire.skillDescriptionToken = EntityStates.MoffeinPilot.Weapon.ClusterFire.useLaser.Value ? "MOFFEIN_PILOT_BODY_PRIMARY_RETURNS_DESCRIPTION" : "MOFFEIN_PILOT_BODY_PRIMARY_DESCRIPTION";
+                PilotSurvivor.SkillDefs.Primaries.ClusterFire.skillDescriptionToken = EntityStates.MoffeinPilot.Weapon.ClusterFire.useLaser.Value ? "MOFFEIN_PILOT_BODY_PRIMARY_RETURNS_DESCRIPTION" : "MOFFEIN_PILOT_BODY_PRIMARY_DESCRIPTION";
         }
 
         // this helper automatically makes config entries for disabling survivors
@@ -34,6 +36,12 @@ namespace MoffeinPilot.Modules
                                                           "Enable " + characterName,
                                                           enabledDefault,
                                                           description);
+        }
+
+        private static void RiskOfOptionsCompat()
+        {
+            RiskOfOptions.ModSettingsManager.SetModIcon(Asset.mainAssetBundle.LoadAsset<Sprite>("texIconPilot"));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.ChoiceOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.cameraMode));
         }
     }
 }

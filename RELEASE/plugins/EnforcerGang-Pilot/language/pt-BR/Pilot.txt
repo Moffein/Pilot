@@ -15,7 +15,7 @@
 	"MOFFEIN_PILOT_BODY_PRIMARY_RETURNS_DESCRIPTION" : "Dispare a arma, causando <style=cIsDamage>160% de dano</style>. Cada terceiro acerto é <style=cIsDamage>perfurante</style> e causa <style=cIsDamage>320% de dano</style>.",
 
 	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_NAME" : "Tiro Rápido",
-	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION" : "Dispare a arma rapidamente, causando <style=cIsDamage>140% de dano</style>.",
+	"MOFFEIN_PILOT_BODY_PRIMARY_ALT_DESCRIPTION" : "<style=cIsUtility>Ágil</style>. Dispare a arma rapidamente, causando <style=cIsDamage>140% de dano</style>.",
 	
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_NAME" : "Tiro de Supressão",
 	"MOFFEIN_PILOT_BODY_PRIMARY_SILENCER_DESCRIPTION" : "<style=cIsDamage>Assassino</style>. Dispare com sua pistola silenciada, causando <style=cIsDamage>100% de dano</style>.",

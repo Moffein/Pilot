@@ -23,13 +23,10 @@ namespace MoffeinPilot.Modules.Survivors
 {
     internal class PilotSurvivor : SurvivorBase
     {
-        //used when building your character using the prefabs you set up in unity
-        //don't upload to thunderstore without changing this
         public override string prefabBodyName => "MoffeinPilot";
 
         public const string BODY_PREFIX = PilotPlugin.DEVELOPER_PREFIX + "_PILOT_BODY_";
 
-        //used when registering your survivor's language tokens
         public override string survivorTokenPrefix => BODY_PREFIX;
 
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
@@ -52,7 +49,8 @@ namespace MoffeinPilot.Modules.Survivors
             damageGrowth = 2.4f,
             armor = 0f,
 
-            jumpCount = 1
+            jumpCount = 1,
+            cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Common/ccpStandard.asset").WaitForCompletion()
         };
 
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] 
@@ -88,6 +86,7 @@ namespace MoffeinPilot.Modules.Survivors
             base.InitializeCharacter();
 
             bodyPrefab.AddComponent<PilotController>();
+
 
             EntityStateMachine bodyMachine = EntityStateMachine.FindByCustomName(bodyPrefab, "Body");
             bodyMachine.mainStateType = new SerializableEntityStateType(typeof(PilotMainState));
@@ -350,7 +349,7 @@ namespace MoffeinPilot.Modules.Survivors
             primaryDef.isCombatSkill = true;
             primaryDef.keywordTokens = new string[] { };
             primaryDef.mustKeyPress = false;
-            primaryDef.cancelSprintingOnActivation = true;
+            primaryDef.cancelSprintingOnActivation = false;
             primaryDef.rechargeStock = 1;
             primaryDef.requiredStock = 1;
             primaryDef.skillName = "PilotPrimary";
@@ -375,9 +374,9 @@ namespace MoffeinPilot.Modules.Survivors
             primaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillRapidFire");
             primaryAltDef.interruptPriority = InterruptPriority.Skill;
             primaryAltDef.isCombatSkill = true;
-            primaryAltDef.keywordTokens = new string[] { };
+            primaryAltDef.keywordTokens = new string[] { "KEYWORD_AGILE" };
             primaryAltDef.mustKeyPress = false;
-            primaryAltDef.cancelSprintingOnActivation = true;
+            primaryAltDef.cancelSprintingOnActivation = false;
             primaryAltDef.rechargeStock = 1;
             primaryAltDef.requiredStock = 1;
             primaryAltDef.skillName = "PilotPrimaryAlt";
@@ -401,12 +400,12 @@ namespace MoffeinPilot.Modules.Survivors
             primarySilencerDef.dontAllowPastMaxStocks = false;
             primarySilencerDef.forceSprintDuringState = false;
             primarySilencerDef.fullRestockOnAssign = true;
-            primarySilencerDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_0");
+            primarySilencerDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillSuppressedFire");
             primarySilencerDef.interruptPriority = InterruptPriority.Skill;
             primarySilencerDef.isCombatSkill = true;
             primarySilencerDef.keywordTokens = new string[] { "KEYWORD_SLAYER" };
             primarySilencerDef.mustKeyPress = false;
-            primarySilencerDef.cancelSprintingOnActivation = true;
+            primarySilencerDef.cancelSprintingOnActivation = false;
             primarySilencerDef.rechargeStock = 1;
             primarySilencerDef.requiredStock = 1;
             primarySilencerDef.skillName = "PilotPrimarySilencer";
@@ -477,7 +476,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryDef.isCombatSkill = false;
             secondaryDef.keywordTokens = new string[] { };
             secondaryDef.mustKeyPress = false;
-            secondaryDef.cancelSprintingOnActivation = true;
+            secondaryDef.cancelSprintingOnActivation = false;
             secondaryDef.rechargeStock = 1;
             secondaryDef.requiredStock = 1;
             secondaryDef.skillName = "PilotSecondary";
@@ -504,7 +503,7 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryOverrideDef.isCombatSkill = true;
             secondaryOverrideDef.keywordTokens = new string[] { };
             secondaryOverrideDef.mustKeyPress = false;
-            secondaryOverrideDef.cancelSprintingOnActivation = true;
+            secondaryOverrideDef.cancelSprintingOnActivation = false;
             secondaryOverrideDef.rechargeStock = 0;
             secondaryOverrideDef.requiredStock = 1;
             secondaryOverrideDef.skillName = "PilotSecondaryOverride";
@@ -526,12 +525,12 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryAltDef.dontAllowPastMaxStocks = false;
             secondaryAltDef.forceSprintDuringState = false;
             secondaryAltDef.fullRestockOnAssign = true;
-            secondaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillBombsAway");
             secondaryAltDef.interruptPriority = InterruptPriority.Any;
             secondaryAltDef.isCombatSkill = false;
             secondaryAltDef.keywordTokens = new string[] { };
             secondaryAltDef.mustKeyPress = false;
-            secondaryAltDef.cancelSprintingOnActivation = true;
+            secondaryAltDef.cancelSprintingOnActivation = false;
             secondaryAltDef.rechargeStock = 1;
             secondaryAltDef.requiredStock = 1;
             secondaryAltDef.skillName = "PilotSecondaryAlt";
@@ -553,12 +552,12 @@ namespace MoffeinPilot.Modules.Survivors
             secondaryAltOverrideDef.dontAllowPastMaxStocks = false;
             secondaryAltOverrideDef.forceSprintDuringState = false;
             secondaryAltOverrideDef.fullRestockOnAssign = true;
-            secondaryAltOverrideDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_1");
+            secondaryAltOverrideDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillBombsAway");
             secondaryAltOverrideDef.interruptPriority = InterruptPriority.Skill;
             secondaryAltOverrideDef.isCombatSkill = true;
             secondaryAltOverrideDef.keywordTokens = new string[] { };
             secondaryAltOverrideDef.mustKeyPress = false;
-            secondaryAltOverrideDef.cancelSprintingOnActivation = true;
+            secondaryAltOverrideDef.cancelSprintingOnActivation = false;
             secondaryAltOverrideDef.rechargeStock = 0;
             secondaryAltOverrideDef.requiredStock = 1;
             secondaryAltOverrideDef.skillName = "PilotSecondaryAltOverride";
@@ -619,7 +618,7 @@ namespace MoffeinPilot.Modules.Survivors
             utilityAltDef.dontAllowPastMaxStocks = false;
             utilityAltDef.forceSprintDuringState = true;
             utilityAltDef.fullRestockOnAssign = false;
-            utilityAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("sPilotSkills_6");
+            utilityAltDef.icon = Asset.mainAssetBundle.LoadAsset<Sprite>("texSkillAerobatics");
             utilityAltDef.interruptPriority = InterruptPriority.Any;
             utilityAltDef.isCombatSkill = false;
             utilityAltDef.keywordTokens = new string[] {};

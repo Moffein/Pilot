@@ -15,6 +15,12 @@ namespace EntityStates.MoffeinPilot.Parachute
         public static float baseDuration = 1.2f;    //This just acts as a hard-cap to the duration in case anything weird happens, so you don't get softlocked.
         public static float liftVelocity = 54f;     //This linearly lowers to 0 over the course of the skill.
 
+        public static ConfigEntry<CameraModes> cameraMode;
+        public enum CameraModes
+        {
+            Above, Shoulder
+        }
+
         public static float boostVelocity = 18f;
         public static float stopAscentVelocity = 12f;
 
@@ -41,7 +47,7 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
 
-        private CharacterCameraParamsData cameraParams = new CharacterCameraParamsData
+        public static CharacterCameraParamsData cameraParamsAbove = new CharacterCameraParamsData
         {
             maxPitch = 70f,
             minPitch = -70f,
@@ -49,11 +55,25 @@ namespace EntityStates.MoffeinPilot.Parachute
             idealLocalCameraPos = zoomCameraPosition,
             wallCushion = 0.1f
         };
+        public static CharacterCameraParamsData cameraParamsShoulder = new CharacterCameraParamsData
+        {
+            isFirstPerson = false,
+            maxPitch = 70,
+            minPitch = -70,
+            pivotVerticalOffset = -0f,
+            idealLocalCameraPos = new Vector3(1.8f, -0.2f, -6f),
+            wallCushion = 0.1f,
+        };
         private static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -10f); // how far back should the camera go?
 
         public override void OnEnter()
         {
             base.OnEnter();
+
+            if (NetworkServer.active && characterBody)
+            {
+                characterBody.AddBuff(Buffs.ParachuteSpeed);
+            }
 
             stopAscent = false;
 
@@ -107,11 +127,24 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (cameraTargetParams)
             {
                 cameraTargetParams.RemoveParamsOverride(camOverrideHandle);
-                CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+                CameraTargetParams.CameraParamsOverrideRequest request;
+                switch (DeployParachute.cameraMode.Value)
                 {
-                    cameraParamsData = cameraParams,
-                    priority = 0f
-                };
+                    case DeployParachute.CameraModes.Shoulder:
+                        request = new CameraTargetParams.CameraParamsOverrideRequest
+                        {
+                            cameraParamsData = DeployParachute.cameraParamsShoulder,
+                            priority = 0f
+                        };
+                        break;
+                    default:
+                        request = new CameraTargetParams.CameraParamsOverrideRequest
+                        {
+                            cameraParamsData = DeployParachute.cameraParamsAbove,
+                            priority = 0f
+                        };
+                        break;
+                }
                 camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0.5f);
             }
         }
@@ -179,6 +212,10 @@ namespace EntityStates.MoffeinPilot.Parachute
 
         public override void OnExit()
         {
+            if (NetworkServer.active && characterBody && characterBody.HasBuff(Buffs.ParachuteSpeed))
+            {
+                characterBody.RemoveBuff(Buffs.ParachuteSpeed);
+            }
             if (base.characterMotor)
             {
                 if (base.characterMotor.isGrounded)
