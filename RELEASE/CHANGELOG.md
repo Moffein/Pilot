@@ -15,7 +15,9 @@
 	
 - Rapid Deployment
 	- Now forces sprinting during state.
-	- Added Sniper's Shoulder camera as an alternate camera mode in the config.
+	- Added a small forwards boost when exiting Parachute.
+	- Added a temporary fix for the parachute not fading.
+		- Uses Unity's standard shader instead of the hopoo shader so it might look a bit jank.
 
 `0.5.2`
 

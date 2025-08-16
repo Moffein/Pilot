@@ -11,6 +11,7 @@ namespace EntityStates.MoffeinPilot.Parachute
     {
         public static float maxFallVelocity = -6f;
         public static float exitHopVelocity = 17f;
+        public static float exitForce = 3000f;
         public static GameObject jumpEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/CharacterLandImpact");
 
         private PilotController pilotController;
@@ -101,7 +102,16 @@ namespace EntityStates.MoffeinPilot.Parachute
                 {
                     if (jumped)
                     {
-                        base.SmallHop(base.characterMotor, Glide.exitHopVelocity);
+                        if (characterMotor)
+                        {
+                            Ray aimRay = base.GetAimRay();
+                            Vector3 direction = aimRay.direction;
+                            direction.y = 0f;
+                            direction.Normalize();
+                            characterMotor.ApplyForce(exitForce * direction, true, false);
+                            SmallHop(characterMotor, exitHopVelocity);
+                        }
+
                         if (base.characterBody) EffectManager.SpawnEffect(jumpEffect, new EffectData
                         {
                             origin = base.characterBody.footPosition,
@@ -173,9 +183,10 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value || !(base.characterBody && base.characterBody.isPlayerControlled)) return;
             for (int i = 0; i < parachuteRenderers.Length; i++)
             {
-                parachuteRenderers[i].GetPropertyBlock(propertyStorage);
+                parachuteRenderers[i].material = DeployParachute.matParachuteAlpha;
+                /*parachuteRenderers[i].GetPropertyBlock(propertyStorage);
                 propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
-                parachuteRenderers[i].SetPropertyBlock(propertyStorage);
+                parachuteRenderers[i].SetPropertyBlock(propertyStorage);*/
             }
         }
 

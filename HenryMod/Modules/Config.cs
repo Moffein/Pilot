@@ -19,7 +19,6 @@ namespace MoffeinPilot.Modules
             EntityStates.MoffeinPilot.Airstrike.PlaceAirstrikeAlt.useShorthop = PilotPlugin.instance.Config.Bind("Controls", "Aerial Support - Shorthop", true, "Using this skill midair gives a vertical boost.");
 
             ModCompat.SetupOptions();
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions")) RiskOfOptionsCompat();
         }
 
         private static void UseLaser_SettingChanged(object sender, System.EventArgs e)
@@ -36,12 +35,6 @@ namespace MoffeinPilot.Modules
                                                           "Enable " + characterName,
                                                           enabledDefault,
                                                           description);
-        }
-
-        private static void RiskOfOptionsCompat()
-        {
-            RiskOfOptions.ModSettingsManager.SetModIcon(Asset.mainAssetBundle.LoadAsset<Sprite>("texIconPilot"));
-            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.ChoiceOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.cameraMode));
         }
     }
 }

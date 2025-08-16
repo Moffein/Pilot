@@ -55,19 +55,56 @@ namespace MoffeinPilot.Modules.Survivors
 
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] 
         {
-                //new CustomRendererInfo
-                //{
-                //    childName = "SwordModel",
-                //    material = Materials.CreateHopooMaterial("matHenry"),
-                //},
-                //new CustomRendererInfo
-                //{
-                //    childName = "GunModel",
-                //},
-                //new CustomRendererInfo
-                //{
-                //    childName = "Model",
-                //}
+            new CustomRendererInfo
+            {
+                childName = "MeshBody",
+                material = Materials.CreateHopooMaterial("matPilotDefault1"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshBodyStraps",
+                material = Materials.CreateHopooMaterial("matPilotDefault1"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshBreather",
+                material = Materials.CreateHopooMaterial("matPilotDefault2"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshEyes",
+                material = Materials.CreateHopooMaterial("matPilotDefaultWeapon"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshFur",
+                material = Materials.CreateHopooMaterial("matPilotDefault2"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshHead",
+                material = Materials.CreateHopooMaterial("matPilotDefault2"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshMetal",
+                material = Materials.CreateHopooMaterial("matPilotDefault12"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshPouches",
+                material = Materials.CreateHopooMaterial("matPilotDefault2"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshPistol",
+                material = Materials.CreateHopooMaterial("matPilotDefaultWeapon"),
+            },
+            new CustomRendererInfo
+            {
+                childName = "MeshWeapon",
+                material = Materials.CreateHopooMaterial("matPilotDefaultWeapon"),
+            },
         };
 
         public override UnlockableDef characterUnlockableDef => null;

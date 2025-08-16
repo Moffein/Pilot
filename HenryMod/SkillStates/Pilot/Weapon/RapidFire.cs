@@ -1,4 +1,5 @@
 ﻿using MoffeinPilot.Content.Components;
+using MoffeinPilot.Modules.Survivors;
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -24,6 +25,11 @@ namespace EntityStates.MoffeinPilot.Weapon
 		private PilotController pilotController;
 
 		private float duration;
+
+		public static bool HasSkillEquipped(CharacterBody body)
+		{
+			return body && body.skillLocator && body.skillLocator.primary && body.skillLocator.primary.skillDef == PilotSurvivor.SkillDefs.Primaries.RapidFire;
+		}
 
         public override void OnEnter()
         {

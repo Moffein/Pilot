@@ -295,6 +295,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             }
         }*/
 
+        public static Material matParachuteAlpha;
         private void SetupParachuteFade()
         {
             propertyStorage = new MaterialPropertyBlock();
@@ -303,9 +304,14 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value || !(base.characterBody && base.characterBody.isPlayerControlled)) return;
             for (int i = 0; i < parachuteRenderers.Length; i++)
             {
+                parachuteRenderers[i].material = matParachuteAlpha;
+
+                //Remove when fade is fixed
+                /*
                 parachuteRenderers[i].GetPropertyBlock(propertyStorage);
                 propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
                 parachuteRenderers[i].SetPropertyBlock(propertyStorage);
+                */
             }
         }
 

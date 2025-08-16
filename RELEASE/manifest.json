@@ -1,19 +1,19 @@
 {
     "author": "EnforcerGang",
     "name": "Pilot",
-    "version_number": "0.5.2",
+    "version_number": "0.6.0",
     "website_url": "https://github.com/Moffein/Pilot",
     "description": "BETA RELEASE. Adds the Pilot from Risk of Rain Returns.",
     "dependencies": [
-        "bbepis-BepInExPack-5.4.1905",
+        "bbepis-BepInExPack-5.4.2120",
 		"RiskofThunder-R2API_Core-5.1.1",
         "RiskofThunder-R2API_Prefab-1.0.4",
         "RiskofThunder-R2API_DamageType-1.1.4",
-		"RiskofThunder-R2API_RecalculateStats-1.4.0",
+		"RiskofThunder-R2API_RecalculateStats-1.6.0",
 		"RiskofThunder-R2API_ContentManagement-1.0.5",
 		"RiskofThunder-R2API_Sound-1.0.3",
 		"RiskofThunder-R2API_ProcType-1.0.1",
 		"Smooth_Salad-ShaderSwapper-1.0.1",
-		"pseudopulse-SeekersPatcher-1.3.7"
+		"pseudopulse-SoundFixer-1.0.0"
     ]
 }

@@ -50,6 +50,7 @@ namespace MoffeinPilot
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Weapon.ClusterFire.useLaser));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.enableParachuteFade));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.holdToAscend));
+            RiskOfOptions.ModSettingsManager.AddOption(new RiskOfOptions.Options.ChoiceOption(EntityStates.MoffeinPilot.Parachute.DeployParachute.cameraMode));
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

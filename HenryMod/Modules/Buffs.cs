@@ -1,5 +1,8 @@
-﻿using R2API;
+﻿using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using R2API;
 using RoR2;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -36,6 +39,22 @@ namespace MoffeinPilot.Modules
                 false,
                 false);
             ParachuteSpeed.isHidden = true;
+            IL.RoR2.UI.CrosshairManager.UpdateCrosshair += SuppressSprintCrosshair;
+        }
+
+        private static void SuppressSprintCrosshair(MonoMod.Cil.ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+            if (c.TryGotoNext(MoveType.After,
+                x => x.MatchCallvirt<CharacterBody>("get_isSprinting")
+                ))
+            {
+                c.Emit(OpCodes.Ldarg_1);    //targetBody
+                c.EmitDelegate<Func<bool, CharacterBody, bool>>((isSprinting, body) =>
+                {
+                    return isSprinting && !(body.HasBuff(ParachuteSpeed) || EntityStates.MoffeinPilot.Weapon.RapidFire.HasSkillEquipped(body));
+                });
+            }
         }
 
         private static void GlobalEventManager_OnCharacterHitGroundServer(On.RoR2.GlobalEventManager.orig_OnCharacterHitGroundServer orig, GlobalEventManager self, CharacterBody characterBody, CharacterMotor.HitGroundInfo hitGroundInfo)
@@ -51,9 +70,10 @@ namespace MoffeinPilot.Modules
                 args.attackSpeedMultAdd += 0.3f;
             }
 
-            if (sender.HasBuff(ParachuteSpeed)) {
+            //No need for this, just use the buff as a hidden marker to tell when you are in parachute mode.
+            /*if (sender.HasBuff(ParachuteSpeed)) {
                 args.moveSpeedMultAdd += 0.2f;
-            }
+            }*/
         }
 
         // simple helper method

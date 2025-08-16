@@ -10,6 +10,7 @@ using System;
 using UnityEngine.AddressableAssets;
 using MoffeinPilot.Modules;
 using MoffeinPilot.Content.Components.SkyboxDrone;
+using EntityStates.MoffeinPilot.Parachute;
 
 namespace MoffeinPilot.Modules
 {
@@ -94,6 +95,8 @@ namespace MoffeinPilot.Modules
             EntityStates.MoffeinPilot.Weapon.ClusterFire.comboTracerEffectPrefab = redLaserTracer;
 
             CreateSkyboxDronePrefab();
+
+            DeployParachute.matParachuteAlpha = mainAssetBundle.LoadAsset<Material>("matParachuteStandardAlpha");
         }
 
         private static void CreateSkyboxDronePrefab()
