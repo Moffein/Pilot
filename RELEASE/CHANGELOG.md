@@ -1,3 +1,7 @@
+`0.6.1`
+
+- Fixed misnamed material from 0.6.0
+
 `0.6.0`
 
 - Added updated skill icons from Leaf_it.

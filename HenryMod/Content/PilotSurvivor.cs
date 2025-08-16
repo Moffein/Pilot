@@ -88,7 +88,7 @@ namespace MoffeinPilot.Modules.Survivors
             new CustomRendererInfo
             {
                 childName = "MeshMetal",
-                material = Materials.CreateHopooMaterial("matPilotDefault12"),
+                material = Materials.CreateHopooMaterial("matPilotDefault2"),
             },
             new CustomRendererInfo
             {
