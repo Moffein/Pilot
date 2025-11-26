@@ -95,8 +95,6 @@ namespace MoffeinPilot.Modules
             EntityStates.MoffeinPilot.Weapon.ClusterFire.comboTracerEffectPrefab = redLaserTracer;
 
             CreateSkyboxDronePrefab();
-
-            DeployParachute.matParachuteAlpha = mainAssetBundle.LoadAsset<Material>("matParachuteStandardAlpha");
         }
 
         private static void CreateSkyboxDronePrefab()

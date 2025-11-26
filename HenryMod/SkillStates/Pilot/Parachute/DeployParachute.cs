@@ -55,15 +55,7 @@ namespace EntityStates.MoffeinPilot.Parachute
             idealLocalCameraPos = zoomCameraPosition,
             wallCushion = 0.1f
         };
-        public static CharacterCameraParamsData cameraParamsShoulder = new CharacterCameraParamsData
-        {
-            isFirstPerson = false,
-            maxPitch = 70,
-            minPitch = -70,
-            pivotVerticalOffset = -0f,
-            idealLocalCameraPos = new Vector3(1.8f, -0.2f, -6f),
-            wallCushion = 0.1f,
-        };
+        public static CharacterCameraParamsData cameraParamsShoulder = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/DLC3/Drone Tech/ccpCarryFlight.asset").WaitForCompletion().data;
         private static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -10f); // how far back should the camera go?
 
         public override void OnEnter()
@@ -278,7 +270,7 @@ namespace EntityStates.MoffeinPilot.Parachute
         public static float fadeAmount = 0.6f;
         public static float fadeLookAngle = -0.35f;
         private MaterialPropertyBlock propertyStorage;
-        /*public override void Update()
+        public override void Update()
         {
             base.Update();
 
@@ -293,26 +285,6 @@ namespace EntityStates.MoffeinPilot.Parachute
                 propertyStorage.SetFloat("_Fade", fadeLerp);
                 parachuteRenderers[i].SetPropertyBlock(propertyStorage);
             }
-        }*/
-
-        public static Material matParachuteAlpha;
-        private void SetupParachuteFade()
-        {
-            propertyStorage = new MaterialPropertyBlock();
-            if (parachute) parachuteRenderers = parachute.GetComponentsInChildren<SkinnedMeshRenderer>();   //Just include SkinnedMeshRenderer for now to leave out the linerenderers.
-
-            if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value || !(base.characterBody && base.characterBody.isPlayerControlled)) return;
-            for (int i = 0; i < parachuteRenderers.Length; i++)
-            {
-                parachuteRenderers[i].material = matParachuteAlpha;
-
-                //Remove when fade is fixed
-                /*
-                parachuteRenderers[i].GetPropertyBlock(propertyStorage);
-                propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
-                parachuteRenderers[i].SetPropertyBlock(propertyStorage);
-                */
-            }
         }
 
         private void CreateParachute()
@@ -323,6 +295,20 @@ namespace EntityStates.MoffeinPilot.Parachute
             parachute.transform.localRotation = Quaternion.identity;
 
             SetupParachuteFade();
+        }
+
+        private void SetupParachuteFade()
+        {
+            propertyStorage = new MaterialPropertyBlock();
+            if (parachute) parachuteRenderers = parachute.GetComponentsInChildren<SkinnedMeshRenderer>();   //Just include SkinnedMeshRenderer for now to leave out the linerenderers.
+
+            if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value || !(base.characterBody && base.characterBody.isPlayerControlled)) return;
+            for (int i = 0; i < parachuteRenderers.Length; i++)
+            {
+                parachuteRenderers[i].GetPropertyBlock(propertyStorage);
+                propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
+                parachuteRenderers[i].SetPropertyBlock(propertyStorage);
+            }
         }
 
         private void DestroyParachute()

@@ -35,6 +35,12 @@ namespace MoffeinPilot.Modules
             if (cachedMaterials.Contains(tempMat))
                 return tempMat;
 
+            if ((tempMat.shader.name != "Standard"))
+            {
+                cachedMaterials.Add(tempMat);
+                return tempMat;
+            }
+
             float? bumpScale = null;
             Color? emissionColor = null;
 

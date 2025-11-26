@@ -158,7 +158,7 @@ namespace EntityStates.MoffeinPilot.Parachute
         //Duplicated code.
         //Fade parachute if looking downwards.
         private MaterialPropertyBlock propertyStorage;
-        /*public override void Update()
+        public override void Update()
         {
             base.Update();
 
@@ -173,7 +173,7 @@ namespace EntityStates.MoffeinPilot.Parachute
                 propertyStorage.SetFloat("_Fade", fadeLerp);
                 parachuteRenderers[i].SetPropertyBlock(propertyStorage);
             }
-        }*/
+        }
 
         private void SetupParachuteFade()
         {
@@ -183,10 +183,9 @@ namespace EntityStates.MoffeinPilot.Parachute
             if (parachuteRenderers == null || !base.isAuthority || !DeployParachute.enableParachuteFade.Value || !(base.characterBody && base.characterBody.isPlayerControlled)) return;
             for (int i = 0; i < parachuteRenderers.Length; i++)
             {
-                parachuteRenderers[i].material = DeployParachute.matParachuteAlpha;
-                /*parachuteRenderers[i].GetPropertyBlock(propertyStorage);
+                parachuteRenderers[i].GetPropertyBlock(propertyStorage);
                 propertyStorage.SetFloat("_Fade", DeployParachute.fadeAmount);
-                parachuteRenderers[i].SetPropertyBlock(propertyStorage);*/
+                parachuteRenderers[i].SetPropertyBlock(propertyStorage);
             }
         }
 
