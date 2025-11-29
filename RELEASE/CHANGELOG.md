@@ -1,3 +1,9 @@
+`0.6.2`
+
+- Dithering is fixed in basegame, so Parachute shader has been swapped back to HGStandard.
+
+	*Now that Operator is out, I'd like to take some time to review Pilot's gameplay. What lessons can be leanred from Operator, what aspects can separate him from Operator, etc.*
+
 `0.6.1`
 
 - Fixed misnamed material from 0.6.0
