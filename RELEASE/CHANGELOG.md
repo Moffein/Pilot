@@ -1,3 +1,7 @@
+`0.6.3`
+
+- Added Korean translation. (Thanks Dice-001!)
+
 `0.6.2`
 
 - Dithering is fixed in basegame, so Parachute shader has been swapped back to HGStandard.

@@ -25,3 +25,4 @@ Fully functional, just needs animation polish and some skins.
 
 - Russian: Lecard, Kaban, JAG
 - Portuguese: Kauzok
+- Korean: Dice-001
