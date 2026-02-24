@@ -1,3 +1,7 @@
+`0.6.4`
+
+- Added Chinese translation. (Thanks guoba00874!)
+
 `0.6.3`
 
 - Added Korean translation. (Thanks Dice-001!)
