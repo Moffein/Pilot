@@ -25,7 +25,7 @@ namespace MoffeinPilot
     {
         public const string MODUID = "com.EnforcerGang.Pilot";
         public const string MODNAME = "Pilot";
-        public const string MODVERSION = "0.6.2";
+        public const string MODVERSION = "0.6.5";
 
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
@@ -45,7 +45,8 @@ namespace MoffeinPilot
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             new Modules.LanguageTokens();
-            Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+            //todo dlc4 itemdisplays
+            //Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // survivor initialization
             new Modules.Survivors.PilotSurvivor().Initialize();

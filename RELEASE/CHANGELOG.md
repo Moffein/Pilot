@@ -1,3 +1,7 @@
+`0.6.5`
+
+- updated for dlc4. item displays disabled for now
+
 `0.6.4`
 
 - Added Chinese translation. (Thanks guoba00874!)
